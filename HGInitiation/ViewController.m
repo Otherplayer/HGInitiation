@@ -188,6 +188,8 @@ NSString *const PARAMS = @"params";
                      PARAMS:@{HGPushClassName:@"HGZoomImageController"}},
                    @{TITLE:@"图片浏览",
                      PARAMS:@{HGPushClassName:@"HGBrowserController"}},
+                   @{TITLE:@"瀑布流",
+                     PARAMS:@{HGPushClassName:@"HGWaterfallController"}},
                    @{TITLE:@"网络",
                      TYPE:@(HGDataType_Net)},
                    @{TITLE:@"动画",

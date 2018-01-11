@@ -10,6 +10,10 @@
 
 @interface NSString (HG)
 
+- (CGFloat)heightWithFont:(UIFont *)font limitWidth:(CGFloat)width;
+- (CGFloat)widthWithFont:(UIFont *)font limitHeight:(CGFloat)height;
+
+
 - (NSString *)hgMD5HexLower;
 - (NSURL *)url;
 

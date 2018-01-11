@@ -32,8 +32,6 @@
     
     HGScrollView *scrollView = [HGScrollView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, SCREEN_WIDTH * 9/16.0) type:HGScrollViewContentTypeImage];
     [scrollView setPageControlPosition:HGPageControlPositionBottomRight];
-//    [scrollView setAutoScroll:NO];
-//    [scrollView setLoopScroll:NO];
     [scrollView setDelegate:self];
     [self.view addSubview:scrollView];
     [scrollView setDatas:self.datas key:@"url" titleKey:@"title"];

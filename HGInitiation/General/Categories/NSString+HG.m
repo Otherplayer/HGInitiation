@@ -16,6 +16,19 @@
 - (NSURL *)url {
     return [NSURL URLWithString:self];
 }
+- (CGFloat)heightWithFont:(UIFont *)font limitWidth:(CGFloat)width {
+    return [self sizeWithFont:font limitSize:CGSizeMake(width, CGFLOAT_MAX)].height;
+}
+- (CGFloat)widthWithFont:(UIFont *)font limitHeight:(CGFloat)height {
+    return [self sizeWithFont:font limitSize:CGSizeMake(height, CGFLOAT_MAX)].width;
+}
+- (CGSize)sizeWithFont:(UIFont *)font limitSize:(CGSize)size{
+    NSStringDrawingOptions options =  NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attributes = @{NSFontAttributeName:font};
+    return [self boundingRectWithSize:size options:options attributes:attributes context:nil].size;
+}
 
 
 @end

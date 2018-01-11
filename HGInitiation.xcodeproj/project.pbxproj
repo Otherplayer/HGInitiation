@@ -54,6 +54,7 @@
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
+		63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559762007516100BBA0BE /* HGWaterfallController.m */; };
 		63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0341FFE02F40049597F /* NSString+HG.m */; };
 		63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0391FFF0AEE0049597F /* HGWebViewController.m */; };
 		63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EDC03B1FFF0B860049597F /* WebKit.framework */; };
@@ -155,6 +156,8 @@
 		63D55970200733F200BBA0BE /* HGHelperPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHelperPush.m; sourceTree = "<group>"; };
 		63D559722007346800BBA0BE /* NSObject+HGAssociate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+HGAssociate.h"; sourceTree = "<group>"; };
 		63D559732007346800BBA0BE /* NSObject+HGAssociate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HGAssociate.m"; sourceTree = "<group>"; };
+		63D559752007516100BBA0BE /* HGWaterfallController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWaterfallController.h; sourceTree = "<group>"; };
+		63D559762007516100BBA0BE /* HGWaterfallController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWaterfallController.m; sourceTree = "<group>"; };
 		63EDC0331FFE02F40049597F /* NSString+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HG.h"; sourceTree = "<group>"; };
 		63EDC0341FFE02F40049597F /* NSString+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HG.m"; sourceTree = "<group>"; };
 		63EDC0381FFF0AEE0049597F /* HGWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWebViewController.h; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				635C57C820033319004CE18B /* HGBrowserController.m */,
 				635C57CD20048E29004CE18B /* HGScrollController.h */,
 				635C57CE20048E29004CE18B /* HGScrollController.m */,
+				63D559752007516100BBA0BE /* HGWaterfallController.h */,
+				63D559762007516100BBA0BE /* HGWaterfallController.m */,
 			);
 			path = HGInitiation;
 			sourceTree = "<group>";
@@ -662,6 +667,7 @@
 				635C24E71FFB71C60070BC46 /* HGTextView.m in Sources */,
 				63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */,
 				635C57C620031267004CE18B /* HGPhotoBrowser.m in Sources */,
+				63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */,
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
 				635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */,
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
