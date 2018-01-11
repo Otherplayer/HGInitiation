@@ -27,17 +27,50 @@ static const char *HGAssociatedObjectsKey = "HGAssociatedObjectsKey";
     [dict setObject:object forKey:key];
 }
 
-- (NSArray *)getAllProperties{
+
+- (NSArray *)propertyList{
     u_int count;
-    objc_property_t *properties = class_copyPropertyList([self class], &count);
-    NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:count];
-    for (int i = 0; i<count; i++)
-    {
-        const char* propertyName =property_getName(properties[i]);
-        [propertiesArray addObject: [NSString stringWithUTF8String: propertyName]];
+    objc_property_t *list = class_copyPropertyList([self class], &count);
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++){
+        const char *name = property_getName(list[i]);
+        [results addObject:[NSString stringWithUTF8String:name]];
     }
-    free(properties);
-    return propertiesArray;
+    free(list);
+    return results;
+}
+- (NSArray *)methodList {
+    u_int count;
+    Method *list = class_copyMethodList([self class], &count);
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        const char *name = sel_getName(method_getName(list[i]));
+        [results addObject:[NSString stringWithUTF8String:name]];
+    }
+    free(list);
+    return results;
+}
+- (NSArray *)ivarList {
+    u_int count;
+    Ivar *list = class_copyIvarList([self class], &count);
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        const char *name = ivar_getName(list[i]);
+        [results addObject:[NSString stringWithUTF8String:name]];
+    }
+    free(list);
+    return results;
+}
+- (NSArray *)protocolList {
+    u_int count;
+    Protocol * __unsafe_unretained *list = class_copyProtocolList([self class], &count);
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        const char *name = protocol_getName(list[i]);
+        [results addObject:[NSString stringWithUTF8String:name]];
+    }
+    free(list);
+    return results;
 }
 
 - (NSString *)propertyNameByValue:(id)value{

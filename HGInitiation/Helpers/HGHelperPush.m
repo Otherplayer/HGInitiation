@@ -33,7 +33,7 @@ NSString *const PUSH_APS  = @"aps";
 + (void)push2Controller:(UIViewController *)controller parameters:(NSDictionary *)parameters animated:(BOOL)animated {
     if (!controller) return;
     if ([parameters isKindOfClass:[NSDictionary class]]) {
-        NSArray *allProperties = [controller getAllProperties];
+        NSArray *allProperties = [controller propertyList];
         for (NSString *key in [parameters allKeys]) {
             if([allProperties containsObject:key]){
                 if(parameters[key])

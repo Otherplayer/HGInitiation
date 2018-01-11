@@ -13,9 +13,11 @@
 - (id)associatedObjectForKey:(NSString *)key;
 - (void)setAssociatedObject:(id)object forKey:(NSString *)key;
 
-- (NSArray *)getAllProperties;
 - (NSString *)propertyNameByValue:(id)value;
-
+- (NSArray *)propertyList;
+- (NSArray *)ivarList;
+- (NSArray *)methodList;
+- (NSArray *)protocolList;
 
 
 
