@@ -36,7 +36,7 @@
 #define STATUS_BAR_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
 // navigationBar相关frame
 #define NAV_BAR_HEIGHT (IS_LANDSCAPE ? 32 : 44)
-#define NAV_HEIHGT (STATUS_BAR_HEIGHT + NAV_BAR_HEIGHT)
+#define NAVandSTATUS_BAR_HEIHGT (STATUS_BAR_HEIGHT + NAV_BAR_HEIGHT)
 #define TAB_BAR_HEIGHT ((IS_IPHONEX ? (IS_LANDSCAPE ? 53 : 83) : (IS_LANDSCAPE ? 32 : 44)))
 
 

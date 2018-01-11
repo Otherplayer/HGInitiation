@@ -30,7 +30,7 @@
                   @{@"title":@"MEIZI",@"url":@"http://pic.4gbizhi.com/2015/0321/07/720.1280.jpg"},//美女
                   @{@"title":@"HEIGUAFU",@"url":@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"}];
     
-    HGScrollView *scrollView = [HGScrollView.alloc initWithFrame:CGRectMake(0, NAV_HEIHGT, SCREEN_WIDTH, SCREEN_WIDTH * 9/16.0) type:HGScrollViewContentTypeImage];
+    HGScrollView *scrollView = [HGScrollView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, SCREEN_WIDTH * 9/16.0) type:HGScrollViewContentTypeImage];
     [scrollView setPageControlPosition:HGPageControlPositionBottomRight];
 //    [scrollView setAutoScroll:NO];
 //    [scrollView setLoopScroll:NO];
