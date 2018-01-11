@@ -39,7 +39,7 @@ static NSString *Identifier = @"Identifier";
         self.backgroundColor = [UIColor whiteColor];
         self.imageView = ({
             _imageView = [UIImageView.alloc initWithFrame:CGRectMake(0, 0, self.width, self.width)];
-            _imageView.contentMode = UIViewContentModeCenter;
+            _imageView.contentMode = UIViewContentModeScaleAspectFit;
             _imageView;
         });
         self.labTitle = ({
