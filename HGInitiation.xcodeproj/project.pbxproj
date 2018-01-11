@@ -52,6 +52,8 @@
 		6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */; };
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
+		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
+		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
 		63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0341FFE02F40049597F /* NSString+HG.m */; };
 		63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0391FFF0AEE0049597F /* HGWebViewController.m */; };
 		63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EDC03B1FFF0B860049597F /* WebKit.framework */; };
@@ -149,6 +151,10 @@
 		6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalMacro.h; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
+		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
+		63D55970200733F200BBA0BE /* HGHelperPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHelperPush.m; sourceTree = "<group>"; };
+		63D559722007346800BBA0BE /* NSObject+HGAssociate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+HGAssociate.h"; sourceTree = "<group>"; };
+		63D559732007346800BBA0BE /* NSObject+HGAssociate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HGAssociate.m"; sourceTree = "<group>"; };
 		63EDC0331FFE02F40049597F /* NSString+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HG.h"; sourceTree = "<group>"; };
 		63EDC0341FFE02F40049597F /* NSString+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HG.m"; sourceTree = "<group>"; };
 		63EDC0381FFF0AEE0049597F /* HGWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWebViewController.h; sourceTree = "<group>"; };
@@ -235,6 +241,8 @@
 				63EDC0341FFE02F40049597F /* NSString+HG.m */,
 				63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */,
 				63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */,
+				63D559722007346800BBA0BE /* NSObject+HGAssociate.h */,
+				63D559732007346800BBA0BE /* NSObject+HGAssociate.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -368,6 +376,8 @@
 			children = (
 				63880BC31FF0EADC00DAFD68 /* HGHelperHUD.h */,
 				63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */,
+				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
+				63D55970200733F200BBA0BE /* HGHelperPush.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -623,6 +633,7 @@
 				63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */,
 				635C24EE1FFCAE580070BC46 /* HGImagePreviewCell.m in Sources */,
 				6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */,
+				63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */,
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
 				630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,
@@ -637,6 +648,7 @@
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,
 				632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */,
 				63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */,
+				63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */,
 				63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */,
 				6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */,
 				635C57C920033319004CE18B /* HGBrowserController.m in Sources */,

@@ -1,1 +1,5 @@
 # HGInitiation
+
+
+### run 
+> pod install

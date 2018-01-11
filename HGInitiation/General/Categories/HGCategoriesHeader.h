@@ -9,9 +9,11 @@
 #ifndef HGCategoriesHeader_h
 #define HGCategoriesHeader_h
 
+#import "NSObject+HGAssociate.h"
 #import "UIColor+HG.h"
 #import "NSString+HG.h"
 #import "UIScrollView+HGRefresh.h"
+
 
 #endif /* HGCategoriesHeader_h */
 

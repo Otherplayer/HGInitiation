@@ -13,17 +13,13 @@
 #import "HGAvatarClipperController.h"
 #import "HGPickerView.h"
 #import "HGDatePickerView.h"
-#import "HGTextFieldController.h"
-#import "HGTextViewController.h"
-#import "HGZoomImageController.h"
-#import "HGWebViewController.h"
-#import "HGBrowserController.h"
-#import "HGScrollController.h"
+#import "HGHelperPush.h"
 
 static NSString *Identifier = @"Identifier";
 
 NSString *const TITLE = @"title";
 NSString *const TYPE = @"type";
+NSString *const PARAMS = @"params";
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate,HGImagePickerDelegate,HGAvatarClipperDelegate>
 @property(nonatomic, strong)UITableView *tableView;
@@ -72,8 +68,13 @@ NSString *const TYPE = @"type";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *item = self.items[indexPath.row];
-    NSNumber *type = [item objectForKey:TYPE];
-    [self showFunction:type.integerValue];
+    NSDictionary *params = [item objectForKey:PARAMS];
+    if (params) {
+        [HGHelperPush push:params];
+    }else{
+        NSNumber *type = [item objectForKey:TYPE];
+        [self showFunction:type.integerValue];
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,37 +132,6 @@ NSString *const TYPE = @"type";
             }];
         }
             break;
-        case HGDataType_TextField:{
-            HGTextFieldController *controller = [HGTextFieldController.alloc init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case HGDataType_TextView:{
-            HGTextViewController *controller = [HGTextViewController.alloc init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case HGDataType_ZoomImage:{
-            HGZoomImageController *controller = [HGZoomImageController.alloc init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case HGDataType_WebView:{
-            HGWebViewController *controller = [HGWebViewController.alloc init];
-            controller.urlStr = @"https://www.baidu.com";
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case HGDataType_Browser:{
-            HGBrowserController *controller = [HGBrowserController.alloc init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case HGDataType_Scroll:{
-            HGScrollController *controller = [HGScrollController.alloc init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
             
         default:
             break;
@@ -206,19 +176,32 @@ NSString *const TYPE = @"type";
 
 - (void)initiateDatas {
     self.items = @[
-                   @{TITLE:@"网络",TYPE:@(HGDataType_Net)},
-                   @{TITLE:@"相册选择",TYPE:@(HGDataType_ImagePicker)},//https://github.com/QMUI/QMUI_iOS
-                   @{TITLE:@"头像截取",TYPE:@(HGDataType_AvatarCut)},//https://github.com/itouch2/PhotoTweaks
-                   @{TITLE:@"WebView",TYPE:@(HGDataType_WebView)},
-                   @{TITLE:@"TextField",TYPE:@(HGDataType_TextField)},
-                   @{TITLE:@"TextView",TYPE:@(HGDataType_TextView)},
-                   @{TITLE:@"ScrollView",TYPE:@(HGDataType_Scroll)},
-                   @{TITLE:@"动画",TYPE:@(HGDataType_AvatarCut)},
-                   @{TITLE:@"Picker",TYPE:@(HGDataType_Picker)},
-                   @{TITLE:@"Datepicker",TYPE:@(HGDataType_DatePicker)},
-                   @{TITLE:@"ZoomImage",TYPE:@(HGDataType_ZoomImage)},
-                   @{TITLE:@"图片浏览",TYPE:@(HGDataType_Browser)},
-                   @{TITLE:@"其它",TYPE:@(HGDataType_Other)},
+                   @{TITLE:@"WebView",
+                     PARAMS:@{HGPushClassName:@"HGWebViewController",HGPushParams:@{@"urlStr":@"https://www.baidu.com"}}},
+                   @{TITLE:@"TextField",
+                     PARAMS:@{HGPushClassName:@"HGTextFieldController"}},
+                   @{TITLE:@"TextView",
+                     PARAMS:@{HGPushClassName:@"HGTextViewController"}},
+                   @{TITLE:@"ScrollView",
+                     PARAMS:@{HGPushClassName:@"HGScrollController"}},
+                   @{TITLE:@"ZoomImage",
+                     PARAMS:@{HGPushClassName:@"HGZoomImageController"}},
+                   @{TITLE:@"图片浏览",
+                     PARAMS:@{HGPushClassName:@"HGBrowserController"}},
+                   @{TITLE:@"网络",
+                     TYPE:@(HGDataType_Net)},
+                   @{TITLE:@"动画",
+                     TYPE:@(HGDataType_AvatarCut)},
+                   @{TITLE:@"Picker",
+                     TYPE:@(HGDataType_Picker)},
+                   @{TITLE:@"Datepicker",
+                     TYPE:@(HGDataType_DatePicker)},
+                   @{TITLE:@"相册选择",
+                     TYPE:@(HGDataType_ImagePicker)},//https://github.com/QMUI/QMUI_iOS
+                   @{TITLE:@"头像截取",
+                     TYPE:@(HGDataType_AvatarCut)},//https://github.com/itouch2/PhotoTweaks
+                   @{TITLE:@"其它",
+                     TYPE:@(HGDataType_Other)},
                    ];
 }
 - (void)initiateViews {

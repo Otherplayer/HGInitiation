@@ -17,12 +17,7 @@ typedef NS_ENUM(NSUInteger, HGDataType) {
     HGDataType_AvatarCut,
     HGDataType_Picker,
     HGDataType_DatePicker,
-    HGDataType_TextField,
-    HGDataType_TextView,
-    HGDataType_WebView,
-    HGDataType_ZoomImage,
     HGDataType_Browser,
-    HGDataType_Scroll,
     HGDataType_Other,
 };
 
