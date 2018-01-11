@@ -41,7 +41,7 @@ NSString *const PARAMS = @"params";
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self showFunction:HGDataType_Scroll];
+    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
 }
 
 - (void)didReceiveMemoryWarning {
