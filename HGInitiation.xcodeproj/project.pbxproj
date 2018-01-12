@@ -55,6 +55,7 @@
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
 		63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559762007516100BBA0BE /* HGWaterfallController.m */; };
+		63D5597A2008595800BBA0BE /* UIViewController+HGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559792008595800BBA0BE /* UIViewController+HGAlert.m */; };
 		63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0341FFE02F40049597F /* NSString+HG.m */; };
 		63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0391FFF0AEE0049597F /* HGWebViewController.m */; };
 		63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EDC03B1FFF0B860049597F /* WebKit.framework */; };
@@ -158,6 +159,8 @@
 		63D559732007346800BBA0BE /* NSObject+HGAssociate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HGAssociate.m"; sourceTree = "<group>"; };
 		63D559752007516100BBA0BE /* HGWaterfallController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWaterfallController.h; sourceTree = "<group>"; };
 		63D559762007516100BBA0BE /* HGWaterfallController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWaterfallController.m; sourceTree = "<group>"; };
+		63D559782008595800BBA0BE /* UIViewController+HGAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGAlert.h"; sourceTree = "<group>"; };
+		63D559792008595800BBA0BE /* UIViewController+HGAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGAlert.m"; sourceTree = "<group>"; };
 		63EDC0331FFE02F40049597F /* NSString+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HG.h"; sourceTree = "<group>"; };
 		63EDC0341FFE02F40049597F /* NSString+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HG.m"; sourceTree = "<group>"; };
 		63EDC0381FFF0AEE0049597F /* HGWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWebViewController.h; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */,
 				63D559722007346800BBA0BE /* NSObject+HGAssociate.h */,
 				63D559732007346800BBA0BE /* NSObject+HGAssociate.m */,
+				63D559782008595800BBA0BE /* UIViewController+HGAlert.h */,
+				63D559792008595800BBA0BE /* UIViewController+HGAlert.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -656,6 +661,7 @@
 				63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */,
 				63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */,
 				6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */,
+				63D5597A2008595800BBA0BE /* UIViewController+HGAlert.m in Sources */,
 				635C57C920033319004CE18B /* HGBrowserController.m in Sources */,
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,

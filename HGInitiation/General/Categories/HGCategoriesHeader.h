@@ -13,6 +13,7 @@
 #import "UIColor+HG.h"
 #import "NSString+HG.h"
 #import "UIScrollView+HGRefresh.h"
+#import "UIViewController+HGAlert.h"
 
 
 #endif /* HGCategoriesHeader_h */

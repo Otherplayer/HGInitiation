@@ -41,7 +41,7 @@ NSString *const PARAMS = @"params";
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
+//    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -177,7 +177,7 @@ NSString *const PARAMS = @"params";
 - (void)initiateDatas {
     self.items = @[
                    @{TITLE:@"WebView",
-                     PARAMS:@{HGPushClassName:@"HGWebViewController",HGPushParams:@{@"urlStr":@"https://www.baidu.com"}}},
+                     PARAMS:@{HGPushClassName:@"HGWebViewController",HGPushParams:@{@"urlStr":@"http://www.rabbitpre.com/template/preview/3762446b-0b8c-4f4b-aa17-46a0df19c53c"}}},
                    @{TITLE:@"TextField",
                      PARAMS:@{HGPushClassName:@"HGTextFieldController"}},
                    @{TITLE:@"TextView",

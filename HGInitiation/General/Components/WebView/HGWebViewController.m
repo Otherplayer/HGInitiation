@@ -47,7 +47,7 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self pauseVideoPlayer];
+    [self shouldPauseVideoAudioPlay];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,22 +126,15 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
 #pragma mark - WKUIDelegate
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        completionHandler();
-    }])];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self showAlertMessage:message completionHandler:completionHandler];
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        completionHandler(NO);
-    }])];
-    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        completionHandler(YES);
-    }])];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self showAlertMessage:message withTitle:NSLocalizedString(@"提示", @"alert-tip")
+              confirmTitle:NSLocalizedString(@"确定",@"alert-confirm")
+               cancelTitle:NSLocalizedString(@"取消",@"alert-cancel")
+            confirmHandler:^{completionHandler(NO);}
+             cancelHandler:^{completionHandler(YES);}];
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler{
@@ -197,12 +190,16 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
 }
 - (void)objcCallbackJS:(NSString *)func {
     [self.webView evaluateJavaScript:func completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-        self.callbackFunctionName = nil;
+        if (error) {
+            NSLog(@"【执行js代码错误】%@  %s",func,__FUNCTION__);
+        }else{
+            self.callbackFunctionName = nil;
+        }
     }];
 }
 
 
-#pragma mark -
+#pragma mark - observer
 
 - (void)addObservers {
     [self.webView addObserver:self forKeyPath:HGWebViewTitle options:NSKeyValueObservingOptionNew context:NULL];
@@ -216,7 +213,6 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([object isEqual:self.webView]) {
         if ([keyPath isEqualToString:HGWebViewEstimatedProgress]) {
-            NSLog(@"%@",@(_webView.estimatedProgress));
             [self.progressView setProgress:_webView.estimatedProgress animated:YES];
         }
         else if ([keyPath isEqualToString:HGWebViewTitle]) {
@@ -228,15 +224,14 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     }
 }
 
-#pragma mark -
+#pragma mark - private
 
-- (void)pauseVideoPlayer {
-    NSString *jscode = @"var vids = document.getElementsByTagName('video'); for( var i = 0; i < vids.length; i++ ){vids.item(i).pause()}; var audios = document.getElementsByTagName('audio');function pauseAudio(){for(var i = 0; i < audios.length; i++){audios[i].pause();}";
+- (void)shouldPauseVideoAudioPlay {
+    NSString *jscode = @"var vids = document.getElementsByTagName('video');for(var i = 0; i < vids.length; i++ ){vids.item(i).pause()}var audios = document.getElementsByTagName('audio');for(var i = 0; i < audios.length; i++){audios[i].pause();}";
     [self objcCallbackJS:jscode];
 }
 
-
-#pragma mark -
+#pragma mark - initiate
 
 - (void)initiateViews {
     
@@ -245,6 +240,17 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     configuration.userContentController = userContentController;
+    
+    // 允许音频视频自动播放
+    // A Boolean value indicating whether HTML5 videos play inline (YES) or use the native full-screen controller (NO).
+    configuration.allowsInlineMediaPlayback = YES;
+    if (@available(iOS 10, *)) {
+        configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+    }else if (@available(iOS 9, *)) {
+        configuration.requiresUserActionForMediaPlayback = NO;
+    }else if (@available(iOS 8, *)) {
+        configuration.mediaPlaybackRequiresUserAction = NO;
+    }
     
     self.webView = ({
         _webView = [WKWebView.alloc initWithFrame:self.view.bounds configuration:configuration];
