@@ -45,6 +45,11 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     [_progressView removeFromSuperview];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self pauseVideoPlayer];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -221,6 +226,13 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     else{
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+}
+
+#pragma mark -
+
+- (void)pauseVideoPlayer {
+    NSString *jscode = @"var vids = document.getElementsByTagName('video'); for( var i = 0; i < vids.length; i++ ){vids.item(i).pause()}; var audios = document.getElementsByTagName('audio');function pauseAudio(){for(var i = 0; i < audios.length; i++){audios[i].pause();}";
+    [self objcCallbackJS:jscode];
 }
 
 
