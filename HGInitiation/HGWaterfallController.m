@@ -170,7 +170,7 @@ const CGFloat SPACE = 5;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
+        //_collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _collectionView;
     });
     
