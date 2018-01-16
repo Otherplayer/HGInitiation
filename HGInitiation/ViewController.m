@@ -14,6 +14,7 @@
 #import "HGPickerView.h"
 #import "HGDatePickerView.h"
 #import "HGHelperPush.h"
+#import "HGAlertController.h"
 
 static NSString *Identifier = @"Identifier";
 
@@ -105,6 +106,39 @@ NSString *const PARAMS = @"params";
         case HGDataType_AvatarCut:{
             HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
             [self presentViewController:controller animated:YES completion:nil];
+        }
+            break;
+        case HGDataType_Alert:{
+            
+            
+            NSDictionary *titleAttributesInfo =  @{
+                                                   NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                                   NSForegroundColorAttributeName:[UIColor redColor]
+                                                   };
+            
+            UIFontDescriptor *messageFontDescriptor = [UIFontDescriptor.alloc initWithFontAttributes:@{UIFontDescriptorNameAttribute:@"Arial-ItalicMT",UIFontDescriptorFamilyAttribute:@"Arial"}];
+            
+            NSDictionary *messageAttributesInfo = @{
+                                                    NSFontAttributeName:[UIFont fontWithDescriptor:messageFontDescriptor size:19.0],
+                                                    NSForegroundColorAttributeName:[UIColor orangeColor]
+                                                    };
+            
+            
+            HGAlertController *alertController = [HGAlertController alertControllerWithTitle:@"警告" message:@"Child is not allowed! 十八禁" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController setTitleAttributes:titleAttributesInfo];
+            [alertController setMessageAttributes:messageAttributesInfo];
+            HGAlertAction *confirmAction = [HGAlertAction actionWithTitle:NSLocalizedString(@"确定", @"confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [confirmAction setTitleColor:[UIColor blackColor]];
+            HGAlertAction *accessAction = [HGAlertAction actionWithTitle:NSLocalizedString(@"Access", @"access") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [accessAction setTitleColor:[UIColor greenColor]];
+            [alertController addAction:confirmAction];
+            [alertController addAction:accessAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         }
             break;
         case HGDataType_Picker:{

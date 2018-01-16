@@ -14,11 +14,14 @@
 - (void)setAssociatedObject:(id)object forKey:(NSString *)key;
 
 - (NSString *)propertyNameByValue:(id)value;
+
 - (NSArray *)propertyList;
 - (NSArray *)ivarList;
 - (NSArray *)methodList;
 - (NSArray *)protocolList;
 
+
++ (BOOL)propertyIsExist:(NSString *)property;
 
 
 @end

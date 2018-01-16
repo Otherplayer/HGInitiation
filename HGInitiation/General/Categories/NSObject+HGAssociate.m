@@ -74,10 +74,10 @@ static const char *HGAssociatedObjectsKey = "HGAssociatedObjectsKey";
 }
 
 - (NSString *)propertyNameByValue:(id)value{
-    unsigned int numIvars = 0;
-    NSString *key=nil;
-    Ivar * ivars = class_copyIvarList([self class], &numIvars);
-    for(int i = 0; i < numIvars; i++) {
+    u_int count;
+    NSString *key = nil;
+    Ivar * ivars = class_copyIvarList([self class], &count);
+    for(int i = 0; i < count; i++) {
         Ivar thisIvar = ivars[i];
         const char *type = ivar_getTypeEncoding(thisIvar);
         NSString *stringType =  [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
@@ -92,7 +92,19 @@ static const char *HGAssociatedObjectsKey = "HGAssociatedObjectsKey";
     free(ivars);
     return key;
 }
-
++ (BOOL)propertyIsExist:(NSString *)property {
+    u_int count;
+    Ivar *list = class_copyIvarList([self class], &count);
+    for (int i = 0; i < count; i++) {
+        NSString *name = [NSString stringWithUTF8String:ivar_getName(list[i])];
+        if ([name isEqualToString:property]) {
+            free(list);
+            return YES;
+        }
+    }
+    free(list);
+    return NO;
+}
 
 
 @end
