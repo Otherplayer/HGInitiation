@@ -19,8 +19,8 @@
 		632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */; };
 		632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABB1FF39F0A000F57A3 /* HGAssetAlbum.m */; };
 		632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */; };
-		633E47CD200DCE45004DF9E7 /* HGAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47CC200DCE45004DF9E7 /* HGAlertController.m */; };
-		633E47D1200DD40F004DF9E7 /* HGAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D0200DD40F004DF9E7 /* HGAlertAction.m */; };
+		633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */; };
+		633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */; };
 		635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24D81FF63D410070BC46 /* HGPickerView.m */; };
 		635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24DB1FF63D500070BC46 /* HGDatePickerView.m */; };
 		635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24E01FFB6CB10070BC46 /* HGTextField.m */; };
@@ -88,10 +88,10 @@
 		632B7ABB1FF39F0A000F57A3 /* HGAssetAlbum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAssetAlbum.m; sourceTree = "<group>"; };
 		632B7ABD1FF3A3FD000F57A3 /* HGPhotoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPhotoModel.h; sourceTree = "<group>"; };
 		632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPhotoModel.m; sourceTree = "<group>"; };
-		633E47CB200DCE45004DF9E7 /* HGAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAlertController.h; sourceTree = "<group>"; };
-		633E47CC200DCE45004DF9E7 /* HGAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAlertController.m; sourceTree = "<group>"; };
-		633E47CF200DD40F004DF9E7 /* HGAlertAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAlertAction.h; sourceTree = "<group>"; };
-		633E47D0200DD40F004DF9E7 /* HGAlertAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAlertAction.m; sourceTree = "<group>"; };
+		633E47D2200DDC7E004DF9E7 /* UIAlertAction+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+HGCustom.h"; sourceTree = "<group>"; };
+		633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+HGCustom.m"; sourceTree = "<group>"; };
+		633E47D5200DDF7C004DF9E7 /* UIAlertController+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+HGCustom.h"; sourceTree = "<group>"; };
+		633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+HGCustom.m"; sourceTree = "<group>"; };
 		635C24D71FF63D410070BC46 /* HGPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPickerView.h; sourceTree = "<group>"; };
 		635C24D81FF63D410070BC46 /* HGPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPickerView.m; sourceTree = "<group>"; };
 		635C24DA1FF63D500070BC46 /* HGDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDatePickerView.h; sourceTree = "<group>"; };
@@ -214,17 +214,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		633E47CE200DCE4B004DF9E7 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				633E47CB200DCE45004DF9E7 /* HGAlertController.h */,
-				633E47CC200DCE45004DF9E7 /* HGAlertController.m */,
-				633E47CF200DD40F004DF9E7 /* HGAlertAction.h */,
-				633E47D0200DD40F004DF9E7 /* HGAlertAction.m */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
 		635C24D61FF63D260070BC46 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +257,10 @@
 				63D559732007346800BBA0BE /* NSObject+HGAssociate.m */,
 				63D559782008595800BBA0BE /* UIViewController+HGAlert.h */,
 				63D559792008595800BBA0BE /* UIViewController+HGAlert.m */,
+				633E47D2200DDC7E004DF9E7 /* UIAlertAction+HGCustom.h */,
+				633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */,
+				633E47D5200DDF7C004DF9E7 /* UIAlertController+HGCustom.h */,
+				633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -314,7 +307,6 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				633E47CE200DCE4B004DF9E7 /* Alert */,
 				63880BBC1FF0EA2700DAFD68 /* ViewUtils */,
 				635C57C32003120E004CE18B /* PhotoBrowser */,
 				63EDC0371FFF0AA80049597F /* ScrollView */,
@@ -672,13 +664,13 @@
 				630498B42005E99F00F91211 /* HGPageControl.m in Sources */,
 				632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */,
 				63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */,
-				633E47D1200DD40F004DF9E7 /* HGAlertAction.m in Sources */,
 				635C24F21FFCB28F0070BC46 /* UIColor+HG.m in Sources */,
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,
 				632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */,
 				63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */,
+				633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */,
 				63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */,
-				633E47CD200DCE45004DF9E7 /* HGAlertController.m in Sources */,
+				633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */,
 				63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */,
 				6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */,
 				63D5597A2008595800BBA0BE /* UIViewController+HGAlert.m in Sources */,

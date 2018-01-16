@@ -14,6 +14,8 @@
 #import "NSString+HG.h"
 #import "UIScrollView+HGRefresh.h"
 #import "UIViewController+HGAlert.h"
+#import "UIAlertAction+HGCustom.h"
+#import "UIAlertController+HGCustom.h"
 
 
 #endif /* HGCategoriesHeader_h */

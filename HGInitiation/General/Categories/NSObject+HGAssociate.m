@@ -18,7 +18,7 @@ static const char *HGAssociatedObjectsKey = "HGAssociatedObjectsKey";
     return [dict objectForKey:key];
 }
 
-- (void)setAssociatedObject:(id)object forKey:(NSString*)key {
+- (void)setAssociatedObject:(id)object forKey:(NSString *)key {
     NSMutableDictionary *dict = objc_getAssociatedObject(self, &HGAssociatedObjectsKey);
     if (!dict) {
         dict = [[NSMutableDictionary alloc] init];

@@ -1,5 +1,5 @@
 //
-//  HGAlertAction.h
+//  UIAlertAction+HGCustom.h
 //  HGInitiation
 //
 //  Created by __无邪_ on 2018/1/16.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HGAlertAction : UIAlertAction
+@interface UIAlertAction (HGCustom)
 
-- (void)setTitleColor:(UIColor *)color;
+@property(nonatomic, strong)UIColor *titleColor;
 
 @end
