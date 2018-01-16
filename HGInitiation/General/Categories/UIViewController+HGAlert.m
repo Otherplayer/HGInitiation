@@ -23,7 +23,12 @@
         }];
         [alertController addAction:cancelAction];
     }
-    [self presentViewController:alertController animated:YES completion:nil];
+    if (self.navigationController) {
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [[[UIApplication sharedApplication].keyWindow rootViewController] presentViewController:alertController animated:YES completion:nil];
+    }
+    
 }
 - (void)showAlertMessage:(NSString *)message completionHandler:(void (^)(void))completionHandler {
     [self showAlertMessage:message withTitle:NSLocalizedString(@"提示", @"alert-tip") confirmTitle:NSLocalizedString(@"确定",@"alert-confirm") cancelTitle:nil confirmHandler:completionHandler cancelHandler:nil];
