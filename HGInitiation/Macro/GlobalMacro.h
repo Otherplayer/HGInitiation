@@ -48,5 +48,27 @@
 #define UIFontBoldWithFont(_font) [UIFont boldSystemFontOfSize:_font.pointSize]
 
 
+//日志
+////复杂点的
+//#ifdef DEBUG
+//#define NSLog(format, ...) do { \
+//fprintf(stderr, "<%s : %d> %s\n", \
+//[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], \
+//__LINE__, __func__); \
+//(NSLog)((format), ##__VA_ARGS__); \
+//fprintf(stderr, \
+//"\n" \
+//);} while (0)
+//#else
+//#define NSLog(...)
+//#endif
+
+////简单点的
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...)
+#endif
+
 
 #endif /* GlobalMacro_h */

@@ -192,6 +192,8 @@ NSString *const PARAMS = @"params";
                      PARAMS:@{HGPushClassName:@"HGWaterfallController"}},
                    @{TITLE:@"网络",
                      TYPE:@(HGDataType_Net)},
+                   @{TITLE:@"Alert",
+                     TYPE:@(HGDataType_Alert)},
                    @{TITLE:@"动画",
                      TYPE:@(HGDataType_AvatarCut)},
                    @{TITLE:@"Picker",
