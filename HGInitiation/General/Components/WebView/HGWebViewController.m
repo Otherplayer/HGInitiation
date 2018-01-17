@@ -256,6 +256,7 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
         _webView = [WKWebView.alloc initWithFrame:self.view.bounds configuration:configuration];
         _webView.UIDelegate = self;
         _webView.navigationDelegate = self;
+        _webView.scrollView.bounces = NO;
         _webView;
     });
     [self.view addSubview:self.webView];
