@@ -4,7 +4,7 @@
 //
 //  Created by __无邪_ on 2017/12/25.
 //  Copyright © 2017年 __无邪_. All rights reserved.
-//
+//  http://www.wtfpl.net/txt/copying/
 
 #import "AppDelegate.h"
 
