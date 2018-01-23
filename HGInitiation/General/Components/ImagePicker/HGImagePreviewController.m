@@ -57,7 +57,8 @@ static NSString *Identifier = @"Identifier";
     [self refreshStatus:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
 }
 - (void)didClickDoneAction:(id)sender{
-    [[HGAssetManager sharedManager] removeAllSelectedPhotos];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HGNotificationDonePicker object:nil];
+    //[[HGAssetManager sharedManager] removeAllSelectedPhotos];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate

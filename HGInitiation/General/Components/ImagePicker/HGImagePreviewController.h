@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HGPhotoModel.h"
+#import "HGPhotosController.h"
 
 @class HGImagePreviewController;
 
