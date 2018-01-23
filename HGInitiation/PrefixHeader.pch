@@ -21,6 +21,7 @@
 #import "GlobalMacro.h"
 #import "HGStatic.h"
 #import "HGCategoriesHeader.h"
+#import "HGConfiguration.h"
 #import "ViewUtils.h"
 #import "HGHelperHUD.h"
 

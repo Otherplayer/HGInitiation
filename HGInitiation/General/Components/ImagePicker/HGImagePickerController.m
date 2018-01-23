@@ -122,6 +122,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.translucent = YES;
+    
 }
 
 @end

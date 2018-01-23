@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGThemeManager.h"
 
-@interface HGBASEViewController : UIViewController
+@interface HGBASEViewController : UIViewController<HGChangingThemeDelegate>
+
+
+- (void)didInitialized NS_REQUIRES_SUPER;
 
 
 #pragma mark - HUD

@@ -14,7 +14,45 @@
 
 @implementation HGBASEViewController
 
+#pragma mark - life circle
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        [self didInitialized];
+    }
+    return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)coder{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self didInitialized];
+    }
+    return self;
+}
+
+- (void)didInitialized {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleThemeChangedNotification:) name:HGThemeChangedNotification object:nil];
+}
+
+#pragma mark - notification
+- (void)handleThemeChangedNotification:(NSNotification *)notification {
+    NSObject<HGThemeProtocol> *themeBeforeChanged = notification.userInfo[HGThemeBeforeChangedName];
+    NSObject<HGThemeProtocol> *themeAfterChanged = notification.userInfo[HGThemeAfterChangedName];
+    [self themeBeforeChanged:themeBeforeChanged afterChanged:themeAfterChanged];
+}
+
+#pragma mark - HGChangingThemeDelegate
+
+- (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSFontAttributeName : [UIFont systemFontOfSize:17.f],
+                                                                      NSForegroundColorAttributeName : HGConfigurationInstance.navBarTitleColor,
+                                                                      NSVerticalGlyphFormAttributeName:@1
+                                                                      }];
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:HGConfigurationInstance.navBarBarTintColor] forBarMetrics:UIBarMetricsDefault];
+}
 
 
 #pragma mark - HUD

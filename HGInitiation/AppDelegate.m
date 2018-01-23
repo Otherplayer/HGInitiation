@@ -7,6 +7,8 @@
 //  http://www.wtfpl.net/txt/copying/
 
 #import "AppDelegate.h"
+#import "HGThemeManager.h"
+#import "HGThemeDefault.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 应用皮肤
+    [HGThemeManager sharedInstance].currentTheme = nil;
+    
+    
     return YES;
 }
 

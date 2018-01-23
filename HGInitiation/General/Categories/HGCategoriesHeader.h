@@ -16,6 +16,7 @@
 #import "UIViewController+HGAlert.h"
 #import "UIAlertAction+HGCustom.h"
 #import "UIAlertController+HGCustom.h"
+#import "UIImage+HG.h"
 
 
 #endif /* HGCategoriesHeader_h */

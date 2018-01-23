@@ -46,7 +46,8 @@
 #define UIFontItalicMake(size) [UIFont italicSystemFontOfSize:size] // 斜体只对数字和字母有效，中文无效
 #define UIFontBoldMake(size) [UIFont boldSystemFontOfSize:size]
 #define UIFontBoldWithFont(_font) [UIFont boldSystemFontOfSize:_font.pointSize]
-
+#define UIColorMake(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+#define UIColorMakeWithRGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/1.0]
 
 //日志
 ////复杂点的

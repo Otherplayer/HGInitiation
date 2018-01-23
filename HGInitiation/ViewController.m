@@ -167,6 +167,10 @@ NSString *const PARAMS = @"params";
             }];
         }
             break;
+        case HGDataType_Theme:{
+            
+        }
+            break;
             
         default:
             break;
@@ -239,6 +243,8 @@ NSString *const PARAMS = @"params";
                      TYPE:@(HGDataType_ImagePicker)},//https://github.com/QMUI/QMUI_iOS
                    @{TITLE:@"头像截取",
                      TYPE:@(HGDataType_AvatarCut)},//https://github.com/itouch2/PhotoTweaks
+                   @{TITLE:@"主题",
+                     TYPE:@(HGDataType_Theme)},
                    @{TITLE:@"其它",
                      TYPE:@(HGDataType_Other)},
                    ];
@@ -253,7 +259,19 @@ NSString *const PARAMS = @"params";
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:Identifier];
     [self.tableView setTableFooterView:[UIView new]];
     [self.view addSubview:self.tableView];
+    
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.translucent = YES;
+    
 }
 
+
+#pragma mark - HGChangingThemeDelegate
+
+- (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
+    [super themeBeforeChanged:themeBeforeChanged afterChanged:themeAfterChanged];
+    NSLog(@"%@ %@",themeAfterChanged,themeBeforeChanged);
+    
+}
 
 @end
