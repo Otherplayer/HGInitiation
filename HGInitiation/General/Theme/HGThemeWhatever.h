@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "HGThemeProtocol.h"
 
-@interface HGThemeBlack : NSObject<HGThemeProtocol>
+@interface HGThemeWhatever : NSObject<HGThemeProtocol>
 
 @end

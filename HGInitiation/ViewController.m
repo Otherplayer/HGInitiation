@@ -14,7 +14,7 @@
 #import "HGPickerView.h"
 #import "HGDatePickerView.h"
 #import "HGHelperPush.h"
-#import "HGThemeBlack.h"
+#import "HGThemeWhatever.h"
 
 static NSString *Identifier = @"Identifier";
 
@@ -68,6 +68,10 @@ NSString *const PARAMS = @"params";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO animated:YES];
+    
     NSDictionary *item = self.items[indexPath.row];
     NSDictionary *params = [item objectForKey:PARAMS];
     if (params) {
@@ -84,20 +88,6 @@ NSString *const PARAMS = @"params";
 
 - (void)showFunction:(HGDataType)type {
     switch (type) {
-        case HGDataType_Net:{
-            [self showProgressTip:nil];
-            [[HGHTTPClient sharedInstance] fetchEmojies:^(BOOL success, NSString *errDesc, id responseData) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (success) {
-                        [self showTip:[responseData description] dealy:3];
-                        NSLog(@"%@",responseData);
-                    }else{
-                        [self showTip:errDesc];
-                    }
-                });
-            }];
-        }
-            break;
         case HGDataType_ImagePicker:{
             HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:9 type:HGAssetPickerTypeAll delegate:nil showAlbumFirst:NO];
             [self presentViewController:controller animated:YES completion:nil];
@@ -106,41 +96,6 @@ NSString *const PARAMS = @"params";
         case HGDataType_AvatarCut:{
             HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
             [self presentViewController:controller animated:YES completion:nil];
-        }
-            break;
-        case HGDataType_Alert:{
-            
-            
-            NSDictionary *titleAttributesInfo =  @{
-                                                   NSFontAttributeName:[UIFont systemFontOfSize:20],
-                                                   NSForegroundColorAttributeName:[UIColor redColor]
-                                                   };
-            
-            UIFontDescriptor *messageFontDescriptor = [UIFontDescriptor.alloc initWithFontAttributes:@{UIFontDescriptorNameAttribute:@"Arial-ItalicMT",UIFontDescriptorFamilyAttribute:@"Arial"}];
-            
-            NSDictionary *messageAttributesInfo = @{
-                                                    NSFontAttributeName:[UIFont fontWithDescriptor:messageFontDescriptor size:19.0],
-                                                    NSForegroundColorAttributeName:[UIColor orangeColor]
-                                                    };
-            
-            
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"Child is not allowed! 十八禁" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController setTitleAttributes:titleAttributesInfo];
-            [alertController setMessageAttributes:messageAttributesInfo];
-            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [confirmAction setTitleColor:[UIColor blackColor]];
-            UIAlertAction *accessAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Access", @"access") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [accessAction setTitleColor:[UIColor greenColor]];
-            NSLog(@"%@",accessAction.titleColor);
-            
-            [alertController addAction:confirmAction];
-            [alertController addAction:accessAction];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
         }
             break;
         case HGDataType_Picker:{
@@ -169,14 +124,41 @@ NSString *const PARAMS = @"params";
         }
             break;
         case HGDataType_Theme:{
-            HGThemeBlack *themeBlack = [HGThemeBlack.alloc init];
-            [HGThemeManager sharedInstance].currentTheme = themeBlack;
+            [self functionTheme];
         }
             break;
             
         default:
             break;
     }
+}
+
+- (void)functionTheme {
+    NSDictionary *titleAttributesInfo =  @{NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                           NSForegroundColorAttributeName:[UIColor purpleColor]};
+    UIFontDescriptor *messageFontDescriptor = [UIFontDescriptor.alloc initWithFontAttributes:@{UIFontDescriptorNameAttribute:@"Arial-ItalicMT",UIFontDescriptorFamilyAttribute:@"Arial"}];
+    NSDictionary *messageAttributesInfo = @{NSFontAttributeName:[UIFont fontWithDescriptor:messageFontDescriptor size:19.0],
+                                            NSForegroundColorAttributeName:[UIColor orangeColor]};
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"主题" message:@"Which do you like! 请选择" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setTitleAttributes:titleAttributesInfo];
+    [alertController setMessageAttributes:messageAttributesInfo];
+    
+    HGThemeWhatever *themeWhatever = [HGThemeWhatever.alloc init];
+    UIAlertAction *themeBlackAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"随机 Whatever", @"black") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [HGThemeManager sharedInstance].currentTheme = themeWhatever;
+    }];
+    [themeBlackAction setTitleColor:[themeWhatever themeTintColor]];
+    
+    UIAlertAction *themeDefaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"白色 white", @"white") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [HGThemeManager sharedInstance].currentTheme = nil;
+    }];
+    [themeDefaultAction setTitleColor:[UIColor blackColor]];
+    
+    [alertController addAction:themeBlackAction];
+    [alertController addAction:themeDefaultAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
@@ -231,12 +213,6 @@ NSString *const PARAMS = @"params";
                      PARAMS:@{HGPushClassName:@"HGBrowserController"}},
                    @{TITLE:@"瀑布流",
                      PARAMS:@{HGPushClassName:@"HGWaterfallController"}},
-                   @{TITLE:@"网络",
-                     TYPE:@(HGDataType_Net)},
-                   @{TITLE:@"Alert",
-                     TYPE:@(HGDataType_Alert)},
-                   @{TITLE:@"动画",
-                     TYPE:@(HGDataType_AvatarCut)},
                    @{TITLE:@"Picker",
                      TYPE:@(HGDataType_Picker)},
                    @{TITLE:@"Datepicker",
@@ -262,9 +238,6 @@ NSString *const PARAMS = @"params";
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:Identifier];
     [self.tableView setTableFooterView:[UIView new]];
     [self.view addSubview:self.tableView];
-    
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-//    self.navigationController.navigationBar.translucent = YES;
     
 }
 

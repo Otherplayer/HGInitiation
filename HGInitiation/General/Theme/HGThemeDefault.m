@@ -14,7 +14,7 @@
     
     #pragma mark - NavigationBar
     
-    HGConfigurationInstance.navBarTintColor = [UIColor blackColor];
+    HGConfigurationInstance.navBarTintColor = [UIColor whiteColor];
     HGConfigurationInstance.navBarBarTintColor = [UIColor whiteColor];
     HGConfigurationInstance.navBarTitleColor = [UIColor blackColor];
     

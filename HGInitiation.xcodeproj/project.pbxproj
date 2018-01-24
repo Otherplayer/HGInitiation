@@ -14,7 +14,7 @@
 		631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE86E2017275F00E9D8A2 /* HGThemeDefault.m */; };
 		631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8712017280700E9D8A2 /* HGThemeManager.m */; };
 		631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8752017305200E9D8A2 /* HGConfiguration.m */; };
-		631FE8792017392F00E9D8A2 /* HGThemeBlack.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8782017392F00E9D8A2 /* HGThemeBlack.m */; };
+		631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */; };
 		632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA61FF22508000F57A3 /* HGImagePickerController.m */; };
 		632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA91FF22610000F57A3 /* HGAlbumsController.m */; };
 		632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AAC1FF22987000F57A3 /* HGPhotosController.m */; };
@@ -85,8 +85,8 @@
 		631FE8712017280700E9D8A2 /* HGThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGThemeManager.m; sourceTree = "<group>"; };
 		631FE8742017305200E9D8A2 /* HGConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGConfiguration.h; sourceTree = "<group>"; };
 		631FE8752017305200E9D8A2 /* HGConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGConfiguration.m; sourceTree = "<group>"; };
-		631FE8772017392F00E9D8A2 /* HGThemeBlack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGThemeBlack.h; sourceTree = "<group>"; };
-		631FE8782017392F00E9D8A2 /* HGThemeBlack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGThemeBlack.m; sourceTree = "<group>"; };
+		631FE8772017392F00E9D8A2 /* HGThemeWhatever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGThemeWhatever.h; sourceTree = "<group>"; };
+		631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGThemeWhatever.m; sourceTree = "<group>"; };
 		632B7AA51FF22508000F57A3 /* HGImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGImagePickerController.h; sourceTree = "<group>"; };
 		632B7AA61FF22508000F57A3 /* HGImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGImagePickerController.m; sourceTree = "<group>"; };
 		632B7AA81FF22610000F57A3 /* HGAlbumsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAlbumsController.h; sourceTree = "<group>"; };
@@ -238,8 +238,8 @@
 				631FE8712017280700E9D8A2 /* HGThemeManager.m */,
 				631FE86D2017275F00E9D8A2 /* HGThemeDefault.h */,
 				631FE86E2017275F00E9D8A2 /* HGThemeDefault.m */,
-				631FE8772017392F00E9D8A2 /* HGThemeBlack.h */,
-				631FE8782017392F00E9D8A2 /* HGThemeBlack.m */,
+				631FE8772017392F00E9D8A2 /* HGThemeWhatever.h */,
+				631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -705,7 +705,7 @@
 				635C24EB1FFB8BAB0070BC46 /* HGTextViewController.m in Sources */,
 				632B7AB01FF22B93000F57A3 /* HGImagePreviewController.m in Sources */,
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
-				631FE8792017392F00E9D8A2 /* HGThemeBlack.m in Sources */,
+				631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */,
 				635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */,
 				630498B42005E99F00F91211 /* HGPageControl.m in Sources */,
 				632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */,

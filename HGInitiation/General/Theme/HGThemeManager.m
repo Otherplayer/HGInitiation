@@ -50,7 +50,7 @@ NSString *const HGSelectedThemeClassName = @"HGSelectedThemeClassName";
             [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass(currentTheme.class) forKey:HGSelectedThemeClassName];
         }
     }else{
-        NSString *themeClassName = [[NSUserDefaults standardUserDefaults] stringForKey:HGSelectedThemeClassName] ?: NSStringFromClass([HGThemeDefault class]);
+        NSString *themeClassName = NSStringFromClass([HGThemeDefault class]);
         [self setCurrentTheme:[[NSClassFromString(themeClassName) alloc] init]];
     }
     
