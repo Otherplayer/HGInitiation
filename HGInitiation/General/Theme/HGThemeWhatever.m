@@ -11,7 +11,12 @@
 @implementation HGThemeWhatever
 - (void)setupConfigurationTemplate {
     
-#pragma mark - NavigationBar
+    
+    #pragma mark - Global Color
+    
+    HGConfigurationInstance.tintColor = [UIColor randomColor];
+    
+    #pragma mark - NavigationBar
     
     HGConfigurationInstance.navBarTintColor = [UIColor randomColor];
     HGConfigurationInstance.navBarBarTintColor = [UIColor randomColor];
@@ -19,6 +24,7 @@
     HGConfigurationInstance.navBarLargeTitleColor = [UIColor randomColor];
     HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor randomColor]];
     HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor randomColor]];
+    
 }
 
 - (UIColor *)themeTintColor {

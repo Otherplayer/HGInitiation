@@ -21,8 +21,8 @@
     // Override point for customization after application launch.
     
     // 应用皮肤
-    [HGThemeManager sharedInstance].currentTheme = nil;
-    
+    NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
+    [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
     
     return YES;
 }

@@ -239,12 +239,13 @@ NSString *const PARAMS = @"params";
     [self.tableView setTableFooterView:[UIView new]];
     [self.view addSubview:self.tableView];
     
-    if (@available(iOS 11.0, *)) {
-        self.navigationController.navigationBar.prefersLargeTitles = YES;
-        [self.navigationController.navigationItem setLargeTitleDisplayMode:UINavigationItemLargeTitleDisplayModeAutomatic];
-    } else {
-        // Fallback on earlier versions
-    }
+//    if (@available(iOS 11.0, *)) {
+//        self.navigationController.navigationBar.prefersLargeTitles = YES;
+//        [self.navigationController.navigationItem setLargeTitleDisplayMode:UINavigationItemLargeTitleDisplayModeAutomatic];
+//    } else {
+//        // Fallback on earlier versions
+//    }
+    
     
 }
 

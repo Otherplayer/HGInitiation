@@ -18,21 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    // 背景图颜色
-//    [[UITabBar appearance] setBarTintColor:[UIColor lightPurpleColor]];
-//    [[UITabBar appearance] setTintColor:[UIColor lightPinkColor]];
-//    //    [[UITabBar appearance] setUnselectedItemTintColor:[UIColor whiteColor]];//iOS10 only
-//
-//    // 未选中状态的标题颜色
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
-//    
-//    // 选中状态的标题颜色
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor lightPinkColor]} forState:UIControlStateSelected];
-//
-//
-//    self.tabBar.translucent = YES;
-//    self.tabBar.alpha = 0.92f;
-    
 }
 
 - (void)didReceiveMemoryWarning {

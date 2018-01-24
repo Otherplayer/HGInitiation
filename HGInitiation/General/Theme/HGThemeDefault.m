@@ -12,6 +12,10 @@
 
 - (void)setupConfigurationTemplate {
     
+    #pragma mark - Global Color
+    
+    HGConfigurationInstance.tintColor = [UIColor blueColor];
+    
     #pragma mark - NavigationBar
     
     HGConfigurationInstance.navBarTintColor = [UIColor whiteColor];
@@ -20,6 +24,7 @@
     HGConfigurationInstance.navBarLargeTitleColor = [UIColor blackColor];
     HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
     HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor lightTextColor]];
+    
 }
 
 - (UIColor *)themeTintColor {

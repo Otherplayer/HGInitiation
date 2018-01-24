@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Global Color
 
+@property(nonatomic, strong) UIColor            *tintColor;
 @property(nonatomic, strong) UIColor            *linkColor;
 @property(nonatomic, strong) UIColor            *disabledColor;
 @property(nonatomic, strong, nullable) UIColor  *backgroundColor;
@@ -31,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - NavigationBar
 
-@property(nonatomic, strong, nullable) UIColor  *navBarBarTintColor;
+@property(nonatomic, strong, nullable) UIColor  *navBarBarTintColor; //bar's background
 @property(nonatomic, strong, nullable) UIColor  *navBarTintColor;
 @property(nonatomic, strong, nullable) UIColor  *navBarTitleColor;
 @property(nonatomic, strong, nullable) UIFont   *navBarTitleFont;
@@ -39,6 +40,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIFont   *navBarLargeTitleFont;
 @property(nonatomic, strong, nullable) UIImage  *navBarBackgroundImage;
 @property(nonatomic, strong, nullable) UIImage  *navBarShadowImage;
+
+
+#pragma mark - TabBar
+
+@property(nonatomic, strong, nullable) UIImage  *tabBarBackgroundImage;
+@property(nonatomic, strong, nullable) UIColor  *tabBarBarTintColor;
+@property(nonatomic, strong, nullable) UIColor  *tabBarShadowImageColor;
+@property(nonatomic, strong, nullable) UIColor  *tabBarTintColor;
+@property(nonatomic, strong, nullable) UIColor  *tabBarItemTitleColor;
+@property(nonatomic, strong, nullable) UIColor  *tabBarItemTitleColorSelected;
+@property(nonatomic, strong, nullable) UIFont   *tabBarItemTitleFont;
+
 
 NS_ASSUME_NONNULL_END
 
