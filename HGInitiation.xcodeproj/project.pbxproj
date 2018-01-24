@@ -15,6 +15,7 @@
 		631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8712017280700E9D8A2 /* HGThemeManager.m */; };
 		631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8752017305200E9D8A2 /* HGConfiguration.m */; };
 		631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */; };
+		631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */; };
 		632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA61FF22508000F57A3 /* HGImagePickerController.m */; };
 		632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA91FF22610000F57A3 /* HGAlbumsController.m */; };
 		632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AAC1FF22987000F57A3 /* HGPhotosController.m */; };
@@ -87,6 +88,8 @@
 		631FE8752017305200E9D8A2 /* HGConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGConfiguration.m; sourceTree = "<group>"; };
 		631FE8772017392F00E9D8A2 /* HGThemeWhatever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGThemeWhatever.h; sourceTree = "<group>"; };
 		631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGThemeWhatever.m; sourceTree = "<group>"; };
+		631FE87A2018299400E9D8A2 /* HGBASETabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBASETabBarController.h; sourceTree = "<group>"; };
+		631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBASETabBarController.m; sourceTree = "<group>"; };
 		632B7AA51FF22508000F57A3 /* HGImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGImagePickerController.h; sourceTree = "<group>"; };
 		632B7AA61FF22508000F57A3 /* HGImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGImagePickerController.m; sourceTree = "<group>"; };
 		632B7AA81FF22610000F57A3 /* HGAlbumsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAlbumsController.h; sourceTree = "<group>"; };
@@ -471,6 +474,8 @@
 			children = (
 				63880BBD1FF0EA5700DAFD68 /* HGBASEViewController.h */,
 				63880BBE1FF0EA5700DAFD68 /* HGBASEViewController.m */,
+				631FE87A2018299400E9D8A2 /* HGBASETabBarController.h */,
+				631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */,
 				63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */,
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
+				631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */,
 				630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */,
 				631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,

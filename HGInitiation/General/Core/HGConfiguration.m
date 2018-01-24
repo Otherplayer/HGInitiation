@@ -54,8 +54,90 @@
     self.navBarLargeTitleFont = nil;
     
     
-    
-    
 }
+
+#pragma mark - Setter
+
+- (void)setNavBarTintColor:(UIColor *)navBarTintColor {
+    _navBarTintColor = navBarTintColor;
+    if (navBarTintColor) {
+        [UIViewController visibleViewController].navigationController.navigationBar.tintColor = _navBarTintColor;
+    }
+}
+
+- (void)setNavBarBarTintColor:(UIColor *)navBarBarTintColor {
+    _navBarBarTintColor = navBarBarTintColor;
+    if (navBarBarTintColor) {
+        [UINavigationBar appearance].barTintColor = _navBarBarTintColor;
+        [UIViewController visibleViewController].navigationController.navigationBar.barTintColor = _navBarBarTintColor;
+    }
+}
+
+- (void)setNavBarShadowImage:(UIImage *)navBarShadowImage {
+    _navBarShadowImage = navBarShadowImage;
+    if (navBarShadowImage) {
+        [UINavigationBar appearance].shadowImage = _navBarShadowImage;
+        [UIViewController visibleViewController].navigationController.navigationBar.shadowImage = _navBarShadowImage;
+    }
+}
+
+- (void)setNavBarBackgroundImage:(UIImage *)navBarBackgroundImage {
+    _navBarBackgroundImage = navBarBackgroundImage;
+    if (navBarBackgroundImage) {
+        [[UINavigationBar appearance] setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+        [[UIViewController visibleViewController].navigationController.navigationBar setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    }
+}
+
+- (void)setNavBarTitleFont:(UIFont *)navBarTitleFont {
+    _navBarTitleFont = navBarTitleFont;
+    [self updateNavigationBarTitleAttributesIfNeeded];
+}
+
+- (void)setNavBarTitleColor:(UIColor *)navBarTitleColor {
+    _navBarTitleColor = navBarTitleColor;
+    [self updateNavigationBarTitleAttributesIfNeeded];
+}
+
+- (void)updateNavigationBarTitleAttributesIfNeeded {
+    if (self.navBarTitleFont || self.navBarTitleColor) {
+        NSMutableDictionary<NSString *, id> *titleTextAttributes = [[NSMutableDictionary alloc] init];
+        if (self.navBarTitleFont) {
+            [titleTextAttributes setValue:self.navBarTitleFont forKey:NSFontAttributeName];
+        }
+        if (self.navBarTitleColor) {
+            [titleTextAttributes setValue:self.navBarTitleColor forKey:NSForegroundColorAttributeName];
+        }
+        [UINavigationBar appearance].titleTextAttributes = titleTextAttributes;
+        [UIViewController visibleViewController].navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
+    }
+}
+
+- (void)setNavBarLargeTitleFont:(UIFont *)navBarLargeTitleFont {
+    _navBarLargeTitleFont = navBarLargeTitleFont;
+    [self updateNavigationBarLargeTitleTextAttributesIfNeeded];
+}
+
+- (void)setNavBarLargeTitleColor:(UIColor *)navBarLargeTitleColor {
+    _navBarLargeTitleColor = navBarLargeTitleColor;
+    [self updateNavigationBarLargeTitleTextAttributesIfNeeded];
+}
+
+- (void)updateNavigationBarLargeTitleTextAttributesIfNeeded {
+    if (@available(iOS 11, *)) {
+        if (self.navBarLargeTitleFont || self.navBarLargeTitleColor) {
+            NSMutableDictionary<NSString *, id> *largeTitleTextAttributes = [[NSMutableDictionary alloc] init];
+            if (self.navBarLargeTitleFont) {
+                largeTitleTextAttributes[NSFontAttributeName] = self.navBarLargeTitleFont;
+            }
+            if (self.navBarLargeTitleColor) {
+                largeTitleTextAttributes[NSForegroundColorAttributeName] = self.navBarLargeTitleColor;
+            }
+            [UINavigationBar appearance].largeTitleTextAttributes = largeTitleTextAttributes;
+            [UIViewController visibleViewController].navigationController.navigationBar.largeTitleTextAttributes = largeTitleTextAttributes;
+        }
+    }
+}
+
 
 @end

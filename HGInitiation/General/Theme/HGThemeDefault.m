@@ -17,7 +17,9 @@
     HGConfigurationInstance.navBarTintColor = [UIColor whiteColor];
     HGConfigurationInstance.navBarBarTintColor = [UIColor whiteColor];
     HGConfigurationInstance.navBarTitleColor = [UIColor blackColor];
-    
+    HGConfigurationInstance.navBarLargeTitleColor = [UIColor blackColor];
+    HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
+    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor lightTextColor]];
 }
 
 - (UIColor *)themeTintColor {

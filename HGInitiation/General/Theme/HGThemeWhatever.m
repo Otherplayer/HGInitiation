@@ -16,7 +16,9 @@
     HGConfigurationInstance.navBarTintColor = [UIColor randomColor];
     HGConfigurationInstance.navBarBarTintColor = [UIColor randomColor];
     HGConfigurationInstance.navBarTitleColor = [UIColor randomColor];
-    
+    HGConfigurationInstance.navBarLargeTitleColor = [UIColor randomColor];
+    HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor randomColor]];
+    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor randomColor]];
 }
 
 - (UIColor *)themeTintColor {

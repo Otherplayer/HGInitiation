@@ -140,7 +140,7 @@ NSString *const PARAMS = @"params";
     NSDictionary *messageAttributesInfo = @{NSFontAttributeName:[UIFont fontWithDescriptor:messageFontDescriptor size:19.0],
                                             NSForegroundColorAttributeName:[UIColor orangeColor]};
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"主题" message:@"Which do you like! 请选择" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"主题" message:@"Which theme do you like! 请选择" preferredStyle:UIAlertControllerStyleAlert];
     [alertController setTitleAttributes:titleAttributesInfo];
     [alertController setMessageAttributes:messageAttributesInfo];
     
@@ -148,7 +148,7 @@ NSString *const PARAMS = @"params";
     UIAlertAction *themeBlackAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"随机 Whatever", @"black") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [HGThemeManager sharedInstance].currentTheme = themeWhatever;
     }];
-    [themeBlackAction setTitleColor:[themeWhatever themeTintColor]];
+    [themeBlackAction setTitleColor:[UIColor redColor]];
     
     UIAlertAction *themeDefaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"白色 white", @"white") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [HGThemeManager sharedInstance].currentTheme = nil;
@@ -238,6 +238,13 @@ NSString *const PARAMS = @"params";
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:Identifier];
     [self.tableView setTableFooterView:[UIView new]];
     [self.view addSubview:self.tableView];
+    
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+        [self.navigationController.navigationItem setLargeTitleDisplayMode:UINavigationItemLargeTitleDisplayModeAutomatic];
+    } else {
+        // Fallback on earlier versions
+    }
     
 }
 

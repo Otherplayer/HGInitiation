@@ -45,13 +45,6 @@
 
 - (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [UIFont systemFontOfSize:17.f],
-                                                                      NSForegroundColorAttributeName : HGConfigurationInstance.navBarTitleColor,
-                                                                      NSVerticalGlyphFormAttributeName:@1
-                                                                      }];
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:HGConfigurationInstance.navBarBarTintColor] forBarMetrics:UIBarMetricsDefault];
 }
 
 

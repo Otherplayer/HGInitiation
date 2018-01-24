@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIFont   *navBarTitleFont;
 @property(nonatomic, strong, nullable) UIColor  *navBarLargeTitleColor;
 @property(nonatomic, strong, nullable) UIFont   *navBarLargeTitleFont;
+@property(nonatomic, strong, nullable) UIImage  *navBarBackgroundImage;
+@property(nonatomic, strong, nullable) UIImage  *navBarShadowImage;
 
 NS_ASSUME_NONNULL_END
 
