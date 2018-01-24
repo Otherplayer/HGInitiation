@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HGThemeProtocol.h"
 
-@interface HGThemeBlack : NSObject
+@interface HGThemeBlack : NSObject<HGThemeProtocol>
 
 @end

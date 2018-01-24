@@ -9,5 +9,21 @@
 #import "HGThemeBlack.h"
 
 @implementation HGThemeBlack
+- (void)setupConfigurationTemplate {
+    
+#pragma mark - NavigationBar
+    
+    HGConfigurationInstance.navBarTintColor = [UIColor whiteColor];
+    HGConfigurationInstance.navBarBarTintColor = [UIColor blackColor];
+    HGConfigurationInstance.navBarTitleColor = [UIColor whiteColor];
+    
+}
 
+- (UIColor *)themeTintColor {
+    return [UIColor redColor];
+}
+
+- (NSString *)themeName {
+    return @"Black";
+}
 @end

@@ -14,6 +14,7 @@
 #import "HGPickerView.h"
 #import "HGDatePickerView.h"
 #import "HGHelperPush.h"
+#import "HGThemeBlack.h"
 
 static NSString *Identifier = @"Identifier";
 
@@ -168,7 +169,8 @@ NSString *const PARAMS = @"params";
         }
             break;
         case HGDataType_Theme:{
-            
+            HGThemeBlack *themeBlack = [HGThemeBlack.alloc init];
+            [HGThemeManager sharedInstance].currentTheme = themeBlack;
         }
             break;
             
@@ -250,6 +252,7 @@ NSString *const PARAMS = @"params";
                    ];
 }
 - (void)initiateViews {
+    self.title = @"功能";
     self.tableView = ({
         _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
