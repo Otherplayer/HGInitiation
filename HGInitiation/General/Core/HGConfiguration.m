@@ -55,6 +55,16 @@
     self.navBarLargeTitleFont = nil;
     
     
+    #pragma mark - TabBar
+    
+    self.tabBarBackgroundImage = nil;
+    self.tabBarBarTintColor = nil;
+    self.tabBarShadowImageColor = nil;
+    self.tabBarTintColor = nil;
+    self.tabBarItemTitleColor = nil;
+    self.tabBarItemTitleColorSelected = self.tabBarTintColor;
+    self.tabBarItemTitleFont = nil;
+    
 }
 
 #pragma mark - GlobalColor

@@ -28,7 +28,7 @@
 }
 
 - (UIColor *)themeTintColor {
-    return HGConfigurationInstance.navBarTintColor;
+    return [UIColor randomColor];
 }
 
 - (NSString *)themeName {

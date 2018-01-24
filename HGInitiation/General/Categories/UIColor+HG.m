@@ -18,10 +18,10 @@
     return randColor;
 }
 + (UIColor *)disabledColor {
-    return [UIColor lightGrayColor];
+    return HGConfigurationInstance.disabledColor;
 }
 + (UIColor *)placeholderColor {
-    return [UIColor groupTableViewBackgroundColor];
+    return HGConfigurationInstance.placeholderColor;
 }
 
 + (UIColor *)gradientColorFrom:(UIColor *)colorFrom to:(UIColor *)colorTo height:(int)height {
