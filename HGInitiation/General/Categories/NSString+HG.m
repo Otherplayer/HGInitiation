@@ -30,5 +30,19 @@
     return [self boundingRectWithSize:size options:options attributes:attributes context:nil].size;
 }
 
++ (NSString *)unitSymbolTransform:(unsigned long)value {
+    double convertedValue = value;
+    int multiplyFactor = 0;
+    
+    NSArray *units = [NSArray arrayWithObjects:@"bytes", @"KB", @"MB", @"GB", @"TB", @"PB", @"EB", @"ZB", @"BB", nil];
+    
+    while (convertedValue > 1024) {
+        convertedValue /= 1024;
+        multiplyFactor++;
+    }
+    
+    return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [units objectAtIndex:multiplyFactor]];//达不到最大，无须判断数组会越界
+}
+
 
 @end
