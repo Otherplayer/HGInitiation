@@ -22,6 +22,12 @@ NSString *const TITLE = @"title";
 NSString *const TYPE = @"type";
 NSString *const PARAMS = @"params";
 
+
+CGFloat threshold = 0.7;
+CGFloat itemPerPage = 10;
+CGFloat currentPage = 0;
+
+
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate,HGImagePickerDelegate,HGAvatarClipperDelegate>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSArray *items;
@@ -130,6 +136,21 @@ NSString *const PARAMS = @"params";
             
         default:
             break;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat current = scrollView.contentOffset.y + scrollView.frame.size.height;
+    CGFloat total = scrollView.contentSize.height;
+    CGFloat ratio = current / total;
+    
+    CGFloat needRead = itemPerPage * threshold + currentPage * itemPerPage;
+    CGFloat totalItem = itemPerPage * (currentPage + 1);
+    CGFloat newThreshold = needRead / totalItem;
+    
+    if (ratio >= newThreshold) {
+        currentPage += 1;
+        NSLog("Request page \(currentPage) from server.");
     }
 }
 
