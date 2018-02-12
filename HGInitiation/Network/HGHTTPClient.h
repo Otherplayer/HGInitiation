@@ -13,6 +13,8 @@
 
 // 获取emojies
 - (NSURLSessionDataTask *)fetchEmojies:(HGHTTPResultHandler)completed;
+// 获取电影列表，可能需要翻墙才能访问
+- (NSURLSessionDataTask *)fetchMovies:(HGHTTPResultHandler)completed;
 
 /// Available Currency Symbols & Get symbol info
 - (NSURLSessionDataTask *)fetchSymbols:(HGHTTPResultHandler)completed;

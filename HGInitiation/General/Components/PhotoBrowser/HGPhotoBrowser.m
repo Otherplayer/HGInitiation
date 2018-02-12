@@ -197,7 +197,7 @@ static NSString *Identifier = @"Identifier";
     [model requestImageWithCompletion:^(UIImage *result) {
         cell.zoomImageView.image = result;
     } withProgressHandler:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-        NSLog(@"%@",@(receivedSize));
+        NSLog(@"TODO:下载图片中%@",@(receivedSize));
     }];
     
     

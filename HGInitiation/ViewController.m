@@ -58,8 +58,12 @@ CGFloat currentPage = 0;
     [item setValue:@1 forKey:@"isSelected"];
     
     NSMutableArray *items = [item objectForKey:@"items"];
-    NSMutableDictionary *t666 = [items lastObject];
-    [t666 setValue:@0 forKey:@"666"];
+//    NSMutableDictionary *t666 = [items lastObject];
+//    [t666 setValue:@0 forKey:@"666"];
+    [items enumerateObjectsUsingBlock:^(NSMutableDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj setValue:@0 forKey:@"666"];
+    }];
+    
     
     NSLog(@"%@",self.datas);
 }

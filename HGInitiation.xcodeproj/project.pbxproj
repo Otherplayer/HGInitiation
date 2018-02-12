@@ -10,6 +10,7 @@
 		3857776228B96F654CD1BAE3 /* libPods-HGInitiation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */; };
 		630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B02004C11F00F91211 /* HGScrollDefaultImage.m */; };
 		630498B42005E99F00F91211 /* HGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B32005E99F00F91211 /* HGPageControl.m */; };
+		6306DF5E2031814700959275 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6306DF5D2031814700959275 /* 1.jpg */; };
 		631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8682017207C00E9D8A2 /* UIImage+HG.m */; };
 		631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE86E2017275F00E9D8A2 /* HGThemeDefault.m */; };
 		631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8712017280700E9D8A2 /* HGThemeManager.m */; };
@@ -37,7 +38,6 @@
 		635C24F21FFCB28F0070BC46 /* UIColor+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24F11FFCB28F0070BC46 /* UIColor+HG.m */; };
 		635C24F81FFCBE760070BC46 /* HGZoomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24F71FFCBE760070BC46 /* HGZoomImageView.m */; };
 		635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */; };
-		635C24FF1FFCDF2E0070BC46 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 635C24FE1FFCDF2E0070BC46 /* 1.jpg */; };
 		635C57C620031267004CE18B /* HGPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57C520031267004CE18B /* HGPhotoBrowser.m */; };
 		635C57C920033319004CE18B /* HGBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57C820033319004CE18B /* HGBrowserController.m */; };
 		635C57CF20048E29004CE18B /* HGScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57CE20048E29004CE18B /* HGScrollController.m */; };
@@ -77,6 +77,7 @@
 		630498B02004C11F00F91211 /* HGScrollDefaultImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollDefaultImage.m; sourceTree = "<group>"; };
 		630498B22005E99F00F91211 /* HGPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageControl.h; sourceTree = "<group>"; };
 		630498B32005E99F00F91211 /* HGPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageControl.m; sourceTree = "<group>"; };
+		6306DF5D2031814700959275 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		631FE8672017207C00E9D8A2 /* UIImage+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HG.h"; sourceTree = "<group>"; };
 		631FE8682017207C00E9D8A2 /* UIImage+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HG.m"; sourceTree = "<group>"; };
 		631FE86C201726C500E9D8A2 /* HGThemeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGThemeProtocol.h; sourceTree = "<group>"; };
@@ -132,7 +133,6 @@
 		635C24F71FFCBE760070BC46 /* HGZoomImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGZoomImageView.m; sourceTree = "<group>"; };
 		635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGZoomImageController.h; sourceTree = "<group>"; };
 		635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGZoomImageController.m; sourceTree = "<group>"; };
-		635C24FE1FFCDF2E0070BC46 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		635C57C12002FF48004CE18B /* HGStatic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGStatic.h; sourceTree = "<group>"; };
 		635C57C420031267004CE18B /* HGPhotoBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPhotoBrowser.h; sourceTree = "<group>"; };
 		635C57C520031267004CE18B /* HGPhotoBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPhotoBrowser.m; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 		635C24FD1FFCDF190070BC46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				635C24FE1FFCDF2E0070BC46 /* 1.jpg */,
+				6306DF5D2031814700959275 /* 1.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -627,8 +627,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63880BA41FF0DD5F00DAFD68 /* LaunchScreen.storyboard in Resources */,
+				6306DF5E2031814700959275 /* 1.jpg in Resources */,
 				63880BA11FF0DD5F00DAFD68 /* Assets.xcassets in Resources */,
-				635C24FF1FFCDF2E0070BC46 /* 1.jpg in Resources */,
 				63880B9F1FF0DD5F00DAFD68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

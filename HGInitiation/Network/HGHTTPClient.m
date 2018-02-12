@@ -17,6 +17,9 @@
     NSURLSessionDataTask *dataTask = [self.service GET:[self urlGithub:@"emojis"] params:nil completed:completed];
     return dataTask;
 }
+- (NSURLSessionDataTask *)fetchMovies:(HGHTTPResultHandler)completed {
+    return [self.service GET:@"https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json" params:nil completed:completed];
+}
 #pragma mark - symbol
 - (NSURLSessionDataTask *)fetchSymbols:(HGHTTPResultHandler)completed {
     NSURLSessionDataTask *dataTask = [self.service GET:[self url:@"public/symbol"]
