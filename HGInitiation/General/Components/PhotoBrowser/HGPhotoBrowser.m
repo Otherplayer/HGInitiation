@@ -192,12 +192,17 @@ static NSString *Identifier = @"Identifier";
     HGImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.zoomImageView.delegate = self;
-    
+    //TODO:设置placeholder
     HGPhotoModel *model = self.photos[indexPath.item];
     [model requestImageWithCompletion:^(UIImage *result) {
         cell.zoomImageView.image = result;
+        cell.isLoading = YES;
     } withProgressHandler:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-        NSLog(@"TODO:下载图片中%@",@(receivedSize));
+        if (receivedSize >= expectedSize && expectedSize > 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+               cell.isLoading = NO;
+            });
+        }
     }];
     
     

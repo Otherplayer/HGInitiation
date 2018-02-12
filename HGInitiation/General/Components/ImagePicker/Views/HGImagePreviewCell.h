@@ -11,5 +11,6 @@
 
 @interface HGImagePreviewCell : UICollectionViewCell
 @property(nonatomic, strong)HGZoomImageView *zoomImageView;
+@property(nonatomic) BOOL isLoading;
 
 @end
