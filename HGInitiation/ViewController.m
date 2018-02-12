@@ -31,7 +31,7 @@ CGFloat currentPage = 0;
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate,HGImagePickerDelegate,HGAvatarClipperDelegate>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSArray *items;
-
+@property(nonatomic, strong)NSMutableArray *datas;
 @end
 
 @implementation ViewController
@@ -49,6 +49,19 @@ CGFloat currentPage = 0;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 //    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
+    
+    
+    self.datas = [NSMutableArray.alloc init];
+    NSMutableDictionary *info = [@{@"isSelected":@0,@"items":@[[@{@"666":@1} mutableCopy]]} mutableCopy];
+    [self.datas addObject:info];
+    NSMutableDictionary *item = self.datas[0];
+    [item setValue:@1 forKey:@"isSelected"];
+    
+    NSMutableArray *items = [item objectForKey:@"items"];
+    NSMutableDictionary *t666 = [items lastObject];
+    [t666 setValue:@0 forKey:@"666"];
+    
+    NSLog(@"%@",self.datas);
 }
 
 - (void)didReceiveMemoryWarning {
