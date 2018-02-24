@@ -12,9 +12,7 @@
 @property(nonatomic,strong) NSMutableArray *datas;
 @end
 
-@implementation HGOtherController{
-    BOOL havePendingWork;
-}
+@implementation HGOtherController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +34,10 @@
 #pragma mark - funGCDSource
 
 - (void)funGCDSource {
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    
 //    const char *myFile = [@"/Path/To/File" fileSystemRepresentation];
 //    int fileDescriptor = open(myFile, O_EVTONLY);
 //    dispatch_queue_t myQueue = dispatch_get_main_queue();
@@ -59,26 +61,16 @@
 //        dispatch_source_merge_data(source,1);
 //    });
     
-    
-//    double delayInSeconds = 5.f;
-//    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    // 得到全局队列
-//    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    // 延期执行
-//    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
-//
-//    });
-    
 //    //倒计时时间
 //    __block int timeout = 3;
 //    //延迟执行
-//    double delayInSeconds = 3.f;
+//    int delayInSeconds = 3;
 //    //创建队列
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    //创建timer
 //    dispatch_source_t timerSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-//    //设置1s触发一次，0s的误差
-//    dispatch_source_set_timer(timerSource,dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC),NSEC_PER_SEC, 0); //每秒执行
+//    //设置1s触发一次，0.1s的误差
+//    dispatch_source_set_timer(timerSource,dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC),1 * NSEC_PER_SEC, NSEC_PER_SEC / 10); //每秒执行
 //    dispatch_source_set_event_handler(timerSource, ^{
 //        if(timeout <= 0) { //倒计时结束，关闭
 //            NSLog(@"over");
@@ -90,30 +82,43 @@
 //    });
 //    dispatch_resume(timerSource);
     
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
+//    for (int i = 0; i < 100; i++){
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_group_async(group, queue, ^{
+//            NSLog(@"%i",i);
+//            sleep(2);
+//            dispatch_semaphore_signal(semaphore);
+//        });
+//    }
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
-//    havePendingWork = NO;
-//    dispatch_semaphore_t mySemaphore = dispatch_semaphore_create(0);
-//    while (YES) {///*** Not Recommended ***/
-//        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_SEC);
-//        long semaphoreReturnValue = dispatch_semaphore_wait(mySemaphore, timeout);
-//        if (havePendingWork) {
-//            [self doPendingWork];
+    
+//    __block int product = 0;
+//    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+//    dispatch_async(queue, ^{ //消费者队列
+//        while (YES) {
+//            if(!dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)){
+//                usleep(500000);
+//                NSLog(@"消费%d产品",product);
+//                product--;
+//            };
 //        }
-//    }
-//    while (YES) {
-//        dispatch_time_t timeout = DISPATCH_TIME_FOREVER;
-//        long semaphoreReturnValue = dispatch_semaphore_wait(mySemaphore, timeout);
-//        if (havePendingWork) {
-//            [self doPendingWork];
+//    });
+//    dispatch_async(queue, ^{ //生产者队列
+//        while (YES) {
+//            sleep(1); //wait for a while
+//            product++;
+//            NSLog(@"生产%d产品",product);
+//            dispatch_semaphore_signal(sem);
 //        }
-//    }
+//    });
+    
     
 }
 - (void)checkForFile {
     
-}
-- (void)doPendingWork {
-    NSLog(@"doPendingWork");
 }
 
 
