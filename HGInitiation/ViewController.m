@@ -50,7 +50,6 @@ CGFloat currentPage = 0;
     [super viewDidAppear:animated];
 //    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
     
-    
     self.datas = [NSMutableArray.alloc init];
     NSMutableDictionary *info = [@{@"isSelected":@0,@"items":@[[@{@"666":@1} mutableCopy]]} mutableCopy];
     [self.datas addObject:info];
@@ -66,6 +65,8 @@ CGFloat currentPage = 0;
     
     
     NSLog(@"%@",self.datas);
+    
+    NSLog(@"%@",[HGAsset ivarList]);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,8 +15,8 @@
 
 - (NSString *)propertyNameByValue:(id)value;
 
-- (NSArray *)propertyList;
-- (NSArray *)ivarList;
+- (NSArray *)propertyList;//获取由@property声明的属性
+- (NSArray *)ivarList;//获取所有的成员变量
 - (NSArray *)methodList;
 - (NSArray *)protocolList;
 

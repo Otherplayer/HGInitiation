@@ -21,6 +21,7 @@
         // 隐藏状态
         //        header.stateLabel.hidden = YES;
         header.mj_h = 40;
+        header.pullingPercent = 0.7;
         
         [header setTitle:@"下拉关闭当前页面" forState:MJRefreshStateIdle];
         [header setTitle:@"松开关闭页面" forState:MJRefreshStatePulling];

@@ -240,4 +240,8 @@ static NSString * const kAssetInfoSize = @"size";
     return identity;
 }
 
++ (NSDictionary *)abcd {
+    return nil;
+}
+
 @end
