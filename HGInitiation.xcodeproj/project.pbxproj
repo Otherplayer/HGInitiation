@@ -59,6 +59,7 @@
 		6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2131FF61A9100EBBF6C /* UIColor+Tweak.m */; };
 		6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */; };
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
+		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -176,6 +177,8 @@
 		6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAvatarClipperController.m; sourceTree = "<group>"; };
 		6389B2161FF61A9100EBBF6C /* HGClipperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGClipperView.m; sourceTree = "<group>"; };
 		6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalMacro.h; sourceTree = "<group>"; };
+		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
+		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -412,6 +415,8 @@
 				635C57CE20048E29004CE18B /* HGScrollController.m */,
 				63D559752007516100BBA0BE /* HGWaterfallController.h */,
 				63D559762007516100BBA0BE /* HGWaterfallController.m */,
+				63A0C70D2041487700FFD56E /* HGOtherController.h */,
+				63A0C70E2041487700FFD56E /* HGOtherController.m */,
 			);
 			path = HGInitiation;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				63880BA71FF0DD5F00DAFD68 /* main.m in Sources */,
 				635C24E71FFB71C60070BC46 /* HGTextView.m in Sources */,
 				63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */,
+				63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */,
 				635C57C620031267004CE18B /* HGPhotoBrowser.m in Sources */,
 				631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */,
 				631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */,

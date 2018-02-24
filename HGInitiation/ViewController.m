@@ -11,6 +11,7 @@
 #import "HGAssetManager.h"
 #import "HGImagePickerController.h"
 #import "HGAvatarClipperController.h"
+#import "HGOtherController.h"
 #import "HGPickerView.h"
 #import "HGDatePickerView.h"
 #import "HGHelperPush.h"
@@ -48,25 +49,9 @@ CGFloat currentPage = 0;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
+    [HGHelperPush push:@{HGPushClassName:@"HGOtherController"}];
     
-    self.datas = [NSMutableArray.alloc init];
-    NSMutableDictionary *info = [@{@"isSelected":@0,@"items":@[[@{@"666":@1} mutableCopy]]} mutableCopy];
-    [self.datas addObject:info];
-    NSMutableDictionary *item = self.datas[0];
-    [item setValue:@1 forKey:@"isSelected"];
-    
-    NSMutableArray *items = [item objectForKey:@"items"];
-//    NSMutableDictionary *t666 = [items lastObject];
-//    [t666 setValue:@0 forKey:@"666"];
-    [items enumerateObjectsUsingBlock:^(NSMutableDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj setValue:@0 forKey:@"666"];
-    }];
-    
-    
-    NSLog(@"%@",self.datas);
-    
-    NSLog(@"%@",[HGAsset ivarList]);
+//    NSLog(@"%@",[HGAsset ivarList]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -168,7 +153,7 @@ CGFloat currentPage = 0;
     
     if (ratio >= newThreshold) {
         currentPage += 1;
-        NSLog("Request page \(currentPage) from server.");
+//        NSLog("Request page \(currentPage) from server.");
     }
 }
 
@@ -227,7 +212,7 @@ CGFloat currentPage = 0;
 #pragma mark - HGAvatarClipperDelegate
 
 - (void)avatarClipperController:(HGAvatarClipperController *)controller didFinishWithCroppedImage:(UIImage *)croppedImage {
-    NSLog(@"croppedImage == %@",croppedImage);
+//    NSLog(@"croppedImage == %@",croppedImage);
     [controller.navigationController popViewControllerAnimated:YES];
 }
 - (void)avatarClipperControllerDidCancel:(HGAvatarClipperController *)controller {
@@ -263,7 +248,7 @@ CGFloat currentPage = 0;
                    @{TITLE:@"主题",
                      TYPE:@(HGDataType_Theme)},
                    @{TITLE:@"其它",
-                     TYPE:@(HGDataType_Other)},
+                     PARAMS:@{HGPushClassName:@"HGOtherController"}},
                    ];
 }
 - (void)initiateViews {
@@ -293,7 +278,7 @@ CGFloat currentPage = 0;
 
 - (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
     [super themeBeforeChanged:themeBeforeChanged afterChanged:themeAfterChanged];
-    NSLog(@"%@ %@",themeAfterChanged,themeBeforeChanged);
+//    NSLog(@"%@ %@",themeAfterChanged,themeBeforeChanged);
     
 }
 
