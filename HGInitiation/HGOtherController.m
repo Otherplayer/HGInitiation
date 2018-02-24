@@ -35,7 +35,11 @@
 
 - (void)funGCDSource {
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+#pragma clang diagnostic pop
+    
     
     
 //    const char *myFile = [@"/Path/To/File" fileSystemRepresentation];
@@ -95,25 +99,25 @@
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
     
-//    __block int product = 0;
-//    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-//    dispatch_async(queue, ^{ //消费者队列
-//        while (YES) {
-//            if(!dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)){
-//                usleep(500000);
-//                NSLog(@"消费%d产品",product);
-//                product--;
-//            };
-//        }
-//    });
-//    dispatch_async(queue, ^{ //生产者队列
-//        while (YES) {
-//            sleep(1); //wait for a while
-//            product++;
-//            NSLog(@"生产%d产品",product);
-//            dispatch_semaphore_signal(sem);
-//        }
-//    });
+    __block int product = 0;
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    dispatch_async(queue, ^{ //消费者队列
+        while (YES) {
+            if(!dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)){
+                usleep(500000);
+                NSLog(@"消费%d产品",product);
+                product--;
+            };
+        }
+    });
+    dispatch_async(queue, ^{ //生产者队列
+        while (YES) {
+            sleep(1); //wait for a while
+            product++;
+            NSLog(@"生产%d产品",product);
+            dispatch_semaphore_signal(sem);
+        }
+    });
     
     
 }
