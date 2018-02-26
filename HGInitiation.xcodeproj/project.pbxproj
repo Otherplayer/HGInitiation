@@ -62,6 +62,7 @@
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
+		63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7172043EC7C00FFD56E /* Reachability.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -184,6 +185,8 @@
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63A0C7122043D6FA00FFD56E /* HGHelperReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHelperReachability.h; sourceTree = "<group>"; };
 		63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachability.m; sourceTree = "<group>"; };
+		63A0C7162043EC7C00FFD56E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		63A0C7172043EC7C00FFD56E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -431,6 +434,7 @@
 		63880BAE1FF0DDDE00DAFD68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				63A0C7152043EC5900FFD56E /* reachability */,
 				63880BB41FF0DF7100DAFD68 /* service */,
 				63880BB11FF0DF6800DAFD68 /* HGHTTPClient.h */,
 				63880BB21FF0DF6800DAFD68 /* HGHTTPClient.m */,
@@ -532,6 +536,15 @@
 				6389B2131FF61A9100EBBF6C /* UIColor+Tweak.m */,
 			);
 			path = AvatarClipper;
+			sourceTree = "<group>";
+		};
+		63A0C7152043EC5900FFD56E /* reachability */ = {
+			isa = PBXGroup;
+			children = (
+				63A0C7162043EC7C00FFD56E /* Reachability.h */,
+				63A0C7172043EC7C00FFD56E /* Reachability.m */,
+			);
+			path = reachability;
 			sourceTree = "<group>";
 		};
 		63EDC0321FFDC9950049597F /* Asset */ = {
@@ -723,6 +736,7 @@
 				631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,
 				635C24EB1FFB8BAB0070BC46 /* HGTextViewController.m in Sources */,
+				63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */,
 				632B7AB01FF22B93000F57A3 /* HGImagePreviewController.m in Sources */,
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
 				631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */,
