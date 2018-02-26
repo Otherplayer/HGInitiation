@@ -68,7 +68,7 @@
 //    //倒计时时间
 //    __block int timeout = 3;
 //    //延迟执行
-//    int delayInSeconds = 3;
+//    int delayInSeconds = 2;
 //    //创建队列
 //    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    //创建timer
@@ -97,7 +97,6 @@
 //        });
 //    }
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    
     
     __block int product = 0;
     dispatch_semaphore_t sem = dispatch_semaphore_create(0);

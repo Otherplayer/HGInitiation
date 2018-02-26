@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "HGThemeManager.h"
 #import "HGThemeDefault.h"
+#import "SystemConfiguration/SCNetworkReachability.h"
+#import "HGHelperReachibility.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+//    [self checkReachability];
+    [[HGHelperReachibility sharedInstance] startMonitoringInternetStates];
+    NSLog(@"%@",@([[HGHelperReachibility sharedInstance] isReachable]));
+    NSLog(@"%@",@([[HGHelperReachibility sharedInstance] netWorkType]));
     // 应用皮肤
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
@@ -52,6 +57,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)checkReachability {
+    // Create a reachability object for the desired host
+    NSString *hostName = @"https://www.baidu.com";
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+    // Create a place in memory for reachability flags
+    SCNetworkReachabilityFlags flags;
+    // Check the reachability of the host
+    SCNetworkReachabilityGetFlags(reachability, &flags);
+    // Release the reachability object
+    CFRelease(reachability);
+    // Check to see if the reachable flag is set
+    if ((flags & kSCNetworkReachabilityFlagsReachable) == 0) {
+        // The target host is not reachable
+        // Alert the user or defer the activity
+        NSLog(@"not available");
+    }else {
+        NSLog(@"is reachable");
+    }
 }
 
 
