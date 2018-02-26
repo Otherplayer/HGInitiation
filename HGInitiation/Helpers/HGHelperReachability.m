@@ -126,8 +126,7 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
 
 
 - (HGNetWorkType)netWorkType{
-    UIApplication *app = [UIApplication sharedApplication];
-    UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+    UIView *statusBar = [[UIApplication sharedApplication] valueForKeyPath:@"statusBar"];
     UIView *foregroundView = [statusBar valueForKeyPath:@"foregroundView"];
     
     UIView *networkView = nil;
@@ -144,7 +143,7 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
     
     HGNetWorkType status = HGNetWorkTypeNoService;
     if (networkView) {
-        NSLog(@"%@",[networkView ivarList]);
+//        NSLog(@"%@",[networkView ivarList]);
         int netType = [[networkView valueForKeyPath:@"_dataNetworkType"] intValue];
 //        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthRaw"] intValue]));
 //        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthBars"] intValue]));
@@ -155,31 +154,8 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
 //        "_wifiLinkWarning",
 //        "_enableRSSI",
 //        "_showRSSI"
-        switch (netType) {
-            case 0:
-                status = HGNetWorkTypeNoService;
-                break;
-            case 1://实际上是2G
-                status = HGNetWorkType2G;
-                break;
-            case 2:
-                status = HGNetWorkType3G;
-                break;
-            case 3:
-                status = HGNetWorkType4G;
-                break;
-            case 4:
-                status = HGNetWorkTypeLTE;
-                break;
-            case 5:
-                status = HGNetWorkTypeWiFi;
-                break;
-            default:
-                status = HGNetWorkTypeUnknow;
-                break;
-        }
+        status = (HGNetWorkType)netType;
     }
-    
     NSLog("========HGNetWorkType=======%d",status)
     return status;
 }
