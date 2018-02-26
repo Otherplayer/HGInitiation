@@ -6,22 +6,22 @@
 //  Copyright (c) 2015年 __无邪_. All rights reserved.
 //
 
-#import "HGHelperReachibility.h"
+#import "HGHelperReachability.h"
 #import <AFNetworking.h>
 #import <netinet/in.h>
 #import <netinet6/in6.h>
 
-@interface HGHelperReachibility ()
+@interface HGHelperReachability ()
 @end
 
-@implementation HGHelperReachibility
+@implementation HGHelperReachability
 
 
-+ (HGHelperReachibility *)sharedInstance{
-    static HGHelperReachibility *reachability = nil;
++ (HGHelperReachability *)sharedInstance{
+    static HGHelperReachability *reachability = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        reachability = [[HGHelperReachibility alloc] init];
+        reachability = [[HGHelperReachability alloc] init];
          });
     return reachability;
 }

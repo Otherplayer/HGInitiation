@@ -18,9 +18,9 @@ typedef enum {
 } HYQNetWorkType;
 
 
-#define Internet [HGHelperReachibility sharedInstance]
+#define Internet [HGHelperReachability sharedInstance]
 
-@interface HGHelperReachibility : NSObject
+@interface HGHelperReachability : NSObject
 
 @property (nonatomic,readonly) BOOL isReachable;
 @property (nonatomic,readonly) BOOL isReachableWifi;
@@ -30,7 +30,7 @@ typedef enum {
 
 //@property (nonatomic, strong) NSString *wifiName;
 
-+ (HGHelperReachibility *)sharedInstance;
++ (HGHelperReachability *)sharedInstance;
 - (void)startMonitoringInternetStates;
 - (BOOL)reachable;
 

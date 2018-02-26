@@ -61,7 +61,7 @@
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
-		63A0C7142043D6FA00FFD56E /* HGHelperReachibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachibility.m */; };
+		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -182,8 +182,8 @@
 		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
 		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		63A0C7122043D6FA00FFD56E /* HGHelperReachibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHelperReachibility.h; sourceTree = "<group>"; };
-		63A0C7132043D6FA00FFD56E /* HGHelperReachibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachibility.m; sourceTree = "<group>"; };
+		63A0C7122043D6FA00FFD56E /* HGHelperReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHelperReachability.h; sourceTree = "<group>"; };
+		63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachability.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -450,8 +450,8 @@
 		63880BB01FF0DDF500DAFD68 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				63A0C7122043D6FA00FFD56E /* HGHelperReachibility.h */,
-				63A0C7132043D6FA00FFD56E /* HGHelperReachibility.m */,
+				63A0C7122043D6FA00FFD56E /* HGHelperReachability.h */,
+				63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */,
 				63880BC31FF0EADC00DAFD68 /* HGHelperHUD.h */,
 				63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */,
 				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
@@ -758,7 +758,7 @@
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
 				635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */,
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
-				63A0C7142043D6FA00FFD56E /* HGHelperReachibility.m in Sources */,
+				63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */,
 				63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */,
 				63880BB31FF0DF6800DAFD68 /* HGHTTPClient.m in Sources */,
 				632B7AB71FF38D9A000F57A3 /* HGAsset.m in Sources */,

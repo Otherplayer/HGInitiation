@@ -10,7 +10,7 @@
 #import "HGThemeManager.h"
 #import "HGThemeDefault.h"
 #import "SystemConfiguration/SCNetworkReachability.h"
-#import "HGHelperReachibility.h"
+#import "HGHelperReachability.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +22,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [self checkReachability];
-    [[HGHelperReachibility sharedInstance] startMonitoringInternetStates];
-    NSLog(@"%@",@([[HGHelperReachibility sharedInstance] isReachable]));
-    NSLog(@"%@",@([[HGHelperReachibility sharedInstance] netWorkType]));
+    [[HGHelperReachability sharedInstance] startMonitoringInternetStates];
+    NSLog(@"%@",@([[HGHelperReachability sharedInstance] isReachable]));
+    NSLog(@"%@",@([[HGHelperReachability sharedInstance] netWorkType]));
     // 应用皮肤
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
