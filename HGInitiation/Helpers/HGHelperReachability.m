@@ -12,65 +12,47 @@
 #import <netinet6/in6.h>
 
 @interface HGHelperReachability ()
+@property(nonatomic, readwrite, assign) BOOL isReachable;
+@property(nonatomic, readwrite, assign) BOOL isReachableWifi;
 @end
 
 @implementation HGHelperReachability
-
 
 + (HGHelperReachability *)sharedInstance{
     static HGHelperReachability *reachability = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         reachability = [[HGHelperReachability alloc] init];
-         });
+    });
     return reachability;
 }
 
-- (id)init{
-    
-    if(self=[super init]){
-        struct sockaddr_in address;
-        bzero(&address, sizeof(address));
-        address.sin_len = sizeof(address);
-        address.sin_family = AF_INET;
-        
-        const void *address1=&address;
-        
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)address1);
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        // Create a reachability object for the desired host
+        NSString *hostName = @"https://www.baidu.com";
+        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+        // Create a place in memory for reachability flags
         SCNetworkReachabilityFlags flags;
+        // Check the reachability of the host
         SCNetworkReachabilityGetFlags(reachability, &flags);
-        AFNetworkReachabilityStatus status = AFNetworkReachabilityStatusForFlags(flags);
-        [self checkStates:status];
+        // Release the reachability object
+        CFRelease(reachability);
+        // Check to see if the reachable flag is set
+        if ((flags & kSCNetworkReachabilityFlagsReachable) == 0) {
+            // The target host is not reachable
+            _isReachable = NO;
+            _isReachableWifi = NO;
+        }else {
+            _isReachable = YES;
+            _isReachableWifi = YES;
+        }
     }
     return self;
 }
 
-
-static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetworkReachabilityFlags flags) {
-    BOOL isReachable = ((flags & kSCNetworkReachabilityFlagsReachable) != 0);
-    BOOL needsConnection = ((flags & kSCNetworkReachabilityFlagsConnectionRequired) != 0);
-    BOOL canConnectionAutomatically = (((flags & kSCNetworkReachabilityFlagsConnectionOnDemand ) != 0) || ((flags & kSCNetworkReachabilityFlagsConnectionOnTraffic) != 0));
-    BOOL canConnectWithoutUserInteraction = (canConnectionAutomatically && (flags & kSCNetworkReachabilityFlagsInterventionRequired) == 0);
-    BOOL isNetworkReachable = (isReachable && (!needsConnection || canConnectWithoutUserInteraction));
-    
-    AFNetworkReachabilityStatus status = AFNetworkReachabilityStatusUnknown;
-    if (isNetworkReachable == NO) {
-        status = AFNetworkReachabilityStatusNotReachable;
-    }
-#if	TARGET_OS_IPHONE
-    else if ((flags & kSCNetworkReachabilityFlagsIsWWAN) != 0) {
-        status = AFNetworkReachabilityStatusReachableViaWWAN;
-    }
-#endif
-    else {
-        status = AFNetworkReachabilityStatusReachableViaWiFi;
-    }
-    
-    return status;
-}
-
-
--(void)checkStates:(AFNetworkReachabilityStatus )status{
+- (void)checkStates:(AFNetworkReachabilityStatus)status{
     BOOL isCan = NO;
     BOOL isCanWifi = NO;
     switch (status) {
@@ -90,16 +72,6 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
             break;
     }
     
-    if (!isCan) { //监测到网络不可用的时候，有可能这时候网络可用
-        HGNetWorkType status = [self netWorkType];
-        if (status) {
-            isCan = YES;
-            if (status == HGNetWorkTypeWiFi) {
-                isCanWifi = YES;
-            }
-        }
-    }
-    
     _isReachable = isCan;
     _isReachableWifi = isCanWifi;
     
@@ -108,22 +80,27 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
     NSLog(@"【Reachability: %@】", AFStringFromNetworkReachabilityStatus(status));
 }
 
-- (void)startMonitoringInternetStates{
+- (BOOL)isReachable {
+    
+    if (_isReachable) {
+        return YES;
+    }
+    HGNetWorkType status = [self netWorkType];
+    if (status) {
+        _isReachable = YES;
+        if (status == HGNetWorkTypeWiFi) {
+            _isReachableWifi = YES;
+        }
+    }
+    return _isReachable;
+}
+
+- (void)startMonitoring{
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [self checkStates:status];
     }];
 }
-
-- (BOOL)reachable
-{
-    if (self.isReachable) {
-        return YES;
-    }
-//    [ShowTip showTipTextOnly:NETWORK_TIMEOUT dealy:2];
-    return self.isReachable;
-}
-
 
 - (HGNetWorkType)netWorkType{
     UIView *statusBar = [[UIApplication sharedApplication] valueForKeyPath:@"statusBar"];
@@ -148,12 +125,6 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
 //        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthRaw"] intValue]));
 //        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthBars"] intValue]));
 //        NSLog(@"%@",@([[signalStrengthView valueForKeyPath:@"_signalStrengthBars"] intValue]));
-//        "_dataNetworkType",
-//        "_wifiStrengthRaw",
-//        "_wifiStrengthBars",
-//        "_wifiLinkWarning",
-//        "_enableRSSI",
-//        "_showRSSI"
         status = (HGNetWorkType)netType;
     }
     NSLog("========HGNetWorkType=======%d",status)

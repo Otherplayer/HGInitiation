@@ -22,17 +22,16 @@ typedef enum {
 
 @interface HGHelperReachability : NSObject
 
-@property (nonatomic,readonly) BOOL isReachable;
-@property (nonatomic,readonly) BOOL isReachableWifi;
+@property(nonatomic,readonly,assign) BOOL isReachable;
+@property(nonatomic,readonly,assign) BOOL isReachableWifi;
 
-@property(nonatomic,readonly) HGNetWorkType netWorkType;
+@property(nonatomic,readonly,assign) HGNetWorkType netWorkType;
 
 
 //@property (nonatomic, strong) NSString *wifiName;
 
 + (HGHelperReachability *)sharedInstance;
-- (void)startMonitoringInternetStates;
-- (BOOL)reachable;
+- (void)startMonitoring;
 
 
 
