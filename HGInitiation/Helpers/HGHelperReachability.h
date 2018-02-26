@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    HYQNetWorkTypeNONE,
-    HYQNetWorkType2G,
-    HYQNetWorkType3G,
-    HYQNetWorkType4G,
-    HYQNetWorkTypeWiFi,
-    HYQNetWorkTypeUnkonow
-} HYQNetWorkType;
+    HGNetWorkTypeNONE,
+    HGNetWorkType2G,
+    HGNetWorkType3G,
+    HGNetWorkType4G,
+    HGNetWorkTypeWiFi,
+    HGNetWorkTypeUnkonow
+} HGNetWorkType;
 
 
 #define Internet [HGHelperReachability sharedInstance]
@@ -25,7 +25,7 @@ typedef enum {
 @property (nonatomic,readonly) BOOL isReachable;
 @property (nonatomic,readonly) BOOL isReachableWifi;
 
-@property(nonatomic,readonly) HYQNetWorkType netWorkType;
+@property(nonatomic,readonly) HGNetWorkType netWorkType;
 
 
 //@property (nonatomic, strong) NSString *wifiName;

@@ -90,6 +90,16 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
             break;
     }
     
+    if (!isCan) { //监测到网络不可用的时候，有可能这时候网络可用
+        HGNetWorkType status = [self netWorkType];
+        if (status) {
+            isCan = YES;
+            if (status == HGNetWorkTypeWiFi) {
+                isCanWifi = YES;
+            }
+        }
+    }
+    
     _isReachable = isCan;
     _isReachableWifi = isCanWifi;
     
@@ -115,7 +125,7 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
 }
 
 
-- (HYQNetWorkType)netWorkType{
+- (HGNetWorkType)netWorkType{
     UIApplication *app = [UIApplication sharedApplication];
     UIView *statusBar = [app valueForKeyPath:@"statusBar"];
     UIView *foregroundView = [statusBar valueForKeyPath:@"foregroundView"];
@@ -128,33 +138,33 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
         }
     }
     
-    HYQNetWorkType status = HYQNetWorkTypeNONE;
+    HGNetWorkType status = HGNetWorkTypeNONE;
     
     if (networkView) {
-        int netType = [[networkView valueForKeyPath:@"dataNetworkType"]intValue];
+        int netType = [[networkView valueForKeyPath:@"dataNetworkType"] intValue];
         switch (netType) {
             case 0:
-                status = HYQNetWorkTypeNONE;
+                status = HGNetWorkTypeNONE;
                 break;
             case 1://实际上是2G
-                status = HYQNetWorkType2G;
+                status = HGNetWorkType2G;
                 break;
             case 2:
-                status = HYQNetWorkType3G;
+                status = HGNetWorkType3G;
                 break;
             case 3:
-                status = HYQNetWorkType4G;
+                status = HGNetWorkType4G;
                 break;
             case 5:
-                status = HYQNetWorkTypeWiFi;
+                status = HGNetWorkTypeWiFi;
                 break;
             default:
-                status = HYQNetWorkTypeUnkonow;
+                status = HGNetWorkTypeUnkonow;
                 break;
         }
     }
     
-    NSLog("========HYQNetWorkTypeNONE=======%d",status)
+    NSLog("========HGNetWorkType=======%d",status)
     return status;
 }
 
