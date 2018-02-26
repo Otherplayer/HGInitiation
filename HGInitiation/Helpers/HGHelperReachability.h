@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    HGNetWorkTypeNONE,
+    HGNetWorkTypeNoService,
     HGNetWorkType2G,
     HGNetWorkType3G,
     HGNetWorkType4G,
+    HGNetWorkTypeLTE,
     HGNetWorkTypeWiFi,
-    HGNetWorkTypeUnkonow
+    HGNetWorkTypeUnknow
 } HGNetWorkType;
 
 

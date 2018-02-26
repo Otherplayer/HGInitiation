@@ -131,20 +131,33 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
     UIView *foregroundView = [statusBar valueForKeyPath:@"foregroundView"];
     
     UIView *networkView = nil;
+    UIView *signalStrengthView = nil;
     
     for (UIView *childView in foregroundView.subviews) {
         if ([childView isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
             networkView = childView;
         }
+        if ([childView isKindOfClass:NSClassFromString(@"UIStatusBarSignalStrengthItemView")]) {
+            signalStrengthView = childView;
+        }
     }
     
-    HGNetWorkType status = HGNetWorkTypeNONE;
-    
+    HGNetWorkType status = HGNetWorkTypeNoService;
     if (networkView) {
-        int netType = [[networkView valueForKeyPath:@"dataNetworkType"] intValue];
+        NSLog(@"%@",[networkView ivarList]);
+        int netType = [[networkView valueForKeyPath:@"_dataNetworkType"] intValue];
+//        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthRaw"] intValue]));
+//        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthBars"] intValue]));
+//        NSLog(@"%@",@([[signalStrengthView valueForKeyPath:@"_signalStrengthBars"] intValue]));
+//        "_dataNetworkType",
+//        "_wifiStrengthRaw",
+//        "_wifiStrengthBars",
+//        "_wifiLinkWarning",
+//        "_enableRSSI",
+//        "_showRSSI"
         switch (netType) {
             case 0:
-                status = HGNetWorkTypeNONE;
+                status = HGNetWorkTypeNoService;
                 break;
             case 1://实际上是2G
                 status = HGNetWorkType2G;
@@ -155,11 +168,14 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
             case 3:
                 status = HGNetWorkType4G;
                 break;
+            case 4:
+                status = HGNetWorkTypeLTE;
+                break;
             case 5:
                 status = HGNetWorkTypeWiFi;
                 break;
             default:
-                status = HGNetWorkTypeUnkonow;
+                status = HGNetWorkTypeUnknow;
                 break;
         }
     }
