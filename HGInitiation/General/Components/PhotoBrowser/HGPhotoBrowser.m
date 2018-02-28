@@ -215,6 +215,9 @@ static NSString *Identifier = @"Identifier";
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self doneAction:nil];
+}
 
 
 #pragma mark - HGZoomImageViewDelegate

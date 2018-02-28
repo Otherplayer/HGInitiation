@@ -27,14 +27,6 @@
         _imageView;
     });
     
-    
-    //create shape layer
-//    CAShapeLayer *blueLayer = [CAShapeLayer layer];
-//    blueLayer.frame = self.imageView.bounds;
-//    blueLayer.fillColor = [UIColor blueColor].CGColor;
-//    blueLayer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 288, 180) cornerRadius:20].CGPath;
-//    [self.imageView.layer addSublayer:blueLayer];
-    
     [self.view addSubview:self.imageView];
     
     
