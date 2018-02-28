@@ -20,12 +20,20 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.imageView = ({
-        _imageView = [UIImageView.alloc initWithFrame:CGRectMake(100, 100, 288, 180)];//2880 1800
+        _imageView = [UIImageView.alloc initWithFrame:CGRectMake(20, 100, 288, 180)];//2880 1800
         _imageView.image = [UIImage imageNamed:@"1.jpg"];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.userInteractionEnabled = YES;
         _imageView;
     });
+    
+    
+    //create shape layer
+//    CAShapeLayer *blueLayer = [CAShapeLayer layer];
+//    blueLayer.frame = self.imageView.bounds;
+//    blueLayer.fillColor = [UIColor blueColor].CGColor;
+//    blueLayer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 288, 180) cornerRadius:20].CGPath;
+//    [self.imageView.layer addSublayer:blueLayer];
     
     [self.view addSubview:self.imageView];
     
