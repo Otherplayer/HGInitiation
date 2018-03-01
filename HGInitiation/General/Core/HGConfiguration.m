@@ -82,6 +82,7 @@
     _navBarTintColor = navBarTintColor;
     if (navBarTintColor) {
         [UIViewController visibleViewController].navigationController.navigationBar.tintColor = _navBarTintColor;
+        [UIViewController visibleViewController].navigationController.navigationBar.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
     }
 }
 

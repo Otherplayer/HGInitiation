@@ -44,6 +44,7 @@
     
 //    [self funCopy];
 //    [self funGCDSource];
+    [self funLock];
     
 }
 
@@ -112,6 +113,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - lock
+
+- (void)funLock {
+    NSRecursiveLock *lock = [[NSRecursiveLock alloc] init];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        static void (^RecursiveMethod)(int);
+        RecursiveMethod = ^(int value) {
+            [lock lock];
+            if (value > 0) {
+                NSLog(@"value = %d", value);
+                sleep(2);
+                RecursiveMethod(value - 1);
+            }
+            [lock unlock];
+            NSLog(@"unlock");
+        };
+        RecursiveMethod(5);
+    });
 }
 
 #pragma mark - funGCDSource
