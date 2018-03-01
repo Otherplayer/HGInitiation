@@ -37,7 +37,7 @@ CGFloat currentPage = 0;
 
 @implementation ViewController
 
-#pragma mark - life
+#pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,6 +63,8 @@ CGFloat currentPage = 0;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - event response
 
 #pragma mark - UITableViewDataSource
 
@@ -224,6 +226,16 @@ CGFloat currentPage = 0;
     [controller.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - HGChangingThemeDelegate
+
+- (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
+    [super themeBeforeChanged:themeBeforeChanged afterChanged:themeAfterChanged];
+    //    NSLog(@"%@ %@",themeAfterChanged,themeBeforeChanged);
+    
+}
+
+#pragma mark - private method
+
 #pragma mark - initiate
 
 - (void)initiateDatas {
@@ -279,12 +291,6 @@ CGFloat currentPage = 0;
 }
 
 
-#pragma mark - HGChangingThemeDelegate
 
-- (void)themeBeforeChanged:(NSObject<HGThemeProtocol> *)themeBeforeChanged afterChanged:(NSObject<HGThemeProtocol> *)themeAfterChanged {
-    [super themeBeforeChanged:themeBeforeChanged afterChanged:themeAfterChanged];
-//    NSLog(@"%@ %@",themeAfterChanged,themeBeforeChanged);
-    
-}
 
 @end
