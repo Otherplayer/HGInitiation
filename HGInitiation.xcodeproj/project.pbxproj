@@ -11,6 +11,7 @@
 		630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B02004C11F00F91211 /* HGScrollDefaultImage.m */; };
 		630498B42005E99F00F91211 /* HGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B32005E99F00F91211 /* HGPageControl.m */; };
 		6306DF5E2031814700959275 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6306DF5D2031814700959275 /* 1.jpg */; };
+		631022182047913D00876AB6 /* large_leaves_70mp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 631022172047913D00876AB6 /* large_leaves_70mp.jpg */; };
 		631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8682017207C00E9D8A2 /* UIImage+HG.m */; };
 		631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE86E2017275F00E9D8A2 /* HGThemeDefault.m */; };
 		631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8712017280700E9D8A2 /* HGThemeManager.m */; };
@@ -82,6 +83,7 @@
 		630498B22005E99F00F91211 /* HGPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageControl.h; sourceTree = "<group>"; };
 		630498B32005E99F00F91211 /* HGPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageControl.m; sourceTree = "<group>"; };
 		6306DF5D2031814700959275 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		631022172047913D00876AB6 /* large_leaves_70mp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = large_leaves_70mp.jpg; sourceTree = "<group>"; };
 		631FE8672017207C00E9D8A2 /* UIImage+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HG.h"; sourceTree = "<group>"; };
 		631FE8682017207C00E9D8A2 /* UIImage+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HG.m"; sourceTree = "<group>"; };
 		631FE86C201726C500E9D8A2 /* HGThemeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGThemeProtocol.h; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		635C24FD1FFCDF190070BC46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				631022172047913D00876AB6 /* large_leaves_70mp.jpg */,
 				6306DF5D2031814700959275 /* 1.jpg */,
 			);
 			path = Resources;
@@ -657,6 +660,7 @@
 				6306DF5E2031814700959275 /* 1.jpg in Resources */,
 				63880BA11FF0DD5F00DAFD68 /* Assets.xcassets in Resources */,
 				63880B9F1FF0DD5F00DAFD68 /* Main.storyboard in Resources */,
+				631022182047913D00876AB6 /* large_leaves_70mp.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
