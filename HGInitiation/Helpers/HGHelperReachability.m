@@ -26,6 +26,19 @@
     return reachability;
 }
 
++ (id)sharedInstance2{
+    static __weak HGHelperReachability *instance;
+    HGHelperReachability *strongInstance = instance;
+    @synchronized(self) {
+        if (strongInstance == nil) {
+            strongInstance = [[[self class] alloc] init];
+            instance = strongInstance;
+        }
+    }
+    return strongInstance;
+}
+
+
 - (instancetype)init{
     self = [super init];
     if (self) {

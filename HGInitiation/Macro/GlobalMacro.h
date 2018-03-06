@@ -49,6 +49,12 @@
 #define UIColorMake(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define UIColorMakeWithRGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/1.0]
 
+
+#define WeakObject(obj) __weak typeof(obj) weakObject = obj;
+#define StrongObject(obj) __strong typeof(obj) strongObject = weakObject;
+
+
+
 //日志
 ////复杂点的
 //#ifdef DEBUG

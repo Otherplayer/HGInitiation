@@ -248,6 +248,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6312A6E7204E679400D7F5EF /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
+				635C24E31FFB6D3A0070BC46 /* HGTextFieldController.m */,
+				635C24E91FFB8BAB0070BC46 /* HGTextViewController.h */,
+				635C24EA1FFB8BAB0070BC46 /* HGTextViewController.m */,
+				635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */,
+				635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */,
+				635C57C720033319004CE18B /* HGBrowserController.h */,
+				635C57C820033319004CE18B /* HGBrowserController.m */,
+				635C57CD20048E29004CE18B /* HGScrollController.h */,
+				635C57CE20048E29004CE18B /* HGScrollController.m */,
+				63D559752007516100BBA0BE /* HGWaterfallController.h */,
+				63D559762007516100BBA0BE /* HGWaterfallController.m */,
+				63A0C70D2041487700FFD56E /* HGOtherController.h */,
+				63A0C70E2041487700FFD56E /* HGOtherController.m */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		6312A6E8204E67AE00D7F5EF /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
 		631FE86B201726A400E9D8A2 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,11 +429,13 @@
 		63880B961FF0DD5F00DAFD68 /* HGInitiation */ = {
 			isa = PBXGroup;
 			children = (
+				6312A6E8204E67AE00D7F5EF /* Vendors */,
 				635C24FD1FFCDF190070BC46 /* Resources */,
 				63880BBA1FF0E9FF00DAFD68 /* General */,
 				63880BB01FF0DDF500DAFD68 /* Helpers */,
 				63880BAF1FF0DDE900DAFD68 /* Macro */,
 				63880BAE1FF0DDDE00DAFD68 /* Network */,
+				6312A6E7204E679400D7F5EF /* Sections */,
 				63880B971FF0DD5F00DAFD68 /* AppDelegate.h */,
 				63880B981FF0DD5F00DAFD68 /* AppDelegate.m */,
 				63880B9A1FF0DD5F00DAFD68 /* ViewController.h */,
@@ -416,20 +446,6 @@
 				63880BA51FF0DD5F00DAFD68 /* Info.plist */,
 				63880BAD1FF0DD9000DAFD68 /* PrefixHeader.pch */,
 				63880BA61FF0DD5F00DAFD68 /* main.m */,
-				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
-				635C24E31FFB6D3A0070BC46 /* HGTextFieldController.m */,
-				635C24E91FFB8BAB0070BC46 /* HGTextViewController.h */,
-				635C24EA1FFB8BAB0070BC46 /* HGTextViewController.m */,
-				635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */,
-				635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */,
-				635C57C720033319004CE18B /* HGBrowserController.h */,
-				635C57C820033319004CE18B /* HGBrowserController.m */,
-				635C57CD20048E29004CE18B /* HGScrollController.h */,
-				635C57CE20048E29004CE18B /* HGScrollController.m */,
-				63D559752007516100BBA0BE /* HGWaterfallController.h */,
-				63D559762007516100BBA0BE /* HGWaterfallController.m */,
-				63A0C70D2041487700FFD56E /* HGOtherController.h */,
-				63A0C70E2041487700FFD56E /* HGOtherController.m */,
 			);
 			path = HGInitiation;
 			sourceTree = "<group>";
