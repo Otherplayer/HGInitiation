@@ -16,6 +16,16 @@
 #define CAMERA_DISTANCE 500
 #define PERSPECTIVE(z) (float)CAMERA_DISTANCE/(z + CAMERA_DISTANCE)
 
+
+@interface Transaction : NSObject
+@property (nonatomic, strong) NSString *payee;
+@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) NSDate *date;
+@end
+@implementation Transaction
+@end
+
+
 @interface HGOtherController ()<UIScrollViewDelegate>
 @property(nonatomic,strong) NSMutableArray *datas;
 @property(nonatomic,strong) UIScrollView *scrollView;
@@ -44,7 +54,8 @@
     
 //    [self funCopy];
 //    [self funGCDSource];
-    [self funLock];
+//    [self funLock];
+    [self funKVC];
     
 }
 
@@ -190,42 +201,68 @@
 //    });
 //    dispatch_resume(timerSource);
     
-//    dispatch_group_t group = dispatch_group_create();
-//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
-//    for (int i = 0; i < 100; i++){
-//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-//        dispatch_group_async(group, queue, ^{
-//            NSLog(@"%i",i);
-//            sleep(2);
-//            dispatch_semaphore_signal(semaphore);
-//        });
-//    }
-//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
+    for (int i = 0; i < 100; i++){
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_group_async(group, queue, ^{
+            NSLog(@"%i",i);
+            sleep(2);
+            dispatch_semaphore_signal(semaphore);
+        });
+    }
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
-    __block int product = 0;
-    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-    dispatch_async(queue, ^{ //消费者队列
-        while (YES) {
-            if(!dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)){
-                usleep(500000);
-                NSLog(@"消费%d产品",product);
-                product--;
-            };
-        }
-    });
-    dispatch_async(queue, ^{ //生产者队列
-        while (YES) {
-            sleep(1); //wait for a while
-            product++;
-            NSLog(@"生产%d产品",product);
-            dispatch_semaphore_signal(sem);
-        }
-    });
+//    __block int product = 0;
+//    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+//    dispatch_async(queue, ^{ //消费者队列
+//        while (YES) {
+//            if(!dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)){
+//                usleep(500000);
+//                NSLog(@"消费%d产品",product);
+//                product--;
+//            };
+//        }
+//    });
+//    dispatch_async(queue, ^{ //生产者队列
+//        while (YES) {
+//            sleep(1); //wait for a while
+//            product++;
+//            NSLog(@"生产%d产品",product);
+//            dispatch_semaphore_signal(sem);
+//        }
+//    });
     
     
 }
 - (void)checkForFile {
     
+}
+- (void)funKVC {
+    NSMutableArray *transactions = [NSMutableArray.alloc init];
+    for (int i = 0; i < 20; i++) {
+        Transaction *trans = [Transaction.alloc init];
+        trans.date = [NSDate dateWithTimeIntervalSinceNow:i];
+        trans.amount = @(i);
+        trans.payee = [NSString stringWithFormat:@"%@",@(i % 10)];
+        [transactions addObject:trans];
+    }
+    
+    NSNumber *transactionAverage = [transactions valueForKeyPath:@"@avg.amount"];
+    NSNumber *numberOfTransactions = [transactions valueForKeyPath:@"@count"];
+    NSNumber *amountSum = [transactions valueForKeyPath:@"@sum.amount"];
+    NSDate *latestDate = [transactions valueForKeyPath:@"@max.date"];
+    NSDate *earliestDate = [transactions valueForKeyPath:@"@min.date"];
+    NSArray *payees = [transactions valueForKeyPath:@"@unionOfObjects.payee"];
+    NSArray *distinctPayees = [transactions valueForKeyPath:@"@distinctUnionOfObjects.payee"];
+    
+    NSLog(@"%@",transactionAverage);
+    NSLog(@"%@",numberOfTransactions);
+    NSLog(@"%@",amountSum);
+    NSLog(@"%@",latestDate);
+    NSLog(@"%@",earliestDate);
+    NSLog(@"%@",payees);
+    NSLog(@"%@",distinctPayees);
 }
 
 

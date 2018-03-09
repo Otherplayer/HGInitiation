@@ -52,6 +52,9 @@ CGFloat currentPage = 0;
         [HGHelperPush push:@{HGPushClassName:@"HGOtherController"}];
     });
     
+    
+    
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
