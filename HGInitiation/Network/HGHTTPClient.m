@@ -22,67 +22,67 @@
 }
 #pragma mark - symbol
 - (NSURLSessionDataTask *)fetchSymbols:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:@"public/symbol"]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:@"public/symbol"]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 - (NSURLSessionDataTask *)fetchSymbolInfo:(NSString *)symbolId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/symbol/" stringByAppendingString:symbolId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/symbol/" stringByAppendingString:symbolId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - currency
 - (NSURLSessionDataTask *)fetchCurrencies:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:@"public/currency"]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:@"public/currency"]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 - (NSURLSessionDataTask *)fetchCurrencyInfo:(NSString *)currencyId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/currency/" stringByAppendingString:currencyId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/currency/" stringByAppendingString:currencyId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - ticker
 - (NSURLSessionDataTask *)fetchTickers:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:@"public/ticker"]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:@"public/ticker"]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 - (NSURLSessionDataTask *)fetchTicker4Symbol:(NSString *)symbolId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/ticker/" stringByAppendingString:symbolId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/ticker/" stringByAppendingString:symbolId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - trades
 - (NSURLSessionDataTask *)fetchTrades:(NSString *)symbolId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/trades/" stringByAppendingString:symbolId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/trades/" stringByAppendingString:symbolId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - orderbook
 - (NSURLSessionDataTask *)fetchOrderbook:(NSString *)symbolId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/orderbook/" stringByAppendingString:symbolId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/orderbook/" stringByAppendingString:symbolId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - candles
 - (NSURLSessionDataTask *)fetchCandles:(NSString *)symbolId completed:(HGHTTPResultHandler)completed {
-    NSURLSessionDataTask *dataTask = [self.service GET:[self url:[@"public/candles/" stringByAppendingString:symbolId]]
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlDefault:[@"public/candles/" stringByAppendingString:symbolId]]
                                                 params:nil
                                              completed:completed];
     return dataTask;
 }
 #pragma mark - BASE URL
 
-- (NSString *)url:(NSString *)target {
+- (NSString *)urlDefault:(NSString *)target {
     return [NSString stringWithFormat:@"%@%@",BASE_API_URL,target];
 }
 - (NSString *)urlGithub:(NSString *)target {
