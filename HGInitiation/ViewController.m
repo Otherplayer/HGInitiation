@@ -49,7 +49,7 @@ CGFloat currentPage = 0;
     double delayInSeconds = 1.2f;
     dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-        [HGHelperPush push:@{HGPushClassName:@"HGOtherController"}];
+        [HGHelperPush push:@{HGPushClassName:@"HGPagesController"}];
     });
     
     
@@ -257,6 +257,8 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGBrowserController"}},
                    @{TITLE:@"瀑布流",
                      PARAMS:@{HGPushClassName:@"HGWaterfallController"}},
+                   @{TITLE:@"Pages",
+                     PARAMS:@{HGPushClassName:@"HGPagesController"}},
                    @{TITLE:@"Picker",
                      TYPE:@(HGDataType_Picker)},
                    @{TITLE:@"Datepicker",

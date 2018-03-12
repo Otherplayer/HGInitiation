@@ -64,6 +64,8 @@
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
 		63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7172043EC7C00FFD56E /* Reachability.m */; };
+		63B9A168205628070006B2E9 /* HGPagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A167205628070006B2E9 /* HGPagesController.m */; };
+		63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A16A205648DF0006B2E9 /* HGPageContentController.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -189,6 +191,10 @@
 		63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachability.m; sourceTree = "<group>"; };
 		63A0C7162043EC7C00FFD56E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		63A0C7172043EC7C00FFD56E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		63B9A166205628070006B2E9 /* HGPagesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPagesController.h; sourceTree = "<group>"; };
+		63B9A167205628070006B2E9 /* HGPagesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPagesController.m; sourceTree = "<group>"; };
+		63B9A169205648DF0006B2E9 /* HGPageContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageContentController.h; sourceTree = "<group>"; };
+		63B9A16A205648DF0006B2E9 /* HGPageContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageContentController.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -265,6 +271,10 @@
 				63D559762007516100BBA0BE /* HGWaterfallController.m */,
 				63A0C70D2041487700FFD56E /* HGOtherController.h */,
 				63A0C70E2041487700FFD56E /* HGOtherController.m */,
+				63B9A166205628070006B2E9 /* HGPagesController.h */,
+				63B9A167205628070006B2E9 /* HGPagesController.m */,
+				63B9A169205648DF0006B2E9 /* HGPageContentController.h */,
+				63B9A16A205648DF0006B2E9 /* HGPageContentController.m */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -760,6 +770,7 @@
 				632B7AB01FF22B93000F57A3 /* HGImagePreviewController.m in Sources */,
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
 				631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */,
+				63B9A168205628070006B2E9 /* HGPagesController.m in Sources */,
 				635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */,
 				630498B42005E99F00F91211 /* HGPageControl.m in Sources */,
 				632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */,
@@ -778,6 +789,7 @@
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,
 				632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */,
+				63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */,
 				635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */,
 				635C24E41FFB6D3A0070BC46 /* HGTextFieldController.m in Sources */,
 				63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */,

@@ -53,9 +53,9 @@
     self.scrollView.layer.sublayerTransform = transform;
     
 //    [self funCopy];
-//    [self funGCDSource];
+    [self funGCDSource];
 //    [self funLock];
-    [self funKVC];
+//    [self funKVC];
     
 }
 
@@ -201,18 +201,20 @@
 //    });
 //    dispatch_resume(timerSource);
     
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
-    for (int i = 0; i < 100; i++){
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        dispatch_group_async(group, queue, ^{
-            NSLog(@"%i",i);
-            sleep(2);
-            dispatch_semaphore_signal(semaphore);
-        });
-    }
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
+//    for (int i = 0; i < 10; i++){
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_group_async(group, queue, ^{
+//            sleep(i);
+//            NSLog(@"%i",i);
+//            dispatch_semaphore_signal(semaphore);
+//        });
+//    }
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//    dispatch_group_notify(group, queue, ^{
+//        NSLog(@"Upload images Done.");
+//    });
 //    __block int product = 0;
 //    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
 //    dispatch_async(queue, ^{ //消费者队列
@@ -232,7 +234,6 @@
 //            dispatch_semaphore_signal(sem);
 //        }
 //    });
-    
     
 }
 - (void)checkForFile {
