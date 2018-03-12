@@ -81,24 +81,29 @@
         UITableView *tableView = object;
         CGFloat contentOffsetY = tableView.contentOffset.y;
         
-        if (contentOffsetY < headerViewScrollStopY) {
-            self.headerView.top = - tableView.contentOffset.y + NAVandSTATUS_BAR_HEIHGT;
-            // Sync contentOffset
-            for (UITableViewController *controller in self.childViewControllers) {
-                if (controller.tableView.contentOffset.y != tableView.contentOffset.y) {
-                    controller.tableView.contentOffset = tableView.contentOffset;
+        if (contentOffsetY >= 0) {
+            if (contentOffsetY < headerViewScrollStopY) {
+                self.headerView.top = - tableView.contentOffset.y + NAVandSTATUS_BAR_HEIHGT;
+                // Sync contentOffset
+                self.scrollView.top = self.headerView.bottom;
+                for (UITableViewController *controller in self.childViewControllers) {
+                    if (controller.tableView.contentOffset.y != tableView.contentOffset.y) {
+                        controller.tableView.contentOffset = tableView.contentOffset;
+                    }
                 }
-            }
-        } else {
-            self.headerView.top = - headerViewScrollStopY + NAVandSTATUS_BAR_HEIHGT;
-            for (UITableViewController *controller in self.childViewControllers) {
-                if (controller.tableView.contentOffset.y < headerViewScrollStopY) {
-                    CGPoint contentOffset = controller.tableView.contentOffset;
-                    contentOffset.y = headerViewScrollStopY;
-                    controller.tableView.contentOffset = contentOffset;
+            } else {
+                self.headerView.top = - headerViewScrollStopY + NAVandSTATUS_BAR_HEIHGT;
+                self.scrollView.top = self.headerView.bottom;
+                for (UITableViewController *controller in self.childViewControllers) {
+                    if (controller.tableView.contentOffset.y < headerViewScrollStopY) {
+                        CGPoint contentOffset = controller.tableView.contentOffset;
+                        contentOffset.y = headerViewScrollStopY;
+                        controller.tableView.contentOffset = contentOffset;
+                    }
                 }
             }
         }
+        
     }
 }
 #pragma mark - UIScrollViewDelegate

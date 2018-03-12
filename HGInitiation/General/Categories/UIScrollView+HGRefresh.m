@@ -23,14 +23,15 @@
         header.mj_h = 40;
         header.pullingPercent = 0.7;
         
-        [header setTitle:@"下拉关闭当前页面" forState:MJRefreshStateIdle];
-        [header setTitle:@"松开关闭页面" forState:MJRefreshStatePulling];
-        [header setTitle:@"关闭中..." forState:MJRefreshStateRefreshing];
+        [header setTitle:@"下拉刷新数据" forState:MJRefreshStateIdle];
+        [header setTitle:@"松开开始刷新" forState:MJRefreshStatePulling];
+        [header setTitle:@"拼命刷新中 ..." forState:MJRefreshStateRefreshing];
         
         header.stateLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
         header.stateLabel.textColor = [UIColor colorWithWhite:1 alpha:0.75];
         
         self.mj_header = header;
+        self.mj_header.backgroundColor = [UIColor redColor];
         
         self.mj_header.automaticallyChangeAlpha = YES;
     }

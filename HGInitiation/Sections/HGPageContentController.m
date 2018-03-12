@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -26,14 +26,29 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, SCREEN_WIDTH * 9 / 16.0)];
-    tableHeaderView.backgroundColor = [UIColor orangeColor];
+//    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, SCREEN_WIDTH * 9 / 16.0)];
+//    tableHeaderView.backgroundColor = [UIColor orangeColor];
+//    self.tableView.tableHeaderView = tableHeaderView;
     
-    self.tableView.tableHeaderView = tableHeaderView;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"identifier"];
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
+    
+    WeakObject(self);
+    [self.tableView addRefreshingHeader:^{
+        double delayInSeconds = 2.f;
+        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        // 得到全局队列
+        dispatch_queue_t concurrentQueue = dispatch_get_main_queue();
+        // 延期执行
+        dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+            [weakObject.tableView endRefreshing];
+        });
+    }];
+    [self.tableView addRefreshingFooter:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
