@@ -86,11 +86,10 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     hud.margin = 0.f;
     hud.mode = MBProgressHUDModeCustomView;
     hud.customView = backg;
-    hud.dimBackground = NO;
+    //    hud.dimBackground = NO;
     hud.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.210];
     hud.removeFromSuperViewOnHide = YES;
-    
-    [hud hide:YES afterDelay:delay];
+    [hud hideAnimated:YES afterDelay:delay];
     
     return hud;
     
@@ -123,31 +122,31 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
         
         
         NSString *fixText = text?:@"";
-        _HUD.detailsLabelText = fixText;
-        _HUD.detailsLabelFont = [UIFont systemFontOfSize:15];
+        _HUD.detailsLabel.text = fixText;
+        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
         [_HUD setMinSize:CGSizeMake(100, 44)];
         
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
         
         switch (position) {
             case HGHUDPosition_top:{
-                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabelText, _HUD.detailsLabelFont, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
+                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabel.text, _HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
                 CGFloat yoffset = screenSize.height/2 - detailsLabelSize.height / 2 - self.margin * 1.5 - 64;
-                [_HUD setYOffset:-yoffset];
+                [_HUD setOffset:CGPointMake(_HUD.offset.x, yoffset)];
             }
                 break;
             case HGHUDPosition_bottom:{
-                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabelText, _HUD.detailsLabelFont, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
+                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabel.text, _HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
                 CGFloat yoffset = screenSize.height/2 - detailsLabelSize.height / 2 - self.margin * 1.5 - 64;
-                [_HUD setYOffset:yoffset];
+                [_HUD setOffset:CGPointMake(_HUD.offset.x, yoffset)];
             }
                 break;
             default:
                 break;
         }
         
-        [_HUD show:YES];
-        [_HUD hide:YES afterDelay:dealy];
+        [_HUD showAnimated:YES];
+        [_HUD hideAnimated:YES afterDelay:dealy];
     });
 }
 
@@ -155,10 +154,10 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.HUD setMode:MBProgressHUDModeIndeterminate];
         NSString *fixText = text?:@"";
-        _HUD.detailsLabelText = fixText;
-        _HUD.detailsLabelFont = [UIFont systemFontOfSize:15];
-        [_HUD show:YES];
-        [_HUD hide:YES afterDelay:dealy];
+        _HUD.detailsLabel.text = fixText;
+        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [_HUD showAnimated:YES];
+        [_HUD hideAnimated:YES afterDelay:dealy];
     });
 }
 
@@ -166,9 +165,9 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.HUD setMode:MBProgressHUDModeAnnularDeterminate];
         NSString *fixText = text?:@"";
-        _HUD.detailsLabelText = fixText;
-        _HUD.detailsLabelFont = [UIFont systemFontOfSize:15];
-        [_HUD show:YES];
+        _HUD.detailsLabel.text = fixText;
+        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [_HUD showAnimated:YES];
     });
 }
 
@@ -181,7 +180,7 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
 
 - (void)hideImmediately{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_HUD hide:YES];
+        [_HUD hideAnimated:YES];
         [_HUD removeFromSuperview];
     });
 }
@@ -192,13 +191,12 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     [_HUD removeFromSuperview];
     _HUD = nil;
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    _HUD = [self initWithWindow:window];
+    _HUD = [self initWithView:window];
     
     [window addSubview:_HUD];
     
     _HUD.delegate = nil;
     _HUD.margin = 10.f;
-    _HUD.dimBackground = NO;
     _HUD.removeFromSuperViewOnHide = YES;
     return _HUD;
 }
@@ -212,10 +210,10 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     self.superView = view;
     [self hideHud];
     NSString *fixText = text?text:@"";
-    self.hud.detailsLabelText = fixText;
+    self.hud.detailsLabel.text = fixText;
     [self.hud setMode:MBProgressHUDModeText];
-    [self.hud show:YES];
-    [self.hud hide:YES afterDelay:dealy];
+    [self.hud showAnimated:YES];
+    [self.hud hideAnimated:YES afterDelay:dealy];
 }
 
 
@@ -224,14 +222,14 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     self.superView = view;
     [self hideHud];
     NSString *fixText = text?text:@"";
-    self.hud.detailsLabelText = fixText;
+    self.hud.detailsLabel.text = fixText;
     [self.hud setMode:MBProgressHUDModeIndeterminate];
-    [self.hud show:YES];
-    [self.hud hide:YES afterDelay:delay];
+    [self.hud showAnimated:YES];
+    [self.hud hideAnimated:YES afterDelay:delay];
 }
 
 - (void)hideHud{
-    [_hud hide:YES];
+    [_hud hideAnimated:YES];
     [_hud removeFromSuperview];
     _hud = nil;
 }
@@ -241,9 +239,8 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
         _hud = [[HGHelperHUD alloc] initWithView:self.superView];
         [self.superView addSubview:_hud];
         _hud.margin = 10.f;
-        _hud.dimBackground = NO;
         _hud.removeFromSuperViewOnHide = YES;
-        _hud.detailsLabelFont = [UIFont systemFontOfSize:15];
+        _hud.detailsLabel.font = [UIFont systemFontOfSize:15];
         [_hud setMinSize:CGSizeMake(44, 44)];
     }
     return _hud;
