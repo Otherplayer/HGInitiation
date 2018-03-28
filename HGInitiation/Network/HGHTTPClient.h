@@ -33,5 +33,4 @@
 /// Candles
 - (NSURLSessionDataTask *)fetchCandles:(NSString *)symbolId completed:(HGHTTPResultHandler)completed;
 
-
 @end

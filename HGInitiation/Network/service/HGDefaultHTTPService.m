@@ -11,6 +11,7 @@
 
 @interface HGDefaultHTTPService ()
 @property (nonatomic, strong) AFHTTPSessionManager *httpManager;
+
 @end
 
 @implementation HGDefaultHTTPService
@@ -78,7 +79,7 @@
         [self handleError:error task:task completedHandler:completed];
     }];
 }
-/// 上传文件
+/// 上传小文件
 - (NSURLSessionDataTask *)UPLOAD:(NSString *)URLString file:(NSString *)file data:(NSData *)data name:(NSString *)name type:(NSString *)type progress:(HGHTTPProgressHandler)progress completed:(HGHTTPResultHandler)completed{
     NSParameterAssert(type);
     return [self.httpManager POST:URLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -94,6 +95,8 @@
         [self handleError:error task:task completedHandler:completed];
     }];
 }
+
+
 
 - (void)abort {
     if ([self canAbort]) {
@@ -130,8 +133,6 @@
     NSLog(@"【$$$$ERROR!!】%@",Error);
     completed(NO,Error.localizedDescription,nil);
 }
-
-
 
 
 

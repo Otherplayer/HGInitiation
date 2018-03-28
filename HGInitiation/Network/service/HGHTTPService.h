@@ -11,7 +11,7 @@
 @protocol HGHTTPServiceProtocol
 
 typedef void (^HGHTTPResultHandler)(BOOL success, NSString *errDesc, id responseData);
-typedef void (^HGHTTPProgressHandler)(NSProgress *uploadProgress);
+typedef void (^HGHTTPProgressHandler)(NSProgress *progress);
 
 /// POST 请求
 - (NSURLSessionDataTask *)POST:(NSString *)URLString
@@ -29,7 +29,7 @@ typedef void (^HGHTTPProgressHandler)(NSProgress *uploadProgress);
 - (NSURLSessionDataTask *)POSTForm:(NSString *)URLString
                             params:(id)parameters
                          completed:(HGHTTPResultHandler)completed;
-/// 上传文件
+/// 上传小文件
 - (NSURLSessionDataTask *)UPLOAD:(NSString *)URLString
                             file:(NSString *)file //服务端标识eg:file
                             data:(NSData *)data   //要上传的数据
@@ -37,6 +37,7 @@ typedef void (^HGHTTPProgressHandler)(NSProgress *uploadProgress);
                             type:(NSString *)type //上传文件类型eg:jpg
                         progress:(HGHTTPProgressHandler)progress
                        completed:(HGHTTPResultHandler)completed;
+
 - (void)abort;
 
 
