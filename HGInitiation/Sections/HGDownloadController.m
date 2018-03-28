@@ -59,8 +59,8 @@
     
     [self.downloader downloadWithUrlString:url localInfo:^(NSDictionary *localInfo) {
         if (localInfo) {
-            NSNumber *completedUnitCount = localInfo[kNSURLSessionResumeBytesCompletedUnitCount];
-            NSNumber *totalUnitCount = localInfo[kNSURLSessionResumeBytesTotalUnitCount];
+            NSNumber *completedUnitCount = localInfo[HGURLSessionResumeBytesCompletedUnitCount];
+            NSNumber *totalUnitCount = localInfo[HGURLSessionResumeBytesTotalUnitCount];
             NSString *info = [NSString stringWithFormat:@"[0]当前下载进度:%.4f%%", 100.0 * completedUnitCount.doubleValue / totalUnitCount.doubleValue];
             [weakSelf.labInfor setText:info];
         }

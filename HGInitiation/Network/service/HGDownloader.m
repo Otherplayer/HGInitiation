@@ -8,10 +8,9 @@
 
 #import "HGDownloader.h"
 #import <AFNetworking.h>
-#import "HGHTTPConfiguration.h"
 
-NSString *const kNSURLSessionResumeBytesTotalUnitCount = @"NSURLSessionResumeBytesTotalUnitCount";
-NSString *const kNSURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResumeBytesReceived";
+NSString *const HGURLSessionResumeBytesTotalUnitCount = @"NSURLSessionResumeBytesTotalUnitCount";
+NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResumeBytesReceived";
 
 @interface HGDownloader()
 @property(nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
@@ -30,6 +29,7 @@ NSString *const kNSURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResum
 //https://blog.csdn.net/u012361288/article/details/54615919
 
 - (void)downloadWithUrlString:(NSString *)URLString localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed{
+    
     
     self.targetUrl = URLString;
     self.progressHandler = progress;
@@ -75,7 +75,8 @@ NSString *const kNSURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResum
                 weakSelf.completedHandler(NO, error.localizedDescription, filePath.path);
             }
         }else{
-            self.completedHandler(YES, error.localizedDescription, filePath.path);
+            
+            weakSelf.completedHandler(YES, error.localizedDescription, filePath.path);
         }
     }];
     
@@ -117,7 +118,7 @@ NSString *const kNSURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResum
         }
         NSError *error;
         NSMutableDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:resumeData options:NSPropertyListImmutable format:NULL error:&error];
-        [resumeDictionary setObject:@(weakSelf.totalUnitCount) forKey:kNSURLSessionResumeBytesTotalUnitCount];
+        [resumeDictionary setObject:@(weakSelf.totalUnitCount) forKey:HGURLSessionResumeBytesTotalUnitCount];
         if (error) {
             return;
         }
@@ -128,6 +129,15 @@ NSString *const kNSURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResum
         [weakSelf.userDefaults setObject:data forKey:key];
         [weakSelf.userDefaults synchronize];
     }];
+}
+
+- (void)cancel {
+    [self.downloadTask cancel];
+    self.downloadTask = nil;
+    self.totalUnitCount = 0;
+    NSString *key = [self cacheKeyForUrlString:self.targetUrl];
+    [self.userDefaults removeObjectForKey:key];
+    [self.userDefaults synchronize];
 }
 
 #pragma mark - Private
