@@ -39,22 +39,31 @@
         _labInfor.textColor = [UIColor blueColor];
         _labInfor.textAlignment = NSTextAlignmentCenter;
         _labInfor.numberOfLines = 0;
+        _labInfor.text = @"0%";
         _labInfor;
     });
     [self.view addSubview:self.labInfor];
+    
+    self.downloader = [HGDownloader.alloc init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *url = @"http://appldnld.apple.com/ios11.3seed/091-73590-20180316-E1B2451A-27AA-11E8-8D8B-C323A798A6CA/iPhone10,3,iPhone10,6_11.3_15E5216a_Restore.ipsw";//大文件
-//    url = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.4.0.dmg";//小文件
-    
     __weak typeof(self) weakSelf = self;
-    self.downloader = [HGDownloader.alloc init];
-    [self.downloader download:url config:^(NSDictionary *configInfo) {
-        NSLog(@"%@",configInfo);
+    
+    NSString *url = @"http://appldnld.apple.com/ios11.3seed/091-73590-20180316-E1B2451A-27AA-11E8-8D8B-C323A798A6CA/iPhone10,3,iPhone10,6_11.3_15E5216a_Restore.ipsw";//大文件
+    url = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.4.0.dmg";//小文件
+    
+    
+    [self.downloader downloadWithUrlString:url localInfo:^(NSDictionary *localInfo) {
+        if (localInfo) {
+            NSNumber *completedUnitCount = localInfo[kNSURLSessionResumeBytesCompletedUnitCount];
+            NSNumber *totalUnitCount = localInfo[kNSURLSessionResumeBytesTotalUnitCount];
+            NSString *info = [NSString stringWithFormat:@"[0]当前下载进度:%.4f%%", 100.0 * completedUnitCount.doubleValue / totalUnitCount.doubleValue];
+            [weakSelf.labInfor setText:info];
+        }
     } progress:^(NSProgress *progress) {
         NSString *info = [NSString stringWithFormat:@"[1]当前下载进度:%.4f%%",100.0 * progress.completedUnitCount / progress.totalUnitCount];
         dispatch_async(dispatch_get_main_queue(), ^{
