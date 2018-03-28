@@ -28,9 +28,8 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
 //https://www.jianshu.com/p/1211cf99dfc3
 //https://blog.csdn.net/u012361288/article/details/54615919
 
-- (void)downloadWithUrlString:(NSString *)URLString localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed{
-    
-    
+
+- (void)downloadWithUrlString:(NSString *)URLString coverLocal:(BOOL)coverLocal localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed {
     self.targetUrl = URLString;
     self.progressHandler = progress;
     self.completedHandler = completed;
@@ -44,13 +43,20 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
     
     NSString *key = [self cacheKeyForUrlString:self.targetUrl];
     
-    // check local info for target url
-    NSData *resumeData = [self.userDefaults objectForKey:key];
-    if (resumeData) {
+    if (coverLocal) {
+        [self.userDefaults removeObjectForKey:key];
+    }
+    if (localInfoHandler) {
+        NSMutableDictionary *resumeDictionary;
         NSError *error;
-        NSMutableDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:resumeData options:NSPropertyListImmutable format:NULL error:&error];
-        if (!error && localInfoHandler) {
+        NSData *resumeData = [self.userDefaults objectForKey:key];
+        if (resumeData) {
+            resumeDictionary = [NSPropertyListSerialization propertyListWithData:resumeData options:NSPropertyListImmutable format:NULL error:&error];
+        }
+        if (resumeDictionary && !error) {
             localInfoHandler(resumeDictionary);
+        }else {
+            localInfoHandler(nil);
         }
     }
     
@@ -79,7 +85,9 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
             weakSelf.completedHandler(YES, error.localizedDescription, filePath.path);
         }
     }];
-    
+}
+- (void)downloadWithUrlString:(NSString *)URLString localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed{
+    [self downloadWithUrlString:URLString coverLocal:NO localInfo:localInfoHandler progress:progress completed:completed];
 }
 
 - (void)start {

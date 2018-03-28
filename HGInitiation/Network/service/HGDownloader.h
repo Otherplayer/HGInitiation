@@ -20,7 +20,10 @@ extern NSString *const HGURLSessionResumeBytesCompletedUnitCount;
 - (void)downloadWithUrlString:(NSString *)URLString
                     localInfo:(HGDownloadStartHandler)localInfoHandler
                      progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed;
-
+- (void)downloadWithUrlString:(NSString *)URLString
+                   coverLocal:(BOOL)coverLocal
+                    localInfo:(HGDownloadStartHandler)localInfoHandler
+                     progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed;
 /// 开始
 - (void)start;
 /// 暂停
