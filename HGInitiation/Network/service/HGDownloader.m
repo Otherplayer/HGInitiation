@@ -15,7 +15,6 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
 @interface HGDownloader()
 @property(nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 @property(nonatomic, strong) AFURLSessionManager *manager;
-@property(nonatomic, strong) NSUserDefaults *userDefaults;
 @property(nonatomic, copy) NSString *targetUrl;
 @property(nonatomic, copy) HGDownloadProgressHandler progressHandler;
 @property(nonatomic, copy) HGDownloadCompletedHandler completedHandler;
@@ -28,14 +27,15 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
 //https://www.jianshu.com/p/1211cf99dfc3
 //https://blog.csdn.net/u012361288/article/details/54615919
 
-
+- (void)downloadWithUrlString:(NSString *)URLString localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed{
+    [self downloadWithUrlString:URLString coverLocal:NO localInfo:localInfoHandler progress:progress completed:completed];
+}
 - (void)downloadWithUrlString:(NSString *)URLString coverLocal:(BOOL)coverLocal localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed {
     self.targetUrl = URLString;
     self.progressHandler = progress;
     self.completedHandler = completed;
     
     __weak typeof(self) weakSelf = self;
-    
     
     NSString *fileName = URLString.lastPathComponent;
     NSString *targetPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:fileName];
@@ -44,12 +44,12 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
     NSString *key = [self cacheKeyForUrlString:self.targetUrl];
     
     if (coverLocal) {
-        [self.userDefaults removeObjectForKey:key];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     }
     if (localInfoHandler) {
         NSMutableDictionary *resumeDictionary;
         NSError *error;
-        NSData *resumeData = [self.userDefaults objectForKey:key];
+        NSData *resumeData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
         if (resumeData) {
             resumeDictionary = [NSPropertyListSerialization propertyListWithData:resumeData options:NSPropertyListImmutable format:NULL error:&error];
         }
@@ -71,49 +71,30 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
     
     NSURLRequest *request = [NSURLRequest requestWithURL:URLString.url];
     self.downloadTask = [self.manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-        weakSelf.totalUnitCount = downloadProgress.totalUnitCount;
-        weakSelf.progressHandler(downloadProgress);
+        [weakSelf downloadProgress:downloadProgress];
     } destination:nil completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        
-        if (error) {
-            // check if resume data are available
-            if (![error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData]) {
-                weakSelf.completedHandler(NO, error.localizedDescription, filePath.path);
-            }
-        }else{
-            
-            weakSelf.completedHandler(YES, error.localizedDescription, filePath.path);
-        }
+        [weakSelf downloadCompleted:response path:filePath error:error];
     }];
 }
-- (void)downloadWithUrlString:(NSString *)URLString localInfo:(HGDownloadStartHandler)localInfoHandler progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed{
-    [self downloadWithUrlString:URLString coverLocal:NO localInfo:localInfoHandler progress:progress completed:completed];
-}
+
 
 - (void)start {
     
     __weak typeof(self) weakSelf = self;
     NSString *key = [self cacheKeyForUrlString:self.targetUrl];
-    NSData *resumeData = [self.userDefaults objectForKey:key];
+    NSData *resumeData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     
     if (resumeData) {
         self.downloadTask = [self.manager downloadTaskWithResumeData:resumeData progress:^(NSProgress * _Nonnull downloadProgress) {
-            weakSelf.totalUnitCount = downloadProgress.totalUnitCount;
-            weakSelf.progressHandler(downloadProgress);
+            [weakSelf downloadProgress:downloadProgress];
         } destination:nil completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-            if (error) {
-                if (![error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData]) {
-                    weakSelf.completedHandler(NO, error.localizedDescription, filePath.path);
-                }
-            }else{
-                weakSelf.completedHandler(YES, error.localizedDescription, filePath.path);
-            }
+            [weakSelf downloadCompleted:response path:filePath error:error];
         }];
         [self.downloadTask resume];
     }else{
         [self.downloadTask resume];
         self.downloadTask = nil;
-        [self.userDefaults removeObjectForKey:key];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     }
 }
 
@@ -134,8 +115,9 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
         if (error) {
             return;
         }
-        [weakSelf.userDefaults setObject:data forKey:key];
-        [weakSelf.userDefaults synchronize];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
 
@@ -144,8 +126,26 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
     self.downloadTask = nil;
     self.totalUnitCount = 0;
     NSString *key = [self cacheKeyForUrlString:self.targetUrl];
-    [self.userDefaults removeObjectForKey:key];
-    [self.userDefaults synchronize];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark -
+- (void)downloadProgress:(NSProgress *)downloadProgress {
+    self.totalUnitCount = downloadProgress.totalUnitCount;
+    self.progressHandler(downloadProgress);
+}
+- (void)downloadCompleted:(NSURLResponse *)response path:(NSURL *)filePath error:(NSError *)error {
+    NSString *key = [self cacheKeyForUrlString:self.targetUrl];
+    if (error) {
+        if (![error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData]) {
+            self.completedHandler(NO, error.localizedDescription, filePath.path);
+        }
+    }else{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        self.downloadTask = nil;
+        self.completedHandler(YES, error.localizedDescription, filePath.path);
+    }
 }
 
 #pragma mark - Private
@@ -175,12 +175,6 @@ NSString *const HGURLSessionResumeBytesCompletedUnitCount = @"NSURLSessionResume
         _manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     }
     return _manager;
-}
-- (NSUserDefaults *)userDefaults {
-    if (!_userDefaults) {
-        _userDefaults = [NSUserDefaults standardUserDefaults];
-    }
-    return _userDefaults;
 }
 
 @end

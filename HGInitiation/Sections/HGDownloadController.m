@@ -61,11 +61,11 @@
         if (localInfo) {
             NSNumber *completedUnitCount = localInfo[HGURLSessionResumeBytesCompletedUnitCount];
             NSNumber *totalUnitCount = localInfo[HGURLSessionResumeBytesTotalUnitCount];
-            NSString *info = [NSString stringWithFormat:@"[0]当前下载进度:%.4f%%", 100.0 * completedUnitCount.doubleValue / totalUnitCount.doubleValue];
+            NSString *info = [NSString stringWithFormat:@"[0]%.4f%%", 100.0 * completedUnitCount.doubleValue / totalUnitCount.doubleValue];
             [weakSelf.labInfor setText:info];
         }
     } progress:^(NSProgress *progress) {
-        NSString *info = [NSString stringWithFormat:@"[1]当前下载进度:%.4f%%",100.0 * progress.completedUnitCount / progress.totalUnitCount];
+        NSString *info = [NSString stringWithFormat:@"[1]%.4f%%",100.0 * progress.completedUnitCount / progress.totalUnitCount];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.labInfor setText:info];
         });
@@ -73,6 +73,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (success) {
                 [weakSelf.labInfor setText:[NSString stringWithFormat:@"下载完成：%@",path]];
+                //TODO
             }else {
                 [HGShowTip showTipTextOnly:errDesc dealy:2];
             }
@@ -82,8 +83,8 @@
     
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.downloader stop];
 }
 
