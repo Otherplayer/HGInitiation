@@ -30,9 +30,6 @@
 		632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */; };
 		633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */; };
 		633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */; };
-		635297F4206B6AEE00F441CE /* HGDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 635297F3206B6AEE00F441CE /* HGDownloadManager.m */; };
-		635298FA206CBDCC00F441CE /* HGDownloader+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = 635298F9206CBDCC00F441CE /* HGDownloader+Default.m */; };
-		635298FD206CC27500F441CE /* HGDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 635298FC206CC27500F441CE /* HGDownloadItem.m */; };
 		635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24D81FF63D410070BC46 /* HGPickerView.m */; };
 		635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24DB1FF63D500070BC46 /* HGDatePickerView.m */; };
 		635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24E01FFB6CB10070BC46 /* HGTextField.m */; };
@@ -127,12 +124,6 @@
 		633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+HGCustom.m"; sourceTree = "<group>"; };
 		633E47D5200DDF7C004DF9E7 /* UIAlertController+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+HGCustom.h"; sourceTree = "<group>"; };
 		633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+HGCustom.m"; sourceTree = "<group>"; };
-		635297F2206B6AEE00F441CE /* HGDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloadManager.h; sourceTree = "<group>"; };
-		635297F3206B6AEE00F441CE /* HGDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloadManager.m; sourceTree = "<group>"; };
-		635298F8206CBDCC00F441CE /* HGDownloader+Default.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HGDownloader+Default.h"; sourceTree = "<group>"; };
-		635298F9206CBDCC00F441CE /* HGDownloader+Default.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HGDownloader+Default.m"; sourceTree = "<group>"; };
-		635298FB206CC27400F441CE /* HGDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloadItem.h; sourceTree = "<group>"; };
-		635298FC206CC27500F441CE /* HGDownloadItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloadItem.m; sourceTree = "<group>"; };
 		635C24D71FF63D410070BC46 /* HGPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPickerView.h; sourceTree = "<group>"; };
 		635C24D81FF63D410070BC46 /* HGPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPickerView.m; sourceTree = "<group>"; };
 		635C24DA1FF63D500070BC46 /* HGDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDatePickerView.h; sourceTree = "<group>"; };
@@ -517,14 +508,8 @@
 				63880BB51FF0DF9200DAFD68 /* HGHTTPService.h */,
 				63880BB61FF0DFE800DAFD68 /* HGDefaultHTTPService.h */,
 				63880BB71FF0DFE800DAFD68 /* HGDefaultHTTPService.m */,
-				635298F8206CBDCC00F441CE /* HGDownloader+Default.h */,
-				635298F9206CBDCC00F441CE /* HGDownloader+Default.m */,
-				635298FB206CC27400F441CE /* HGDownloadItem.h */,
-				635298FC206CC27500F441CE /* HGDownloadItem.m */,
 				63878761206A2C16006FE525 /* HGDownloader.h */,
 				63878762206A2C16006FE525 /* HGDownloader.m */,
-				635297F2206B6AEE00F441CE /* HGDownloadManager.h */,
-				635297F3206B6AEE00F441CE /* HGDownloadManager.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -683,7 +668,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -782,10 +767,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635297F4206B6AEE00F441CE /* HGDownloadManager.m in Sources */,
 				635C24F81FFCBE760070BC46 /* HGZoomImageView.m in Sources */,
 				635C57CF20048E29004CE18B /* HGScrollController.m in Sources */,
-				635298FA206CBDCC00F441CE /* HGDownloader+Default.m in Sources */,
 				631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */,
 				63880BBF1FF0EA5700DAFD68 /* HGBASEViewController.m in Sources */,
 				63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */,
@@ -807,7 +790,6 @@
 				635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */,
 				630498B42005E99F00F91211 /* HGPageControl.m in Sources */,
 				632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */,
-				635298FD206CC27500F441CE /* HGDownloadItem.m in Sources */,
 				63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */,
 				635C24F21FFCB28F0070BC46 /* UIColor+HG.m in Sources */,
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,

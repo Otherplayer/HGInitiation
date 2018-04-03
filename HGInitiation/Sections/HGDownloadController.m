@@ -7,28 +7,13 @@
 //
 
 #import "HGDownloadController.h"
-#import "HGDownloader+Default.h"
-
-
-
-@interface HGDownloadItemDefault : HGDownloadItem
-
-@end
-@implementation HGDownloadItemDefault
-- (NSURL *)URL {
-    NSString *url = @"http://appldnld.apple.com/ios11.3seed/091-73590-20180316-E1B2451A-27AA-11E8-8D8B-C323A798A6CA/iPhone10,3,iPhone10,6_11.3_15E5216a_Restore.ipsw";//大文件
-    url = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.4.0.dmg";//小文件
-    return url.url;
-}
-@end
-
-
+#import "HGDownloader.h"
 
 
 @interface HGDownloadController ()
 /** 下载任务 */
-@property (nonatomic, strong) HGDownloadItemDefault *downloadItem;
 @property (nonatomic, strong) UILabel *labInfor;
+@property (nonatomic, strong) NSURL *url;
 
 @end
 
@@ -39,6 +24,12 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"Download";
+    
+    NSString *urlStr = @"http://appldnld.apple.com/ios11.3seed/091-73590-20180316-E1B2451A-27AA-11E8-8D8B-C323A798A6CA/iPhone10,3,iPhone10,6_11.3_15E5216a_Restore.ipsw";//大文件
+    urlStr = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.4.0.dmg";//小文件
+//    urlStr = @"http://sw.bos.baidu.com/sw-search-sp/software/5e77ab765868f/NeteaseMusic_mac_1.5.9.622.dmg";
+    self.url = urlStr.url;
+    
     
     UIButton *btn = ({
         btn = [UIButton.alloc initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 200, SCREEN_WIDTH, 100)];
@@ -68,11 +59,6 @@
     
 //    __weak typeof(self) weakSelf = self;
     
-    self.downloadItem = [HGDownloadItemDefault.alloc init];
-    
-    
-    
-    
     
     
 }
@@ -92,9 +78,9 @@
 - (void)downloadAction:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
     if (sender.isSelected) {
-        [[HGDownloader defaultInstance] startDownloadWithItem:self.downloadItem];
+        [[HGDownloader defaultInstance] startDownloadWithURL:self.url];
     }else{
-        [[HGDownloader defaultInstance] stopDownloadWithItem:self.downloadItem];
+        [[HGDownloader defaultInstance] stopDownloadWithURL:self.url];
     }
     
 }

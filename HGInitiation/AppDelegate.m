@@ -12,7 +12,7 @@
 #import "SystemConfiguration/SCNetworkReachability.h"
 #import "HGHelperReachability.h"
 #import <YYReachability.h>
-#import "HGDownloader+Default.h"
+#import "HGDownloader.h"
 
 @interface AppDelegate ()
 
@@ -28,9 +28,6 @@
     // 应用皮肤
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
-    
-    
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
 }
@@ -75,11 +72,6 @@
             completionHandler();
         }];
     }
-}
-/// Applications with the "fetch" background mode may be given opportunities to fetch updated content in the background or when it is convenient for the system. This method will be called in these situations. You should call the fetchCompletionHandler as soon as you're finished performing that operation, so the system can accurately estimate its power and data cost.
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    NSLog(@"%s",__func__);
-    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 

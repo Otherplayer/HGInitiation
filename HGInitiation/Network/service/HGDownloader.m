@@ -12,7 +12,6 @@
 NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier";
 
 @interface HGDownloader()
-@property(nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 @property(nonatomic, strong) AFHTTPSessionManager *httpManager;
 @property(nonatomic, strong) NSMutableDictionary *tasks;
 @property(nonatomic, copy) HGDownloadProgressHandler progressHandler;
@@ -24,17 +23,16 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
 
 // https://forums.developer.apple.com/thread/14854
 
-- (instancetype)initWithIdentifier:(NSString *)identifier allowsCellularAccess:(BOOL)allowsCellularAccess completed:(HGDownloadCompletedHandler)completed {
+- (instancetype)initWithIdentifier:(NSString *)identifier allowsCellularAccess:(BOOL)allowsCellularAccess progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed {
     
-    self = [super init];
-    
-    if (self) {
+    if (self = [super init]) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
         configuration.timeoutIntervalForRequest = DBL_MAX;
         self.httpManager = [AFHTTPSessionManager.alloc initWithSessionConfiguration:configuration];
         self.httpManager.requestSerializer.allowsCellularAccess = allowsCellularAccess;
         self.tasks = [NSMutableDictionary.alloc init];
         self.completedHandler = completed;
+        self.progressHandler = progress;
     }
     return self;
 }
@@ -46,39 +44,22 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
 
 #pragma mark -
 
-- (void)startDownloadWithItem:(id<HGDownloadItem>)downloadItem {
-    
-//    NSURLSessionDownloadTask *downloadTask = [self downloadTaskForItem:downloadItem];
-//    if (downloadTask) {
-//        [self resumeDownloadWithItem:downloadItem];
-//        return;
-//    }
-    
-    UIApplication *application = [UIApplication sharedApplication];
-    __block UIBackgroundTaskIdentifier taskId = [application beginBackgroundTaskWithExpirationHandler:^{
-        NSLog(@"----------------------beginBackgroundTaskWithExpirationHandler");
-        NSLog(@"backgroundTimeRemaining: %@",@([application backgroundTimeRemaining]));
-        [application endBackgroundTask:taskId];
-        taskId = UIBackgroundTaskInvalid;
-    }];
+// 开始、恢复下载
+- (void)startDownloadWithURL:(NSURL *)url {
     
     NSURLSessionDownloadTask *downloadTask = nil;
     
     __weak typeof(self) weakSelf = self;
     
-    NSURL *url = downloadItem.URL;
+//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
     
     [self.httpManager setDownloadTaskDidFinishDownloadingBlock:^NSURL * _Nullable(NSURLSession * _Nonnull session, NSURLSessionDownloadTask * _Nonnull downloadTask, NSURL * _Nonnull location) {
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
-        return path.url;
+        NSURL *path = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [path URLByAppendingPathComponent:url.lastPathComponent];
     }];
-    NSURL *(^destination)(NSURL *targetPath, NSURLResponse *response) = ^(NSURL *targetPath, NSURLResponse *response) {
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
-        return path.url;
-    };
     void (^downloadProgressBlock)(NSProgress *downloadProgress) = ^(NSProgress *downloadProgress) {
-        downloadItem.progress = downloadProgress;
-        NSLog(@"%@",[downloadItem description]);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.progressHandler(downloadProgress);
     };
     void (^completionHandler)(NSURLResponse *response, NSURL *filePath, NSError *error) = ^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -87,68 +68,65 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
                 NSLog(@"------下载失败");
             }
         }else{
-            strongSelf.completedHandler(strongSelf,downloadItem,filePath);
-            [strongSelf removeDownloadTaskForItem:downloadItem];
+            strongSelf.completedHandler(strongSelf,url,filePath);
+            [strongSelf removeDownloadTaskForURL:url];
         }
     };
-    
-    NSData *resumeData = [self resumeDataForItem:downloadItem];
+    NSData *resumeData = [self resumeDataForURL:url];
     if (resumeData) {
-        downloadTask = [self.httpManager downloadTaskWithResumeData:resumeData progress:downloadProgressBlock destination:destination completionHandler:completionHandler];
+        downloadTask = [self.httpManager downloadTaskWithResumeData:resumeData progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
     }else {
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        downloadTask = [self.httpManager downloadTaskWithRequest:request progress:downloadProgressBlock destination:destination completionHandler:completionHandler];
+        downloadTask = [self.httpManager downloadTaskWithRequest:request progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
     }
     
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
+    NSString *key = [self cacheKeyForURL:url];
     self.tasks[key] = downloadTask;
     [downloadTask resume];
     
-    if (taskId != UIBackgroundTaskInvalid) {
-        [application endBackgroundTask:taskId];
-        taskId = UIBackgroundTaskInvalid;
-    }
+//    if (taskId != UIBackgroundTaskInvalid) {
+//        [application endBackgroundTask:taskId];
+//        taskId = UIBackgroundTaskInvalid;
+//    }
 }
 
-
-- (void)resumeDownloadWithItem:(id<HGDownloadItem>)downloadItem {
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
-    NSURLSessionDownloadTask *downloadTask = self.tasks[key];
-    [downloadTask resume];
-}
-- (void)stopDownloadWithItem:(id<HGDownloadItem>)downloadItem {
-    NSURLSessionDownloadTask *downloadTask = [self downloadTaskForItem:downloadItem];
+// 暂停下载
+- (void)stopDownloadWithURL:(NSURL *)url {
+    NSURLSessionDownloadTask *downloadTask = [self downloadTaskForURL:url];
     __weak typeof(self) weakSelf = self;
     [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if ([strongSelf isValidResumeData:resumeData]) {
-            [strongSelf saveResumeData:resumeData forItem:downloadItem];
+            [strongSelf saveResumeData:resumeData forURL:url];
         }
     }];
 }
 
-- (NSURLSessionDownloadTask *)downloadTaskForItem:(id<HGDownloadItem>)downloadItem {
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
+- (NSURLSessionDownloadTask *)downloadTaskForURL:(NSURL *)url {
+    NSString *key = [self cacheKeyForURL:url];
     return self.tasks[key];
 }
-- (void)removeDownloadTaskForItem:(id<HGDownloadItem>)downloadItem {
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
+- (void)removeDownloadTaskForURL:(NSURL *)url {
+    NSString *key = [self cacheKeyForURL:url];
     [self.tasks removeObjectForKey:key];
 }
-
-- (void)saveResumeData:(NSData *)data forItem:(id <HGDownloadItem>)downloadItem {
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
+- (void)saveResumeData:(NSData *)data forURL:(NSURL *)url {
+    NSString *key = [self cacheKeyForURL:url];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (NSData *)resumeDataForItem:(id <HGDownloadItem>)downloadItem {
-    NSString *key = [self cacheKeyForURL:downloadItem.URL];
+- (NSData *)resumeDataForURL:(NSURL *)url {
+    NSString *key = [self cacheKeyForURL:url];
     NSData *resumeData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if ([self isValidResumeData:resumeData]) {
         return resumeData;
     }
     return nil;
 }
+
+
+#pragma mark - Private
+
 - (BOOL)isValidResumeData:(NSData *)data{
     if (!data || [data length] < 1) return NO;
     
@@ -157,19 +135,32 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
     if (!resumeDictionary || error) return NO;
     
     return YES;
-    
-    //    NSString *localFilePath = [resumeDictionary objectForKey:@"NSURLSessionResumeInfoLocalPath"];
-    //    if ([localFilePath length] < 1) return NO;
-    //
-    //    return [[NSFileManager defaultManager] fileExistsAtPath:localFilePath];
 }
-
-#pragma mark - Private
 
 - (NSString *)cacheKeyForURL:(NSURL *)url {
     if (!url) { return nil; }
     return [url.absoluteString hgMD5HexLower];
 }
 
+
+@end
+
+
+@implementation HGDownloader (Default)
+
+#pragma mark - SHARED INSTANCE
+
++ (instancetype)defaultInstance{
+    static HGDownloader *downloader;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        downloader = [[HGDownloader alloc] initWithIdentifier:HGDownloaderDefaultIdentifier allowsCellularAccess:YES progress:^(NSProgress *progress) {
+            NSLog(@"%@",progress);
+        } completed:^(HGDownloader *downloader, NSURL *url, NSURL *location) {
+            NSLog(@"%@",location.path);
+        }];
+    });
+    return downloader;
+}
 
 @end

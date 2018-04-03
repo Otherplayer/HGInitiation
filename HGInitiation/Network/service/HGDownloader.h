@@ -7,30 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HGDownloadItem.h"
 @class HGDownloader;
 
-typedef void (^HGDownloadProgressHandler)(NSProgress *progress);
-typedef void (^HGDownloadCompletedHandler)(HGDownloader *downloader, id<HGDownloadItem>item, NSURL *location);
-
 extern NSString *const HGDownloaderDefaultIdentifier;
-extern NSString *const HGURLSessionResumeBytesTotalUnitCount;
-extern NSString *const HGURLSessionResumeBytesCompletedUnitCount;
 
+typedef void (^HGDownloadProgressHandler)(NSProgress *progress);
+typedef void (^HGDownloadCompletedHandler)(HGDownloader *downloader, NSURL *url, NSURL *location);
 
 @interface HGDownloader : NSObject
 
+- (void)setDidFinishEventsForBackgroundURLSessionBlock:(void (^)(NSURLSession *session))block;
 - (instancetype)initWithIdentifier:(NSString *)identifier
               allowsCellularAccess:(BOOL)allowsCellularAccess
-                         completed:(HGDownloadCompletedHandler)completed;
+                          progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed;
 
-- (void)setDidFinishEventsForBackgroundURLSessionBlock:(void (^)(NSURLSession *session))block;
-
-- (void)startDownloadWithItem:(id<HGDownloadItem>)downloadItem; /// 开始或者恢复
-- (void)stopDownloadWithItem:(id<HGDownloadItem>)downloadItem;  /// 暂停
-
+- (void)startDownloadWithURL:(NSURL *)url; /// 开始或者恢复
+- (void)stopDownloadWithURL:(NSURL *)url;  /// 暂停
 
 @end
 
 
+@interface HGDownloader (Default)
+
++ (instancetype)defaultInstance;
+
+@end
 
