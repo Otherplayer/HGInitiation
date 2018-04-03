@@ -44,7 +44,6 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
 }
 
 
-
 #pragma mark -
 
 - (void)startDownloadWithItem:(id<HGDownloadItem>)downloadItem {
@@ -54,6 +53,14 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
 //        [self resumeDownloadWithItem:downloadItem];
 //        return;
 //    }
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    __block UIBackgroundTaskIdentifier taskId = [application beginBackgroundTaskWithExpirationHandler:^{
+        NSLog(@"----------------------beginBackgroundTaskWithExpirationHandler");
+        NSLog(@"backgroundTimeRemaining: %@",@([application backgroundTimeRemaining]));
+        [application endBackgroundTask:taskId];
+        taskId = UIBackgroundTaskInvalid;
+    }];
     
     NSURLSessionDownloadTask *downloadTask = nil;
     
@@ -65,6 +72,10 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
         NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
         return path.url;
     }];
+    NSURL *(^destination)(NSURL *targetPath, NSURLResponse *response) = ^(NSURL *targetPath, NSURLResponse *response) {
+        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
+        return path.url;
+    };
     void (^downloadProgressBlock)(NSProgress *downloadProgress) = ^(NSProgress *downloadProgress) {
         downloadItem.progress = downloadProgress;
         NSLog(@"%@",[downloadItem description]);
@@ -83,17 +94,11 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
     
     NSData *resumeData = [self resumeDataForItem:downloadItem];
     if (resumeData) {
-        downloadTask = [self.httpManager downloadTaskWithResumeData:resumeData progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
+        downloadTask = [self.httpManager downloadTaskWithResumeData:resumeData progress:downloadProgressBlock destination:destination completionHandler:completionHandler];
     }else {
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        downloadTask = [self.httpManager downloadTaskWithRequest:request progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
+        downloadTask = [self.httpManager downloadTaskWithRequest:request progress:downloadProgressBlock destination:destination completionHandler:completionHandler];
     }
-    
-    UIApplication *application = [UIApplication sharedApplication];
-    __block UIBackgroundTaskIdentifier taskId = [application beginBackgroundTaskWithExpirationHandler:^{
-        [application endBackgroundTask:taskId];
-        taskId = UIBackgroundTaskInvalid;
-    }];
     
     NSString *key = [self cacheKeyForURL:downloadItem.URL];
     self.tasks[key] = downloadTask;
@@ -104,6 +109,7 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
         taskId = UIBackgroundTaskInvalid;
     }
 }
+
 
 - (void)resumeDownloadWithItem:(id<HGDownloadItem>)downloadItem {
     NSString *key = [self cacheKeyForURL:downloadItem.URL];

@@ -18,7 +18,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         downloader = [[HGDownloader alloc] initWithIdentifier:HGDownloaderDefaultIdentifier allowsCellularAccess:YES completed:^(HGDownloader *downloader, id<HGDownloadItem>item, NSURL *location) {
-            NSLog(@"------------%@",item);
+            NSLog(@"------------%@ %@",item.progress,location.path);
         }];
     });
     return downloader;

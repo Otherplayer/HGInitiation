@@ -122,31 +122,31 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
         
         
         NSString *fixText = text?:@"";
-        _HUD.detailsLabel.text = fixText;
-        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
-        [_HUD setMinSize:CGSizeMake(100, 44)];
+        self.HUD.detailsLabel.text = fixText;
+        self.HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [self.HUD setMinSize:CGSizeMake(100, 44)];
         
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
         
         switch (position) {
             case HGHUDPosition_top:{
-                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabel.text, _HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
+                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(self.HUD.detailsLabel.text, self.HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
                 CGFloat yoffset = screenSize.height/2 - detailsLabelSize.height / 2 - self.margin * 1.5 - 64;
-                [_HUD setOffset:CGPointMake(_HUD.offset.x, yoffset)];
+                [self.HUD setOffset:CGPointMake(self.HUD.offset.x, yoffset)];
             }
                 break;
             case HGHUDPosition_bottom:{
-                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(_HUD.detailsLabel.text, _HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
+                CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(self.HUD.detailsLabel.text, self.HUD.detailsLabel.font, CGSizeMake(screenSize.width - 4 * self.margin,MAXFLOAT), NSLineBreakByWordWrapping);
                 CGFloat yoffset = screenSize.height/2 - detailsLabelSize.height / 2 - self.margin * 1.5 - 64;
-                [_HUD setOffset:CGPointMake(_HUD.offset.x, yoffset)];
+                [self.HUD setOffset:CGPointMake(self.HUD.offset.x, yoffset)];
             }
                 break;
             default:
                 break;
         }
         
-        [_HUD showAnimated:YES];
-        [_HUD hideAnimated:YES afterDelay:dealy];
+        [self.HUD showAnimated:YES];
+        [self.HUD hideAnimated:YES afterDelay:dealy];
     });
 }
 
@@ -154,10 +154,10 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.HUD setMode:MBProgressHUDModeIndeterminate];
         NSString *fixText = text?:@"";
-        _HUD.detailsLabel.text = fixText;
-        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
-        [_HUD showAnimated:YES];
-        [_HUD hideAnimated:YES afterDelay:dealy];
+        self.HUD.detailsLabel.text = fixText;
+        self.HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [self.HUD showAnimated:YES];
+        [self.HUD hideAnimated:YES afterDelay:dealy];
     });
 }
 
@@ -165,40 +165,40 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.HUD setMode:MBProgressHUDModeAnnularDeterminate];
         NSString *fixText = text?:@"";
-        _HUD.detailsLabel.text = fixText;
-        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
-        [_HUD showAnimated:YES];
+        self.HUD.detailsLabel.text = fixText;
+        self.HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [self.HUD showAnimated:YES];
     });
 }
 
 -(void)showProgress:(NSString*)progress
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _HUD.progress = [progress floatValue] / 100.0;
+        self.HUD.progress = [progress floatValue] / 100.0;
     });
 }
 
 - (void)hideImmediately{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_HUD hideAnimated:YES];
-        [_HUD removeFromSuperview];
+        [self.HUD hideAnimated:YES];
+        [self.HUD removeFromSuperview];
     });
 }
 
 #pragma mark - Other
 
 -(MBProgressHUD *)HUD{
-    [_HUD removeFromSuperview];
-    _HUD = nil;
+    [self.HUD removeFromSuperview];
+    self.HUD = nil;
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    _HUD = [self initWithView:window];
+    self.HUD = [self initWithView:window];
     
-    [window addSubview:_HUD];
+    [window addSubview:self.HUD];
     
-    _HUD.delegate = nil;
-    _HUD.margin = 10.f;
-    _HUD.removeFromSuperViewOnHide = YES;
-    return _HUD;
+    self.HUD.delegate = nil;
+    self.HUD.margin = 10.f;
+    self.HUD.removeFromSuperViewOnHide = YES;
+    return self.HUD;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,21 +229,21 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
 }
 
 - (void)hideHud{
-    [_hud hideAnimated:YES];
-    [_hud removeFromSuperview];
-    _hud = nil;
+    [self.HUD hideAnimated:YES];
+    [self.HUD removeFromSuperview];
+    self.HUD = nil;
 }
 
 - (HGHelperHUD *)hud{
-    if (_hud == nil) {
-        _hud = [[HGHelperHUD alloc] initWithView:self.superView];
-        [self.superView addSubview:_hud];
-        _hud.margin = 10.f;
-        _hud.removeFromSuperViewOnHide = YES;
-        _hud.detailsLabel.font = [UIFont systemFontOfSize:15];
-        [_hud setMinSize:CGSizeMake(44, 44)];
+    if (_HUD == nil) {
+        _HUD = [[HGHelperHUD alloc] initWithView:self.superView];
+        [self.superView addSubview:_HUD];
+        _HUD.margin = 10.f;
+        _HUD.removeFromSuperViewOnHide = YES;
+        _HUD.detailsLabel.font = [UIFont systemFontOfSize:15];
+        [_HUD setMinSize:CGSizeMake(44, 44)];
     }
-    return _hud;
+    return _HUD;
 }
 
 @end

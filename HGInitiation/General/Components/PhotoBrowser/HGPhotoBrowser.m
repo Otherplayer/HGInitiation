@@ -312,8 +312,8 @@ static NSString *Identifier = @"Identifier";
     self.view.hidden = YES;
     
     void (^completion)(void) = ^() {
-        _senderViewForAnimation.hidden = NO;
-        _senderViewForAnimation = nil;
+        self->_senderViewForAnimation.hidden = NO;
+        self->_senderViewForAnimation = nil;
         
         [fadeView removeFromSuperview];
         [resizableImageView removeFromSuperview];
