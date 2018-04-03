@@ -10,10 +10,15 @@
 #import <AFNetworking.h>
 
 NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier";
+NSString *const HGDownloadCompletedUnitCount = @"HGDownloadCompletedUnitCount";
+NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
+NSNotificationName const HGNotificationDefaultDownloadProgress = @"HGNotificationDefaultDownloadProgress";
+NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDefaultDownloadDone";
 
 @interface HGDownloader()
 @property(nonatomic, strong) AFHTTPSessionManager *httpManager;
 @property(nonatomic, strong) NSMutableDictionary *tasks;
+@property(nonatomic, strong) NSMutableDictionary *totalBytes;
 @property(nonatomic, copy) HGDownloadProgressHandler progressHandler;
 @property(nonatomic, copy) HGDownloadCompletedHandler completedHandler;
 
@@ -31,6 +36,7 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
         self.httpManager = [AFHTTPSessionManager.alloc initWithSessionConfiguration:configuration];
         self.httpManager.requestSerializer.allowsCellularAccess = allowsCellularAccess;
         self.tasks = [NSMutableDictionary.alloc init];
+        self.totalBytes = [NSMutableDictionary.alloc init];
         self.completedHandler = completed;
         self.progressHandler = progress;
     }
@@ -52,13 +58,14 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
     __weak typeof(self) weakSelf = self;
     
 //    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
-    
+    NSString *key = [self cacheKeyForURL:url];
     [self.httpManager setDownloadTaskDidFinishDownloadingBlock:^NSURL * _Nullable(NSURLSession * _Nonnull session, NSURLSessionDownloadTask * _Nonnull downloadTask, NSURL * _Nonnull location) {
         NSURL *path = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         return [path URLByAppendingPathComponent:url.lastPathComponent];
     }];
     void (^downloadProgressBlock)(NSProgress *downloadProgress) = ^(NSProgress *downloadProgress) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.totalBytes[key] = [NSString stringWithFormat:@"%@/%@",@(downloadProgress.completedUnitCount),@(downloadProgress.totalUnitCount)];
         strongSelf.progressHandler(downloadProgress);
     };
     void (^completionHandler)(NSURLResponse *response, NSURL *filePath, NSError *error) = ^(NSURLResponse *response, NSURL *filePath, NSError *error) {
@@ -80,7 +87,6 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
         downloadTask = [self.httpManager downloadTaskWithRequest:request progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
     }
     
-    NSString *key = [self cacheKeyForURL:url];
     self.tasks[key] = downloadTask;
     [downloadTask resume];
     
@@ -112,7 +118,15 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
 }
 - (void)saveResumeData:(NSData *)data forURL:(NSURL *)url {
     NSString *key = [self cacheKeyForURL:url];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+    NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:nil];
+    NSString *progressInfo = self.totalBytes[key];
+    if (progressInfo) {
+        NSArray *items = [progressInfo componentsSeparatedByString:@"/"];
+        [resumeDictionary setValue:[items firstObject] forKey:HGDownloadCompletedUnitCount];
+        [resumeDictionary setValue:[items lastObject] forKey:HGDownloadTotalUnitCount];
+    }
+    NSData *resumeData = [NSPropertyListSerialization dataWithPropertyList:resumeDictionary format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:resumeData forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (NSData *)resumeDataForURL:(NSURL *)url {
@@ -123,7 +137,14 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
     }
     return nil;
 }
-
+- (NSDictionary *)localDownloadInfoForURL:(NSURL *)url {
+    NSData *data = [self resumeDataForURL:url];
+    if (!data || [data length] < 1) return nil;
+    NSError *error;
+    NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
+    if (!resumeDictionary || error) return nil;
+    return resumeDictionary;
+}
 
 #pragma mark - Private
 
@@ -155,9 +176,13 @@ NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier"
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         downloader = [[HGDownloader alloc] initWithIdentifier:HGDownloaderDefaultIdentifier allowsCellularAccess:YES progress:^(NSProgress *progress) {
-            NSLog(@"%@",progress);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:HGNotificationDefaultDownloadProgress object:progress];
+            });
         } completed:^(HGDownloader *downloader, NSURL *url, NSURL *location) {
-            NSLog(@"%@",location.path);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:HGNotificationDefaultDownloadDone object:@{@"url":url,@"loc":location}];
+            });
         }];
     });
     return downloader;

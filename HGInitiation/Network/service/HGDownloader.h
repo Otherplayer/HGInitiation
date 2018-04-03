@@ -10,6 +10,10 @@
 @class HGDownloader;
 
 extern NSString *const HGDownloaderDefaultIdentifier;
+extern NSString *const HGDownloadCompletedUnitCount;
+extern NSString *const HGDownloadTotalUnitCount;
+extern NSNotificationName const HGNotificationDefaultDownloadProgress;
+extern NSNotificationName const HGNotificationDefaultDownloadDone;
 
 typedef void (^HGDownloadProgressHandler)(NSProgress *progress);
 typedef void (^HGDownloadCompletedHandler)(HGDownloader *downloader, NSURL *url, NSURL *location);
@@ -23,6 +27,8 @@ typedef void (^HGDownloadCompletedHandler)(HGDownloader *downloader, NSURL *url,
 
 - (void)startDownloadWithURL:(NSURL *)url; /// 开始或者恢复
 - (void)stopDownloadWithURL:(NSURL *)url;  /// 暂停
+
+- (NSDictionary *)localDownloadInfoForURL:(NSURL *)url;
 
 @end
 

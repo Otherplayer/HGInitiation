@@ -11,8 +11,9 @@
 
 
 @interface HGDownloadController ()
-/** 下载任务 */
+@property (nonatomic, strong) CALayer *layerProgress;
 @property (nonatomic, strong) UILabel *labInfor;
+@property (nonatomic, strong) UIButton *btnDownloader;
 @property (nonatomic, strong) NSURL *url;
 
 @end
@@ -26,30 +27,49 @@
     self.title = @"Download";
     
     NSString *urlStr = @"http://appldnld.apple.com/ios11.3seed/091-73590-20180316-E1B2451A-27AA-11E8-8D8B-C323A798A6CA/iPhone10,3,iPhone10,6_11.3_15E5216a_Restore.ipsw";//大文件
-    urlStr = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.4.0.dmg";//小文件
-//    urlStr = @"http://sw.bos.baidu.com/sw-search-sp/software/5e77ab765868f/NeteaseMusic_mac_1.5.9.622.dmg";
+//    urlStr = @"http://sw.bos.baidu.com/sw-search-sp/software/5e77ab765868f/NeteaseMusic_mac_1.5.9.622.dmg";////小文件
     self.url = urlStr.url;
     
     
-    UIButton *btn = ({
-        btn = [UIButton.alloc initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 200, SCREEN_WIDTH, 100)];
-        [btn setTitle:@"START" forState:UIControlStateNormal];
-        [btn setTitle:@"PAUSE" forState:UIControlStateSelected];
-        [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(downloadAction:) forControlEvents:UIControlEventTouchUpInside];
-        btn;
+    self.layerProgress = ({
+        _layerProgress = [CALayer.alloc init];
+        _layerProgress.backgroundColor = [UIColor cyanColor].CGColor;
+        _layerProgress;
     });
-    [self.view addSubview:btn];
+    [self.layerProgress setFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, kScreenWidth, 0)];
+    [self.view.layer addSublayer:self.layerProgress];
+    
+    
+    self.btnDownloader = ({
+        _btnDownloader = [UIButton.alloc initWithFrame:CGRectMake((kScreenWidth - 120)/2.0, SCREEN_HEIGHT - 200, 120, 50)];
+        [_btnDownloader setTitle:@"START" forState:UIControlStateNormal];
+        [_btnDownloader setTitle:@"PAUSE" forState:UIControlStateSelected];
+        [_btnDownloader setTitle:@"DONE" forState:UIControlStateDisabled];
+        [_btnDownloader setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_btnDownloader setAdjustsImageWhenDisabled:YES];
+        [_btnDownloader addTarget:self action:@selector(downloadAction:) forControlEvents:UIControlEventTouchUpInside];
+        _btnDownloader;
+    });
+    [self.view addSubview:self.btnDownloader];
     
     self.labInfor = ({
         _labInfor = [UILabel.alloc initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 200)];
-        _labInfor.textColor = [UIColor blueColor];
+        _labInfor.textColor = [UIColor orangeColor];
         _labInfor.textAlignment = NSTextAlignmentCenter;
+        _labInfor.font = [UIFont systemFontOfSize:40 weight:UIFontWeightMedium];
         _labInfor.numberOfLines = 0;
         _labInfor.text = @"0%";
         _labInfor;
     });
     [self.view addSubview:self.labInfor];
+    
+    
+    NSDictionary *localInfo = [[HGDownloader defaultInstance] localDownloadInfoForURL:self.url];
+    if (localInfo) {
+        NSNumber *received = localInfo[HGDownloadCompletedUnitCount];
+        NSNumber *total = localInfo[HGDownloadTotalUnitCount];
+        [self updateProgress:received.doubleValue / total.doubleValue];
+    }
     
 }
 
@@ -57,8 +77,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    __weak typeof(self) weakSelf = self;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveDownloadProgressNotification:) name:HGNotificationDefaultDownloadProgress object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveDownloadDoneNotification:) name:HGNotificationDefaultDownloadDone object:nil];
     
     
 }
@@ -73,6 +93,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - action
 
 - (void)downloadAction:(UIButton *)sender {
@@ -82,9 +106,30 @@
     }else{
         [[HGDownloader defaultInstance] stopDownloadWithURL:self.url];
     }
-    
 }
 
+#pragma mark -
+
+- (void)updateProgress:(double)fractionCompleted {
+    [self.labInfor setText:[NSString stringWithFormat:@"%.2f%%",100 * fractionCompleted]];
+    [self.layerProgress setFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, kScreenWidth, (kScreenHeight - NAV_BAR_HEIGHT) * fractionCompleted)];
+    if (!self.btnDownloader.isSelected) {
+        [self.btnDownloader setSelected:YES];
+    }
+}
+
+#pragma mark - notification
+
+- (void)didReceiveDownloadProgressNotification:(NSNotification *)noti {
+    NSProgress *progress = noti.object;
+    [self updateProgress:progress.fractionCompleted];
+}
+- (void)didReceiveDownloadDoneNotification:(NSNotification *)noti {
+    NSDictionary *downloadInfo = noti.object;
+    NSLog(@"%@",downloadInfo);
+    [self.btnDownloader setEnabled:NO];
+    [self.btnDownloader setTitle:@"DONE" forState:UIControlStateNormal];
+}
 
 /*
 #pragma mark - Navigation
