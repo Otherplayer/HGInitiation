@@ -188,17 +188,17 @@ attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
 #pragma mark - Other
 
 -(MBProgressHUD *)HUD{
-    [self.HUD removeFromSuperview];
-    self.HUD = nil;
+    [_HUD removeFromSuperview];
+    _HUD = nil;
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    self.HUD = [self initWithView:window];
+    _HUD = [self initWithView:window];
     
-    [window addSubview:self.HUD];
+    [window addSubview:_HUD];
     
-    self.HUD.delegate = nil;
-    self.HUD.margin = 10.f;
-    self.HUD.removeFromSuperViewOnHide = YES;
-    return self.HUD;
+    _HUD.delegate = nil;
+    _HUD.margin = 10.f;
+    _HUD.removeFromSuperViewOnHide = YES;
+    return _HUD;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

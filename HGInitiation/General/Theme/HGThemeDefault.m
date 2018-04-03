@@ -18,12 +18,14 @@
     
     #pragma mark - NavigationBar
     
-    HGConfigurationInstance.navBarTintColor = [UIColor whiteColor];
-    HGConfigurationInstance.navBarBarTintColor = [UIColor whiteColor];
+    HGConfigurationInstance.navBarTintColor = [UIColor redColor];
+    HGConfigurationInstance.navBarBarTintColor = [UIColor redColor];
+    
     HGConfigurationInstance.navBarTitleColor = [UIColor blackColor];
     HGConfigurationInstance.navBarLargeTitleColor = [UIColor blackColor];
+    
     HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
-    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor lightTextColor]];
+    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:UIColorHex(0xf7f7f7)];
     
 }
 
