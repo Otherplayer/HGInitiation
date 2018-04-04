@@ -475,6 +475,8 @@
 				63880BB41FF0DF7100DAFD68 /* service */,
 				63880BB11FF0DF6800DAFD68 /* HGHTTPClient.h */,
 				63880BB21FF0DF6800DAFD68 /* HGHTTPClient.m */,
+				63878761206A2C16006FE525 /* HGDownloader.h */,
+				63878762206A2C16006FE525 /* HGDownloader.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -508,8 +510,6 @@
 				63880BB51FF0DF9200DAFD68 /* HGHTTPService.h */,
 				63880BB61FF0DFE800DAFD68 /* HGDefaultHTTPService.h */,
 				63880BB71FF0DFE800DAFD68 /* HGDefaultHTTPService.m */,
-				63878761206A2C16006FE525 /* HGDownloader.h */,
-				63878762206A2C16006FE525 /* HGDownloader.m */,
 			);
 			path = service;
 			sourceTree = "<group>";

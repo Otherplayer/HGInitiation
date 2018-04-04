@@ -18,7 +18,6 @@ typedef void (^HGDownloadCompletedHandler)(HGDownloader *downloader, NSURL *url,
 
 
 /* 此类只能用于一般下载，当用户手动关闭app时，会导致下载信息无法保存，进而无法从退出app那个时恢复下载
- * TODO: 保存已下载的信息，方便下次恢复使用
 */
 
 @interface HGDownloader : NSObject
