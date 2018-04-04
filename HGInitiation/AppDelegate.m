@@ -24,7 +24,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[HGHelperReachability sharedInstance] startMonitoring];
-    NSLog(@"%@",@([[HGHelperReachability sharedInstance] isReachable]));
     // 应用皮肤
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
@@ -71,10 +70,10 @@
 // callbacks. If such a session has already been created (if the app is being resumed, for instance), then the delegate will start receiving
 // callbacks without any action by the application. You should call the completionHandler as soon as you're finished handling the callbacks.
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler {
+    NSLog(@"--------------%@ %s",identifier,__func__);
     if ([identifier isEqualToString:HGDownloaderDefaultIdentifier]) {
         [[HGDownloader defaultInstance] setDidFinishEventsForBackgroundURLSessionBlock:^(NSURLSession *session) {
             completionHandler();
-            
         }];
     }
 }

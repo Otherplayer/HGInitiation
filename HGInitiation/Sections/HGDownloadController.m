@@ -68,7 +68,9 @@
     if (localInfo) {
         NSNumber *received = localInfo[HGDownloadCompletedUnitCount];
         NSNumber *total = localInfo[HGDownloadTotalUnitCount];
-        [self updateProgress:received.doubleValue / total.doubleValue];
+        if (total) {
+            [self updateProgress:received.doubleValue / total.doubleValue];
+        }
     }
     
 }

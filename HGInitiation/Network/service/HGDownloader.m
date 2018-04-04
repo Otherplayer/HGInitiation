@@ -51,11 +51,11 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
 // 开始、恢复下载
 - (void)startDownloadWithURL:(NSURL *)url {
     
-    NSURLSessionDownloadTask *downloadTask = nil;
+    NSURLSessionDownloadTask *downloadTask;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadData:) name:AFNetworkingTaskDidCompleteNotification object:downloadTask];
     
     __weak typeof(self) weakSelf = self;
     
-//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:url.lastPathComponent];
     NSString *key = [self cacheKeyForURL:url];
     [self.httpManager setDownloadTaskDidFinishDownloadingBlock:^NSURL * _Nullable(NSURLSession * _Nonnull session, NSURLSessionDownloadTask * _Nonnull downloadTask, NSURL * _Nonnull location) {
         NSURL *path = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
@@ -71,6 +71,8 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
         if (error) {
             if (![error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData]) {
                 NSLog(@"------下载失败");
+            }else {
+                NSLog(@"----------");
             }
         }else{
             strongSelf.completedHandler(strongSelf,url,filePath);
@@ -88,10 +90,6 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
     self.tasks[key] = downloadTask;
     [downloadTask resume];
     
-//    if (taskId != UIBackgroundTaskInvalid) {
-//        [application endBackgroundTask:taskId];
-//        taskId = UIBackgroundTaskInvalid;
-//    }
 }
 
 // 暂停下载
@@ -99,22 +97,23 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
     NSString *key = [self cacheKeyForURL:url];
     NSURLSessionDownloadTask *downloadTask = [self downloadTaskForKey:key];
     __weak typeof(self) weakSelf = self;
-    [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if ([strongSelf isValidResumeData:resumeData]) {
+    if (downloadTask.state == NSURLSessionTaskStateRunning) {
+        [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             [strongSelf saveResumeData:resumeData forKey:key];
-        }
-    }];
+        }];
+    }
 }
 
 - (void)pauseWorkImmediately {
     for (NSString *key in self.tasks.allKeys) {
         NSURLSessionDownloadTask *downloadTask = self.tasks[key];
-        NSLog(@"%@  %@",downloadTask ,key);
-        [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
-            NSLog(@"----save");
-            [self saveResumeData:resumeData forKey:key];
-        }];
+        if (downloadTask.state == NSURLSessionTaskStateRunning) {
+            [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+                NSLog(@"----save");
+                [self saveResumeData:resumeData forKey:key];
+            }];
+        }
     }
 }
 
@@ -136,6 +135,9 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
     [self.tasks removeObjectForKey:key];
 }
 - (void)saveResumeData:(NSData *)data forKey:(NSString *)key {
+    if (![self isValidResumeData:data]) {
+        return;
+    }
     NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:nil];
     NSString *progressInfo = self.totalBytes[key];
     if (progressInfo) {
@@ -153,6 +155,18 @@ NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
         return resumeData;
     }
     return nil;
+}
+
+- (void)downloadData:(NSNotification *)notification {
+    if ([notification.object isKindOfClass:[NSURLSessionDownloadTask class]]) {
+        NSError *err = [notification.userInfo objectForKey:AFNetworkingTaskDidCompleteErrorKey];
+        if (err) {
+            NSData *resumeData = err.userInfo[@"NSURLSessionDownloadTaskResumeData"];
+            if (resumeData) {
+                NSLog(@"---ResumeData");
+            }
+        }
+    }
 }
 
 #pragma mark - Private
