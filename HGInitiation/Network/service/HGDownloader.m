@@ -9,11 +9,9 @@
 #import "HGDownloader.h"
 #import <AFNetworking.h>
 
-NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier";
 NSString *const HGDownloadCompletedUnitCount = @"HGDownloadCompletedUnitCount";
 NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";
-NSNotificationName const HGNotificationDefaultDownloadProgress = @"HGNotificationDefaultDownloadProgress";
-NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDefaultDownloadDone";
+
 
 @interface HGDownloader()
 @property(nonatomic, strong) AFHTTPSessionManager *httpManager;
@@ -26,7 +24,6 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
 
 @implementation HGDownloader
 
-// https://forums.developer.apple.com/thread/14854
 
 - (instancetype)initWithIdentifier:(NSString *)identifier allowsCellularAccess:(BOOL)allowsCellularAccess progress:(HGDownloadProgressHandler)progress completed:(HGDownloadCompletedHandler)completed {
     
@@ -43,10 +40,11 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
     return self;
 }
 
+// see: https://forums.developer.apple.com/thread/14854
+
 - (void)setDidFinishEventsForBackgroundURLSessionBlock:(void (^)(NSURLSession *session))block {
     [self.httpManager setDidFinishEventsForBackgroundURLSessionBlock:block];
 }
-
 
 #pragma mark -
 
@@ -76,10 +74,10 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
             }
         }else{
             strongSelf.completedHandler(strongSelf,url,filePath);
-            [strongSelf removeDownloadTaskForURL:url];
+            [strongSelf removeDownloadTaskForKey:key];
         }
     };
-    NSData *resumeData = [self resumeDataForURL:url];
+    NSData *resumeData = [self resumeDataForKey:key];
     if (resumeData) {
         downloadTask = [self.httpManager downloadTaskWithResumeData:resumeData progress:downloadProgressBlock destination:nil completionHandler:completionHandler];
     }else {
@@ -98,26 +96,46 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
 
 // 暂停下载
 - (void)stopDownloadWithURL:(NSURL *)url {
-    NSURLSessionDownloadTask *downloadTask = [self downloadTaskForURL:url];
+    NSString *key = [self cacheKeyForURL:url];
+    NSURLSessionDownloadTask *downloadTask = [self downloadTaskForKey:key];
     __weak typeof(self) weakSelf = self;
     [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if ([strongSelf isValidResumeData:resumeData]) {
-            [strongSelf saveResumeData:resumeData forURL:url];
+            [strongSelf saveResumeData:resumeData forKey:key];
         }
     }];
 }
 
-- (NSURLSessionDownloadTask *)downloadTaskForURL:(NSURL *)url {
+- (void)pauseWorkImmediately {
+    for (NSString *key in self.tasks.allKeys) {
+        NSURLSessionDownloadTask *downloadTask = self.tasks[key];
+        NSLog(@"%@  %@",downloadTask ,key);
+        [downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+            NSLog(@"----save");
+            [self saveResumeData:resumeData forKey:key];
+        }];
+    }
+}
+
+// 获取本地已下载信息
+- (NSDictionary *)localDownloadInfoForURL:(NSURL *)url {
     NSString *key = [self cacheKeyForURL:url];
+    NSData *data = [self resumeDataForKey:key];
+    if (!data || [data length] < 1) return nil;
+    NSError *error;
+    NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
+    if (!resumeDictionary || error) return nil;
+    return resumeDictionary;
+}
+
+- (NSURLSessionDownloadTask *)downloadTaskForKey:(NSString *)key {
     return self.tasks[key];
 }
-- (void)removeDownloadTaskForURL:(NSURL *)url {
-    NSString *key = [self cacheKeyForURL:url];
+- (void)removeDownloadTaskForKey:(NSString *)key {
     [self.tasks removeObjectForKey:key];
 }
-- (void)saveResumeData:(NSData *)data forURL:(NSURL *)url {
-    NSString *key = [self cacheKeyForURL:url];
+- (void)saveResumeData:(NSData *)data forKey:(NSString *)key {
     NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:nil];
     NSString *progressInfo = self.totalBytes[key];
     if (progressInfo) {
@@ -129,21 +147,12 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
     [[NSUserDefaults standardUserDefaults] setObject:resumeData forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (NSData *)resumeDataForURL:(NSURL *)url {
-    NSString *key = [self cacheKeyForURL:url];
+- (NSData *)resumeDataForKey:(NSString *)key {
     NSData *resumeData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if ([self isValidResumeData:resumeData]) {
         return resumeData;
     }
     return nil;
-}
-- (NSDictionary *)localDownloadInfoForURL:(NSURL *)url {
-    NSData *data = [self resumeDataForURL:url];
-    if (!data || [data length] < 1) return nil;
-    NSError *error;
-    NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
-    if (!resumeDictionary || error) return nil;
-    return resumeDictionary;
 }
 
 #pragma mark - Private
@@ -165,6 +174,12 @@ NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDef
 
 
 @end
+
+
+
+NSString *const HGDownloaderDefaultIdentifier = @"HGDownloaderDefaultIdentifier";
+NSNotificationName const HGNotificationDefaultDownloadProgress = @"HGNotificationDefaultDownloadProgress";
+NSNotificationName const HGNotificationDefaultDownloadDone = @"HGNotificationDefaultDownloadDone";
 
 
 @implementation HGDownloader (Default)

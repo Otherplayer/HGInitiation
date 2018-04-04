@@ -55,8 +55,12 @@
 }
 
 
+//This method lets your application know that it is about to be terminated and purged from memory entirely. You should use this method to perform any final clean-up tasks for your application, such as freeing shared resources, saving user data, and invalidating timers. Your implementation of this method has approximately five seconds to perform any tasks and return. If the method does not return before time expires, the system may kill the process altogether.
+//
+//For applications that do not support background execution or are linked against iOS 3.x or earlier, this method is always called when the user quits the application. For applications that support background execution, this method is generally not called when the user quits the application because the application simply moves to the background in that case. However, this method may be called in situations where the application is running in the background (not suspended) and the system needs to terminate it for some reason.
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
 }
 
 
@@ -70,6 +74,7 @@
     if ([identifier isEqualToString:HGDownloaderDefaultIdentifier]) {
         [[HGDownloader defaultInstance] setDidFinishEventsForBackgroundURLSessionBlock:^(NSURLSession *session) {
             completionHandler();
+            
         }];
     }
 }
