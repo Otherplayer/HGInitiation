@@ -240,8 +240,9 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     configuration.userContentController = userContentController;
-    
-    // 允许音频视频自动播放
+    configuration.preferences = [WKPreferences new];
+    configuration.preferences.javaScriptEnabled = YES;
+    configuration.preferences.javaScriptCanOpenWindowsAutomatically = YES;
     // A Boolean value indicating whether HTML5 videos play inline (YES) or use the native full-screen controller (NO).
     configuration.allowsInlineMediaPlayback = YES;
     if (@available(iOS 10, *)) {
@@ -259,6 +260,13 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
         _webView.scrollView.bounces = NO;
         _webView;
     });
+    
+    if (@available(iOS 11.0, *)) {
+        self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
+    
     [self.view addSubview:self.webView];
     
     CGFloat progressBarHeight = 2.f;

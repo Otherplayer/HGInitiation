@@ -12,6 +12,7 @@
 #import "NSObject+HGAssociate.h"
 #import "UIColor+HG.h"
 #import "NSString+HG.h"
+#import "NSString+URITemplate.h"
 #import "UIScrollView+HGRefresh.h"
 #import "UIViewController+HGAlert.h"
 #import "UIAlertAction+HGCustom.h"

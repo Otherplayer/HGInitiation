@@ -16,6 +16,9 @@
 #import "HGDatePickerView.h"
 #import "HGHelperPush.h"
 #import "HGThemeWhatever.h"
+#import <LocalAuthentication/LocalAuthentication.h>
+
+extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 static NSString *Identifier = @"Identifier";
 
@@ -52,8 +55,8 @@ CGFloat currentPage = 0;
 //        [HGHelperPush push:@{HGPushClassName:@"HGDownloadController"}];
 //    });
     
-    
-    
+//    [self test];
+    [self testURITemplate];
     
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -239,6 +242,82 @@ CGFloat currentPage = 0;
 
 #pragma mark - private method
 
+- (void)testURITemplate {
+    NSString *template = @"http://example.org/{var}/{hello}/{undef}/{+var}/{+hello}/{+undef}/{+path}/{#var}/{#hello}/{#undef}/here/map?{x,y,z}/{+x,y,z}/{#x,y,z}/{.x,y}/{.var}{/var}{/var,x}/{;x,y}/{;x,y,empty}/{?x}/{?x,y}/{?x,y,empty}/{&x}/{&x,y,empty}";
+    NSString *result = [template templateExpand:@{
+                                                  @"hello":@"Hello World",
+                                                  @"var":@"value",
+                                                  @"path":@"foo/bar",
+                                                  @"empty":@"",
+                                                  @"x":@"1024",
+                                                  @"y":@"768"
+                                                  }];
+    
+    NSLog(@"%@",template);
+    NSLog(@"%@",result);
+}
+- (void)test {
+    
+    static size_t const count = 1000;
+    static size_t const iterations = 10;
+    id object = @"🐷";
+    CFTimeInterval startTime = CACurrentMediaTime();
+    {
+        for (size_t i = 0; i < iterations; i++) {
+            @autoreleasepool {
+                NSMutableArray *mutableArray = [NSMutableArray array];
+                for (size_t j = 0; j < count; j++) {
+                    [mutableArray addObject:object];
+                }
+            }
+        }
+    }
+    CFTimeInterval endTime = CACurrentMediaTime();
+    NSLog(@"Total Runtime: %g s", endTime - startTime);
+    
+    
+    uint64_t t_0 = dispatch_benchmark(iterations, ^{
+        @autoreleasepool {
+            NSMutableArray *mutableArray = [NSMutableArray array];
+            for (size_t i = 0; i < count; i++) {
+                [mutableArray addObject:object];
+            }
+        }
+    });
+    NSLog(@"[[NSMutableArray array] addObject:] Avg. Runtime: %llu ns", t_0);
+    
+    __block int idx = 0;
+    uint64_t t_1 = dispatch_benchmark(iterations, ^{
+        NSLog(@"--%@",@(++idx));
+        @autoreleasepool {
+            NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:count];
+            for (size_t i = 0; i < count; i++) {
+                [mutableArray addObject:object];
+            }
+        }
+    });
+    NSLog(@"[[NSMutableArray arrayWithCapacity] addObject:] Avg. Runtime: %llu ns", t_1);
+    
+}
+
+- (void)testBiometrics {
+    LAContext *context = [[LAContext alloc] init];
+    NSError *error = nil;
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]){
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                localizedReason:NSLocalizedString(@"...", nil)
+                          reply:^(BOOL success, NSError *error) {
+                              if (success) {
+                                  // ...
+                              } else {
+                                  NSLog(@"%@", error);
+                              }
+                          }];
+    } else {
+        NSLog(@"%@", error);
+    }
+}
+
 #pragma mark - initiate
 
 - (void)initiateDatas {
@@ -296,6 +375,7 @@ CGFloat currentPage = 0;
     
     
 }
+
 
 
 

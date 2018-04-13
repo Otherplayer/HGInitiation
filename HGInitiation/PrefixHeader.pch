@@ -27,6 +27,13 @@
 #import "HGHelperHUD.h"
 
 
+//记录一下
+
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wcovered-switch-default"
+//
+//#pragma clang diagnostic pop
+
 
 
 
