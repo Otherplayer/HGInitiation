@@ -78,6 +78,7 @@
 		63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0391FFF0AEE0049597F /* HGWebViewController.m */; };
 		63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EDC03B1FFF0B860049597F /* WebKit.framework */; };
 		63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0401FFF23CA0049597F /* HGWebViewProgressView.m */; };
+		63F6BB9A2094753900BB8EFF /* HGHelperFPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BB992094753900BB8EFF /* HGHelperFPS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +223,8 @@
 		63EDC03B1FFF0B860049597F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		63EDC03F1FFF23CA0049597F /* HGWebViewProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWebViewProgressView.h; sourceTree = "<group>"; };
 		63EDC0401FFF23CA0049597F /* HGWebViewProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWebViewProgressView.m; sourceTree = "<group>"; };
+		63F6BB982094753900BB8EFF /* HGHelperFPS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperFPS.h; sourceTree = "<group>"; };
+		63F6BB992094753900BB8EFF /* HGHelperFPS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHelperFPS.m; sourceTree = "<group>"; };
 		C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HGInitiation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -506,6 +509,8 @@
 				63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */,
 				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
 				63D55970200733F200BBA0BE /* HGHelperPush.m */,
+				63F6BB982094753900BB8EFF /* HGHelperFPS.h */,
+				63F6BB992094753900BB8EFF /* HGHelperFPS.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -834,6 +839,7 @@
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
 				63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */,
 				63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */,
+				63F6BB9A2094753900BB8EFF /* HGHelperFPS.m in Sources */,
 				63880BB31FF0DF6800DAFD68 /* HGHTTPClient.m in Sources */,
 				632B7AB71FF38D9A000F57A3 /* HGAsset.m in Sources */,
 				63880BC51FF0EADC00DAFD68 /* HGHelperHUD.m in Sources */,

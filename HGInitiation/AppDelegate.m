@@ -14,6 +14,10 @@
 #import <YYReachability.h>
 #import "HGDownloader.h"
 
+#ifndef __OPTIMIZE__
+#import "HGHelperFPS.h"
+#endif
+
 @interface AppDelegate ()
 
 @end
@@ -28,9 +32,12 @@
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
     
+#ifndef __OPTIMIZE__
+    [[HGHelperFPS sharedInstance] setHidden:NO];
+#endif
+    
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
