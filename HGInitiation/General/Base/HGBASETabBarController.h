@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGBASENavigationController.h"
 
 @interface HGBASETabBarController : UITabBarController
+
+- (void)setDefaultViewControllers;
+
 
 @end

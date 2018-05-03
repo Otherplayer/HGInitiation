@@ -27,14 +27,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[HGHelperReachability sharedInstance] startMonitoring];
-    // 应用皮肤
-    NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
-    [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
     
-#ifndef __OPTIMIZE__
-    [[HGHelperFPS sharedInstance] setHidden:NO];
-#endif
+    [self installWindow];
+    [self installFuns];
+    [self installCustomConfiguration];
     
     return YES;
 }
@@ -85,6 +81,35 @@
     }
 }
 
+
+#pragma mark - install
+
+
+- (void)installWindow {
+    self.tabBarController = [[HGBASETabBarController alloc] init];
+    [self.tabBarController setDefaultViewControllers];
+    
+    self.window = [UIWindow.alloc initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyAndVisible];
+}
+
+- (void)installFuns {
+    [[HGHelperReachability sharedInstance] startMonitoring];
+    // 应用皮肤
+    NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
+    [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
+    
+#ifndef __OPTIMIZE__
+    [[HGHelperFPS sharedInstance] setHidden:NO];
+#endif
+}
+- (void)installCustomConfiguration {
+    if (@available(iOS 11.0, *)){
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+}
 
 
 

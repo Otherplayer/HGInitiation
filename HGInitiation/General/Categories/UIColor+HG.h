@@ -14,6 +14,11 @@
 + (UIColor *)disabledColor;
 + (UIColor *)placeholderColor;
 
++ (UIColor *)successColor;
++ (UIColor *)warningColor;
++ (UIColor *)dangerColor;
++ (UIColor *)infoColor;
+
 
 + (UIColor *)gradientColorFrom:(UIColor *)colorFrom to:(UIColor *)colorTo height:(int)height;
 + (UIColor *)gradientColorFrom:(UIColor *)colorFrom to:(UIColor *)colorTo width:(int)width;

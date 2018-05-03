@@ -95,19 +95,21 @@
 }
 
 - (void)setNavBarShadowImage:(UIImage *)navBarShadowImage {
-    _navBarShadowImage = navBarShadowImage;
-    if (navBarShadowImage) {
-        [UINavigationBar appearance].shadowImage = _navBarShadowImage;
-        [UIViewController visibleViewController].navigationController.navigationBar.shadowImage = _navBarShadowImage;
+    if (!navBarShadowImage) {
+        navBarShadowImage = [UIImage.alloc init];
     }
+    _navBarShadowImage = navBarShadowImage;
+    [UINavigationBar appearance].shadowImage = _navBarShadowImage;
+    [UIViewController visibleViewController].navigationController.navigationBar.shadowImage = _navBarShadowImage;
 }
 
 - (void)setNavBarBackgroundImage:(UIImage *)navBarBackgroundImage {
-    _navBarBackgroundImage = navBarBackgroundImage;
-    if (navBarBackgroundImage) {
-        [[UINavigationBar appearance] setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
-        [[UIViewController visibleViewController].navigationController.navigationBar setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    if (!navBarBackgroundImage) {
+        navBarBackgroundImage = [UIImage.alloc init];
     }
+    _navBarBackgroundImage = navBarBackgroundImage;
+    [[UINavigationBar appearance] setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UIViewController visibleViewController].navigationController.navigationBar setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)setNavBarTitleFont:(UIFont *)navBarTitleFont {
@@ -165,6 +167,7 @@
 - (void)setTabBarTintColor:(UIColor *)tabBarTintColor {
     _tabBarTintColor = tabBarTintColor;
     if (tabBarTintColor) {
+        [UITabBar appearance].tintColor = _tabBarTintColor;
         [UIViewController visibleViewController].tabBarController.tabBar.tintColor = _tabBarTintColor;
     }
 }

@@ -15,7 +15,7 @@
 
 - (void)setupConfigurationTemplate;
 
-- (UIColor *)themeTintColor;
+- (UIColor *)tintColor;
 
 - (NSString *)themeName;
 

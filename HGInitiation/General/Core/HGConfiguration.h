@@ -17,6 +17,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// 这里设置改变主题时需要改变的颜色
 #pragma mark - Global Color
 
 @property(nonatomic, strong) UIColor            *tintColor;

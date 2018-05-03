@@ -14,23 +14,25 @@
     
     #pragma mark - Global Color
     
-    HGConfigurationInstance.tintColor = [UIColor blueColor];
+    HGConfigurationInstance.tintColor = [UIColor colorWithRGB:0x409EFF];
+    
     
     #pragma mark - NavigationBar
-    
-    HGConfigurationInstance.navBarTintColor = [UIColor redColor];
-    HGConfigurationInstance.navBarBarTintColor = [UIColor redColor];
-    
+
     HGConfigurationInstance.navBarTitleColor = [UIColor blackColor];
-    HGConfigurationInstance.navBarLargeTitleColor = [UIColor blackColor];
+    HGConfigurationInstance.navBarTitleFont = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
     
-    HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
-    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:UIColorHex(0xf7f7f7)];
+    
+    #pragma mark - TabBar
+    
+    HGConfigurationInstance.tabBarTintColor = [self tintColor];
+    
+    
     
 }
 
-- (UIColor *)themeTintColor {
-    return [UIColor whiteColor];
+- (UIColor *)tintColor {
+    return [UIColor colorWithRGB:0x409EFF];
 }
 
 - (NSString *)themeName {

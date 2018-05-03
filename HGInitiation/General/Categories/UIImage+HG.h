@@ -10,4 +10,6 @@
 
 @interface UIImage (HG)
 + (UIImage *)imageWithColor:(UIColor *)color;
+- (UIImage *)imageWithTintColor:(UIColor *)color;
+
 @end

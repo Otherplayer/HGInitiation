@@ -79,6 +79,9 @@
 		63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EDC03B1FFF0B860049597F /* WebKit.framework */; };
 		63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EDC0401FFF23CA0049597F /* HGWebViewProgressView.m */; };
 		63F6BB9A2094753900BB8EFF /* HGHelperFPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BB992094753900BB8EFF /* HGHelperFPS.m */; };
+		63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BB9C2099994200BB8EFF /* HGBASENavigationController.m */; };
+		63F6BBBD209AAF0100BB8EFF /* HGFunctionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BBBC209AAF0100BB8EFF /* HGFunctionsController.m */; };
+		63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BBC1209AB07000BB8EFF /* HGSettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +228,12 @@
 		63EDC0401FFF23CA0049597F /* HGWebViewProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWebViewProgressView.m; sourceTree = "<group>"; };
 		63F6BB982094753900BB8EFF /* HGHelperFPS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperFPS.h; sourceTree = "<group>"; };
 		63F6BB992094753900BB8EFF /* HGHelperFPS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHelperFPS.m; sourceTree = "<group>"; };
+		63F6BB9B2099994200BB8EFF /* HGBASENavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBASENavigationController.h; sourceTree = "<group>"; };
+		63F6BB9C2099994200BB8EFF /* HGBASENavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBASENavigationController.m; sourceTree = "<group>"; };
+		63F6BBBB209AAF0100BB8EFF /* HGFunctionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGFunctionsController.h; sourceTree = "<group>"; };
+		63F6BBBC209AAF0100BB8EFF /* HGFunctionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFunctionsController.m; sourceTree = "<group>"; };
+		63F6BBC0209AB07000BB8EFF /* HGSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGSettingsController.h; sourceTree = "<group>"; };
+		63F6BBC1209AB07000BB8EFF /* HGSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGSettingsController.m; sourceTree = "<group>"; };
 		C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HGInitiation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +279,8 @@
 		6312A6E7204E679400D7F5EF /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				63F6BBBF209AAFE400BB8EFF /* Settings */,
+				63F6BBBE209AAFD400BB8EFF /* Functions */,
 				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
 				635C24E31FFB6D3A0070BC46 /* HGTextFieldController.m */,
 				635C24E91FFB8BAB0070BC46 /* HGTextViewController.h */,
@@ -545,6 +556,8 @@
 				63880BBE1FF0EA5700DAFD68 /* HGBASEViewController.m */,
 				631FE87A2018299400E9D8A2 /* HGBASETabBarController.h */,
 				631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */,
+				63F6BB9B2099994200BB8EFF /* HGBASENavigationController.h */,
+				63F6BB9C2099994200BB8EFF /* HGBASENavigationController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -641,6 +654,24 @@
 				63EDC0401FFF23CA0049597F /* HGWebViewProgressView.m */,
 			);
 			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		63F6BBBE209AAFD400BB8EFF /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				63F6BBBB209AAF0100BB8EFF /* HGFunctionsController.h */,
+				63F6BBBC209AAF0100BB8EFF /* HGFunctionsController.m */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		63F6BBBF209AAFE400BB8EFF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				63F6BBC0209AB07000BB8EFF /* HGSettingsController.h */,
+				63F6BBC1209AB07000BB8EFF /* HGSettingsController.m */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -801,6 +832,7 @@
 				63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */,
 				632B7AB01FF22B93000F57A3 /* HGImagePreviewController.m in Sources */,
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
+				63F6BBBD209AAF0100BB8EFF /* HGFunctionsController.m in Sources */,
 				631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */,
 				63B9A168205628070006B2E9 /* HGPagesController.m in Sources */,
 				635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */,
@@ -834,7 +866,9 @@
 				631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */,
 				631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */,
 				63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */,
+				63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */,
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
+				63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */,
 				635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */,
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
 				63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */,

@@ -10,6 +10,7 @@
 
 @implementation UIColor (HG)
 
+
 + (UIColor *)randomColor {
     CGFloat aRedValue = arc4random() % 255 / 255.f;
     CGFloat aGreenValue = arc4random() % 255 / 255.f;
@@ -23,6 +24,28 @@
 + (UIColor *)placeholderColor {
     return HGConfigurationInstance.placeholderColor;
 }
+
+
+#pragma mark -
+
+
++ (UIColor *)successColor {
+    return [UIColor colorWithRGB:0x67C23A];
+}
++ (UIColor *)warningColor {
+    return [UIColor colorWithRGB:0xE6A23C];
+}
++ (UIColor *)dangerColor {
+    return [UIColor colorWithRGB:0xF56C6C];
+}
++ (UIColor *)infoColor {
+    return [UIColor colorWithRGB:0x909399];
+}
+
+
+
+
+#pragma mark -
 
 + (UIColor *)gradientColorFrom:(UIColor *)colorFrom to:(UIColor *)colorTo height:(int)height {
     return HGGradientFromColors(@[colorFrom,colorTo], CGSizeMake(HGPixelOne, height));

@@ -11,16 +11,5 @@
 @interface ViewController : HGBASEViewController
 
 
-typedef NS_ENUM(NSUInteger, HGDataType) {
-    HGDataType_ImagePicker,
-    HGDataType_AvatarCut,
-    HGDataType_Picker,
-    HGDataType_DatePicker,
-    HGDataType_Browser,
-    HGDataType_Theme,
-    HGDataType_Other,
-};
-
-
 @end
 

@@ -27,7 +27,7 @@
     
 }
 
-- (UIColor *)themeTintColor {
+- (UIColor *)tintColor {
     return [UIColor randomColor];
 }
 
