@@ -9,10 +9,25 @@
 #ifndef HGStatic_h
 #define HGStatic_h
 
-///https://www.jianshu.com/p/eb03e20f7b1c
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-function"
 
+/**
+ * 忽略警告
+ **/
+
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+//    //...
+//#pragma clang diagnostic pop
+
+#define HGArgumentToString(macro) #macro
+#define HGClangWarningConcat(warning_name) HGArgumentToString(clang diagnostic ignored warning_name)
+
+#define HGBeginIgnoreClangWarning(warningName) _Pragma("clang diagnostic push") _Pragma(HGClangWarningConcat(warningName))
+#define HGEndIgnoreClangWarning _Pragma("clang diagnostic pop")
+
+
+///https://www.jianshu.com/p/eb03e20f7b1c
+HGBeginIgnoreClangWarning("-Wunused-function")
 
 /**
  * systemTimeZone
@@ -39,9 +54,6 @@ UIKIT_STATIC_INLINE NSDate *HGDateFromString(NSString *dateFormat, NSString *str
     [dateFormatter setDateFormat:dateFormat];
     return [dateFormatter dateFromString:string];
 }
-
-
-
 
 
 /**
@@ -98,6 +110,6 @@ static void cancel_delayed_block(HGDelayedBlockHandle delayedHandle) {
 }
 
 
-#pragma clang diagnostic pop
+HGEndIgnoreClangWarning
 
 #endif /* HGStatic_h */

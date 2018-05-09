@@ -9,14 +9,9 @@
 #import "HGBASEViewController.h"
 
 typedef NS_ENUM(NSUInteger, HGDataType) {
-    HGDataType_ImagePicker,
-    HGDataType_AvatarCut,
-    HGDataType_Picker,
-    HGDataType_DatePicker,
-    HGDataType_Biometrics,
-    HGDataType_Browser,
-    HGDataType_Theme,
-    HGDataType_Other,
+    HGDataTypeFunction,
+    HGDataTypePushController,
+    HGDataTypePresentController,
 };
 
 @interface HGFunctionsController : HGBASEViewController

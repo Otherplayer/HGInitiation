@@ -24,6 +24,7 @@ static NSString *Identifier = @"Identifier";
 
 NSString *const TITLE = @"title";
 NSString *const TYPE = @"type";
+NSString *const FUN = @"function";
 NSString *const PARAMS = @"params";
 
 
@@ -58,6 +59,8 @@ CGFloat currentPage = 0;
     
     //    [self test];
     //    [self testURITemplate];
+    
+    NSLog(@"%s",HGClangWarningConcat("-Warc-performSelector-leaks"));
     
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -101,7 +104,22 @@ CGFloat currentPage = 0;
         [HGHelperPush push:params];
     }else{
         NSNumber *type = [item objectForKey:TYPE];
-        [self showFunction:type.integerValue];
+        switch (type.integerValue) {
+            case HGDataTypeFunction:
+            {
+                NSString *funName = [item objectForKey:FUN];
+                SEL funSel = NSSelectorFromString(funName);
+                
+                HGBeginIgnoreClangWarning("-Warc-performSelector-leaks")
+                [self performSelector:funSel];
+                HGEndIgnoreClangWarning
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
     
 }
@@ -111,73 +129,54 @@ CGFloat currentPage = 0;
 
 #pragma mark - funcs
 
-- (void)showFunction:(HGDataType)type {
-    switch (type) {
-        case HGDataType_ImagePicker:{
-            HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:9 type:HGAssetPickerTypeAll delegate:nil showAlbumFirst:NO];
-            [self presentViewController:controller animated:YES completion:nil];
-        }
-            break;
-        case HGDataType_AvatarCut:{
-            HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
-            [self presentViewController:controller animated:YES completion:nil];
-        }
-            break;
-        case HGDataType_Picker:{
-            NSArray *items = @[
-                               @[@{@"title":@"a",@"value":@"a"},@{@"title":@"b",@"value":@"b"}],
-                               @[@{@"title":@"c",@"value":@"c"},@{@"title":@"d",@"value":@"d"}],
-                               ];
-            HGPickerView *pickerView = [HGPickerView.alloc init];
-            [pickerView showInView:self.view
-                             items:items
-                      selectedIdxs:nil
-                           showKey:@"title"
-                 separatedByString:@","
-                     resultHandler:^(NSArray *selectedIdxs, NSArray *orgItems, NSString *showTitle) {
-                         [self showTip:showTitle];
-                     }];
-            
-        }
-            break;
-        case HGDataType_DatePicker:{
-            HGDatePickerView *datePickerView = [HGDatePickerView.alloc init];
-            datePickerView.datePicker.datePickerMode = UIDatePickerModeDate;
-            [datePickerView showInView:self.view selectedDate:nil format:@"yyyy/MM/dd" resultHandler:^(NSDate *selectedDate, NSString *dateStr) {
-                [self showTip:dateStr];
-            }];
-        }
-            break;
-        case HGDataType_Biometrics:{
-            [self testBiometrics];
-        }
-            break;
-        case HGDataType_Theme:{
-            [self functionTheme];
-        }
-            break;
-            
-        default:
-            break;
+- (void)funPicker {
+    NSArray *items = @[
+                       @[@{@"title":@"a",@"value":@"a"},@{@"title":@"b",@"value":@"b"}],
+                       @[@{@"title":@"c",@"value":@"c"},@{@"title":@"d",@"value":@"d"}],
+                       ];
+    HGPickerView *pickerView = [HGPickerView.alloc init];
+    [pickerView showInView:self.view
+                     items:items
+              selectedIdxs:nil
+                   showKey:@"title"
+         separatedByString:@","
+             resultHandler:^(NSArray *selectedIdxs, NSArray *orgItems, NSString *showTitle) {
+                 [self showTip:showTitle];
+    }];
+}
+
+- (void)funDatePicker {
+    HGDatePickerView *datePickerView = [HGDatePickerView.alloc init];
+    datePickerView.datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePickerView showInView:self.view selectedDate:nil format:@"yyyy/MM/dd" resultHandler:^(NSDate *selectedDate, NSString *dateStr) {
+        [self showTip:dateStr];
+    }];
+}
+
+- (void)funBiometrics {
+    LAContext *context = [[LAContext alloc] init];
+    NSError *error = nil;
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]){
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                localizedReason:NSLocalizedString(@"...", nil)
+                          reply:^(BOOL success, NSError *error) {
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                  if (success) {
+                                      // ...
+                                      [self showAlertMessage:@"验证成功" completionHandler:nil];
+                                  } else {
+                                      NSLog(@"%@", error);
+                                      [self showTip:error.localizedDescription];
+                                  }
+                              });
+                          }];
+    } else {
+        NSLog(@"%@", error);
+        [self showAlertMessage:error.localizedDescription completionHandler:nil];
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat current = scrollView.contentOffset.y + scrollView.frame.size.height;
-    CGFloat total = scrollView.contentSize.height;
-    CGFloat ratio = current / total;
-    
-    CGFloat needRead = itemPerPage * threshold + currentPage * itemPerPage;
-    CGFloat totalItem = itemPerPage * (currentPage + 1);
-    CGFloat newThreshold = needRead / totalItem;
-    
-    if (ratio >= newThreshold) {
-        currentPage += 1;
-        //        NSLog("Request page \(currentPage) from server.");
-    }
-}
-
-- (void)functionTheme {
+- (void)funChangeTheme {
     NSDictionary *titleAttributesInfo =  @{NSFontAttributeName:[UIFont systemFontOfSize:20],
                                            NSForegroundColorAttributeName:[UIColor purpleColor]};
     UIFontDescriptor *messageFontDescriptor = [UIFontDescriptor.alloc initWithFontAttributes:@{UIFontDescriptorNameAttribute:@"Arial-ItalicMT",UIFontDescriptorFamilyAttribute:@"Arial"}];
@@ -204,6 +203,33 @@ CGFloat currentPage = 0;
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+- (void)funImagePicker {
+    HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:9 type:HGAssetPickerTypeAll delegate:nil showAlbumFirst:NO];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)funAvatarCut {
+    HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat current = scrollView.contentOffset.y + scrollView.frame.size.height;
+    CGFloat total = scrollView.contentSize.height;
+    CGFloat ratio = current / total;
+    
+    CGFloat needRead = itemPerPage * threshold + currentPage * itemPerPage;
+    CGFloat totalItem = itemPerPage * (currentPage + 1);
+    CGFloat newThreshold = needRead / totalItem;
+    
+    if (ratio >= newThreshold) {
+        currentPage += 1;
+        //        NSLog("Request page \(currentPage) from server.");
+    }
+}
+
 
 
 #pragma mark - HGImagePickerDelegate
@@ -308,29 +334,6 @@ CGFloat currentPage = 0;
     
 }
 
-- (void)testBiometrics {
-    LAContext *context = [[LAContext alloc] init];
-    NSError *error = nil;
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]){
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                localizedReason:NSLocalizedString(@"...", nil)
-                          reply:^(BOOL success, NSError *error) {
-                              dispatch_async(dispatch_get_main_queue(), ^{
-                                  if (success) {
-                                      // ...
-                                      [self showAlertMessage:@"验证成功" completionHandler:nil];
-                                  } else {
-                                      NSLog(@"%@", error);
-                                      [self showTip:error.localizedDescription];
-                                  }
-                              });
-                          }];
-    } else {
-        NSLog(@"%@", error);
-        [self showAlertMessage:error.localizedDescription completionHandler:nil];
-    }
-}
-
 #pragma mark - initiate
 
 - (void)initiateDatas {
@@ -353,20 +356,13 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGPagesController"}},
                    @{TITLE:@"Download",
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
-                   @{TITLE:@"Picker",
-                     TYPE:@(HGDataType_Picker)},
-                   @{TITLE:@"Datepicker",
-                     TYPE:@(HGDataType_DatePicker)},
-                   @{TITLE:@"生物识别",
-                     TYPE:@(HGDataType_Biometrics)},
-                   @{TITLE:@"相册选择",
-                     TYPE:@(HGDataType_ImagePicker)},//https://github.com/QMUI/QMUI_iOS
-                   @{TITLE:@"头像截取",
-                     TYPE:@(HGDataType_AvatarCut)},//https://github.com/itouch2/PhotoTweaks
-                   @{TITLE:@"主题",
-                     TYPE:@(HGDataType_Theme)},
-                   @{TITLE:@"其它",
-                     PARAMS:@{HGPushClassName:@"HGOtherController"}},
+                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
+                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
+                   @{TITLE:@"生物识别",FUN:@"funBiometrics",TYPE:@(HGDataTypeFunction)},
+                   @{TITLE:@"相册选择",FUN:@"funImagePicker",TYPE:@(HGDataTypeFunction)},//https://github.com/QMUI/QMUI_iOS
+                   @{TITLE:@"头像截取",FUN:@"funAvatarCut",TYPE:@(HGDataTypeFunction)},//https://github.com/itouch2/PhotoTweaks
+                   @{TITLE:@"主题",FUN:@"funChangeTheme",TYPE:@(HGDataTypeFunction)},
+                   @{TITLE:@"其它",FUN:@"funBiometrics",PARAMS:@{HGPushClassName:@"HGOtherController"}},
                    ];
 }
 - (void)initiateViews {
