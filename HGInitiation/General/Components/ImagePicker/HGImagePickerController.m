@@ -122,7 +122,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.translucent = YES;
+    self.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationBar.shadowImage = [UIImage new];
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor blackColor]] forBarMetrics:UIBarMetricsDefault];
     
+    NSMutableDictionary<NSString *, id> *titleTextAttributes = [[NSMutableDictionary alloc] init];
+    [titleTextAttributes setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationBar.titleTextAttributes = titleTextAttributes;
 }
 
 @end

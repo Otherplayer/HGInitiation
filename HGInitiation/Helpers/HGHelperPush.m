@@ -46,6 +46,7 @@ NSString *const PUSH_APS  = @"aps";
     }
     UIViewController *topVC = [self topViewController];
     if (topVC.navigationController) {
+        [controller setHidesBottomBarWhenPushed:YES];
         [topVC.navigationController pushViewController:controller animated:animated];
     }else {
         NSLog(@"[错误]--------------未实现 %s",__FUNCTION__);
