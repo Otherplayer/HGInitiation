@@ -14,12 +14,16 @@
 - (void)showAlertMessage:(NSString *)message withTitle:(NSString *)title confirmTitle:(NSString *)confirmTitle cancelTitle:(NSString *)cancelTitle confirmHandler:(void (^)(void))confirmHandler cancelHandler:(void (^)(void))cancelHandler {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:confirmTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        confirmHandler();
+        if (confirmHandler) {
+            confirmHandler();
+        }
     }];
     [alertController addAction:confirmAction];
     if (cancelTitle) {
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            cancelHandler();
+            if (cancelHandler) {
+                cancelHandler();
+            }
         }];
         [alertController addAction:cancelAction];
     }

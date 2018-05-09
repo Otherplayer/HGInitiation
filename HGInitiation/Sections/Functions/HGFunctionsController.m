@@ -148,6 +148,10 @@ CGFloat currentPage = 0;
             }];
         }
             break;
+        case HGDataType_Biometrics:{
+            [self testBiometrics];
+        }
+            break;
         case HGDataType_Theme:{
             [self functionTheme];
         }
@@ -215,6 +219,7 @@ CGFloat currentPage = 0;
                 if (result && !isDegraded) {
                     HGAvatarClipperController *controller = [HGAvatarClipperController.alloc initWithImage:result];
                     controller.delegate = self;
+                    controller.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
             });
@@ -310,14 +315,19 @@ CGFloat currentPage = 0;
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:NSLocalizedString(@"...", nil)
                           reply:^(BOOL success, NSError *error) {
-                              if (success) {
-                                  // ...
-                              } else {
-                                  NSLog(@"%@", error);
-                              }
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                  if (success) {
+                                      // ...
+                                      [self showAlertMessage:@"验证成功" completionHandler:nil];
+                                  } else {
+                                      NSLog(@"%@", error);
+                                      [self showTip:error.localizedDescription];
+                                  }
+                              });
                           }];
     } else {
         NSLog(@"%@", error);
+        [self showAlertMessage:error.localizedDescription completionHandler:nil];
     }
 }
 
@@ -347,6 +357,8 @@ CGFloat currentPage = 0;
                      TYPE:@(HGDataType_Picker)},
                    @{TITLE:@"Datepicker",
                      TYPE:@(HGDataType_DatePicker)},
+                   @{TITLE:@"生物识别",
+                     TYPE:@(HGDataType_Biometrics)},
                    @{TITLE:@"相册选择",
                      TYPE:@(HGDataType_ImagePicker)},//https://github.com/QMUI/QMUI_iOS
                    @{TITLE:@"头像截取",

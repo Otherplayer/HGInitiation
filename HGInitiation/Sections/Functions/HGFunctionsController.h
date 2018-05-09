@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, HGDataType) {
     HGDataType_AvatarCut,
     HGDataType_Picker,
     HGDataType_DatePicker,
+    HGDataType_Biometrics,
     HGDataType_Browser,
     HGDataType_Theme,
     HGDataType_Other,
