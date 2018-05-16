@@ -42,7 +42,8 @@
     
     // item
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"功能" image:[UIImage imageNamed:@"tab_funtion"] selectedImage:[[UIImage imageNamed:@"tab_funtion"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"其它" image:[UIImage imageNamed:@"tab_num_frame_0"] selectedImage:[[UIImage imageNamed:@"tab_num_frame_9"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
+//    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
     
     nav1.tabBarItem = item1;
     nav2.tabBarItem = item2;
@@ -56,7 +57,7 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     NSInteger index = [self.tabBar.items indexOfObject:item];
     
-    if (index == 0) {
+    if (index == 0 || index == 1) {
         [self animationWithIndex:index];
     }
     
@@ -75,7 +76,21 @@
     
     UIButton *btn = tabbarbuttonArray[index];
     UIImageView *imageView = [btn valueForKey:@"info"];
-    imageView.animationImages = [self imageNamesWithPrefix:@"tab_funtion_frame" startIndex:1 endIndex:10];
+
+    NSString *imageNamePrefix;
+    NSInteger startIndex = 0;
+    NSInteger endIndex = 0;
+    if (index == 0) {
+        startIndex = 1;
+        endIndex = 10;
+        imageNamePrefix = @"tab_funtion_frame";
+    }else if (index == 1) {
+        startIndex = 0;
+        endIndex = 9;
+        imageNamePrefix = @"tab_num_frame";
+    }
+    
+    imageView.animationImages = [self imageNamesWithPrefix:imageNamePrefix startIndex:startIndex endIndex:endIndex];
     imageView.animationRepeatCount = 1;
     imageView.animationDuration = 0.35;
     [imageView startAnimating];
