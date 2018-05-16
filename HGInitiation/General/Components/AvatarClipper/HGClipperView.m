@@ -643,6 +643,7 @@ typedef NS_ENUM(NSInteger, CropCornerType) {
         
         if (scaleM > 1) {
             scaleM = scaleM * self.scrollView.zoomScale;
+            [self.scrollView setMinimumZoomScale:scaleM];
             [self.scrollView setZoomScale:scaleM animated:YES];
         }
         [UIView animateWithDuration:0.2 animations:^{
