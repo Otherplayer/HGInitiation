@@ -8,6 +8,7 @@
 
 #import "HGBASETabBarController.h"
 #import "HGFunctionsController.h"
+#import "HGFeaturedController.h"
 #import "HGSettingsController.h"
 
 @interface HGBASETabBarController ()
@@ -35,20 +36,23 @@
     // controller
     HGFunctionsController *controller1 = [HGFunctionsController.alloc init];
     HGSettingsController *controller2 = [HGSettingsController.alloc init];
+    HGFeaturedController *controller3 = [HGFeaturedController.alloc init];
     
     // navigation
     HGBASENavigationController *nav1 = [HGBASENavigationController.alloc initWithRootViewController:controller1];
     HGBASENavigationController *nav2 = [HGBASENavigationController.alloc initWithRootViewController:controller2];
+    HGBASENavigationController *nav3 = [HGBASENavigationController.alloc initWithRootViewController:controller3];
     
     // item
-    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"功能" image:[UIImage imageNamed:@"tab_funtion"] selectedImage:[[UIImage imageNamed:@"tab_funtion"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"其它" image:[UIImage imageNamed:@"tab_num_frame_0"] selectedImage:[[UIImage imageNamed:@"tab_num_frame_9"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
-//    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"Functions" image:[UIImage imageNamed:@"tab_funtion"] selectedImage:[[UIImage imageNamed:@"tab_funtion"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"Whatever" image:[UIImage imageNamed:@"tab_num_frame_0"] selectedImage:[[UIImage imageNamed:@"tab_num_frame_9"] imageByTintColor:HGConfigurationInstance.tabBarTintColor]];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:2];
     
     nav1.tabBarItem = item1;
     nav2.tabBarItem = item2;
+    nav3.tabBarItem = item3;
     
-    self.viewControllers = @[nav1,nav2];
+    self.viewControllers = @[nav1,nav2,nav3];
     
 }
 

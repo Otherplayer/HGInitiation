@@ -63,6 +63,8 @@
 		6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2131FF61A9100EBBF6C /* UIColor+Tweak.m */; };
 		6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */; };
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
+		63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE220AC066C007F944B /* HGFeaturedController.m */; };
+		63949EE620AC06B6007F944B /* HGWhateverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE520AC06B6007F944B /* HGWhateverController.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
@@ -197,6 +199,10 @@
 		6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAvatarClipperController.m; sourceTree = "<group>"; };
 		6389B2161FF61A9100EBBF6C /* HGClipperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGClipperView.m; sourceTree = "<group>"; };
 		6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalMacro.h; sourceTree = "<group>"; };
+		63949EE120AC066C007F944B /* HGFeaturedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGFeaturedController.h; sourceTree = "<group>"; };
+		63949EE220AC066C007F944B /* HGFeaturedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFeaturedController.m; sourceTree = "<group>"; };
+		63949EE420AC06B6007F944B /* HGWhateverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWhateverController.h; sourceTree = "<group>"; };
+		63949EE520AC06B6007F944B /* HGWhateverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWhateverController.m; sourceTree = "<group>"; };
 		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
 		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -279,6 +285,8 @@
 		6312A6E7204E679400D7F5EF /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				63949EE020AC0648007F944B /* Featured */,
+				63949EDF20AC05EF007F944B /* Whatever */,
 				63F6BBBF209AAFE400BB8EFF /* Settings */,
 				63F6BBBE209AAFD400BB8EFF /* Functions */,
 				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
@@ -602,6 +610,24 @@
 			path = AvatarClipper;
 			sourceTree = "<group>";
 		};
+		63949EDF20AC05EF007F944B /* Whatever */ = {
+			isa = PBXGroup;
+			children = (
+				63949EE420AC06B6007F944B /* HGWhateverController.h */,
+				63949EE520AC06B6007F944B /* HGWhateverController.m */,
+			);
+			path = Whatever;
+			sourceTree = "<group>";
+		};
+		63949EE020AC0648007F944B /* Featured */ = {
+			isa = PBXGroup;
+			children = (
+				63949EE120AC066C007F944B /* HGFeaturedController.h */,
+				63949EE220AC066C007F944B /* HGFeaturedController.m */,
+			);
+			path = Featured;
+			sourceTree = "<group>";
+		};
 		63A0C7152043EC5900FFD56E /* reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,9 +869,11 @@
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,
 				632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */,
 				63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */,
+				63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */,
 				633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */,
 				63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */,
 				633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */,
+				63949EE620AC06B6007F944B /* HGWhateverController.m in Sources */,
 				63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */,
 				6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */,
 				63D5597A2008595800BBA0BE /* UIViewController+HGAlert.m in Sources */,

@@ -366,7 +366,7 @@ CGFloat currentPage = 0;
                    ];
 }
 - (void)initiateViews {
-    self.navigationItem.title = @"功能";
+    self.navigationItem.title = @"HGInitiation";
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
