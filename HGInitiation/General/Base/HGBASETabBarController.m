@@ -8,6 +8,7 @@
 
 #import "HGBASETabBarController.h"
 #import "HGFunctionsController.h"
+#import "HGWhateverController.h"
 #import "HGFeaturedController.h"
 #import "HGSettingsController.h"
 
@@ -35,8 +36,8 @@
     
     // controller
     HGFunctionsController *controller1 = [HGFunctionsController.alloc init];
-    HGSettingsController *controller2 = [HGSettingsController.alloc init];
-    HGFeaturedController *controller3 = [HGFeaturedController.alloc init];
+    HGWhateverController  *controller2 = [HGWhateverController.alloc init];
+    HGFeaturedController  *controller3 = [HGFeaturedController.alloc init];
     
     // navigation
     HGBASENavigationController *nav1 = [HGBASENavigationController.alloc initWithRootViewController:controller1];

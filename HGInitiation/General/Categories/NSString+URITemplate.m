@@ -39,266 +39,298 @@
         NSLog(@"%@ %@",key,operator);
         
         if ([kHGOperator containsString:operator]) {
-            
-            // op
-            // +  | Reserved string expansion
-            // #  | Fragment expansion, crosshatch-prefixed
-            if ([operator isEqualToString:@"+"]) {
-                
-                // Reserved expansion
-                
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                if (subKeys && subKeys.count > 1) {
-                    
-                    // String expansion with multiple variables
-                    NSString *var = realKey;
-                    for (NSString *sKey in subKeys) {
-                        NSString *sVar = URIVariables[sKey];
-                        if (sVar == nil) {
-                            NSLog(@"Error: %@ is nil",sKey);
-                        }else {
-                            var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                        }
-                    }
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                    
-                }else{
-                    NSString *var = URIVariables[realKey];
-                    if (var.length == 0) {
-                        var = @"";
-                        if ([result containsString:[key stringByAppendingString:@"/"]]) {
-                            key = [key stringByAppendingString:@"/"];
-                        }
-                    }
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                }
-                
-            }else if ([operator isEqualToString:@"#"]) {
-                
-                // Fragment expansion
-                
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                if (subKeys && subKeys.count > 1) {
-                    
-                    // String expansion with multiple variables
-                    NSString *var = realKey;
-                    for (NSString *sKey in subKeys) {
-                        NSString *sVar = URIVariables[sKey];
-                        if (sVar == nil) {
-                            NSLog(@"Error: %@ is nil",sKey);
-                        }else {
-                            var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                        }
-                    }
-                    var = [@"#" stringByAppendingString:var];
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                    
-                }else{
-                    NSString *var = URIVariables[realKey];
-                    if (var.length == 0) {
-                        var = @"";
-                        if ([result containsString:[key stringByAppendingString:@"/"]]) {
-                            key = [key stringByAppendingString:@"/"];
-                        }
-                    }else{
-                        var = [@"#" stringByAppendingString:var];
-                    }
-                    
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                }
-                
-            }else if ([operator isEqualToString:@"."]){
-                // Label expansion, dot-prefixed
-                
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                if (subKeys && subKeys.count > 1) {
-                    
-                    // String expansion with multiple variables
-                    __block NSString *var = realKey;
-                    [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
-                        NSString *sVar = URIVariables[sKey];
-                        if (sVar == nil) {
-                            NSLog(@"Error: %@ is nil",sKey);
-                        }else {
-                            sVar = [@"." stringByAppendingString:sVar];
-                            if (idx == subKeys.count - 1) {
-                                var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                            }else{
-                                var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
-                            }
-                        }
-                    }];
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                    
-                }else{
-                    NSString *var = URIVariables[realKey];
-                    if (var.length == 0) {
-                        var = @"";
-                        if ([result containsString:[key stringByAppendingString:@"/"]]) {
-                            key = [key stringByAppendingString:@"/"];
-                        }
-                    }else{
-                        var = [@"." stringByAppendingString:var];
-                    }
-                    
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                }
-            }else if ([operator isEqualToString:@"/"]) {
-                
-                // Path segments, slash-prefixed
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                if (subKeys && subKeys.count > 1) {
-                    
-                    // String expansion with multiple variables
-                    __block NSString *var = realKey;
-                    [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
-                        NSString *sVar = URIVariables[sKey];
-                        if (sVar == nil) {
-                            NSLog(@"Error: %@ is nil",sKey);
-                        }else {
-                            sVar = [@"/" stringByAppendingString:sVar];
-                            if (idx == subKeys.count -1) {
-                                var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                            }else{
-                                var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
-                            }
-                        }
-                    }];
-                    
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                    
-                }else{
-                    NSString *var = URIVariables[realKey];
-                    if (var.length == 0) {
-                        var = @"";
-                        if ([result containsString:[key stringByAppendingString:@"/"]]) {
-                            key = [key stringByAppendingString:@"/"];
-                        }
-                    }else{
-                        var = [@"/" stringByAppendingString:var];
-                    }
-                    
-                    result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                }
-                
-            } else if ([operator isEqualToString:@";"]) {
-                
-                // Path-style parameters, semicolon-prefixed
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                // String expansion with multiple variables
-                __block NSString *var = realKey;
-                [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *sVar = URIVariables[sKey];
-                    if (sVar.length == 0) {
-                        sVar = [@";" stringByAppendingString:sKey];
-                    }else{
-                        sVar = [[[@";" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
-                    }
-                    
-                    if (idx == subKeys.count -1) {
-                        var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                    }else{
-                        var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
-                    }
-                }];
-                
-                result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                
-            }else if ([operator isEqualToString:@"?"]) {
-                
-                // Form-style query, ampersand-separated
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                // String expansion with multiple variables
-                __block NSString *var = realKey;
-                [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *sVar = URIVariables[sKey];
-                    
-                    if (idx == 0) {
-                        sVar = [[[@"?" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
-                    }else{
-                        sVar = [[[@"&" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
-                    }
-                    
-                    if (idx == subKeys.count -1) {
-                        var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                    }else{
-                        var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
-                    }
-                    
-                }];
-                
-                result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                
-            }else if ([operator isEqualToString:@"&"]) {
-                
-                // Form-style query continuation
-                
-                NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
-                NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-                
-                // String expansion with multiple variables
-                __block NSString *var = realKey;
-                [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *sVar = URIVariables[sKey];
 
-                    sVar = [[[@"&" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
-                    
-                    if (idx == subKeys.count -1) {
-                        var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                    }else{
-                        var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
-                    }
-                    
-                }];
-                
-                result = [result stringByReplacingOccurrencesOfString:key withString:var];
+            if ([operator isEqualToString:@"+"]) {
+                result = [self operatorReservedCharacter:key URIVariables:URIVariables];
+            }else if ([operator isEqualToString:@"#"]) {
+                result = [self operatorFragmentIdentifiers:key URIVariables:URIVariables];
+            }else if ([operator isEqualToString:@"."]){
+                result = [self operatorNameLabels:key URIVariables:URIVariables];
+            }else if ([operator isEqualToString:@"/"]) {
+                result = [self operatorPathSegments:key URIVariables:URIVariables];
+            } else if ([operator isEqualToString:@";"]) {
+                result = [self operatorPathParameter:key URIVariables:URIVariables];
+            }else if ([operator isEqualToString:@"?"]) {
+                result = [self operatorQueryComponent:key URIVariables:URIVariables];
+            }else if ([operator isEqualToString:@"&"]) {
+                result = [self operatorContinuation:key URIVariables:URIVariables];
             }
             
         }else{
-            
-            NSString *realKey = [key substringWithRange:NSMakeRange(1, key.length - 2)];
-            NSArray *subKeys = [realKey componentsSeparatedByString:@","];
-            
-            if (subKeys && subKeys.count > 1) {
-                // String expansion with multiple variables
-                NSString *var = realKey;
-                for (NSString *sKey in subKeys) {
-                    NSString *sVar = URIVariables[sKey];
-                    if (sVar == nil) {
-                        NSLog(@"Error: %@ is nil",sKey);
-                    }else{
-                        var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
-                    }
-                }
-                result = [result stringByReplacingOccurrencesOfString:key withString:var];
-                
-            }else{
-                NSString *var = URIVariables[realKey];
-                if (var.length == 0) {
-                    var = @"";
-                    if ([result containsString:[key stringByAppendingString:@"/"]]) {
-                        key = [key stringByAppendingString:@"/"];
-                    }
-                }
-                result = [result stringByReplacingOccurrencesOfString:key withString:var];
-            }
-            
+            result = [self operatorNone:key URIVariables:URIVariables];
         }
     }
     
     return result;
 }
+
+#pragma mark - operator
+
+// op
+// +  | Reserved string expansion
+// #  | Fragment expansion, crosshatch-prefixed
+- (NSString *)operatorReservedCharacter:(NSString *)key URIVariables:(NSDictionary *)URIVariables{
+    // Reserved expansion
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    
+    if (subKeys && subKeys.count > 1) {
+        
+        // String expansion with multiple variables
+        NSString *var = realKey;
+        for (NSString *sKey in subKeys) {
+            NSString *sVar = URIVariables[sKey];
+            if (sVar == nil) {
+                NSLog(@"Error: %@ is nil",sKey);
+            }else {
+                var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+            }
+        }
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+        
+    }else{
+        NSString *var = URIVariables[realKey];
+        if (var.length == 0) {
+            var = @"";
+            if ([result containsString:[key stringByAppendingString:@"/"]]) {
+                key = [key stringByAppendingString:@"/"];
+            }
+        }
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    }
+    return result;
+}
+// #
+- (NSString *)operatorFragmentIdentifiers:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    if (subKeys && subKeys.count > 1) {
+        
+        // String expansion with multiple variables
+        NSString *var = realKey;
+        for (NSString *sKey in subKeys) {
+            NSString *sVar = URIVariables[sKey];
+            if (sVar == nil) {
+                NSLog(@"Error: %@ is nil",sKey);
+            }else {
+                var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+            }
+        }
+        var = [@"#" stringByAppendingString:var];
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+        
+    }else{
+        NSString *var = URIVariables[realKey];
+        if (var.length == 0) {
+            var = @"";
+            if ([result containsString:[key stringByAppendingString:@"/"]]) {
+                key = [key stringByAppendingString:@"/"];
+            }
+        }else{
+            var = [@"#" stringByAppendingString:var];
+        }
+        
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    }
+    return result;
+}
+// .
+- (NSString *)operatorNameLabels:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    if (subKeys && subKeys.count > 1) {
+        
+        // String expansion with multiple variables
+        __block NSString *var = realKey;
+        [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *sVar = URIVariables[sKey];
+            if (sVar == nil) {
+                NSLog(@"Error: %@ is nil",sKey);
+            }else {
+                sVar = [@"." stringByAppendingString:sVar];
+                if (idx == subKeys.count - 1) {
+                    var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+                }else{
+                    var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
+                }
+            }
+        }];
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+        
+    }else{
+        NSString *var = URIVariables[realKey];
+        if (var.length == 0) {
+            var = @"";
+            if ([result containsString:[key stringByAppendingString:@"/"]]) {
+                key = [key stringByAppendingString:@"/"];
+            }
+        }else{
+            var = [@"." stringByAppendingString:var];
+        }
+        
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    }
+    return result;
+}
+// /
+- (NSString *)operatorPathSegments:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    // Path segments, slash-prefixed
+    
+    
+    if (subKeys && subKeys.count > 1) {
+        
+        // String expansion with multiple variables
+        __block NSString *var = realKey;
+        [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *sVar = URIVariables[sKey];
+            if (sVar == nil) {
+                NSLog(@"Error: %@ is nil",sKey);
+            }else {
+                sVar = [@"/" stringByAppendingString:sVar];
+                if (idx == subKeys.count -1) {
+                    var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+                }else{
+                    var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
+                }
+            }
+        }];
+        
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+        
+    }else{
+        NSString *var = URIVariables[realKey];
+        if (var.length == 0) {
+            var = @"";
+            if ([result containsString:[key stringByAppendingString:@"/"]]) {
+                key = [key stringByAppendingString:@"/"];
+            }
+        }else{
+            var = [@"/" stringByAppendingString:var];
+        }
+        
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    }
+    
+    return result;
+}
+// ;
+- (NSString *)operatorPathParameter:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    // Path-style parameters, semicolon-prefixed
+    
+    // String expansion with multiple variables
+    __block NSString *var = realKey;
+    [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *sVar = URIVariables[sKey];
+        if (sVar.length == 0) {
+            sVar = [@";" stringByAppendingString:sKey];
+        }else{
+            sVar = [[[@";" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
+        }
+        
+        if (idx == subKeys.count -1) {
+            var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+        }else{
+            var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
+        }
+    }];
+    
+    result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    return result;
+}
+// ?
+- (NSString *)operatorQueryComponent:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    // Form-style query, ampersand-separated
+    
+    // String expansion with multiple variables
+    __block NSString *var = realKey;
+    [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *sVar = URIVariables[sKey];
+        
+        if (idx == 0) {
+            sVar = [[[@"?" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
+        }else{
+            sVar = [[[@"&" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
+        }
+        
+        if (idx == subKeys.count -1) {
+            var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+        }else{
+            var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
+        }
+        
+    }];
+    
+    result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    return result;
+}
+// &
+- (NSString *)operatorContinuation:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(2, key.length - 3)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    // Form-style query continuation
+    
+    // String expansion with multiple variables
+    __block NSString *var = realKey;
+    [subKeys enumerateObjectsUsingBlock:^(NSString *sKey, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *sVar = URIVariables[sKey];
+        
+        sVar = [[[@"&" stringByAppendingString:sKey] stringByAppendingString:@"="] stringByAppendingString:sVar];
+        
+        if (idx == subKeys.count -1) {
+            var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+        }else{
+            var = [var stringByReplacingOccurrencesOfString:[sKey stringByAppendingString:@","] withString:sVar];
+        }
+        
+    }];
+    
+    result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    return result;
+}
+// None
+- (NSString *)operatorNone:(NSString *)key URIVariables:(NSDictionary *)URIVariables {
+    NSString *result = nil;
+    NSString *realKey = [key substringWithRange:NSMakeRange(1, key.length - 2)];
+    NSArray *subKeys = [realKey componentsSeparatedByString:@","];
+    
+    if (subKeys && subKeys.count > 1) {
+        // String expansion with multiple variables
+        NSString *var = realKey;
+        for (NSString *sKey in subKeys) {
+            NSString *sVar = URIVariables[sKey];
+            if (sVar == nil) {
+                NSLog(@"Error: %@ is nil",sKey);
+            }else{
+                var = [var stringByReplacingOccurrencesOfString:sKey withString:sVar];
+            }
+        }
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+        
+    }else{
+        NSString *var = URIVariables[realKey];
+        if (var.length == 0) {
+            var = @"";
+            if ([result containsString:[key stringByAppendingString:@"/"]]) {
+                key = [key stringByAppendingString:@"/"];
+            }
+        }
+        result = [result stringByReplacingOccurrencesOfString:key withString:var];
+    }
+    return result;
+}
+
 
 @end

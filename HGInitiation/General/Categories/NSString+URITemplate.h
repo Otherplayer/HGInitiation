@@ -14,7 +14,7 @@
 
 @interface NSString (URITemplate)
 
-- (NSString *)templateExpand:(NSDictionary *)URIVariables;
+- (NSString *)templateExpand:(NSDictionary *)URIVariables;//TODO:未完
 
 
 @end
