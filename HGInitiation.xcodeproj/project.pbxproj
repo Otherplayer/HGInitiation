@@ -69,6 +69,7 @@
 		63949EED20AC19D6007F944B /* HGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EEC20AC19D6007F944B /* HGRegisterController.m */; };
 		63949EEF20AC1B9A007F944B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63949EEE20AC1B9A007F944B /* Login.storyboard */; };
 		63949EF220AC2743007F944B /* NSNumber+HGRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF120AC2743007F944B /* NSNumber+HGRandom.m */; };
+		63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF420AD680D007F944B /* HGScrollCustomCell.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
@@ -214,6 +215,8 @@
 		63949EEE20AC1B9A007F944B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		63949EF020AC2743007F944B /* NSNumber+HGRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+HGRandom.h"; sourceTree = "<group>"; };
 		63949EF120AC2743007F944B /* NSNumber+HGRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+HGRandom.m"; sourceTree = "<group>"; };
+		63949EF320AD680D007F944B /* HGScrollCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollCustomCell.h; sourceTree = "<group>"; };
+		63949EF420AD680D007F944B /* HGScrollCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollCustomCell.m; sourceTree = "<group>"; };
 		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
 		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -691,6 +694,8 @@
 			children = (
 				630498AF2004C11F00F91211 /* HGScrollDefaultImage.h */,
 				630498B02004C11F00F91211 /* HGScrollDefaultImage.m */,
+				63949EF320AD680D007F944B /* HGScrollCustomCell.h */,
+				63949EF420AD680D007F944B /* HGScrollCustomCell.m */,
 				630498B22005E99F00F91211 /* HGPageControl.h */,
 				630498B32005E99F00F91211 /* HGPageControl.m */,
 				635C57D120048F4A004CE18B /* HGScrollView.h */,
@@ -911,6 +916,7 @@
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,
 				632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */,
+				63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */,
 				63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */,
 				635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */,
 				635C24E41FFB6D3A0070BC46 /* HGTextFieldController.m in Sources */,

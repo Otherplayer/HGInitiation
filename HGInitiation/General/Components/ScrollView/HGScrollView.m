@@ -11,13 +11,14 @@
 @interface HGScrollView ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)HGPageControl *pageControl;
-@property(nonatomic, strong)NSMutableArray *datas;
-@property(nonatomic, copy)NSString *hgKey;
-@property(nonatomic, copy)NSString *hgKeyTitle;
-@property(nonatomic,readwrite) NSInteger currentPage;
 @property(nonatomic) HGScrollDirection scrollDirection; //default HGScrollDirectionHorizontal
 @property(nonatomic) HGScrollViewContentType contentType;
 
+@property(nonatomic, strong)NSMutableArray *datas;
+@property(nonatomic, copy)NSString *hgKey;
+@property(nonatomic, copy)NSString *hgKeyTitle;
+
+@property(nonatomic,readwrite) NSInteger currentPage;
 @property(nonatomic, strong)dispatch_source_t timer;
 
 @end
@@ -88,7 +89,7 @@
         _collectionView;
     });
     
-    [self.collectionView registerClass:HGScrollDefaultImage.class forCellWithReuseIdentifier:HGScrollCellIdentifier];
+    [self registerClass:HGScrollDefaultImage.class];
     [self addSubview:self.collectionView];
     
     
@@ -129,6 +130,18 @@
     dispatch_resume(_timer);
 }
 #pragma mark - public
+
+- (void)registerClass:(nullable Class)cellClass{
+    [self.collectionView registerClass:cellClass forCellWithReuseIdentifier:NSStringFromClass(cellClass)];
+}
+
+- (void)setDelegate:(id<HGScrollViewDelegate>)delegate {
+    _delegate = delegate;
+    if ([self.delegate respondsToSelector:@selector(cellClassForScrollView:)]) {
+        [self registerClass:[self.delegate cellClassForScrollView:self]];
+    }
+}
+
 - (void)setDatas:(NSArray *)datas key:(NSString *)key titleKey:(NSString *)titleKey {
     [self setHgKey:key];
     [self setHgKeyTitle:titleKey];
@@ -219,8 +232,9 @@
     return self.datas.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    id obj = self.datas[indexPath.item];
     if (self.contentType == HGScrollViewContentTypeImage) {
-        HGScrollDefaultImage *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HGScrollCellIdentifier forIndexPath:indexPath];
+        HGScrollDefaultImage *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGScrollDefaultImage.class) forIndexPath:indexPath];
         id obj = self.datas[indexPath.item];
         if ([obj isKindOfClass:[NSString class]]) {
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:(NSString *)obj] placeholderImage:nil];
@@ -230,12 +244,11 @@
             [cell setImageUrl:urlStr placeholderImage:nil title:title];
         }
         return cell;
-    }else if (self.contentType == HGScrollViewContentTypeText) {
-        
-    }else {
-        
     }
-    return nil;
+    Class class = [self.delegate cellClassForScrollView:self];
+    HGScrollCustomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(class) forIndexPath:indexPath];
+    [cell configView:obj];
+    return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger pageIndex = self.loopScroll ? (indexPath.item - 1) : indexPath.item;
@@ -316,13 +329,6 @@
     }
     [self.collectionView setContentOffset:offset animated:animated];
 }
-
-
-//- (NSInteger)currentPage{
-//    CGFloat pageWidth = self.collectionView.width;
-//    NSInteger currentPage = floor((self.collectionView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-//    return currentPage;
-//}
 
 
 @end

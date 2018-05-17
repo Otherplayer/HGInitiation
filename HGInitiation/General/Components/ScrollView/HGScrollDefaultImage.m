@@ -8,9 +8,6 @@
 
 #import "HGScrollDefaultImage.h"
 
-//
-//@implementation HGScrollDefaultImageModel
-//@end
 
 @interface HGScrollDefaultImage ()
 @property(nonatomic, strong)UIView *labBgView;

@@ -9,16 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "HGPageControl.h"
 #import "HGScrollDefaultImage.h"
-
-
-static NSString *HGScrollCellIdentifier = @"HGScrollCellIdentifier";
-
+#import "HGScrollCustomCell.h"
 
 @class HGScrollView;
 
 typedef NS_ENUM(NSUInteger, HGScrollViewContentType) {
     HGScrollViewContentTypeImage,
-    HGScrollViewContentTypeText
+    HGScrollViewContentTypeCustom //需要继承 HGScrollCustomCell 并实现代理方法 cellClassForScrollView
 };
 typedef NS_ENUM(NSUInteger, HGScrollDirection) {
     HGScrollDirectionVertical,
@@ -29,6 +26,9 @@ typedef NS_ENUM(NSUInteger, HGScrollDirection) {
 @optional
 - (void)scrollView:(HGScrollView *)scrollView didSelectItemAtIndex:(NSInteger)index;
 - (void)scrollView:(HGScrollView *)scrollView didScroll2Index:(NSInteger)index;
+
+- (Class)cellClassForScrollView:(HGScrollView *)scrollView;
+
 @end
 
 @interface HGScrollView : UIView

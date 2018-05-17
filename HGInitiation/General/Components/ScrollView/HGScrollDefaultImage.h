@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//@interface HGScrollDefaultImageModel : NSObject
-//@property(nonatomic, strong)NSString *imgUrl;
-//@property(nonatomic, strong)NSString *title;
-//@end
-
 @interface HGScrollDefaultImage : UICollectionViewCell
 
 @property(nonatomic, strong)UIImageView *imageView;

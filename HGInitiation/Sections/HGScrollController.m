@@ -10,8 +10,33 @@
 #import "HGScrollView.h"
 #import "HGScrollDefaultImage.h"
 
-@interface HGScrollController ()<HGScrollViewDelegate>
 
+@interface HGScrollTitleCell : HGScrollCustomCell
+@property(nonatomic, strong) UILabel *labTitle;
+@end
+@implementation HGScrollTitleCell
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.labTitle = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
+        self.labTitle.font = [UIFont systemFontOfSize:40 weight:UIFontWeightMedium];
+        self.labTitle.textColor = [UIColor blackColor];
+        self.labTitle.textAlignment = NSTextAlignmentCenter;
+        self.labTitle.adjustsFontSizeToFitWidth = YES;
+        [self.contentView addSubview:self.labTitle];
+    }
+    return self;
+}
+- (void)configView:(NSDictionary *)data {
+    [self.labTitle setText:data[@"title"]];
+}
+
+@end
+
+
+
+
+@interface HGScrollController ()<HGScrollViewDelegate>
 @property(nonatomic, strong)NSArray *datas;
 
 @end
@@ -52,7 +77,6 @@
     HGScrollView *scrollView3 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView2.bottom + 20, width, height) type:HGScrollViewContentTypeImage direction:HGScrollDirectionVertical];
     [scrollView3 setPageControlPosition:HGPageControlPositionBottomRight];
     [self.view addSubview:scrollView3];
-    [scrollView3 setDelegate:self];
     [scrollView3 setDatas:self.datas key:@"url" titleKey:nil];
     
     HGScrollView *scrollView4 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView3.bottom + 20, width, height) type:HGScrollViewContentTypeImage direction:HGScrollDirectionVertical];
@@ -61,6 +85,14 @@
     [scrollView4 setAutoScroll:NO];
     [scrollView4 setLoopScroll:NO];
     [scrollView4 setDatas:self.datas key:@"url" titleKey:nil];
+    
+    HGScrollView *scrollView5 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView4.bottom + 20, width, 60) type:HGScrollViewContentTypeCustom direction:HGScrollDirectionVertical];
+    [scrollView5 setDelegate:self];
+    [scrollView5 setScrollIntervalTime:1];
+    [scrollView5 setPageControlPosition:HGPageControlPositionNone];
+    [self.view addSubview:scrollView5];
+    [scrollView5 setDatas:self.datas key:@"url" titleKey:nil];
+    
     
 }
 
@@ -77,7 +109,9 @@
 - (void)scrollView:(HGScrollView *)scrollView didScroll2Index:(NSInteger)index {
     NSLog(@"滚动到了PAGE:%@  当前页%@",@(index),@(scrollView.currentPage));
 }
-
+- (Class)cellClassForScrollView:(HGScrollView *)scrollView {
+    return HGScrollTitleCell.class;
+}
 
 /*
 #pragma mark - Navigation
