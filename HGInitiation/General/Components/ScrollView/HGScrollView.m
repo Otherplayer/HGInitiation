@@ -82,9 +82,9 @@
         _collectionView.contentInset = UIEdgeInsetsZero;
         _collectionView.delaysContentTouches = NO;
         _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-//        if (@available(iOS 11, *)) {
-//            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        }
+        if (@available(iOS 11, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         _collectionView;
     });
     
