@@ -17,6 +17,7 @@
 #import "UIViewController+HGAlert.h"
 #import "UIAlertAction+HGCustom.h"
 #import "UIAlertController+HGCustom.h"
+#import "NSNumber+HGRandom.h"
 #import "UIImage+HG.h"
 
 

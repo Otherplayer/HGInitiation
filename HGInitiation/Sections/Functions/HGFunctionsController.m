@@ -49,19 +49,12 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-    //    double delayInSeconds = 1.2f;
-    //    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    //    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-    //        [HGHelperPush push:@{HGPushClassName:@"HGDownloadController"}];
-    //    });
+        double delayInSeconds = 1.2f;
+        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+            [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
+        });
     
-    //    [self testURITemplate];
-    
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    //    NSLog(@"%@",[HGAsset ivarList]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +74,11 @@ CGFloat currentPage = 0;
     
     NSDictionary *item = self.items[indexPath.row];
     NSString *title = [item objectForKey:TITLE];
+    
+    cell.imageView.image = [UIImage imageWithColor:[UIColor randomWarmColor] size:CGSizeMake(30, 30)];
+    cell.imageView.layer.cornerRadius = 6;
+    cell.imageView.layer.masksToBounds = YES;
+    
     cell.textLabel.text = title;
     
     return cell;
@@ -281,9 +279,9 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGTextFieldController"}},
                    @{TITLE:@"TextView",
                      PARAMS:@{HGPushClassName:@"HGTextViewController"}},
-                   @{TITLE:@"ScrollView",
+                   @{TITLE:@"轮播图",
                      PARAMS:@{HGPushClassName:@"HGScrollController"}},
-                   @{TITLE:@"ZoomImage",
+                   @{TITLE:@"图片缩放",
                      PARAMS:@{HGPushClassName:@"HGZoomImageController"}},
                    @{TITLE:@"图片浏览",
                      PARAMS:@{HGPushClassName:@"HGBrowserController"}},

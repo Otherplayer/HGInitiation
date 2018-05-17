@@ -46,8 +46,8 @@
     
     NSMutableArray *photos = [NSMutableArray.alloc init];
     for (int i = 0; i < 50; i++) {
-        HGPhotoModel *model1 = [HGPhotoModel.alloc initWithUrlString:@"https://ipfs.io/ipfs/QmNj85qnifLMZD6vJFmJeK6LUnHHfsbUvEPhJFdMnVHqz5"];
-        HGPhotoModel *model2 = [HGPhotoModel.alloc initWithUrlString:@"https://ipfs.io/ipfs/QmNj85qnifLMZD6vJFmJeK6LUnHHfsbUvEPhJFdMnVHqz5"];
+        HGPhotoModel *model1 = [HGPhotoModel.alloc initWithUrlString:@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"];
+        HGPhotoModel *model2 = [HGPhotoModel.alloc initWithUrlString:@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"];
         [photos addObject:model1];
         [photos addObject:model2];
     }

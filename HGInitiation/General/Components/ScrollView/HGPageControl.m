@@ -32,10 +32,17 @@ const CGFloat HGPageControlMargin = (10.f);
 - (void)setPosition:(HGPageControlPosition)position {
     _position = position;
     
+    
     CGSize pointSize = [self sizeForNumberOfPages:self.numberOfPages];
     CGFloat pointHeight = pointSize.height > 0 ? pointSize.height : HGPageControlDefaultSize;
     
+    [self setHidden:NO];
+    
     switch (position) {
+        case HGPageControlPositionNone:{
+            [self setHidden:YES];
+        }
+            break;
         case HGPageControlPositionBottomLeft:{
             [self setFrame:CGRectMake(HGPageControlMargin, self.originalHeight - pointHeight, pointSize.width, pointHeight)];
         }

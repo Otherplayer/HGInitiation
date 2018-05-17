@@ -26,24 +26,40 @@
     
     
     self.datas = @[
-                   @{@"title":@"JAY",@"url":@"http://a.hiphotos.baidu.com/baike/pic/item/8ad4b31c8701a18b4f7365d3942f07082938fe96.jpg"},//周杰伦
-                  @{@"title":@"MEIZI",@"url":@"http://pic.4gbizhi.com/2015/0321/07/720.1280.jpg"},//美女
-                  @{@"title":@"HEIGUAFU",@"url":@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"}];
+                   @{@"title":@"JAY",
+                     @"url":@"http://a.hiphotos.baidu.com/baike/pic/item/8ad4b31c8701a18b4f7365d3942f07082938fe96.jpg"},//周杰伦
+                   @{@"title":@"MEIZI",
+                     @"url":@"https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D500/sign=73a1583510d5ad6eaef964eab1ca39a3/8326cffc1e178a8218bb1c51fd03738da877e8b8.jpg"},//美女
+                   @{@"title":@"HEIGUAFU",
+                     @"url":@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"}];
     
-    HGScrollView *scrollView = [HGScrollView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, SCREEN_WIDTH * 9/16.0) type:HGScrollViewContentTypeImage];
+    
+    CGFloat height = (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) / 4.0f;
+    
+    HGScrollView *scrollView = [HGScrollView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, height) type:HGScrollViewContentTypeImage];
     [scrollView setPageControlPosition:HGPageControlPositionBottomRight];
-    [scrollView setDelegate:self];
     [self.view addSubview:scrollView];
     [scrollView setDatas:self.datas key:@"url" titleKey:@"title"];
-    
-    
-    
-    HGScrollView *scrollView2 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView.bottom, SCREEN_WIDTH, SCREEN_WIDTH * 9/16.0) type:HGScrollViewContentTypeImage];
-    [scrollView2 setPageControlPosition:HGPageControlPositionBottomRight];
+
+    HGScrollView *scrollView2 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView.bottom, SCREEN_WIDTH, height) type:HGScrollViewContentTypeImage];
+    [scrollView2 setPageControlPosition:HGPageControlPositionBottomCenter];
     [scrollView2 setAutoScroll:NO];
     [scrollView2 setLoopScroll:NO];
     [self.view addSubview:scrollView2];
     [scrollView2 setDatas:self.datas key:@"url" titleKey:nil];
+
+    HGScrollView *scrollView3 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView2.bottom, SCREEN_WIDTH, height) type:HGScrollViewContentTypeImage direction:HGScrollDirectionVertical];
+    [scrollView3 setPageControlPosition:HGPageControlPositionBottomRight];
+    [self.view addSubview:scrollView3];
+    [scrollView3 setDelegate:self];
+    [scrollView3 setDatas:self.datas key:@"url" titleKey:nil];
+    
+    HGScrollView *scrollView4 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView3.bottom, SCREEN_WIDTH, height) type:HGScrollViewContentTypeImage direction:HGScrollDirectionVertical];
+    [scrollView4 setPageControlPosition:HGPageControlPositionNone];
+    [self.view addSubview:scrollView4];
+    [scrollView4 setAutoScroll:NO];
+    [scrollView4 setLoopScroll:NO];
+    [scrollView4 setDatas:self.datas key:@"url" titleKey:nil];
     
 }
 

@@ -20,6 +20,10 @@ typedef NS_ENUM(NSUInteger, HGScrollViewContentType) {
     HGScrollViewContentTypeImage,
     HGScrollViewContentTypeText
 };
+typedef NS_ENUM(NSUInteger, HGScrollDirection) {
+    HGScrollDirectionVertical,
+    HGScrollDirectionHorizontal
+};
 
 @protocol HGScrollViewDelegate <NSObject>
 @optional
@@ -37,8 +41,10 @@ typedef NS_ENUM(NSUInteger, HGScrollViewContentType) {
 @property (nonatomic) BOOL autoScroll;//default YES
 @property (nonatomic,readonly) NSInteger currentPage;
 
-- (instancetype)initWithFrame:(CGRect)frame;//default HGScrollViewContentTypeImage
+
+- (instancetype)initWithFrame:(CGRect)frame; //default HGScrollViewContentTypeImage HGScrollDirectionHorizontal
 - (instancetype)initWithFrame:(CGRect)frame type:(HGScrollViewContentType)type;
+- (instancetype)initWithFrame:(CGRect)frame type:(HGScrollViewContentType)type direction:(HGScrollDirection)scrollDirection;
 
 - (void)setDatas:(NSArray *)datas key:(NSString *)key;
 - (void)setDatas:(NSArray *)datas key:(NSString *)key titleKey:(NSString *)titleKey;

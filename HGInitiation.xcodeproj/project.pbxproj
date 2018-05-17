@@ -65,6 +65,10 @@
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
 		63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE220AC066C007F944B /* HGFeaturedController.m */; };
 		63949EE620AC06B6007F944B /* HGWhateverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE520AC06B6007F944B /* HGWhateverController.m */; };
+		63949EEA20AC19C6007F944B /* HGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE920AC19C6007F944B /* HGLoginController.m */; };
+		63949EED20AC19D6007F944B /* HGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EEC20AC19D6007F944B /* HGRegisterController.m */; };
+		63949EEF20AC1B9A007F944B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63949EEE20AC1B9A007F944B /* Login.storyboard */; };
+		63949EF220AC2743007F944B /* NSNumber+HGRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF120AC2743007F944B /* NSNumber+HGRandom.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
@@ -203,6 +207,13 @@
 		63949EE220AC066C007F944B /* HGFeaturedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFeaturedController.m; sourceTree = "<group>"; };
 		63949EE420AC06B6007F944B /* HGWhateverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWhateverController.h; sourceTree = "<group>"; };
 		63949EE520AC06B6007F944B /* HGWhateverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWhateverController.m; sourceTree = "<group>"; };
+		63949EE820AC19C6007F944B /* HGLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGLoginController.h; sourceTree = "<group>"; };
+		63949EE920AC19C6007F944B /* HGLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGLoginController.m; sourceTree = "<group>"; };
+		63949EEB20AC19D6007F944B /* HGRegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGRegisterController.h; sourceTree = "<group>"; };
+		63949EEC20AC19D6007F944B /* HGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGRegisterController.m; sourceTree = "<group>"; };
+		63949EEE20AC1B9A007F944B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		63949EF020AC2743007F944B /* NSNumber+HGRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+HGRandom.h"; sourceTree = "<group>"; };
+		63949EF120AC2743007F944B /* NSNumber+HGRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+HGRandom.m"; sourceTree = "<group>"; };
 		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
 		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -285,6 +296,7 @@
 		6312A6E7204E679400D7F5EF /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				63949EE720AC19B0007F944B /* Login */,
 				63949EE020AC0648007F944B /* Featured */,
 				63949EDF20AC05EF007F944B /* Whatever */,
 				63F6BBBF209AAFE400BB8EFF /* Settings */,
@@ -394,6 +406,8 @@
 				631FE8682017207C00E9D8A2 /* UIImage+HG.m */,
 				635A8D06207C923600E4E4D6 /* NSString+URITemplate.h */,
 				635A8D07207C923600E4E4D6 /* NSString+URITemplate.m */,
+				63949EF020AC2743007F944B /* NSNumber+HGRandom.h */,
+				63949EF120AC2743007F944B /* NSNumber+HGRandom.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -488,6 +502,7 @@
 				63880B9A1FF0DD5F00DAFD68 /* ViewController.h */,
 				63880B9B1FF0DD5F00DAFD68 /* ViewController.m */,
 				63880B9D1FF0DD5F00DAFD68 /* Main.storyboard */,
+				63949EEE20AC1B9A007F944B /* Login.storyboard */,
 				63880BA01FF0DD5F00DAFD68 /* Assets.xcassets */,
 				63880BA21FF0DD5F00DAFD68 /* LaunchScreen.storyboard */,
 				63880BA51FF0DD5F00DAFD68 /* Info.plist */,
@@ -626,6 +641,17 @@
 				63949EE220AC066C007F944B /* HGFeaturedController.m */,
 			);
 			path = Featured;
+			sourceTree = "<group>";
+		};
+		63949EE720AC19B0007F944B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				63949EE820AC19C6007F944B /* HGLoginController.h */,
+				63949EE920AC19C6007F944B /* HGLoginController.m */,
+				63949EEB20AC19D6007F944B /* HGRegisterController.h */,
+				63949EEC20AC19D6007F944B /* HGRegisterController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		63A0C7152043EC5900FFD56E /* reachability */ = {
@@ -771,6 +797,7 @@
 			files = (
 				63880BA41FF0DD5F00DAFD68 /* LaunchScreen.storyboard in Resources */,
 				6306DF5E2031814700959275 /* 1.jpg in Resources */,
+				63949EEF20AC1B9A007F944B /* Login.storyboard in Resources */,
 				63880BA11FF0DD5F00DAFD68 /* Assets.xcassets in Resources */,
 				63880B9F1FF0DD5F00DAFD68 /* Main.storyboard in Resources */,
 				631022182047913D00876AB6 /* large_leaves_70mp.jpg in Resources */,
@@ -851,6 +878,7 @@
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
 				631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */,
 				6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */,
+				63949EEA20AC19C6007F944B /* HGLoginController.m in Sources */,
 				630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */,
 				631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,
@@ -867,7 +895,9 @@
 				63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */,
 				635C24F21FFCB28F0070BC46 /* UIColor+HG.m in Sources */,
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,
+				63949EED20AC19D6007F944B /* HGRegisterController.m in Sources */,
 				632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */,
+				63949EF220AC2743007F944B /* NSNumber+HGRandom.m in Sources */,
 				63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */,
 				63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */,
 				633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */,

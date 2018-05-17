@@ -10,6 +10,7 @@
 
 
 typedef NS_ENUM(NSUInteger, HGPageControlPosition) {
+    HGPageControlPositionNone,
     HGPageControlPositionBottomLeft,
     HGPageControlPositionBottomCenter,
     HGPageControlPositionBottomRight,

@@ -18,6 +18,13 @@
     UIColor *randColor = [UIColor colorWithRed:aRedValue green:aGreenValue blue:aBlueValue alpha:1.0f];
     return randColor;
 }
++ (UIColor *)randomWarmColor {
+    CGFloat aRedValue = [NSNumber randomNumber:255/5 to:255] / 255.f;
+    CGFloat aGreenValue = [NSNumber randomNumber:255/5 to:255] / 255.f;
+    CGFloat aBlueValue = [NSNumber randomNumber:255/5 to:255] / 255.f;
+    UIColor *randColor = [UIColor colorWithRed:aRedValue green:aGreenValue blue:aBlueValue alpha:1.0f];
+    return randColor;
+}
 + (UIColor *)disabledColor {
     return HGConfigurationInstance.disabledColor;
 }

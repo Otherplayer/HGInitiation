@@ -15,6 +15,7 @@
 @property(nonatomic, copy)NSString *hgKey;
 @property(nonatomic, copy)NSString *hgKeyTitle;
 @property(nonatomic,readwrite) NSInteger currentPage;
+@property(nonatomic) HGScrollDirection scrollDirection; //default HGScrollDirectionHorizontal
 @property(nonatomic) HGScrollViewContentType contentType;
 
 @property(nonatomic, strong)dispatch_source_t timer;
@@ -27,9 +28,11 @@
     return [self initWithFrame:frame type:HGScrollViewContentTypeImage];
 }
 - (instancetype)initWithFrame:(CGRect)frame type:(HGScrollViewContentType)type{
+    return [self initWithFrame:frame type:HGScrollViewContentTypeImage direction:HGScrollDirectionHorizontal];
+}
+- (instancetype)initWithFrame:(CGRect)frame type:(HGScrollViewContentType)type direction:(HGScrollDirection)scrollDirection {
     self = [super initWithFrame:frame];
     if (self) {
-
         _hgKey = @"url";
         _hgKeyTitle = @"title";
         _scrollIntervalTime = 3.0;
@@ -38,14 +41,15 @@
         _pageControlPosition = HGPageControlPositionBottomRight;
         _pageIndicatorTintColor = [UIColor colorWithWhite:1 alpha:0.5];
         _currentPageIndicatorTintColor = [UIColor whiteColor];
+        _scrollDirection = scrollDirection;
         
         [self initiateViews];
         [self initTimer];
         [self setAutoScroll:YES];
         [self setLoopScroll:YES];
-        
     }
     return self;
+    
 }
 - (void)dealloc {
     NSLog(@"dealloc");
@@ -58,7 +62,7 @@
         layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(self.width, self.height);
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.scrollDirection = (self.scrollDirection == HGScrollDirectionHorizontal)? UICollectionViewScrollDirectionHorizontal : UICollectionViewScrollDirectionVertical;
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         layout;
@@ -70,17 +74,17 @@
         _collectionView.delegate = self;
         _collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor;
         _collectionView.pagingEnabled = YES;
+        _collectionView.directionalLockEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         _collectionView.bounces = YES;
-        _collectionView.directionalLockEnabled = YES;
         _collectionView.contentInset = UIEdgeInsetsZero;
         _collectionView.delaysContentTouches = NO;
         _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-        if (@available(iOS 11, *)) {
-            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
+//        if (@available(iOS 11, *)) {
+//            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        }
         _collectionView;
     });
     
@@ -114,6 +118,9 @@
         if (self.datas.count == 0) return;
         
         CGPoint offset = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.width, 0);
+        if (self.scrollDirection == HGScrollDirectionVertical) {
+            offset = CGPointMake(0, self.collectionView.contentOffset.y + self.collectionView.height);
+        }
         [self.collectionView setContentOffset:offset animated:YES];
         
     });
@@ -259,19 +266,29 @@
                               0);
     dispatch_resume(_timer);
 }
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (self.loopScroll) {
-        if (scrollView.contentOffset.x >= (self.datas.count - 1) * scrollView.width) {
+        
+        CGFloat offset = scrollView.contentOffset.x;
+        CGFloat scrollSize = scrollView.width;
+        if (self.scrollDirection == HGScrollDirectionVertical) {
+            offset = scrollView.contentOffset.y;
+            scrollSize = scrollView.height;
+        }
+        if (offset >= (self.datas.count - 1) * scrollSize) {
             [self scrollToPage:1 animated:NO];
-        }else if (scrollView.contentOffset.x <= 0.0){
+        }else if (offset <= 0.0){
             [self scrollToPage:(self.datas.count - 2) animated:NO];
         }
+        
     }
     
     NSInteger realPage = scrollView.contentOffset.x / scrollView.width;
+    if (self.scrollDirection == HGScrollDirectionVertical) {
+        realPage = (int)round(scrollView.contentOffset.y / (CGFloat)scrollView.height);
+    }
     NSInteger page = ( self.loopScroll ? (realPage - 1) : (realPage) );
     page = self.loopScroll ? (page % (self.datas.count - 2)) : page;
     
@@ -290,8 +307,16 @@
  * 当looScroll为真时，数据内容是 31231 形似的，首尾数据3、1都是虚的。所以page为 1 时才是真正的第一个内容
  */
 - (void)scrollToPage:(NSInteger)page animated:(BOOL)animated{
-    [self.collectionView setContentOffset:CGPointMake(self.collectionView.width * page, 0) animated:animated];
+    [self scrollToPage:page direction:self.scrollDirection animated:animated];
 }
+- (void)scrollToPage:(NSInteger)page direction:(HGScrollDirection)direction animated:(BOOL)animated{
+    CGPoint offset = CGPointMake(self.collectionView.width * page, 0);
+    if (direction == HGScrollDirectionVertical) {
+        offset = CGPointMake(0, self.collectionView.height * page);
+    }
+    [self.collectionView setContentOffset:offset animated:animated];
+}
+
 
 //- (NSInteger)currentPage{
 //    CGFloat pageWidth = self.collectionView.width;
