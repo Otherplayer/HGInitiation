@@ -45,6 +45,7 @@
 		635C57C920033319004CE18B /* HGBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57C820033319004CE18B /* HGBrowserController.m */; };
 		635C57CF20048E29004CE18B /* HGScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57CE20048E29004CE18B /* HGScrollController.m */; };
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
+		6369B27120AEA937005FC8C0 /* HGScrollViewNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 6369B27020AEA937005FC8C0 /* HGScrollViewNav.m */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
 		63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B9B1FF0DD5F00DAFD68 /* ViewController.m */; };
@@ -168,6 +169,8 @@
 		635C57CE20048E29004CE18B /* HGScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollController.m; sourceTree = "<group>"; };
 		635C57D120048F4A004CE18B /* HGScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollView.h; sourceTree = "<group>"; };
 		635C57D220048F4A004CE18B /* HGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollView.m; sourceTree = "<group>"; };
+		6369B26F20AEA937005FC8C0 /* HGScrollViewNav.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollViewNav.h; sourceTree = "<group>"; };
+		6369B27020AEA937005FC8C0 /* HGScrollViewNav.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollViewNav.m; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
 		63878762206A2C16006FE525 /* HGDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloader.m; sourceTree = "<group>"; };
 		63880B941FF0DD5F00DAFD68 /* HGInitiation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGInitiation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +461,7 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6369B26B20AEA89E005FC8C0 /* ScrollViewNav */,
 				63880BBC1FF0EA2700DAFD68 /* ViewUtils */,
 				635C57C32003120E004CE18B /* PhotoBrowser */,
 				63880BCD1FF1E17300DAFD68 /* ImagePicker */,
@@ -469,6 +473,15 @@
 				6389B2101FF61A7F00EBBF6C /* AvatarClipper */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		6369B26B20AEA89E005FC8C0 /* ScrollViewNav */ = {
+			isa = PBXGroup;
+			children = (
+				6369B26F20AEA937005FC8C0 /* HGScrollViewNav.h */,
+				6369B27020AEA937005FC8C0 /* HGScrollViewNav.m */,
+			);
+			path = ScrollViewNav;
 			sourceTree = "<group>";
 		};
 		63880B8B1FF0DD5F00DAFD68 = {
@@ -928,6 +941,7 @@
 				63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */,
 				635C57C620031267004CE18B /* HGPhotoBrowser.m in Sources */,
 				631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */,
+				6369B27120AEA937005FC8C0 /* HGScrollViewNav.m in Sources */,
 				631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */,
 				63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */,
 				63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */,

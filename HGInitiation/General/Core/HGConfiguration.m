@@ -80,33 +80,33 @@
 
 - (void)setNavBarTintColor:(UIColor *)navBarTintColor {
     _navBarTintColor = navBarTintColor;
-    if (navBarTintColor) {
+//    if (navBarTintColor) {
         [UIViewController visibleViewController].navigationController.navigationBar.tintColor = _navBarTintColor;
         [UIViewController visibleViewController].navigationController.navigationBar.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
-    }
+//    }
 }
 
 - (void)setNavBarBarTintColor:(UIColor *)navBarBarTintColor {
     _navBarBarTintColor = navBarBarTintColor;
-    if (navBarBarTintColor) {
+//    if (navBarBarTintColor) {
         [UINavigationBar appearance].barTintColor = _navBarBarTintColor;
         [UIViewController visibleViewController].navigationController.navigationBar.barTintColor = _navBarBarTintColor;
-    }
+//    }
 }
 
 - (void)setNavBarShadowImage:(UIImage *)navBarShadowImage {
-    if (!navBarShadowImage) {
-        navBarShadowImage = [UIImage.alloc init];
-    }
+//    if (!navBarShadowImage) {
+//        navBarShadowImage = [UIImage.alloc init];
+//    }
     _navBarShadowImage = navBarShadowImage;
     [UINavigationBar appearance].shadowImage = _navBarShadowImage;
     [UIViewController visibleViewController].navigationController.navigationBar.shadowImage = _navBarShadowImage;
 }
 
 - (void)setNavBarBackgroundImage:(UIImage *)navBarBackgroundImage {
-    if (!navBarBackgroundImage) {
-        navBarBackgroundImage = [UIImage.alloc init];
-    }
+//    if (!navBarBackgroundImage) {
+//        navBarBackgroundImage = [UIImage.alloc init];
+//    }
     _navBarBackgroundImage = navBarBackgroundImage;
     [[UINavigationBar appearance] setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
     [[UIViewController visibleViewController].navigationController.navigationBar setBackgroundImage:_navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];

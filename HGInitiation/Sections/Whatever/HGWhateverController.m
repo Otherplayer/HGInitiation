@@ -7,6 +7,7 @@
 //
 
 #import "HGWhateverController.h"
+#import "HGScrollViewNav.h"
 
 extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
@@ -104,6 +105,9 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 }
 - (void)initiateViews {
     self.navigationItem.title = @"Whatever";
+    HGScrollViewNav *scrollViewNav = [HGScrollViewNav.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+    [self.view addSubview:scrollViewNav];
+    [scrollViewNav setDatas:@[@{@"title":@"新闻"},@{@"title":@"新闻新闻"},@{@"title":@"新新闻新闻闻"},@{@"title":@"新sss闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"}] key:@"title"];
 }
 
 

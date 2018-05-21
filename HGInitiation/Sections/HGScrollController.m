@@ -8,7 +8,6 @@
 
 #import "HGScrollController.h"
 #import "HGScrollView.h"
-#import "HGScrollDefaultImage.h"
 
 
 @interface HGScrollTitleCell : HGScrollCustomCell
@@ -75,7 +74,7 @@
     [scrollView2 setDatas:self.datas key:@"url" titleKey:nil];
 
     HGScrollView *scrollView3 = [HGScrollView.alloc initWithFrame:CGRectMake(0, scrollView2.bottom + 20, width, height) type:HGScrollViewContentTypeImage direction:HGScrollDirectionVertical];
-    [scrollView3 setPageControlPosition:HGPageControlPositionBottomRight];
+    [scrollView3 setPageControlPosition:HGPageControlPositionNone];
     [self.view addSubview:scrollView3];
     [scrollView3 setDatas:self.datas key:@"url" titleKey:nil];
     
@@ -92,7 +91,6 @@
     [scrollView5 setPageControlPosition:HGPageControlPositionNone];
     [self.view addSubview:scrollView5];
     [scrollView5 setDatas:self.datas key:@"url" titleKey:nil];
-    
     
 }
 

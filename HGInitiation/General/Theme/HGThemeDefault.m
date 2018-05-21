@@ -21,11 +21,12 @@
 
     HGConfigurationInstance.navBarTitleColor = [UIColor blackColor];
     HGConfigurationInstance.navBarTitleFont = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
-    
+
     HGConfigurationInstance.navBarTintColor = [UIColor colorWithRGB:0x409EFF];
-    HGConfigurationInstance.navBarBarTintColor = [UIColor whiteColor];
-    HGConfigurationInstance.navBarBackgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
-    HGConfigurationInstance.navBarShadowImage = [UIImage imageWithColor:[UIColor groupTableViewBackgroundColor]];
+    HGConfigurationInstance.navBarBarTintColor = nil;
+    
+    HGConfigurationInstance.navBarBackgroundImage = nil;
+    HGConfigurationInstance.navBarShadowImage = nil;
     
     #pragma mark - TabBar
     
