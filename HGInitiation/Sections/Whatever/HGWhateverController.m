@@ -7,12 +7,13 @@
 //
 
 #import "HGWhateverController.h"
+#import "HGPageController.h"
 #import "HGScrollViewNav.h"
 
 extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 @interface HGWhateverController ()
-
+@property(nonatomic, strong)HGPageController *pageController;
 @end
 
 @implementation HGWhateverController
@@ -105,9 +106,18 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 }
 - (void)initiateViews {
     self.navigationItem.title = @"Whatever";
-    HGScrollViewNav *scrollViewNav = [HGScrollViewNav.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-    [self.view addSubview:scrollViewNav];
-    [scrollViewNav setDatas:@[@{@"title":@"新闻"},@{@"title":@"新闻新闻"},@{@"title":@"新新闻新闻闻"},@{@"title":@"新sss闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"}] key:@"title"];
+    
+    self.pageController = ({
+        _pageController = [HGPageController.alloc init];
+        _pageController;
+    });
+    
+    [self.view addSubview:self.pageController.view];
+    
+//
+//    HGScrollViewNav *scrollViewNav = [HGScrollViewNav.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+//    [self.view addSubview:scrollViewNav];
+//    [scrollViewNav setDatas:@[@{@"title":@"新闻"},@{@"title":@"新闻新闻"},@{@"title":@"新新闻新闻闻"},@{@"title":@"新sss闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"},@{@"title":@"新闻"}] key:@"title"];
 }
 
 

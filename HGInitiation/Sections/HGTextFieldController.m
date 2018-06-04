@@ -26,6 +26,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self addBackButton];
     
     NSMutableAttributedString *attStr = [NSMutableAttributedString.alloc initWithString:@"占位placeholder"];
     [attStr setAttributes:@{NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(0, attStr.string.length)];

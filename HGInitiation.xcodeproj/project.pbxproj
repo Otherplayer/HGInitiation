@@ -45,6 +45,7 @@
 		635C57C920033319004CE18B /* HGBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57C820033319004CE18B /* HGBrowserController.m */; };
 		635C57CF20048E29004CE18B /* HGScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57CE20048E29004CE18B /* HGScrollController.m */; };
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
+		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
 		6369B27120AEA937005FC8C0 /* HGScrollViewNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 6369B27020AEA937005FC8C0 /* HGScrollViewNav.m */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
@@ -75,6 +76,7 @@
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
 		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
 		63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7172043EC7C00FFD56E /* Reachability.m */; };
+		63B8C80D20B2ADAD00CFB3EC /* HGPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */; };
 		63B9A168205628070006B2E9 /* HGPagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A167205628070006B2E9 /* HGPagesController.m */; };
 		63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A16A205648DF0006B2E9 /* HGPageContentController.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
@@ -169,6 +171,8 @@
 		635C57CE20048E29004CE18B /* HGScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollController.m; sourceTree = "<group>"; };
 		635C57D120048F4A004CE18B /* HGScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollView.h; sourceTree = "<group>"; };
 		635C57D220048F4A004CE18B /* HGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollView.m; sourceTree = "<group>"; };
+		6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGNavItems.h"; sourceTree = "<group>"; };
+		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
 		6369B26F20AEA937005FC8C0 /* HGScrollViewNav.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollViewNav.h; sourceTree = "<group>"; };
 		6369B27020AEA937005FC8C0 /* HGScrollViewNav.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollViewNav.m; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		63A0C7162043EC7C00FFD56E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		63A0C7172043EC7C00FFD56E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		63AFC62E20809527004AEFCC /* HGInitiation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HGInitiation.entitlements; sourceTree = "<group>"; };
+		63B8C80B20B2ADAD00CFB3EC /* HGPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageController.h; sourceTree = "<group>"; };
+		63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageController.m; sourceTree = "<group>"; };
 		63B9A166205628070006B2E9 /* HGPagesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPagesController.h; sourceTree = "<group>"; };
 		63B9A167205628070006B2E9 /* HGPagesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPagesController.m; sourceTree = "<group>"; };
 		63B9A169205648DF0006B2E9 /* HGPageContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageContentController.h; sourceTree = "<group>"; };
@@ -414,6 +420,8 @@
 				635A8D07207C923600E4E4D6 /* NSString+URITemplate.m */,
 				63949EF020AC2743007F944B /* NSNumber+HGRandom.h */,
 				63949EF120AC2743007F944B /* NSNumber+HGRandom.m */,
+				6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */,
+				6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -461,6 +469,7 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63B8C80A20B2AD9400CFB3EC /* PageController */,
 				6369B26B20AEA89E005FC8C0 /* ScrollViewNav */,
 				63880BBC1FF0EA2700DAFD68 /* ViewUtils */,
 				635C57C32003120E004CE18B /* PhotoBrowser */,
@@ -679,6 +688,15 @@
 			path = reachability;
 			sourceTree = "<group>";
 		};
+		63B8C80A20B2AD9400CFB3EC /* PageController */ = {
+			isa = PBXGroup;
+			children = (
+				63B8C80B20B2ADAD00CFB3EC /* HGPageController.h */,
+				63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */,
+			);
+			path = PageController;
+			sourceTree = "<group>";
+		};
 		63EDC0321FFDC9950049597F /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +907,7 @@
 				635C57CF20048E29004CE18B /* HGScrollController.m in Sources */,
 				631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */,
 				63880BBF1FF0EA5700DAFD68 /* HGBASEViewController.m in Sources */,
+				63B8C80D20B2ADAD00CFB3EC /* HGPageController.m in Sources */,
 				63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */,
 				635C24EE1FFCAE580070BC46 /* HGImagePreviewCell.m in Sources */,
 				6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */,
@@ -906,6 +925,7 @@
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
 				63F6BBBD209AAF0100BB8EFF /* HGFunctionsController.m in Sources */,
 				631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */,
+				6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */,
 				63B9A168205628070006B2E9 /* HGPagesController.m in Sources */,
 				635C24E11FFB6CB10070BC46 /* HGTextField.m in Sources */,
 				630498B42005E99F00F91211 /* HGPageControl.m in Sources */,

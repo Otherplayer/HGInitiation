@@ -38,6 +38,46 @@
 }
 - (void)initiateViews {
     self.navigationItem.title = @"Featured";
+    UIImageView *imageview = [[UIImageView alloc] init];
+    
+    imageview.frame = CGRectMake(10, 100, 300, 300);
+    
+    imageview.image = [UIImage imageNamed:@"1.jpg"];
+    
+    imageview.contentMode = UIViewContentModeScaleAspectFit;
+    
+    imageview.userInteractionEnabled = YES;
+    
+    [self.view addSubview:imageview];
+    
+    
+    
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    
+    effectview.frame = CGRectMake(0, 0, imageview.size.width/2, 300);
+    
+    
+    
+    [imageview addSubview:effectview];
+    
+    
+    
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+
+    btn.frame = CGRectMake(10, 50, 100, 40);
+
+    [btn setTitle:@"btn" forState:UIControlStateNormal];
+
+    [effectview.contentView addSubview:btn];
+    
+    [self addRightBarButtonItemWithTitle:@"完成"];
+    
+    
+    
 }
 
 @end
