@@ -10,18 +10,149 @@
 
 @interface HGPageController ()
 
+@property(nonatomic) NSInteger pageCount;
+@property(nonatomic) NSInteger pageCurrent;
+@property(nonatomic, strong) NSMutableDictionary *displayVCRecord;
+
 @end
 
 @implementation HGPageController
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self install];
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.pageCount = [self.dataSource numbersOfChildControllersInPageController:self];
+    self.contentsView.contentSize = CGSizeMake(SCREEN_WIDTH * self.pageCount, self.contentsView.height);
+    
+    NSMutableArray *titles = [NSMutableArray.alloc init];
+    for (int i = 0; i < self.pageCount; i++) {
+        NSString *title = [self.dataSource pageController:self titleAtIndex:i];
+        [titles addObject:title];
+    }
+    self.titlesView.titles = titles;
+    [self.titlesView reloadData];
+    
+    [self addController:self.pageCurrent];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    for (int i = 0; i < self.pageCount; i++) {
+        if (i != self.pageCurrent) {
+            [self removeController:i];
+        }
+    }
+    
+}
+
+#pragma mark -
+
+- (void)addController:(NSInteger)index {
+    UIViewController *controller = [self.dataSource pageController:self viewControllerAtIndex:index];
+    [self addChildViewController:controller];
+    controller.view.frame = CGRectMake(index * SCREEN_WIDTH, 0, SCREEN_WIDTH, controller.view.height);
+    [self.contentsView addSubview:controller.view];
+    [controller didMoveToParentViewController:self];
+    [self.displayVCRecord setObject:controller forKey:@(index)];
+}
+- (void)removeController:(NSInteger)index{
+    UIViewController *controller = [self.displayVCRecord objectForKey:@(index)];
+    [controller.view removeFromSuperview];
+    [controller willMoveToParentViewController:nil];
+    [controller removeFromParentViewController];
+    [self.displayVCRecord removeObjectForKey:@(index)];
+}
+- (void)layoutChildViewController {
+    int currentPage = (int)(self.contentsView.contentOffset.x / SCREEN_WIDTH);
+    UIViewController *controller = [self.displayVCRecord objectForKey:@(currentPage)];
+    if (!controller) {
+        [self addController:currentPage];
+    }
+    if (currentPage > 0) {
+        UIViewController *controllerPrev = [self.displayVCRecord objectForKey:@(currentPage - 1)];
+        if (!controllerPrev) {
+            [self addController:currentPage - 1];
+        }
+    }
+    if (currentPage < self.pageCount - 1) {
+        UIViewController *controllerNext = [self.displayVCRecord objectForKey:@(currentPage + 1)];
+        if (!controllerNext) {
+            [self addController:currentPage + 1];
+        }
+    }
+}
+#pragma mark - <UIScrollViewDelegate>
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (![scrollView isKindOfClass:HGPageContentsView.class]) return;
+    [self layoutChildViewController];
+}
+
+#pragma mark - <HGPageControllerDataSource>
+
+- (NSInteger)numbersOfChildControllersInPageController:(HGPageController *)pageController {
+    return 0;
+}
+- (__kindof UIViewController *)pageController:(HGPageController *)pageController viewControllerAtIndex:(NSInteger)index {
+    return [UIViewController.alloc init];
+}
+- (NSString *)pageController:(HGPageController *)pageController titleAtIndex:(NSInteger)index {
+    return @"";
+}
+
+#pragma mark -
+
+- (void)install {
+    
+    self.dataSource = self;
+    self.pageCurrent = 0;
+    
+    self.titlesView = ({
+        _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, 44)];
+        _titlesView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _titlesView;
+    });
+    self.contentsView = ({
+        _contentsView = [HGPageContentsView.alloc initWithFrame:CGRectMake(0, self.titlesView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT - self.titlesView.bottom)];
+        _contentsView.pagingEnabled = YES;
+        _contentsView.directionalLockEnabled = YES;
+        _contentsView.delegate = self;
+        _contentsView.showsVerticalScrollIndicator = NO;
+        _contentsView.showsHorizontalScrollIndicator = NO;
+        _contentsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        if (@available(iOS 11.0, *)) {
+            _contentsView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        _contentsView;
+    });
+    
+    if (self.navigationController) {
+        for (UIGestureRecognizer *gestureRecognizer in _contentsView.gestureRecognizers) {
+            [gestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+        }
+    };
+    
+    [self.view addSubview:self.titlesView];
+    [self.view addSubview:self.contentsView];
+    
+}
+
+- (NSMutableDictionary *)displayVCRecord {
+    if (!_displayVCRecord) {
+        _displayVCRecord = [NSMutableDictionary.alloc init];
+    }
+    return _displayVCRecord;
 }
 
 

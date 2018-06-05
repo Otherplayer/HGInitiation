@@ -49,11 +49,11 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-//        double delayInSeconds = 1.2f;
-//        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-//            [HGHelperPush push:@{HGPushClassName:@"HGScrollController"}];
-//        });
+        double delayInSeconds = 1.2f;
+        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+            [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
+        });
     
 }
 
@@ -288,7 +288,7 @@ CGFloat currentPage = 0;
                    @{TITLE:@"瀑布流",
                      PARAMS:@{HGPushClassName:@"HGWaterfallController"}},
                    @{TITLE:@"Pages",
-                     PARAMS:@{HGPushClassName:@"HGPagesController"}},
+                     PARAMS:@{HGPushClassName:@"HGPageControllerDemo"}},
                    @{TITLE:@"Download",
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
                    @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},

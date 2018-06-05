@@ -7,7 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGPageTitlesView.h"
+#import "HGPageContentsView.h"
 
-@interface HGPageController : UIViewController
+
+@class HGPageController;
+@protocol HGPageControllerDataSource <NSObject>
+@required
+- (NSInteger)numbersOfChildControllersInPageController:(HGPageController *)pageController;
+- (__kindof UIViewController *)pageController:(HGPageController *)pageController viewControllerAtIndex:(NSInteger)index;
+- (NSString *)pageController:(HGPageController *)pageController titleAtIndex:(NSInteger)index;
+@end
+
+
+@interface HGPageController : UIViewController<UIScrollViewDelegate,HGPageControllerDataSource>
+
+/** 顶部导航栏 */
+@property(nonatomic, strong)HGPageContentsView *contentsView;
+/** 内部容器 */
+@property(nonatomic, strong)HGPageTitlesView *titlesView;
+
+@property(nonatomic, weak)id<HGPageControllerDataSource>dataSource;
+
 
 @end
