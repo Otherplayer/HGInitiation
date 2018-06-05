@@ -22,7 +22,7 @@
 @property(nonatomic, weak) id<HGPageTitlesDelegate>delegate;
 
 - (void)reloadData;
-- (void)scrollToItemAtIndex:(NSInteger)index;
+- (void)scrollToItemInProgress:(CGFloat)progress;
 - (void)selectItemAtIndex:(NSInteger)index;
 
 

@@ -116,10 +116,7 @@
     }
     CGFloat rate = contentOffsetX / scrollView.size.width;
     
-    NSLog(@"----%@",@(rate));
-    
-    self.pageCurrent = scrollView.contentOffset.x / scrollView.width;
-    [self.titlesView scrollToItemAtIndex:self.pageCurrent];
+    [self.titlesView scrollToItemInProgress:rate];
     
 }
 
@@ -144,7 +141,7 @@
     
     self.titlesView = ({
         _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, 44)];
-        _titlesView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _titlesView.backgroundColor = [UIColor whiteColor];
         _titlesView.delegate = self;
         _titlesView;
     });

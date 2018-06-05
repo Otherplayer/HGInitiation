@@ -22,10 +22,11 @@
 
 @interface HGPageController : UIViewController<UIScrollViewDelegate,HGPageControllerDataSource>
 
-/** 顶部导航栏 */
-@property(nonatomic, strong)HGPageContentsView *contentsView;
-/** 内部容器 */
+/** 顶部导航 */
 @property(nonatomic, strong)HGPageTitlesView *titlesView;
+/** 内部容器 */
+@property(nonatomic, strong)HGPageContentsView *contentsView;
+
 
 @property(nonatomic, weak)id<HGPageControllerDataSource>dataSource;
 

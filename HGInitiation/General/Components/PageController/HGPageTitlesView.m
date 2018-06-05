@@ -50,7 +50,7 @@
         _collectionView = [UICollectionView.alloc initWithFrame:self.bounds collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor;
+        _collectionView.backgroundColor = UIColor.clearColor;
         _collectionView.directionalLockEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -72,22 +72,37 @@
     [self.collectionView registerClass:cellClass forCellWithReuseIdentifier:NSStringFromClass(cellClass)];
 }
 
-- (void)updateConfiguration {
-    [self.collectionView reloadData];
-}
 - (void)reloadData {
     [self.collectionView reloadData];
 }
-- (void)scrollToItemAtIndex:(NSInteger)index {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    [self selectItemAtIndex:index];
+
+- (void)scrollToItemInProgress:(CGFloat)progress {
+    
+    NSInteger tag = (NSInteger)progress;
+    CGFloat rate = progress - tag;
+    
+    if (rate == 0.0) {
+        [self selectItemAtIndex:tag];
+        [self scrollToItemAtIndex:tag];
+        self.selectedIndex = tag;
+        return;
+    }
+    
+    HGPageTitleItem *itemCurrent = (HGPageTitleItem *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:tag inSection:0]];
+    HGPageTitleItem *itemNext = (HGPageTitleItem *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:tag + 1 inSection:0]];
+    itemCurrent.rate = 1 - rate;
+    itemNext.rate = rate;
+    
 }
 - (void)selectItemAtIndex:(NSInteger)index {
     if (index != self.selectedIndex) {
         self.selectedIndex = index;
         [self.collectionView reloadData];
     }
+}
+- (void)scrollToItemAtIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
@@ -98,14 +113,14 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HGPageTitleItem *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGPageTitleItem.class) forIndexPath:indexPath];
     NSString *title = self.titles[indexPath.item];
-    [cell.labTitle setTitle:title forState:UIControlStateNormal];
-    [cell.labTitle setSelected:(indexPath.item == self.selectedIndex)];
+    [cell.labTitle setText:title];
+    [cell setSelected:(indexPath.item == self.selectedIndex)];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger pageIndex = indexPath.item;
     [self.delegate pageTitles:self didSelectItemAtIndex:pageIndex];
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self scrollToItemAtIndex:indexPath.item];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
