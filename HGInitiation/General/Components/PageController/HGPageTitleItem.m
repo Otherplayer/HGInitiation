@@ -17,11 +17,11 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        CGFloat margin = 10;
         self.labTitle = ({
-            _labTitle = [UIButton.alloc initWithFrame:CGRectMake(margin, 0, CGRectGetWidth(frame) - margin * 2, CGRectGetHeight(frame))];
+            _labTitle = [UIButton.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
             [_labTitle setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
             [_labTitle setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+            [_labTitle setUserInteractionEnabled:NO];
             _labTitle;
         });
         [self.contentView addSubview:self.labTitle];

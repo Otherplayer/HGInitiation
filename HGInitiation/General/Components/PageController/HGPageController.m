@@ -8,7 +8,7 @@
 
 #import "HGPageController.h"
 
-@interface HGPageController ()
+@interface HGPageController ()<HGPageTitlesDelegate>
 
 @property(nonatomic) NSInteger pageCount;
 @property(nonatomic) NSInteger pageCurrent;
@@ -75,7 +75,7 @@
     [self.displayVCRecord removeObjectForKey:@(index)];
 }
 - (void)layoutChildViewController {
-    int currentPage = (int)(self.contentsView.contentOffset.x / SCREEN_WIDTH);
+    int currentPage = (int)(self.contentsView.contentOffset.x / self.contentsView.width);
     UIViewController *controller = [self.displayVCRecord objectForKey:@(currentPage)];
     if (!controller) {
         [self addController:currentPage];
@@ -93,10 +93,34 @@
         }
     }
 }
+#pragma mark - <HGPageTitlesDelegate>
+- (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index {
+    if (self.pageCurrent >= index - 1 && self.pageCurrent <= index + 1) {
+        [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:YES];
+    }else{
+        [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
+    }
+}
 #pragma mark - <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (![scrollView isKindOfClass:HGPageContentsView.class]) return;
     [self layoutChildViewController];
+    
+    
+    CGFloat contentOffsetX = scrollView.contentOffset.x;
+    if (contentOffsetX < 0) {
+        contentOffsetX = 0;
+    }
+    if (contentOffsetX > scrollView.contentSize.width - scrollView.size.width) {
+        contentOffsetX = scrollView.contentSize.width - scrollView.size.width;
+    }
+    CGFloat rate = contentOffsetX / scrollView.size.width;
+    
+    NSLog(@"----%@",@(rate));
+    
+    self.pageCurrent = scrollView.contentOffset.x / scrollView.width;
+    [self.titlesView scrollToItemAtIndex:self.pageCurrent];
+    
 }
 
 #pragma mark - <HGPageControllerDataSource>
@@ -121,6 +145,7 @@
     self.titlesView = ({
         _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, 44)];
         _titlesView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _titlesView.delegate = self;
         _titlesView;
     });
     self.contentsView = ({

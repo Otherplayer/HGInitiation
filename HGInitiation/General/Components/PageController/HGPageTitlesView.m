@@ -11,6 +11,7 @@
 
 @interface HGPageTitlesView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
+
 @end
 
 @implementation HGPageTitlesView
@@ -33,6 +34,8 @@
 }
 
 - (void)initiateViews {
+    
+    self.selectedIndex = 0;
     
     UICollectionViewFlowLayout *layout = ({
         layout = [[UICollectionViewFlowLayout alloc] init];
@@ -75,6 +78,17 @@
 - (void)reloadData {
     [self.collectionView reloadData];
 }
+- (void)scrollToItemAtIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self selectItemAtIndex:index];
+}
+- (void)selectItemAtIndex:(NSInteger)index {
+    if (index != self.selectedIndex) {
+        self.selectedIndex = index;
+        [self.collectionView reloadData];
+    }
+}
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
 
@@ -83,22 +97,23 @@
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HGPageTitleItem *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGPageTitleItem.class) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor randomColor];
     NSString *title = self.titles[indexPath.item];
     [cell.labTitle setTitle:title forState:UIControlStateNormal];
+    [cell.labTitle setSelected:(indexPath.item == self.selectedIndex)];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger pageIndex = indexPath.item;
-    pageIndex = pageIndex % self.titles.count;
+    [self.delegate pageTitles:self didSelectItemAtIndex:pageIndex];
+    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.titles[indexPath.item];
-    CGFloat width = [title widthForFont:[UIFont systemFontOfSize:17]] + 60;
-    return CGSizeMake(width, 50);
+    CGFloat width = [title widthForFont:[UIFont systemFontOfSize:17]] + 30;
+    return CGSizeMake(width, 44);
 }
 
 @end

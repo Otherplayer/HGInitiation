@@ -11,3 +11,4 @@
 @interface HGPageContentsView : UIScrollView<UIGestureRecognizerDelegate>
 
 @end
+
