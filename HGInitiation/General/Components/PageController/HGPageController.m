@@ -17,21 +17,17 @@
 @end
 
 @implementation HGPageController
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self install];
-    }
-    return self;
-}
 
+- (void)loadView {
+    [super loadView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self install];
     self.pageCount = [self.dataSource numbersOfChildControllersInPageController:self];
-    self.contentsView.contentSize = CGSizeMake(SCREEN_WIDTH * self.pageCount, self.contentsView.height);
+    self.contentsView.contentSize = CGSizeMake(CGRectGetWidth(self.contentsView.frame) * self.pageCount, CGRectGetHeight(self.contentsView.frame));
     
     NSMutableArray *titles = [NSMutableArray.alloc init];
     for (int i = 0; i < self.pageCount; i++) {
@@ -62,7 +58,7 @@
 - (void)addController:(NSInteger)index {
     UIViewController *controller = [self.dataSource pageController:self viewControllerAtIndex:index];
     [self addChildViewController:controller];
-    controller.view.frame = CGRectMake(index * SCREEN_WIDTH, 0, SCREEN_WIDTH, controller.view.height);
+    controller.view.frame = CGRectMake(index * CGRectGetWidth(self.contentsView.frame), 0, CGRectGetWidth(self.contentsView.frame), CGRectGetHeight(self.contentsView.frame));
     [self.contentsView addSubview:controller.view];
     [controller didMoveToParentViewController:self];
     [self.displayVCRecord setObject:controller forKey:@(index)];
@@ -75,7 +71,7 @@
     [self.displayVCRecord removeObjectForKey:@(index)];
 }
 - (void)layoutChildViewController {
-    int currentPage = (int)(self.contentsView.contentOffset.x / self.contentsView.width);
+    int currentPage = (int)(self.contentsView.contentOffset.x / CGRectGetWidth(self.contentsView.frame));
     UIViewController *controller = [self.displayVCRecord objectForKey:@(currentPage)];
     if (!controller) {
         [self addController:currentPage];
@@ -106,7 +102,6 @@
     if (![scrollView isKindOfClass:HGPageContentsView.class]) return;
     [self layoutChildViewController];
     
-    
     CGFloat contentOffsetX = scrollView.contentOffset.x;
     if (contentOffsetX < 0) {
         contentOffsetX = 0;
@@ -134,19 +129,37 @@
 
 #pragma mark -
 
+- (CGFloat)heightForHeader {
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(heightForHeaderOfPageController:)]) {
+        return [self.dataSource heightForHeaderOfPageController:self];
+    }
+    return 44.f;
+}
+
+- (NSMutableDictionary *)displayVCRecord {
+    if (!_displayVCRecord) {
+        _displayVCRecord = [NSMutableDictionary.alloc init];
+    }
+    return _displayVCRecord;
+}
+
+#pragma mark - init
+
 - (void)install {
     
     self.dataSource = self;
     self.pageCurrent = 0;
     
+    CGFloat height = [self heightForHeader];
+    
     self.titlesView = ({
-        _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, 44)];
+        _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, height)];
         _titlesView.backgroundColor = [UIColor whiteColor];
         _titlesView.delegate = self;
         _titlesView;
     });
     self.contentsView = ({
-        _contentsView = [HGPageContentsView.alloc initWithFrame:CGRectMake(0, self.titlesView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT - self.titlesView.bottom)];
+        _contentsView = [HGPageContentsView.alloc initWithFrame:CGRectMake(0, self.titlesView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT - self.titlesView.height - NAVandSTATUS_BAR_HEIHGT)];
         _contentsView.pagingEnabled = YES;
         _contentsView.directionalLockEnabled = YES;
         _contentsView.delegate = self;
@@ -170,12 +183,7 @@
     
 }
 
-- (NSMutableDictionary *)displayVCRecord {
-    if (!_displayVCRecord) {
-        _displayVCRecord = [NSMutableDictionary.alloc init];
-    }
-    return _displayVCRecord;
-}
+
 
 
 @end

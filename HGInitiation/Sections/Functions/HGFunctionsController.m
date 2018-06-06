@@ -312,6 +312,7 @@ CGFloat currentPage = 0;
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.backgroundColor = [UIColor whiteColor];
         _tableView;
     });
     

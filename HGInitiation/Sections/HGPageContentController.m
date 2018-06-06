@@ -26,28 +26,35 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.showsVerticalScrollIndicator = NO;
     
-//    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, SCREEN_WIDTH * 9 / 16.0)];
-//    tableHeaderView.backgroundColor = [UIColor orangeColor];
-//    self.tableView.tableHeaderView = tableHeaderView;
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, SCREEN_WIDTH * 9 / 16.0)];
+    tableHeaderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.tableHeaderView = tableHeaderView;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"identifier"];
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     
-    WeakObject(self);
+    @weakify(self)
     [self.tableView addRefreshingHeader:^{
         double delayInSeconds = 2.f;
         dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        // 得到全局队列
         dispatch_queue_t concurrentQueue = dispatch_get_main_queue();
-        // 延期执行
         dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
-            [weakObject.tableView endRefreshing];
+            @strongify(self)
+            if (!self) return;
+            [self.tableView endRefreshing];
         });
     }];
     [self.tableView addRefreshingFooter:^{
-        
+        double delayInSeconds = 2.f;
+        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_queue_t concurrentQueue = dispatch_get_main_queue();
+        dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+            @strongify(self)
+            if (!self) return;
+            [self.tableView endRefreshingWithNoMoreData];
+        });
     }];
 }
 
@@ -59,14 +66,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 50;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
     // Configure the cell...

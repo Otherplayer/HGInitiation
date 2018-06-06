@@ -17,6 +17,8 @@
 - (NSInteger)numbersOfChildControllersInPageController:(HGPageController *)pageController;
 - (__kindof UIViewController *)pageController:(HGPageController *)pageController viewControllerAtIndex:(NSInteger)index;
 - (NSString *)pageController:(HGPageController *)pageController titleAtIndex:(NSInteger)index;
+@optional
+- (CGFloat)heightForHeaderOfPageController:(HGPageController *)pageController;
 @end
 
 

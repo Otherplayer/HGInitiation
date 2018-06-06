@@ -11,7 +11,6 @@
 
 @interface HGPageTitlesView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
-
 @end
 
 @implementation HGPageTitlesView
@@ -56,9 +55,9 @@
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.bounces = YES;
         _collectionView.contentInset = UIEdgeInsetsZero;
-        if (@available(iOS 11, *)) {
-            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
+//        if (@available(iOS 11, *)) {
+//            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        }
         _collectionView;
     });
     
@@ -82,9 +81,7 @@
     CGFloat rate = progress - tag;
     
     if (rate == 0.0) {
-        [self selectItemAtIndex:tag];
         [self scrollToItemAtIndex:tag];
-        self.selectedIndex = tag;
         return;
     }
     
@@ -94,13 +91,8 @@
     itemNext.rate = rate;
     
 }
-- (void)selectItemAtIndex:(NSInteger)index {
-    if (index != self.selectedIndex) {
-        self.selectedIndex = index;
-        [self.collectionView reloadData];
-    }
-}
 - (void)scrollToItemAtIndex:(NSInteger)index {
+    self.selectedIndex = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
@@ -121,14 +113,15 @@
     NSInteger pageIndex = indexPath.item;
     [self.delegate pageTitles:self didSelectItemAtIndex:pageIndex];
     [self scrollToItemAtIndex:indexPath.item];
+    [collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.titles[indexPath.item];
-    CGFloat width = [title widthForFont:[UIFont systemFontOfSize:17]] + 30;
-    return CGSizeMake(width, 44);
+    CGFloat width = width = [title widthForFont:[UIFont systemFontOfSize:17]] + 30;
+    return CGSizeMake(width, collectionView.frame.size.height);
 }
 
 @end

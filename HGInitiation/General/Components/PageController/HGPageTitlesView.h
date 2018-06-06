@@ -23,7 +23,8 @@
 
 - (void)reloadData;
 - (void)scrollToItemInProgress:(CGFloat)progress;
-- (void)selectItemAtIndex:(NSInteger)index;
+
+//- (void)scrollToItemAtIndex:(NSInteger)index;
 
 
 
