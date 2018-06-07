@@ -36,7 +36,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self rightBarButtonPressed:nil];
+    [self showPay];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,10 +53,13 @@
     [self.popupManager showShareViewWithHandler:^(NSInteger section, NSInteger row) {
         NSLog(@"%@ - %@",@(section),@(row));
     }];
-//    [self.popupManager showPayViewWithHandler:^(NSInteger row) {
-//        NSLog(@"%@",@(row));
-//    }];
-}                         
+}
 
+- (void)showPay {
+    [self.popupManager showPayViewWithHandler:^(NSInteger row) {
+        NSLog(@"%@",@(row));
+    }];
+
+}
 
 @end

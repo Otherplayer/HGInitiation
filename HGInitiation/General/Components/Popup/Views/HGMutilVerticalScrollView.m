@@ -44,7 +44,11 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     cell.textLabel.text = info[@"title"];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.backgroundColor = [UIColor whiteColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
+    UIBlurEffect *blurEffectPopup = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    UIVisualEffectView *blurEffectViewPopup = [[UIVisualEffectView alloc] initWithEffect:blurEffectPopup];
+    blurEffectViewPopup.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    cell.selectedBackgroundView = blurEffectViewPopup;
     
     return cell;
 }
@@ -101,7 +105,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
         tableFooterView = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50)];
         tableFooterView.backgroundColor = [UIColor whiteColor];
         [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-        [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
+        [tableFooterView setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor]] imageByBlurExtraLight] forState:UIControlStateHighlighted];
         [tableFooterView addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
         tableFooterView;
     });
