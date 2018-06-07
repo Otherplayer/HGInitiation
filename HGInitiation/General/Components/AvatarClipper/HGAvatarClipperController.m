@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 
-    self.navigationController.navigationBarHidden = YES;
+    
 
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -43,6 +43,15 @@
     self.view.backgroundColor = [UIColor photoTweakCanvasBackgroundColor];
 
     [self setupSubviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)setupSubviews
