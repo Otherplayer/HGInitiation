@@ -13,7 +13,7 @@ extern CGFloat const kHGMutilHorizontalCCellWidth;
 
 @interface HGMutilHorizontalCCell : UICollectionViewCell
 
-@property(nonatomic, copy)void(^didTapHandler)();
+@property(nonatomic, copy)void(^didTapHandler)(void);
 @property(nonatomic, strong) UIButton *btnIcon;
 @property(nonatomic, strong) UILabel *labTitle;
 

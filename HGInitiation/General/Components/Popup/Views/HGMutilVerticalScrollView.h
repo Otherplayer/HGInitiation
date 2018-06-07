@@ -10,7 +10,7 @@
 
 @interface HGMutilVerticalScrollView : UIView
 @property(nonatomic, copy)void(^didTapCancelHandler)(void);
-@property(nonatomic, copy)void(^didTapItemHandler)(NSInteger section, NSInteger row);
+@property(nonatomic, copy)void(^didTapItemHandler)(NSInteger row);
 
 - (instancetype)initWithItems:(NSArray *)items;
 

@@ -53,7 +53,7 @@
     [self showPopupWithStyle:CNPPopupStyleActionSheet view:horizontalScrollView];
 }
 
-- (void)showPayViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler {
+- (void)showPayViewWithHandler:(void(^)(NSInteger row))handler {
     NSArray *pays = @[@{@"title":@"微信",@"icon":@"sharekit_icon_wx"},@{@"title":@"支付宝",@"icon":@"sharekit_icon_wx"}];
     HGMutilVerticalScrollView *verticalScrollView = [HGMutilVerticalScrollView.alloc initWithItems:pays];
     @weakify(self);
@@ -62,9 +62,9 @@
         if (!self) {return;}
         [self.popupController dismissPopupControllerAnimated:YES];
     }];
-    [verticalScrollView setDidTapItemHandler:^(NSInteger section, NSInteger row) {
+    [verticalScrollView setDidTapItemHandler:^(NSInteger row) {
         if (handler) {
-            handler(section, row);
+            handler(row);
         }
         @strongify(self);
         if (!self) {return;}
