@@ -9,7 +9,8 @@
 #import "HGMutilHorizontalSVCell.h"
 #import "HGMutilHorizontalCCell.h"
 
-CGFloat const kHGMutilHorizontalCellHeight = 100.f;
+CGFloat const kHGMutilHorizontalCellHeight = 80.f;
+
 
 @interface HGMutilHorizontalSVCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
@@ -47,7 +48,7 @@ CGFloat const kHGMutilHorizontalCellHeight = 100.f;
             _collectionView = [UICollectionView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCellHeight) collectionViewLayout:layout];
             _collectionView.dataSource = self;
             _collectionView.delegate = self;
-            _collectionView.backgroundColor = UIColor.clearColor;
+            _collectionView.backgroundColor = UIColor.whiteColor;
             _collectionView.directionalLockEnabled = YES;
             _collectionView.showsHorizontalScrollIndicator = NO;
             _collectionView.showsVerticalScrollIndicator = NO;
@@ -73,7 +74,6 @@ CGFloat const kHGMutilHorizontalCellHeight = 100.f;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HGMutilHorizontalCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor cyanColor];
     NSDictionary *info = self.items[indexPath.item];
     BOOL enabled = [info[@"enabled"] integerValue];
     if (enabled) {
@@ -86,7 +86,9 @@ CGFloat const kHGMutilHorizontalCellHeight = 100.f;
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.didTapHandler) {
+        self.didTapHandler(indexPath.item);
+    }
 }
 
 

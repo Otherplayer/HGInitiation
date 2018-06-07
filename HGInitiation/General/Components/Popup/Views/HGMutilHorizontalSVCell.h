@@ -11,6 +11,7 @@
 extern CGFloat const kHGMutilHorizontalCellHeight;
 
 @interface HGMutilHorizontalSVCell : UITableViewCell
+@property(nonatomic, copy)void(^didTapHandler)(NSInteger row);
 @property(nonatomic, strong)NSArray *items;
 
 @end

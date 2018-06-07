@@ -151,6 +151,7 @@ CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orie
     self.blurEffectView.alpha = self.theme.blurEffectAlpha;
     self.popupView.layer.cornerRadius = self.theme.popupStyle == CNPPopupStyleCentered?self.theme.cornerRadius:0;
     self.popupView.backgroundColor = self.theme.backgroundColor;
+    
     UIColor *maskBackgroundColor;
     if (self.theme.popupStyle == CNPPopupStyleFullscreen) {
         maskBackgroundColor = self.popupView.backgroundColor;
@@ -440,7 +441,7 @@ CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orie
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
     defaultTheme.backgroundColor = [UIColor whiteColor];
     defaultTheme.cornerRadius = 4.0f;
-    defaultTheme.popupContentInsets = UIEdgeInsetsMake(16.0f, 0.0f, 16.0f, 0.0f);
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(16.0f, .0f, .0f, .0f);
     defaultTheme.popupStyle = CNPPopupStyleCentered;
     defaultTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
     defaultTheme.dismissesOppositeDirection = NO;
