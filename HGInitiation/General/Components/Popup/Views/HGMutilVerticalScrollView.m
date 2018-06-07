@@ -124,7 +124,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     [self addSubview:self.tableView];
     [self.tableView setTableFooterView:tableFooterView];
     
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + DANGER_BOTTOM_AREA_HEIGHT + 50);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + tableFooterView.height + 5);
     [self setFrame:frame];
     [self.tableView setFrame:frame];
     
