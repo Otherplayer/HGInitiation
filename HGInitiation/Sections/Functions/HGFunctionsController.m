@@ -49,11 +49,11 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-        double delayInSeconds = 1.2f;
-        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-            [HGHelperPush push:@{HGPushClassName:@"HGPayController"}];
-        });
+//        double delayInSeconds = 1.2f;
+//        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+//            [HGHelperPush push:@{HGPushClassName:@"HGPayController"}];
+//        });
     
 }
 
@@ -80,6 +80,11 @@ CGFloat currentPage = 0;
     cell.imageView.layer.masksToBounds = YES;
     
     cell.textLabel.text = title;
+    
+    
+    if (indexPath.row == self.items.count - 1) {
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH);
+    }
     
     return cell;
 }
@@ -314,7 +319,7 @@ CGFloat currentPage = 0;
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _tableView;
     });
     
