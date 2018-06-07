@@ -8,7 +8,7 @@
 
 #import "HGPageController.h"
 
-@interface HGPageController ()<HGPageTitlesDelegate>
+@interface HGPageController ()<HGPageTitlesDelegate,UIGestureRecognizerDelegate>
 
 @property(nonatomic) NSInteger pageCount;
 @property(nonatomic) NSInteger pageCurrent;
@@ -38,6 +38,16 @@
     [self.titlesView reloadData];
     
     [self addController:self.pageCurrent];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    NSArray *gestureArray = self.navigationController.view.gestureRecognizers;
+    for (UIGestureRecognizer *gesture in gestureArray) {
+        if ([gesture isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+            [self.contentsView.panGestureRecognizer requireGestureRecognizerToFail:gesture];
+        }
+    }
+    
     
 }
 

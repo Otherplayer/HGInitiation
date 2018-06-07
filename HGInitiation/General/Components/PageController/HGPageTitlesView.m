@@ -95,6 +95,7 @@
     self.selectedIndex = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
