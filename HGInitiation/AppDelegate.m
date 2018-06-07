@@ -8,10 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HGThemeManager.h"
-#import "HGThemeDefault.h"
-#import "SystemConfiguration/SCNetworkReachability.h"
 #import "HGHelperReachability.h"
-#import <YYReachability.h>
 #import "HGDownloader.h"
 
 #ifndef __OPTIMIZE__
