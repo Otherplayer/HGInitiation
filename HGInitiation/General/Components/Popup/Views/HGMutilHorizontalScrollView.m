@@ -103,7 +103,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         tableFooterView = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50)];
         tableFooterView.backgroundColor = [UIColor whiteColor];
         [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-        [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
+        [tableFooterView setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor]] imageByBlurExtraLight] forState:UIControlStateHighlighted];
         [tableFooterView addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
         tableFooterView;
     });
