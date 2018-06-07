@@ -58,7 +58,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kHGMutilHorizontalCellHeight;
+    return kHGMutilHorizontalCCellHeight;
 }
 //设置分割线的位置
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,8 +78,8 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.bounces = NO;
         _tableView.scrollEnabled = NO;
-        _tableView.separatorColor = [UIColor groupTableViewBackgroundColor];
-        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.separatorColor = [UIColor whiteColor];
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView;
     });
     
@@ -90,30 +90,30 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     
-    UIView *tableFooterView = ({
-        tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, TAB_BAR_HEIGHT)];
-        tableFooterView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    UIButton *tableFooterView = ({
+        tableFooterView = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50)];
+        tableFooterView.backgroundColor = [UIColor whiteColor];
+        [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+        [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
+        [tableFooterView addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
         tableFooterView;
     });
     
-    UIButton *btnCancel = ({
-        btnCancel = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, TAB_BAR_HEIGHT)];
-        [btnCancel setTitle:NSLocalizedString(@"取 消", @"cancel") forState:UIControlStateNormal];
-        [btnCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btnCancel setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
-        [btnCancel.titleLabel setFont:[UIFont systemFontOfSize:18]];
-        [btnCancel setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-        [btnCancel setBackgroundImage:[UIImage imageWithColor:[UIColor groupTableViewBackgroundColor]] forState:UIControlStateHighlighted];
-        [btnCancel addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
-        btnCancel;
+    UILabel *labCancel = ({
+        labCancel = [UILabel.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+        [labCancel setTextColor:[UIColor blackColor]];
+        [labCancel setFont:[UIFont systemFontOfSize:16]];
+        [labCancel setTextAlignment:NSTextAlignmentCenter];
+        [labCancel setText:NSLocalizedString(@"取消", @"cancel")];
+        labCancel;
     });
-    [tableFooterView addSubview:btnCancel];
+    [tableFooterView addSubview:labCancel];
     
     [self.tableView registerClass:HGMutilHorizontalSVCell.class forCellReuseIdentifier:HGMutilHorizontalIdentifier];
     [self addSubview:self.tableView];
     [self.tableView setTableFooterView:tableFooterView];
     
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCellHeight * self.items.count + TAB_BAR_HEIGHT);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCCellHeight * self.items.count + DANGER_BOTTOM_AREA_HEIGHT + 50);
     [self setFrame:frame];
     [self.tableView setFrame:frame];
     

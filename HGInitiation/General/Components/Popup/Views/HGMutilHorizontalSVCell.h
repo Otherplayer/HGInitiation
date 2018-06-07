@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-extern CGFloat const kHGMutilHorizontalCellHeight;
+#import "HGMutilHorizontalCCell.h"
 
 @interface HGMutilHorizontalSVCell : UITableViewCell
 @property(nonatomic, copy)void(^didTapHandler)(NSInteger row);

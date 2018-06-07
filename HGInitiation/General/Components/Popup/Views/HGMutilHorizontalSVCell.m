@@ -7,10 +7,6 @@
 //
 
 #import "HGMutilHorizontalSVCell.h"
-#import "HGMutilHorizontalCCell.h"
-
-CGFloat const kHGMutilHorizontalCellHeight = 80.f;
-
 
 @interface HGMutilHorizontalSVCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
@@ -33,22 +29,23 @@ CGFloat const kHGMutilHorizontalCellHeight = 80.f;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         UICollectionViewFlowLayout *layout = ({
             layout = [[UICollectionViewFlowLayout alloc] init];
-            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            layout.sectionInset = UIEdgeInsetsMake(10, 16, 0, 16);
             layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-            layout.minimumLineSpacing = 0;
+            layout.minimumLineSpacing = 12;
             layout.minimumInteritemSpacing = 0;
-            layout.itemSize = CGSizeMake(kHGMutilHorizontalCellHeight, kHGMutilHorizontalCellHeight);
+            layout.itemSize = CGSizeMake(kHGMutilHorizontalCCellWidth, kHGMutilHorizontalCCellHeight - 10);
             layout;
         });
         
         self.collectionView = ({
-            _collectionView = [UICollectionView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCellHeight) collectionViewLayout:layout];
+            _collectionView = [UICollectionView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCCellHeight) collectionViewLayout:layout];
             _collectionView.dataSource = self;
             _collectionView.delegate = self;
-            _collectionView.backgroundColor = UIColor.whiteColor;
+            _collectionView.backgroundColor = UIColor.clearColor;
             _collectionView.directionalLockEnabled = YES;
             _collectionView.showsHorizontalScrollIndicator = NO;
             _collectionView.showsVerticalScrollIndicator = NO;
@@ -77,18 +74,24 @@ CGFloat const kHGMutilHorizontalCellHeight = 80.f;
     NSDictionary *info = self.items[indexPath.item];
     BOOL enabled = [info[@"enabled"] integerValue];
     if (enabled) {
-        cell.imageView.image = [UIImage imageNamed:info[@"icon"]];
+        [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     }else{
-        cell.imageView.image = [UIImage imageNamed:info[@"icon_disabled"]];
+        [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon_disabled"]] forState:UIControlStateNormal];
     }
     cell.labTitle.text = info[@"title"];
+    WeakObject(self);
+    [cell setDidTapHandler:^{
+        if (weakObject.didTapHandler) {
+            weakObject.didTapHandler(indexPath.item);
+        }
+    }];
     
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.didTapHandler) {
-        self.didTapHandler(indexPath.item);
-    }
+//    if (self.didTapHandler) {
+//        self.didTapHandler(indexPath.item);
+//    }
 }
 
 

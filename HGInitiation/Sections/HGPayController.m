@@ -21,7 +21,14 @@
     
     
     [self.view setBackgroundColor:[UIColor cyanColor]];
-    [self addRightBarButtonItemWithTitle:@"Pay"];
+    
+    UIImageView *imageView = [UIImageView.alloc initWithFrame:self.view.bounds];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = [UIImage imageNamed:@"large_leaves_70mp.jpg"];
+    [self.view addSubview:imageView];
+    
+    
+    [self addRightBarButtonItemWithTitle:@"Share"];
     
     self.popupManager = [HGPopupManager.alloc init];
     

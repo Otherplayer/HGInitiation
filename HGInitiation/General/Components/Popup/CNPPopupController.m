@@ -21,6 +21,7 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
 @property (nonatomic, strong) UIWindow *applicationWindow;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) UIVisualEffectView *blurEffectView;
+@property (nonatomic, strong) UIVisualEffectView *blurEffectViewPopup;
 @property (nonatomic, strong) UITapGestureRecognizer *backgroundTapRecognizer;
 @property (nonatomic, strong) UIView *popupView;
 @property (nonatomic, strong) NSArray <UIView *> *views;
@@ -55,6 +56,14 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
             self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             
             [self.maskView addSubview:self.blurEffectView];
+            
+            UIBlurEffect *blurEffectPopup = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+            self.blurEffectViewPopup = [[UIVisualEffectView alloc] initWithEffect:blurEffectPopup];
+            self.blurEffectViewPopup.backgroundColor = [UIColor colorWithWhite:1 alpha:0.55];
+            self.blurEffectViewPopup.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            
+            [self.popupView addSubview:self.blurEffectViewPopup];
+            
         }
         
         [self.maskView addSubview:self.popupView];
@@ -292,6 +301,9 @@ CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orie
     
     [self.applicationWindow addSubview:self.maskView];
     self.maskView.alpha = 0;
+    
+    self.blurEffectViewPopup.frame = self.popupView.bounds;
+    
     [UIView animateWithDuration:flag?self.theme.animationDuration:0.0 animations:^{
         self.maskView.alpha = 1.0;
         self.popupView.center = [self endingPoint];;
@@ -439,19 +451,19 @@ CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orie
 
 + (CNPPopupTheme *)defaultTheme {
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
-    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.backgroundColor = [UIColor clearColor];
     defaultTheme.cornerRadius = 4.0f;
     defaultTheme.popupContentInsets = UIEdgeInsetsMake(16.0f, .0f, .0f, .0f);
     defaultTheme.popupStyle = CNPPopupStyleCentered;
     defaultTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
     defaultTheme.dismissesOppositeDirection = NO;
-    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.maskType = CNPPopupMaskTypeClear;
     defaultTheme.shouldDismissOnBackgroundTouch = YES;
     defaultTheme.movesAboveKeyboard = YES;
     defaultTheme.contentVerticalPadding = 16.0f;
     defaultTheme.maxPopupWidth = 300.0f;
     defaultTheme.animationDuration = 0.23f;
-    defaultTheme.blurEffectAlpha = 1.5f;
+    defaultTheme.blurEffectAlpha = 0.25f;
     return defaultTheme;
 }
 

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat const kHGMutilHorizontalCCellHeight;
+extern CGFloat const kHGMutilHorizontalCCellWidth;
+
 @interface HGMutilHorizontalCCell : UICollectionViewCell
 
-@property(nonatomic, strong) UIImageView *imageView;
+@property(nonatomic, copy)void(^didTapHandler)();
+@property(nonatomic, strong) UIButton *btnIcon;
 @property(nonatomic, strong) UILabel *labTitle;
 
 @end
