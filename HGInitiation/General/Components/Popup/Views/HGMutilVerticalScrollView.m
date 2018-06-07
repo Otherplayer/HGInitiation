@@ -1,22 +1,21 @@
 //
-//  HGMutilHorizontalScrollView.m
+//  HGMutilVerticalScrollView.m
 //  HGInitiation
 //
-//  Created by __无邪_ on 2018/6/6.
+//  Created by __无邪_ on 2018/6/7.
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMutilHorizontalScrollView.h"
-#import "HGMutilHorizontalSVCell.h"
-static NSString *HGMutilHorizontalIdentifier = @"Identifier";
+#import "HGMutilVerticalScrollView.h"
 
-@interface HGMutilHorizontalScrollView ()<UITableViewDelegate,UITableViewDataSource>
+static NSString *HGMutilVerticalIdentifier = @"Identifier";
+
+@interface HGMutilVerticalScrollView ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSArray *items;
 @end
 
-@implementation HGMutilHorizontalScrollView
-
+@implementation HGMutilVerticalScrollView
 
 - (instancetype)initWithItems:(NSArray *)items{
     self = [super init];
@@ -36,28 +35,29 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
 
 #pragma mark - <UITableViewDataSource>
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.items.count;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *subItems = self.items[section];
-    return subItems.count > 0 ? 1:0;
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HGMutilHorizontalSVCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilHorizontalIdentifier forIndexPath:indexPath];
-    cell.items = self.items[indexPath.section];
-    @weakify(self);
-    [cell setDidTapHandler:^(NSInteger row) {
-        @strongify(self);
-        if (!self) {return ;}
-        if (self.didTapItemHandler) {
-            self.didTapItemHandler(indexPath.section, row);
-        }
-    }];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilVerticalIdentifier forIndexPath:indexPath];
+    NSDictionary *info = self.items[indexPath.row];
+    cell.textLabel.text = info[@"title"];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kHGMutilHorizontalCCellHeight;
+    return 50;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 5;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *view = [UIView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 5)];
+    view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    return view;
 }
 //设置分割线的位置
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,6 +68,14 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor clearColor];
+//}
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor whiteColor];
+//}
 - (void)initiateViews {
     self.tableView = ({
         _tableView = [UITableView.alloc initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -77,7 +85,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.bounces = NO;
         _tableView.scrollEnabled = NO;
-        _tableView.separatorColor = [UIColor whiteColor];
+        _tableView.separatorColor = [UIColor groupTableViewBackgroundColor];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView;
     });
@@ -88,16 +96,6 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
-    
-    UILabel *tableHeaderView = ({
-        tableHeaderView = [UILabel.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 32)];
-        tableHeaderView.text = @"HGInitiation";
-        tableHeaderView.textAlignment = NSTextAlignmentCenter;
-        tableHeaderView.textColor = UIColor.darkGrayColor;
-        tableHeaderView.font = [UIFont systemFontOfSize:14];
-        tableHeaderView;
-    });
-    [self.tableView setTableHeaderView:tableHeaderView];
     
     UIButton *tableFooterView = ({
         tableFooterView = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50)];
@@ -118,11 +116,11 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     });
     [tableFooterView addSubview:labCancel];
     
-    [self.tableView registerClass:HGMutilHorizontalSVCell.class forCellReuseIdentifier:HGMutilHorizontalIdentifier];
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:HGMutilVerticalIdentifier];
     [self addSubview:self.tableView];
     [self.tableView setTableFooterView:tableFooterView];
     
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCCellHeight * self.items.count + tableFooterView.height + tableHeaderView.height);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + DANGER_BOTTOM_AREA_HEIGHT + 50);
     [self setFrame:frame];
     [self.tableView setFrame:frame];
     

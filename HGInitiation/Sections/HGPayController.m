@@ -53,6 +53,9 @@
     [self.popupManager showShareViewWithHandler:^(NSInteger section, NSInteger row) {
         NSLog(@"%@ - %@",@(section),@(row));
     }];
+//    [self.popupManager showPayViewWithHandler:^(NSInteger section, NSInteger row) {
+//        NSLog(@"%@ - %@",@(section),@(row));
+//    }];
 }                         
 
 

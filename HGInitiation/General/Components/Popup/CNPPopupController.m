@@ -453,14 +453,14 @@ CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orie
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
     defaultTheme.backgroundColor = [UIColor clearColor];
     defaultTheme.cornerRadius = 4.0f;
-    defaultTheme.popupContentInsets = UIEdgeInsetsMake(16.0f, .0f, .0f, .0f);
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(.0f, .0f, .0f, .0f);
     defaultTheme.popupStyle = CNPPopupStyleCentered;
     defaultTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
     defaultTheme.dismissesOppositeDirection = NO;
     defaultTheme.maskType = CNPPopupMaskTypeClear;
     defaultTheme.shouldDismissOnBackgroundTouch = YES;
     defaultTheme.movesAboveKeyboard = YES;
-    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.contentVerticalPadding = .0f;
     defaultTheme.maxPopupWidth = 300.0f;
     defaultTheme.animationDuration = 0.23f;
     defaultTheme.blurEffectAlpha = 0.25f;
