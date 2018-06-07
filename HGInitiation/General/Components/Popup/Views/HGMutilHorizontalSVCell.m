@@ -72,12 +72,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HGMutilHorizontalCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class) forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.item];
-    BOOL enabled = [info[@"enabled"] integerValue];
-    if (enabled) {
-        [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
-    }else{
-        [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon_disabled"]] forState:UIControlStateNormal];
-    }
+    [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     cell.labTitle.text = info[@"title"];
     WeakObject(self);
     [cell setDidTapHandler:^{

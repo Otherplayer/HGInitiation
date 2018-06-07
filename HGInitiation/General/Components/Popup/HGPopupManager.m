@@ -23,15 +23,20 @@
 
 - (void)showShareViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler {
     NSArray *shareVendors = @[
-                              @{@"title":@"微信",@"icon":@"sharekit_icon_wx",@"icon_disabled":@"sharekit_icon_wx_disable",@"enabled":@1},
-                              @{@"title":@"朋友圈",@"icon":@"sharekit_icon_wxgroup",@"icon_disabled":@"sharekit_icon_wxgroup_disable",@"enabled":@1},
-                              @{@"title":@"微博",@"icon":@"sharekit_icon_sina",@"icon_disabled":@"sharekit_icon_sina_disable",@"enabled":@0},
-                              @{@"title":@"QQ",@"icon":@"sharekit_icon_qq",@"icon_disabled":@"sharekit_icon_qq_disable",@"enabled":@0},
-                              @{@"title":@"QQ空间",@"icon":@"sharekit_icon_qq",@"icon_disabled":@"sharekit_icon_qq_disable",@"enabled":@0},
+                              @{@"title":@"微信",@"icon":@"sns_icon_22"},
+                              @{@"title":@"朋友圈",@"icon":@"sns_icon_23"},
+                              @{@"title":@"微信收藏",@"icon":@"sns_icon_37"},
+                              @{@"title":@"微博",@"icon":@"sns_icon_1"},
+                              @{@"title":@"QQ",@"icon":@"sns_icon_24"},
+                              @{@"title":@"QQ空间",@"icon":@"sns_icon_6"},
+                              @{@"title":@"Fackbook",@"icon":@"sns_icon_10"},
+                              @{@"title":@"Messager",@"icon":@"sns_icon_46"},
+                              @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
+                              @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
                             ];
     
     NSArray *shareSystem = @[
-                             @{@"title":@"短信",@"icon":@"sharekit_icon_wx",@"icon_disabled":@"sharekit_icon_wx",@"enabled":@1}];
+                             @{@"title":@"短信",@"icon":@"sharekit_icon_wx"}];
     
     
     HGMutilHorizontalScrollView *horizontalScrollView = [[HGMutilHorizontalScrollView alloc] initWithItems:@[shareVendors,shareSystem]];
