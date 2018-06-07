@@ -84,6 +84,8 @@ CGFloat currentPage = 0;
     
     if (indexPath.row == self.items.count - 1) {
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH);
+    }else{
+        cell.separatorInset = UIEdgeInsetsMake(0, 60, 0, 0);
     }
     
     return cell;
