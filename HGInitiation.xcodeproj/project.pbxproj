@@ -19,6 +19,8 @@
 		631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8752017305200E9D8A2 /* HGConfiguration.m */; };
 		631FE8792017392F00E9D8A2 /* HGThemeWhatever.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */; };
 		631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */; };
+		6327575B20CFB0510095E28D /* HGPagesWithHeaderDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */; };
+		6327575F20CFB0D50095E28D /* HGPagesScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6327575E20CFB0D50095E28D /* HGPagesScrollView.m */; };
 		632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA61FF22508000F57A3 /* HGImagePickerController.m */; };
 		632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AA91FF22610000F57A3 /* HGAlbumsController.m */; };
 		632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7AAC1FF22987000F57A3 /* HGPhotosController.m */; };
@@ -128,6 +130,10 @@
 		631FE8782017392F00E9D8A2 /* HGThemeWhatever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGThemeWhatever.m; sourceTree = "<group>"; };
 		631FE87A2018299400E9D8A2 /* HGBASETabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBASETabBarController.h; sourceTree = "<group>"; };
 		631FE87B2018299400E9D8A2 /* HGBASETabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBASETabBarController.m; sourceTree = "<group>"; };
+		6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPagesWithHeaderDemo.h; sourceTree = "<group>"; };
+		6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPagesWithHeaderDemo.m; sourceTree = "<group>"; };
+		6327575D20CFB0D50095E28D /* HGPagesScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPagesScrollView.h; sourceTree = "<group>"; };
+		6327575E20CFB0D50095E28D /* HGPagesScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPagesScrollView.m; sourceTree = "<group>"; };
 		632B7AA51FF22508000F57A3 /* HGImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGImagePickerController.h; sourceTree = "<group>"; };
 		632B7AA61FF22508000F57A3 /* HGImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGImagePickerController.m; sourceTree = "<group>"; };
 		632B7AA81FF22610000F57A3 /* HGAlbumsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAlbumsController.h; sourceTree = "<group>"; };
@@ -367,6 +373,8 @@
 				6301EBC52069F39800EBD4D3 /* HGDownloadController.m */,
 				6341E5DC20C784FC005065C5 /* HGPayController.h */,
 				6341E5DD20C784FC005065C5 /* HGPayController.m */,
+				6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */,
+				6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -399,6 +407,15 @@
 				631FE8752017305200E9D8A2 /* HGConfiguration.m */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		6327575C20CFB0900095E28D /* PagesScroll */ = {
+			isa = PBXGroup;
+			children = (
+				6327575D20CFB0D50095E28D /* HGPagesScrollView.h */,
+				6327575E20CFB0D50095E28D /* HGPagesScrollView.m */,
+			);
+			path = PagesScroll;
 			sourceTree = "<group>";
 		};
 		6341E5E220C7B742005065C5 /* Popup */ = {
@@ -530,6 +547,7 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6327575C20CFB0900095E28D /* PagesScroll */,
 				6341E5E220C7B742005065C5 /* Popup */,
 				63B8C80A20B2AD9400CFB3EC /* PageController */,
 				63880BBC1FF0EA2700DAFD68 /* ViewUtils */,
@@ -970,6 +988,7 @@
 				63F3D3DF20C53F89000AC732 /* HGPageControllerDemo.m in Sources */,
 				6341E5EF20C7C074005065C5 /* HGMutilHorizontalCCell.m in Sources */,
 				63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */,
+				6327575F20CFB0D50095E28D /* HGPagesScrollView.m in Sources */,
 				635C24EE1FFCAE580070BC46 /* HGImagePreviewCell.m in Sources */,
 				6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */,
 				63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */,
@@ -1007,6 +1026,7 @@
 				63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */,
 				6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */,
 				63D5597A2008595800BBA0BE /* UIViewController+HGAlert.m in Sources */,
+				6327575B20CFB0510095E28D /* HGPagesWithHeaderDemo.m in Sources */,
 				635C57C920033319004CE18B /* HGBrowserController.m in Sources */,
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,

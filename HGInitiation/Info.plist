@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>share to friends</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Share</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.hginitiation.share</string>
+		</dict>
+	</array>
 	<key>NSFaceIDUsageDescription</key>
 	<string>识别</string>
 	<key>CFBundleDevelopmentRegion</key>

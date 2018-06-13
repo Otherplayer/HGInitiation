@@ -78,6 +78,15 @@
     }
 }
 
+#pragma mark - 3d touch
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void(^)(BOOL succeeded))completionHandler  API_AVAILABLE(ios(9.0)){
+    NSLog(@"name:%@\ntype:%@", shortcutItem.localizedTitle, shortcutItem.type);
+    if ([shortcutItem.type isEqualToString:@"com.hginitiation.share"]) {
+        /// TODO
+    }
+}
+
 
 #pragma mark - install
 

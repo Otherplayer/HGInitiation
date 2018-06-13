@@ -27,7 +27,7 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, SCREEN_WIDTH * 9 / 16.0)];
-    tableHeaderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    tableHeaderView.backgroundColor = [UIColor cyanColor];
     self.tableView.tableHeaderView = tableHeaderView;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"identifier"];
@@ -74,7 +74,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
     // Configure the cell...
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor randomWarmColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
     
     return cell;

@@ -53,7 +53,7 @@
     return [NSString stringWithFormat:@"中国[%@]",@(index)];
 }
 - (CGFloat)heightForHeaderOfPageController:(HGPageController *)pageController {
-    return 44.f;
+    return 50.0f;
 }
 
 @end

@@ -72,7 +72,8 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"中国%@",@(indexPath.row)];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
+    cell.backgroundColor = [UIColor randomWarmColor];
     
     return cell;
 }
