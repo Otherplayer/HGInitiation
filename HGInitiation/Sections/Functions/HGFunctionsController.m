@@ -75,7 +75,7 @@ CGFloat currentPage = 0;
     NSDictionary *item = self.items[indexPath.row];
     NSString *title = [item objectForKey:TITLE];
     
-    cell.imageView.image = [UIImage imageWithColor:[UIColor randomWarmColor] size:CGSizeMake(30, 30)];
+    cell.imageView.image = [[UIImage imageWithColor:[UIColor randomWarmColor] size:CGSizeMake(30, 30)] imageByBlurLight];
     cell.imageView.layer.cornerRadius = 6;
     cell.imageView.layer.masksToBounds = YES;
     

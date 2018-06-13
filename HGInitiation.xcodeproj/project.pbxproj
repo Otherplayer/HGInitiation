@@ -369,12 +369,12 @@
 				63B9A16A205648DF0006B2E9 /* HGPageContentController.m */,
 				6341E5D920C77B95005065C5 /* HGPageContent2Controller.h */,
 				6341E5DA20C77B95005065C5 /* HGPageContent2Controller.m */,
+				6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */,
+				6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */,
 				6301EBC42069F39800EBD4D3 /* HGDownloadController.h */,
 				6301EBC52069F39800EBD4D3 /* HGDownloadController.m */,
 				6341E5DC20C784FC005065C5 /* HGPayController.h */,
 				6341E5DD20C784FC005065C5 /* HGPayController.m */,
-				6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */,
-				6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
