@@ -17,6 +17,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)HGPageProgressView *progressView;
 @property(nonatomic, strong)NSMutableArray *frames;
+@property(nonatomic, assign)CGFloat margin;
 @end
 
 @implementation HGPageTitlesView
@@ -41,11 +42,12 @@ const CGFloat HGPageProgressViewHeight = 2.f;
 - (void)initiateViews {
     
     self.selectedIndex = 0;
+    self.margin = 0;
+    self.showType = HGPageTitlesShowTypeCenter;
     self.frames = [NSMutableArray.alloc init];
     
     UICollectionViewFlowLayout *layout = ({
         layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
@@ -124,12 +126,16 @@ const CGFloat HGPageProgressViewHeight = 2.f;
         CGFloat width = [self widthForTitle:title];
         [self.frames addObject:@(width)];
     }
+    CGFloat totalWidth = [[self.frames valueForKeyPath:@"@sum.floatValue"] floatValue];
+    if (self.showType == HGPageTitlesShowTypeCenter && totalWidth < CGRectGetWidth(self.bounds)) {
+        self.margin = (CGRectGetWidth(self.bounds) - totalWidth) / 2.0f;
+    }
     [self scrollProgressViewToIndex:self.selectedIndex];
     [self reloadData];
 }
 
 - (void)scrollProgressViewToIndex:(NSInteger)index {
-    CGFloat left = 0;
+    CGFloat left = self.margin;
     for (int i = 0; i < index; i++) {
         left += [self.frames[i] floatValue];
     }
@@ -165,6 +171,9 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     NSString *title = self.titles[indexPath.item];
     CGFloat width = [self widthForTitle:title];
     return CGSizeMake(width, collectionView.frame.size.height);
+}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, self.margin, 0, self.margin);
 }
 
 - (CGFloat)widthForTitle:(NSString *)title {

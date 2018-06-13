@@ -60,6 +60,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
         self.titlesView = ({
             _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, kHGPagesScrollViewHeaderHeight, width, kHGPagesScrollViewHeaderTitle)];
             _titlesView.backgroundColor = [UIColor whiteColor];
+            _titlesView.showType = HGPageTitlesShowTypeCenter;
             _titlesView.delegate = self;
             _titlesView;
         });

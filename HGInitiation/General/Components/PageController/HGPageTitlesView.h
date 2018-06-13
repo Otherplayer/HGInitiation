@@ -14,12 +14,19 @@
 - (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index;
 @end
 
+typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
+    HGPageTitlesShowTypeNormal,
+    HGPageTitlesShowTypeCenter,
+};
+
 
 @interface HGPageTitlesView : UIView
 
 @property(nonatomic, strong)NSArray *titles;
 @property(nonatomic, assign)NSInteger selectedIndex;
+@property(nonatomic, assign)HGPageTitlesShowType showType;
 @property(nonatomic, weak) id<HGPageTitlesDelegate>delegate;
+
 
 - (void)reloadData;
 - (void)scrollToItemInProgress:(CGFloat)progress;
