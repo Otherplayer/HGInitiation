@@ -72,10 +72,13 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    cell.backgroundColor = [UIColor clearColor];
-//}
+    if (self.didTapItemHandler) {
+        self.didTapItemHandler(indexPath.row);
+    }
+}
 //- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    cell.backgroundColor = [UIColor whiteColor];
