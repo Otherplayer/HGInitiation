@@ -12,14 +12,7 @@
 
 @implementation HGPopupManager
 
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
+#pragma mark - public
 
 - (void)showShareViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler {
     NSArray *shareVendors = @[
@@ -78,6 +71,10 @@
     [self showPopupWithStyle:CNPPopupStyleActionSheet view:verticalScrollView];
 }
 
+
+
+
+#pragma mark - private
 
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle view:(UIView *)view{
     self.popupController = [[CNPPopupController alloc] initWithContents:@[view]];
