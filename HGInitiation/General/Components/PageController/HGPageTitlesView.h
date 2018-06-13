@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGPageProgressView.h"
 
 @class HGPageTitlesView;
 @protocol HGPageTitlesDelegate <NSObject>
@@ -16,12 +17,13 @@
 
 typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
     HGPageTitlesShowTypeNormal,
-    HGPageTitlesShowTypeCenter,
+    HGPageTitlesShowTypeCenter
 };
 
 
 @interface HGPageTitlesView : UIView
 
+@property(nonatomic, strong)HGPageProgressView *progressView;
 @property(nonatomic, strong)NSArray *titles;
 @property(nonatomic, assign)NSInteger selectedIndex;
 @property(nonatomic, assign)HGPageTitlesShowType showType;

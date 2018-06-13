@@ -8,14 +8,12 @@
 
 #import "HGPageTitlesView.h"
 #import "HGPageTitleItem.h"
-#import "HGPageProgressView.h"
 
 const CGFloat HGPageProgressViewWidth = 20.f;
 const CGFloat HGPageProgressViewHeight = 2.f;
 
 @interface HGPageTitlesView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
-@property(nonatomic, strong)HGPageProgressView *progressView;
 @property(nonatomic, strong)NSMutableArray *frames;
 @property(nonatomic, assign)CGFloat margin;
 @end
