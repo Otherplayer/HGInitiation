@@ -21,6 +21,7 @@
     
     
     [self.view setBackgroundColor:[UIColor cyanColor]];
+    self.popupManager = [HGPopupManager.alloc init];
     
     UIImageView *imageView = [UIImageView.alloc initWithFrame:self.view.bounds];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -28,15 +29,15 @@
     [self.view addSubview:imageView];
     
     
-    [self addRightBarButtonItemWithTitle:@"Share"];
     
-    self.popupManager = [HGPopupManager.alloc init];
     
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self showPay];
+    UIBarButtonItem *shareItem = [UIBarButtonItem.alloc initWithTitle:@"Share" style:UIBarButtonItemStylePlain target:self action:@selector(showShare)];
+    UIBarButtonItem *payItem = [UIBarButtonItem.alloc initWithTitle:@"Pay" style:UIBarButtonItemStylePlain target:self action:@selector(showPay)];
+    self.navigationItem.rightBarButtonItems = @[shareItem,payItem];
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,17 +50,15 @@
 
 #pragma mark - Action
 
-- (void)rightBarButtonPressed:(id)rightBarButtonPressed{
-    [self.popupManager showShareViewWithHandler:^(NSInteger section, NSInteger row) {
-        NSLog(@"%@ - %@",@(section),@(row));
-    }];
-}
-
 - (void)showPay {
     [self.popupManager showPayViewWithHandler:^(NSInteger row) {
         NSLog(@"%@",@(row));
     }];
-
+}
+- (void)showShare {
+    [self.popupManager showShareViewWithHandler:^(NSInteger section, NSInteger row) {
+        NSLog(@"%@ - %@",@(section),@(row));
+    }];
 }
 
 @end

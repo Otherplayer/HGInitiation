@@ -33,8 +33,8 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
         self.datas = [NSMutableArray.alloc init];
         self.tableViews = [NSMutableArray.alloc init];
         self.gestures = [NSMutableArray.alloc init];
-
         self.pageCurrent = 0;
+        
         CGFloat width = CGRectGetWidth(frame);
         CGFloat height = CGRectGetHeight(frame);
 
@@ -127,6 +127,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
         if (contentOffset < 0 || contentOffset > self.tableViews.count - 1) {
             return;
         }
+        
         NSInteger index = (NSInteger)contentOffset;
         
         CGFloat progress = contentOffset - index;
@@ -140,17 +141,14 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
         if (contentOffsetX < 0) {
             contentOffsetX = 0;
         }
-        if (contentOffsetX > scrollView.contentSize.width - scrollView.size.width) {
-            contentOffsetX = scrollView.contentSize.width - scrollView.size.width;
+        if (contentOffsetX > scrollView.contentSize.width - scrollView.frame.size.width) {
+            contentOffsetX = scrollView.contentSize.width - scrollView.frame.size.width;
         }
         CGFloat rate = contentOffsetX / scrollView.size.width;
         
         [self.titlesView scrollToItemInProgress:rate];
         
     }
-    
-    
-    
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (scrollView == self.scrollView) {
@@ -199,6 +197,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
         [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
     }
 }
+
 
 #pragma mark - <UITableViewDataSource & UITableViewDelegate>
 
