@@ -8,9 +8,15 @@
 
 #import "HGPageTitlesView.h"
 #import "HGPageTitleItem.h"
+#import "HGPageProgressView.h"
+
+const CGFloat HGPageProgressViewWidth = 20.f;
+const CGFloat HGPageProgressViewHeight = 2.f;
 
 @interface HGPageTitlesView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
+@property(nonatomic, strong)HGPageProgressView *progressView;
+@property(nonatomic, strong)NSMutableArray *frames;
 @end
 
 @implementation HGPageTitlesView
@@ -35,6 +41,7 @@
 - (void)initiateViews {
     
     self.selectedIndex = 0;
+    self.frames = [NSMutableArray.alloc init];
     
     UICollectionViewFlowLayout *layout = ({
         layout = [[UICollectionViewFlowLayout alloc] init];
@@ -61,6 +68,15 @@
         _collectionView;
     });
     
+    self.progressView = ({
+        _progressView = [HGPageProgressView.alloc initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) - HGPageProgressViewHeight, HGPageProgressViewWidth, HGPageProgressViewHeight)];
+        _progressView.backgroundColor = [UIColor redColor];
+//        _progressView.layer.cornerRadius = HGPageProgressViewHeight/2.f;
+//        _progressView.layer.masksToBounds = YES;
+        _progressView;
+    });
+    
+    [self.collectionView addSubview:self.progressView];
     [self registerClass:HGPageTitleItem.class];
     [self addSubview:self.collectionView];
 }
@@ -96,6 +112,31 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     [self.collectionView reloadData];
+    [self scrollProgressViewToIndex:index];
+}
+
+#pragma mark -
+
+- (void)setTitles:(NSArray *)titles {
+    _titles = titles;
+    [self.frames removeAllObjects];
+    for (NSString *title in titles) {
+        CGFloat width = [self widthForTitle:title];
+        [self.frames addObject:@(width)];
+    }
+    [self scrollProgressViewToIndex:self.selectedIndex];
+    [self reloadData];
+}
+
+- (void)scrollProgressViewToIndex:(NSInteger)index {
+    CGFloat left = 0;
+    for (int i = 0; i < index; i++) {
+        left += [self.frames[i] floatValue];
+    }
+    left += ([self.frames[index] floatValue] - HGPageProgressViewWidth)/2.0;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.progressView.left = left;
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
@@ -106,6 +147,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HGPageTitleItem *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGPageTitleItem.class) forIndexPath:indexPath];
     NSString *title = self.titles[indexPath.item];
+    cell.labTitle.width = [self widthForTitle:title];
     [cell.labTitle setText:title];
     [cell setSelected:(indexPath.item == self.selectedIndex)];
     return cell;
@@ -121,8 +163,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.titles[indexPath.item];
-    CGFloat width = width = [title widthForFont:[UIFont systemFontOfSize:17]] + 30;
+    CGFloat width = [self widthForTitle:title];
     return CGSizeMake(width, collectionView.frame.size.height);
+}
+
+- (CGFloat)widthForTitle:(NSString *)title {
+    return [title widthForFont:[UIFont systemFontOfSize:17]] + 30;
 }
 
 @end

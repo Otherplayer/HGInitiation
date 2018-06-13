@@ -35,7 +35,6 @@
         [titles addObject:title];
     }
     self.titlesView.titles = titles;
-    [self.titlesView reloadData];
     
     [self addController:self.pageCurrent];
     

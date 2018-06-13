@@ -50,7 +50,8 @@
     return controller;
 }
 - (NSString *)pageController:(HGPageController *)pageController titleAtIndex:(NSInteger)index {
-    return [NSString stringWithFormat:@"中国[%@]",@(index)];
+    NSArray *titles = @[@"泰国",@"新加坡",@"马拉西亚",@"斯德哥尔摩"];
+    return titles[index%titles.count];
 }
 - (CGFloat)heightForHeaderOfPageController:(HGPageController *)pageController {
     return 50.0f;

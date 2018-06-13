@@ -30,6 +30,7 @@
 		632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */; };
 		632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABB1FF39F0A000F57A3 /* HGAssetAlbum.m */; };
 		632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */; };
+		6331E21520D0C89E0040C6C7 /* HGPageProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6331E21420D0C89E0040C6C7 /* HGPageProgressView.m */; };
 		633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */; };
 		633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */; };
 		6341E5DB20C77B95005065C5 /* HGPageContent2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5DA20C77B95005065C5 /* HGPageContent2Controller.m */; };
@@ -151,6 +152,8 @@
 		632B7ABB1FF39F0A000F57A3 /* HGAssetAlbum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAssetAlbum.m; sourceTree = "<group>"; };
 		632B7ABD1FF3A3FD000F57A3 /* HGPhotoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPhotoModel.h; sourceTree = "<group>"; };
 		632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPhotoModel.m; sourceTree = "<group>"; };
+		6331E21320D0C89E0040C6C7 /* HGPageProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageProgressView.h; sourceTree = "<group>"; };
+		6331E21420D0C89E0040C6C7 /* HGPageProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageProgressView.m; sourceTree = "<group>"; };
 		633E47D2200DDC7E004DF9E7 /* UIAlertAction+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+HGCustom.h"; sourceTree = "<group>"; };
 		633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+HGCustom.m"; sourceTree = "<group>"; };
 		633E47D5200DDF7C004DF9E7 /* UIAlertController+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+HGCustom.h"; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 				63F3D3DB20C5213F000AC732 /* HGPageTitlesView.m */,
 				63F3D3E020C54826000AC732 /* HGPageTitleItem.h */,
 				63F3D3E120C54826000AC732 /* HGPageTitleItem.m */,
+				6331E21320D0C89E0040C6C7 /* HGPageProgressView.h */,
+				6331E21420D0C89E0040C6C7 /* HGPageProgressView.m */,
 			);
 			path = PageController;
 			sourceTree = "<group>";
@@ -1035,6 +1040,7 @@
 				63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */,
 				63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */,
 				635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */,
+				6331E21520D0C89E0040C6C7 /* HGPageProgressView.m in Sources */,
 				635C24E41FFB6D3A0070BC46 /* HGTextFieldController.m in Sources */,
 				63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */,
 				63880BA71FF0DD5F00DAFD68 /* main.m in Sources */,
