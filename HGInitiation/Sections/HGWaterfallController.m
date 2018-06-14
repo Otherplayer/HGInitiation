@@ -7,7 +7,7 @@
 //
 
 #import "HGWaterfallController.h"
-#import <CHTCollectionViewWaterfallLayout.h>
+#import "CHTCollectionViewWaterfallLayout.h"
 #import "HGHTTPClient.h"
 
 static NSString *Identifier = @"Identifier";

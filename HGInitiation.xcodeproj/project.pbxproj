@@ -75,6 +75,7 @@
 		6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2131FF61A9100EBBF6C /* UIColor+Tweak.m */; };
 		6389B2181FF61A9100EBBF6C /* HGAvatarClipperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */; };
 		6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389B2161FF61A9100EBBF6C /* HGClipperView.m */; };
+		6392026A20D257410014742E /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6392026920D257400014742E /* CHTCollectionViewWaterfallLayout.m */; };
 		63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE220AC066C007F944B /* HGFeaturedController.m */; };
 		63949EE620AC06B6007F944B /* HGWhateverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE520AC06B6007F944B /* HGWhateverController.m */; };
 		63949EEA20AC19C6007F944B /* HGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE920AC19C6007F944B /* HGLoginController.m */; };
@@ -244,6 +245,8 @@
 		6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAvatarClipperController.m; sourceTree = "<group>"; };
 		6389B2161FF61A9100EBBF6C /* HGClipperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGClipperView.m; sourceTree = "<group>"; };
 		6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalMacro.h; sourceTree = "<group>"; };
+		6392026820D257400014742E /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		6392026920D257400014742E /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		63949EE120AC066C007F944B /* HGFeaturedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGFeaturedController.h; sourceTree = "<group>"; };
 		63949EE220AC066C007F944B /* HGFeaturedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFeaturedController.m; sourceTree = "<group>"; };
 		63949EE420AC06B6007F944B /* HGWhateverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWhateverController.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 		6312A6E8204E67AE00D7F5EF /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				6392026B20D2579D0014742E /* CNPPopupController */,
+				6392026720D256F50014742E /* CHTCollectionViewWaterfallLayout */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -425,8 +430,6 @@
 			isa = PBXGroup;
 			children = (
 				6341E5E620C7B778005065C5 /* Views */,
-				6341E5E320C7B74F005065C5 /* CNPPopupController.h */,
-				6341E5E420C7B74F005065C5 /* CNPPopupController.m */,
 				6341E5F020C8DD39005065C5 /* HGPopupManager.h */,
 				6341E5F120C8DD39005065C5 /* HGPopupManager.m */,
 			);
@@ -721,6 +724,24 @@
 				6389B2131FF61A9100EBBF6C /* UIColor+Tweak.m */,
 			);
 			path = AvatarClipper;
+			sourceTree = "<group>";
+		};
+		6392026720D256F50014742E /* CHTCollectionViewWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6392026820D257400014742E /* CHTCollectionViewWaterfallLayout.h */,
+				6392026920D257400014742E /* CHTCollectionViewWaterfallLayout.m */,
+			);
+			path = CHTCollectionViewWaterfallLayout;
+			sourceTree = "<group>";
+		};
+		6392026B20D2579D0014742E /* CNPPopupController */ = {
+			isa = PBXGroup;
+			children = (
+				6341E5E320C7B74F005065C5 /* CNPPopupController.h */,
+				6341E5E420C7B74F005065C5 /* CNPPopupController.m */,
+			);
+			path = CNPPopupController;
 			sourceTree = "<group>";
 		};
 		63949EDF20AC05EF007F944B /* Whatever */ = {
@@ -1047,6 +1068,7 @@
 				635C24E71FFB71C60070BC46 /* HGTextView.m in Sources */,
 				63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */,
 				63878763206A2C16006FE525 /* HGDownloader.m in Sources */,
+				6392026A20D257410014742E /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */,
 				635C57C620031267004CE18B /* HGPhotoBrowser.m in Sources */,
 				631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */,

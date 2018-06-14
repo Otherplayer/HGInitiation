@@ -8,7 +8,6 @@ target "HGInitiation" do
     pod 'MBProgressHUD'
     pod 'MJRefresh'
     pod 'YYKit'
-    pod 'CHTCollectionViewWaterfallLayout'
     pod 'PinYin4Objc'
     pod 'CocoaSecurity'
 
