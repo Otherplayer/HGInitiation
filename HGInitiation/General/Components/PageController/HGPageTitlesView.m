@@ -70,7 +70,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     
     self.progressView = ({
         _progressView = [HGPageProgressView.alloc initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) - HGPageProgressViewHeight, HGPageProgressViewWidth, HGPageProgressViewHeight)];
-        _progressView.backgroundColor = [UIColor redColor];
+        _progressView.backgroundColor = [UIColor gradientColors:@[[UIColor orangeColor],[UIColor redColor],[UIColor orangeColor]] size:CGSizeMake(CGRectGetWidth(self.bounds)/2.f, HGPageProgressViewHeight)];
 //        _progressView.layer.cornerRadius = HGPageProgressViewHeight/2.f;
 //        _progressView.layer.masksToBounds = YES;
         _progressView;
@@ -107,7 +107,6 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     itemNext.rate = rate;
     
     CGFloat width = itemCurrent.width + itemNext.width;
-    
     if (rate <= 0.5) {
         CGFloat newWidth = width * rate + HGPageProgressViewWidth;
         self.progressView.width = newWidth;
@@ -117,8 +116,6 @@ const CGFloat HGPageProgressViewHeight = 2.f;
         self.progressView.width = newWidth;
         self.progressView.left += (oldWidth - newWidth);
     }
-    NSLog(@"%@===%@",@(width),@(rate));
-    
 }
 - (void)scrollToItemAtIndex:(NSInteger)index {
     self.selectedIndex = index;
