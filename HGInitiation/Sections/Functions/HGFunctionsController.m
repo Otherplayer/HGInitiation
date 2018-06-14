@@ -49,11 +49,11 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-        double delayInSeconds = 1.2f;
-        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-            [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
-        });
+//    double delayInSeconds = 1.2f;
+//    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+//        [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
+//    });
     
 }
 
@@ -302,8 +302,8 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGPagesWithHeaderDemo"}},
                    @{TITLE:@"Download",
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
-                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
-                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
+//                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
+//                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"生物识别",FUN:@"funBiometrics",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"相册选择",FUN:@"funImagePicker",TYPE:@(HGDataTypeFunction)},//https://github.com/QMUI/QMUI_iOS
                    @{TITLE:@"头像截取",FUN:@"funAvatarCut",TYPE:@(HGDataTypeFunction)},//https://github.com/itouch2/PhotoTweaks
