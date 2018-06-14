@@ -7,7 +7,7 @@
 //
 
 #import "HGDownloader.h"
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 
 NSString *const HGDownloadCompletedUnitCount = @"HGDownloadCompletedUnitCount";
 NSString *const HGDownloadTotalUnitCount = @"HGDownloadTotalUnitCount";

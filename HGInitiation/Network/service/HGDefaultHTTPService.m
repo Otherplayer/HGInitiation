@@ -7,7 +7,7 @@
 //
 
 #import "HGDefaultHTTPService.h"
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 
 @interface HGDefaultHTTPService ()
 @property (nonatomic, strong) AFHTTPSessionManager *httpManager;

@@ -7,7 +7,7 @@
 //
 
 #import "UIScrollView+HGRefresh.h"
-#import <MJRefresh.h>
+#import "MJRefresh.h"
 
 @implementation UIScrollView (HGRefresh)
 - (void)addRefreshingHeader:(HGRefreshComponentRefreshingBlock)refreshingBlock{

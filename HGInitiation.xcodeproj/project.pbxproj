@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3857776228B96F654CD1BAE3 /* libPods-HGInitiation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */; };
 		6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6301EBC52069F39800EBD4D3 /* HGDownloadController.m */; };
 		630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B02004C11F00F91211 /* HGScrollDefaultImage.m */; };
 		630498B42005E99F00F91211 /* HGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B32005E99F00F91211 /* HGPageControl.m */; };
@@ -106,6 +105,7 @@
 		63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BB9C2099994200BB8EFF /* HGBASENavigationController.m */; };
 		63F6BBBD209AAF0100BB8EFF /* HGFunctionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BBBC209AAF0100BB8EFF /* HGFunctionsController.m */; };
 		63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6BBC1209AB07000BB8EFF /* HGSettingsController.m */; };
+		FC63E3F636D1D85A028049C6 /* Pods_HGInitiation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8917474F21BDA28534A37A /* Pods_HGInitiation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -305,7 +305,7 @@
 		63F6BBBC209AAF0100BB8EFF /* HGFunctionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFunctionsController.m; sourceTree = "<group>"; };
 		63F6BBC0209AB07000BB8EFF /* HGSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGSettingsController.h; sourceTree = "<group>"; };
 		63F6BBC1209AB07000BB8EFF /* HGSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGSettingsController.m; sourceTree = "<group>"; };
-		C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HGInitiation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8917474F21BDA28534A37A /* Pods_HGInitiation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HGInitiation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,7 +318,7 @@
 				632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */,
 				63880BCC1FF0F8ED00DAFD68 /* AVFoundation.framework in Frameworks */,
 				63880BCA1FF0F8E600DAFD68 /* Photos.framework in Frameworks */,
-				3857776228B96F654CD1BAE3 /* libPods-HGInitiation.a in Frameworks */,
+				FC63E3F636D1D85A028049C6 /* Pods_HGInitiation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +342,7 @@
 				632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */,
 				63880BCB1FF0F8EC00DAFD68 /* AVFoundation.framework */,
 				63880BC91FF0F8E600DAFD68 /* Photos.framework */,
-				C54EC75FEA28F8EDC0F21736 /* libPods-HGInitiation.a */,
+				BE8917474F21BDA28534A37A /* Pods_HGInitiation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -970,9 +970,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaSecurity/CocoaSecurity.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/PinYin4Objc/PinYin4Objc.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaSecurity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinYin4Objc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -16,9 +16,9 @@
 #import <Foundation/Foundation.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <YYKit.h>
+#import "YYKit.h"
 
-#import <CocoaSecurity.h>
+#import "CocoaSecurity.h"
 #import "GlobalMacro.h"
 #import "HGStatic.h"
 #import "HGCategoriesHeader.h"
