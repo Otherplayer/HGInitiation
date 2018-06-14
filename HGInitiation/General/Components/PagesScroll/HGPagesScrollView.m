@@ -94,6 +94,11 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
     return self;
 }
 
+- (void)dealloc {
+    for (UITableView *tableView in self.tableViews) {
+        [tableView removeObserver:self forKeyPath:@"contentOffset" context:nil];
+    }
+}
 
 #pragma mark -
 
@@ -155,7 +160,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
     if (scrollView == self.scrollView) {
         
         if (_headerView.frame.origin.y == 0.0) {
-            //1，header在底部0
+            //1，header在底部
             for (UITableView *tableView in self.tableViews) {
                 if (tableView == self.tableViews[self.pageCurrent]) {
                     continue;

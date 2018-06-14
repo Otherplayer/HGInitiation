@@ -97,11 +97,12 @@
             [self addController:currentPage + 1];
         }
     }
+    self.pageCurrent = currentPage;
 }
 #pragma mark - <HGPageTitlesDelegate>
 - (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index {
     if (self.pageCurrent >= index - 1 && self.pageCurrent <= index + 1) {
-        [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:YES];
+        [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
     }else{
         [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
     }

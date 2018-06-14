@@ -106,6 +106,19 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     itemCurrent.rate = 1 - rate;
     itemNext.rate = rate;
     
+    CGFloat width = itemCurrent.width + itemNext.width;
+    
+    if (rate <= 0.5) {
+        CGFloat newWidth = width * rate + HGPageProgressViewWidth;
+        self.progressView.width = newWidth;
+    }else{
+        CGFloat newWidth = width * (1-rate) + HGPageProgressViewWidth;
+        CGFloat oldWidth = self.progressView.width;
+        self.progressView.width = newWidth;
+        self.progressView.left += (oldWidth - newWidth);
+    }
+    NSLog(@"%@===%@",@(width),@(rate));
+    
 }
 - (void)scrollToItemAtIndex:(NSInteger)index {
     self.selectedIndex = index;
