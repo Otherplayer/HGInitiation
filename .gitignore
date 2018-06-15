@@ -52,7 +52,6 @@ DerivedData
 # Cocoapods
 ######################
 Pods/
-Podfile.lock
 
 # AppCode
 ######################
