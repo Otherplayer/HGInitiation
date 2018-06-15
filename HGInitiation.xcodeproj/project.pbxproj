@@ -876,7 +876,6 @@
 				63880B911FF0DD5F00DAFD68 /* Frameworks */,
 				63880B921FF0DD5F00DAFD68 /* Resources */,
 				2A8E5A45C7B6DEDD0F7B3F23 /* [CP] Embed Pods Frameworks */,
-				1956CF16F4666E41478F72A6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -945,25 +944,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1956CF16F4666E41478F72A6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-resources.sh",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/PinYin4Objc/PinYin4Objc/Resources/unicode_to_hanyu_pinyin.txt",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2A8E5A45C7B6DEDD0F7B3F23 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
