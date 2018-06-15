@@ -15,6 +15,7 @@ target "HGInitiation" do
     pod 'MJRefresh'
     pod 'YYKit'
     pod 'PinYin4Objc'
-    pod 'CocoaSecurity'
 
 end
+
+

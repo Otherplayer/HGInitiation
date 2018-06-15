@@ -11,7 +11,7 @@
 @implementation NSString (HG)
 
 - (NSString *)hgMD5HexLower {
-    return [CocoaSecurity md5:self].hexLower;
+    return [self md5String];
 }
 - (NSURL *)url {
     return [NSURL URLWithString:self];
