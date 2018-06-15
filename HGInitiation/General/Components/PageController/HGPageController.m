@@ -165,6 +165,7 @@
     self.titlesView = ({
         _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, NAVandSTATUS_BAR_HEIHGT, SCREEN_WIDTH, height)];
         _titlesView.backgroundColor = [UIColor whiteColor];
+        _titlesView.animatedType = HGPageProgressViewAnimatedTypeTransition;
         _titlesView.delegate = self;
         _titlesView;
     });

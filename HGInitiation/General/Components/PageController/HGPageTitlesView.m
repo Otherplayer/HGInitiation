@@ -42,6 +42,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     self.selectedIndex = 0;
     self.margin = 0;
     self.showType = HGPageTitlesShowTypeCenter;
+    self.animatedType = HGPageProgressViewAnimatedTypeNone;
     self.frames = [NSMutableArray.alloc init];
     
     UICollectionViewFlowLayout *layout = ({
@@ -106,16 +107,19 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     itemCurrent.rate = 1 - rate;
     itemNext.rate = rate;
     
-    CGFloat width = itemCurrent.width + itemNext.width;
-    if (rate <= 0.5) {
-        CGFloat newWidth = width * rate + HGPageProgressViewWidth;
-        self.progressView.width = newWidth;
-    }else{
-        CGFloat newWidth = width * (1-rate) + HGPageProgressViewWidth;
-        CGFloat oldWidth = self.progressView.width;
-        self.progressView.width = newWidth;
-        self.progressView.left += (oldWidth - newWidth);
+    if (self.animatedType == HGPageProgressViewAnimatedTypeTransition) {
+        CGFloat width = itemCurrent.width + itemNext.width;
+        if (rate <= 0.5) {
+            CGFloat newWidth = width * rate + HGPageProgressViewWidth;
+            self.progressView.width = newWidth;
+        }else{
+            CGFloat newWidth = width * (1-rate) + HGPageProgressViewWidth;
+            CGFloat oldWidth = self.progressView.width;
+            self.progressView.width = newWidth;
+            self.progressView.left += (oldWidth - newWidth);
+        }
     }
+    
 }
 - (void)scrollToItemAtIndex:(NSInteger)index {
     self.selectedIndex = index;

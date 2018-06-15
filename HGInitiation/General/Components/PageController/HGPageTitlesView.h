@@ -19,6 +19,10 @@ typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
     HGPageTitlesShowTypeNormal,
     HGPageTitlesShowTypeCenter
 };
+typedef NS_ENUM(NSUInteger, HGPageProgressViewAnimatedType) {
+    HGPageProgressViewAnimatedTypeNone,
+    HGPageProgressViewAnimatedTypeTransition
+};
 
 
 @interface HGPageTitlesView : UIView
@@ -27,6 +31,7 @@ typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
 @property(nonatomic, strong)NSArray *titles;
 @property(nonatomic, assign)NSInteger selectedIndex;
 @property(nonatomic, assign)HGPageTitlesShowType showType;
+@property(nonatomic, assign)HGPageProgressViewAnimatedType animatedType;
 @property(nonatomic, weak) id<HGPageTitlesDelegate>delegate;
 
 
