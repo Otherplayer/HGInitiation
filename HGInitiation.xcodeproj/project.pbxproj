@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48C9B359916D0F2DF72CC149 /* libPods-HGInitiation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C61B15B108F39A3EC32C942 /* libPods-HGInitiation.a */; };
+		132162FD58EE1519DE200858 /* Pods_HGInitiation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17505472DF6E03E931560DC2 /* Pods_HGInitiation.framework */; };
 		6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6301EBC52069F39800EBD4D3 /* HGDownloadController.m */; };
 		630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B02004C11F00F91211 /* HGScrollDefaultImage.m */; };
 		630498B42005E99F00F91211 /* HGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B32005E99F00F91211 /* HGPageControl.m */; };
@@ -110,8 +110,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17505472DF6E03E931560DC2 /* Pods_HGInitiation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HGInitiation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A97863A459CF3C9AD01DB09 /* Pods-HGInitiation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HGInitiation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation.debug.xcconfig"; sourceTree = "<group>"; };
-		5C61B15B108F39A3EC32C942 /* libPods-HGInitiation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HGInitiation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62929185647B0BDFA97BBF9F /* Pods-HGInitiation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HGInitiation.release.xcconfig"; path = "Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation.release.xcconfig"; sourceTree = "<group>"; };
 		6301EBC42069F39800EBD4D3 /* HGDownloadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloadController.h; sourceTree = "<group>"; };
 		6301EBC52069F39800EBD4D3 /* HGDownloadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloadController.m; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 				632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */,
 				63880BCC1FF0F8ED00DAFD68 /* AVFoundation.framework in Frameworks */,
 				63880BCA1FF0F8E600DAFD68 /* Photos.framework in Frameworks */,
-				48C9B359916D0F2DF72CC149 /* libPods-HGInitiation.a in Frameworks */,
+				132162FD58EE1519DE200858 /* Pods_HGInitiation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +345,7 @@
 				632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */,
 				63880BCB1FF0F8EC00DAFD68 /* AVFoundation.framework */,
 				63880BC91FF0F8E600DAFD68 /* Photos.framework */,
-				5C61B15B108F39A3EC32C942 /* libPods-HGInitiation.a */,
+				17505472DF6E03E931560DC2 /* Pods_HGInitiation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -880,7 +880,7 @@
 				63880B901FF0DD5F00DAFD68 /* Sources */,
 				63880B911FF0DD5F00DAFD68 /* Frameworks */,
 				63880B921FF0DD5F00DAFD68 /* Resources */,
-				74C7148A50D73CD1A030A62D /* [CP] Copy Pods Resources */,
+				47B606B39C58305A23436785 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -950,24 +950,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		74C7148A50D73CD1A030A62D /* [CP] Copy Pods Resources */ = {
+		47B606B39C58305A23436785 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-resources.sh",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/PinYin4Objc/PinYin4Objc/Resources/unicode_to_hanyu_pinyin.txt",
+				"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaSecurity/CocoaSecurity.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/PinYin4Objc/PinYin4Objc.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unicode_to_hanyu_pinyin.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaSecurity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinYin4Objc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HGInitiation/Pods-HGInitiation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE09461E2EF0416B2A8B0345 /* [CP] Check Pods Manifest.lock */ = {
