@@ -19,8 +19,8 @@
 #import "YYKit.h"
 
 #import "CocoaSecurity.h"
-#import "GlobalMacro.h"
-#import "HGStatic.h"
+#import "HGGlobalMacro.h"
+#import "HGStaticMacro.h"
 #import "HGCategoriesHeader.h"
 #import "HGConfiguration.h"
 #import "ViewUtils.h"

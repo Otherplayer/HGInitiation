@@ -198,7 +198,6 @@
 		635C24F71FFCBE760070BC46 /* HGZoomImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGZoomImageView.m; sourceTree = "<group>"; };
 		635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGZoomImageController.h; sourceTree = "<group>"; };
 		635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGZoomImageController.m; sourceTree = "<group>"; };
-		635C57C12002FF48004CE18B /* HGStatic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGStatic.h; sourceTree = "<group>"; };
 		635C57C420031267004CE18B /* HGPhotoBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPhotoBrowser.h; sourceTree = "<group>"; };
 		635C57C520031267004CE18B /* HGPhotoBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPhotoBrowser.m; sourceTree = "<group>"; };
 		635C57C720033319004CE18B /* HGBrowserController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBrowserController.h; sourceTree = "<group>"; };
@@ -244,7 +243,6 @@
 		6389B2141FF61A9100EBBF6C /* HGClipperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGClipperView.h; sourceTree = "<group>"; };
 		6389B2151FF61A9100EBBF6C /* HGAvatarClipperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAvatarClipperController.m; sourceTree = "<group>"; };
 		6389B2161FF61A9100EBBF6C /* HGClipperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGClipperView.m; sourceTree = "<group>"; };
-		6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalMacro.h; sourceTree = "<group>"; };
 		6392026820D257400014742E /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		6392026920D257400014742E /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		63949EE120AC066C007F944B /* HGFeaturedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGFeaturedController.h; sourceTree = "<group>"; };
@@ -270,6 +268,8 @@
 		63AFC62E20809527004AEFCC /* HGInitiation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HGInitiation.entitlements; sourceTree = "<group>"; };
 		63B8C80B20B2ADAD00CFB3EC /* HGPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageController.h; sourceTree = "<group>"; };
 		63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageController.m; sourceTree = "<group>"; };
+		63B9622320D3609400D31B9C /* HGGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGGlobalMacro.h; sourceTree = "<group>"; };
+		63B9622520D360BC00D31B9C /* HGStaticMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGStaticMacro.h; sourceTree = "<group>"; };
 		63B9A169205648DF0006B2E9 /* HGPageContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageContentController.h; sourceTree = "<group>"; };
 		63B9A16A205648DF0006B2E9 /* HGPageContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageContentController.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
@@ -629,8 +629,8 @@
 		63880BAF1FF0DDE900DAFD68 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				6389B21A1FF61D4600EBBF6C /* GlobalMacro.h */,
-				635C57C12002FF48004CE18B /* HGStatic.h */,
+				63B9622320D3609400D31B9C /* HGGlobalMacro.h */,
+				63B9622520D360BC00D31B9C /* HGStaticMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

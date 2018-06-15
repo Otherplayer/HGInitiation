@@ -1,14 +1,13 @@
 //
-//  GlobalMacro.h
+//  HGGlobalMacro.h
 //  HGInitiation
 //
-//  Created by __无邪_ on 2017/12/29.
-//  Copyright © 2017年 __无邪_. All rights reserved.
+//  Created by __无邪_ on 2018/6/15.
+//  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#ifndef GlobalMacro_h
-#define GlobalMacro_h
-
+#ifndef HGGlobalMacro_h
+#define HGGlobalMacro_h
 
 // 只代表屏幕尺寸大小，不代表具体设备
 #define IS_IPHONE4      ((int)[UIScreen mainScreen].bounds.size.height == 480)//320w
@@ -78,5 +77,4 @@
 #define NSLog(...)
 #endif
 
-
-#endif /* GlobalMacro_h */
+#endif /* HGGlobalMacro_h */

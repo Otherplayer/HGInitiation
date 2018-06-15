@@ -1,13 +1,13 @@
 //
-//  HGStatic.h
+//  HGStaticMacro.h
 //  HGInitiation
 //
-//  Created by __无邪_ on 2018/1/8.
+//  Created by __无邪_ on 2018/6/15.
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#ifndef HGStatic_h
-#define HGStatic_h
+#ifndef HGStaticMacro_h
+#define HGStaticMacro_h
 
 
 /**
@@ -112,4 +112,4 @@ static void cancel_delayed_block(HGDelayedBlockHandle delayedHandle) {
 
 HGEndIgnoreClangWarning
 
-#endif /* HGStatic_h */
+#endif /* HGStaticMacro_h */
