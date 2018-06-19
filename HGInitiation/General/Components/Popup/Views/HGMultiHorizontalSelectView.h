@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
     HGMutilHorizontalScrollType9 //九宫格
 };
 
-@interface HGMutilHorizontalScrollView : UIView
+@interface HGMultiHorizontalSelectView : UIView
 
 @property(nonatomic, copy)void(^didTapCancelHandler)(void);
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger section, NSInteger row);

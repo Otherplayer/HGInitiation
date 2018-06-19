@@ -11,7 +11,7 @@
 extern CGFloat const kHGMutilHorizontalCCellHeight;
 extern CGFloat const kHGMutilHorizontalCCellWidth;
 
-@interface HGMutilHorizontalCCell : UICollectionViewCell
+@interface HGMultiHorizontalSCCell : UICollectionViewCell
 
 @property(nonatomic, copy)void(^didTapHandler)(void);
 @property(nonatomic, strong) UIButton *btnIcon;

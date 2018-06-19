@@ -6,81 +6,24 @@
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMutilHorizontalScrollView.h"
+#import "HGMultiHorizontalSelectView.h"
 #import "HGMutilHorizontalSVCell.h"
+#import "HGSelectAdditionalView.h"
 static NSString *HGMutilHorizontalIdentifier = @"Identifier";
 
-@interface HGMutilHorizontalScrollHeader : UICollectionReusableView
-@property(nonatomic, strong) UILabel *labTitle;
-@end
-@implementation HGMutilHorizontalScrollHeader
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.labTitle = ({
-            _labTitle = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
-            _labTitle.text = @"HGInitiation";
-            _labTitle.textAlignment = NSTextAlignmentCenter;
-            _labTitle.textColor = UIColor.darkGrayColor;
-            _labTitle.font = [UIFont systemFontOfSize:14];
-            _labTitle;
-        });
-        [self addSubview:self.labTitle];
-    }
-    return self;
-}
-@end
-@interface HGMutilHorizontalScrollFooter : UICollectionReusableView
-@property(nonatomic, strong)UIButton *container;
-@property(nonatomic, copy)void(^didTapCancelHandler)(void);
-@end
-@implementation HGMutilHorizontalScrollFooter
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.container = ({
-            _container = [UIButton.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
-            _container.backgroundColor = [UIColor whiteColor];
-            [_container setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-            [_container setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor]] imageByBlurExtraLight] forState:UIControlStateHighlighted];
-            [_container addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
-            _container;
-        });
-        
-        UILabel *labCancel = ({
-            labCancel = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), 50)];
-            [labCancel setTextColor:[UIColor blackColor]];
-            [labCancel setFont:[UIFont systemFontOfSize:16]];
-            [labCancel setTextAlignment:NSTextAlignmentCenter];
-            [labCancel setText:NSLocalizedString(@"取消", @"cancel")];
-            labCancel;
-        });
-        [_container addSubview:labCancel];
-        [self addSubview:self.container];
-    }
-    return self;
-}
-- (void)didTapCancelAction:(UIButton *)sender {
-    if (self.didTapCancelHandler) {
-        self.didTapCancelHandler();
-    }
-}
-@end
 
 
 
-@interface HGMutilHorizontalScrollView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface HGMultiHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)UITableView *tableView;
-@property(nonatomic, strong)HGMutilHorizontalScrollHeader *headerView;
-@property(nonatomic, strong)HGMutilHorizontalScrollFooter *footerView;
+@property(nonatomic, strong)HGSelectViewHeader *headerView;
+@property(nonatomic, strong)HGSelectViewFooter *footerView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong)NSArray *items;
 @end
 
-@implementation HGMutilHorizontalScrollView
+@implementation HGMultiHorizontalSelectView
 
 
 - (instancetype)initWithItems:(NSArray *)items{
@@ -151,7 +94,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     return self.items.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HGMutilHorizontalCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class) forIndexPath:indexPath];
+    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class) forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.item];
     [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     cell.labTitle.text = info[@"title"];
@@ -166,15 +109,15 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
 }
 #pragma mark - Initiate
 
-- (HGMutilHorizontalScrollHeader *)headerView {
+- (HGSelectViewHeader *)headerView {
     if (!_headerView) {
-        _headerView = [HGMutilHorizontalScrollHeader.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 32)];
+        _headerView = [HGSelectViewHeader.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 32)];
     }
     return _headerView;
 }
-- (HGMutilHorizontalScrollFooter *)footerView {
+- (HGSelectViewFooter *)footerView {
     if (!_footerView) {
-        _footerView = [HGMutilHorizontalScrollFooter.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50 + DANGER_BOTTOM_AREA_HEIGHT)];
+        _footerView = [HGSelectViewFooter.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50 + DANGER_BOTTOM_AREA_HEIGHT)];
     }
     return _footerView;
 }
@@ -228,7 +171,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGMutilHorizontalCCellWidth);
     NSInteger columns = self.items.count / rows + (self.items.count % rows > 0 ? 1:0);
     
-    [self.collectionView registerClass:HGMutilHorizontalCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class)];
+    [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class)];
     
     CGFloat height = kHGMutilHorizontalCCellHeight * columns + self.headerView.height + self.footerView.height;
     if (height > (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0) {

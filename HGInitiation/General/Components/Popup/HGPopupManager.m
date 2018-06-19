@@ -7,8 +7,8 @@
 //
 
 #import "HGPopupManager.h"
-#import "HGMutilHorizontalScrollView.h"
-#import "HGMutilVerticalScrollView.h"
+#import "HGMultiHorizontalSelectView.h"
+#import "HGVerticalSelectView.h"
 
 @implementation HGPopupManager
 
@@ -34,7 +34,7 @@
                              @{@"title":@"系统",@"icon":@"sharekit_icon_wx"}];
     
     
-    HGMutilHorizontalScrollView *horizontalScrollView = [[HGMutilHorizontalScrollView alloc] initWithItems:@[shareVendors,shareSystem]];
+    HGMultiHorizontalSelectView *horizontalScrollView = [[HGMultiHorizontalSelectView alloc] initWithItems:@[shareVendors,shareSystem]];
     
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
@@ -84,7 +84,7 @@
                               @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
                               @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
                               ];
-    HGMutilHorizontalScrollView *horizontalScrollView = [[HGMutilHorizontalScrollView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
+    HGMultiHorizontalSelectView *horizontalScrollView = [[HGMultiHorizontalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
     
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
@@ -105,7 +105,7 @@
 
 - (void)showPayViewWithHandler:(void(^)(NSInteger row))handler {
     NSArray *pays = @[@{@"title":@"微信",@"icon":@"sharekit_icon_wx"},@{@"title":@"支付宝",@"icon":@"sharekit_icon_wx"}];
-    HGMutilVerticalScrollView *verticalScrollView = [HGMutilVerticalScrollView.alloc initWithItems:pays];
+    HGVerticalSelectView *verticalScrollView = [HGVerticalSelectView.alloc initWithItems:pays];
     @weakify(self);
     [verticalScrollView setDidTapCancelHandler:^{
         @strongify(self);

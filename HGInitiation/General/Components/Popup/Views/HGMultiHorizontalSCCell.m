@@ -6,12 +6,12 @@
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMutilHorizontalCCell.h"
+#import "HGMultiHorizontalSCCell.h"
 
 CGFloat const kHGMutilHorizontalCCellHeight = 110.f;
 CGFloat const kHGMutilHorizontalCCellWidth = 60.f;
 
-@implementation HGMutilHorizontalCCell
+@implementation HGMultiHorizontalSCCell
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];

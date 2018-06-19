@@ -6,16 +6,19 @@
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMutilVerticalScrollView.h"
+#import "HGVerticalSelectView.h"
+#import "HGSelectAdditionalView.h"
 
 static NSString *HGMutilVerticalIdentifier = @"Identifier";
 
-@interface HGMutilVerticalScrollView ()<UITableViewDelegate,UITableViewDataSource>
+@interface HGVerticalSelectView ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
+@property(nonatomic, strong)HGSelectViewHeader *headerView;
+@property(nonatomic, strong)HGSelectViewFooter *footerView;
 @property(nonatomic, strong)NSArray *items;
 @end
 
-@implementation HGMutilVerticalScrollView
+@implementation HGVerticalSelectView
 
 - (instancetype)initWithItems:(NSArray *)items{
     self = [super init];
@@ -83,8 +86,25 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    cell.backgroundColor = [UIColor whiteColor];
 //}
-- (void)initiateViews {
-    self.tableView = ({
+
+
+#pragma mark - Initiate
+
+- (HGSelectViewHeader *)headerView {
+    if (!_headerView) {
+        _headerView = [HGSelectViewHeader.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 32)];
+        _headerView.backgroundColor = [UIColor whiteColor];
+    }
+    return _headerView;
+}
+- (HGSelectViewFooter *)footerView {
+    if (!_footerView) {
+        _footerView = [HGSelectViewFooter.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50 + DANGER_BOTTOM_AREA_HEIGHT)];
+    }
+    return _footerView;
+}
+- (UITableView *)tableView {
+    if (!_tableView) {
         _tableView = [UITableView.alloc initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -94,8 +114,11 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
         _tableView.scrollEnabled = NO;
         _tableView.separatorColor = [UIColor groupTableViewBackgroundColor];
         _tableView.backgroundColor = [UIColor clearColor];
-        _tableView;
-    });
+    }
+    return _tableView;
+}
+
+- (void)initiateViews {
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -104,30 +127,12 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     
-    UIButton *tableFooterView = ({
-        tableFooterView = [UIButton.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50)];
-        tableFooterView.backgroundColor = [UIColor whiteColor];
-        [tableFooterView setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-        [tableFooterView setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor]] imageByBlurExtraLight] forState:UIControlStateHighlighted];
-        [tableFooterView addTarget:self action:@selector(didTapCancelAction:) forControlEvents:UIControlEventTouchUpInside];
-        tableFooterView;
-    });
-    
-    UILabel *labCancel = ({
-        labCancel = [UILabel.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-        [labCancel setTextColor:[UIColor blackColor]];
-        [labCancel setFont:[UIFont systemFontOfSize:16]];
-        [labCancel setTextAlignment:NSTextAlignmentCenter];
-        [labCancel setText:NSLocalizedString(@"取消", @"cancel")];
-        labCancel;
-    });
-    [tableFooterView addSubview:labCancel];
-    
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:HGMutilVerticalIdentifier];
+    [self.tableView setTableHeaderView:self.headerView];
+    [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];
-    [self.tableView setTableFooterView:tableFooterView];
     
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + tableFooterView.height + 5);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + self.headerView.height + self.footerView.height + 5);
     [self setFrame:frame];
     [self.tableView setFrame:frame];
     

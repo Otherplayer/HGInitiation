@@ -54,7 +54,7 @@
             _collectionView;
         });
         
-        [self.collectionView registerClass:HGMutilHorizontalCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class)];
+        [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class)];
         [self.contentView addSubview:self.collectionView];
     }
     return self;
@@ -70,7 +70,7 @@
     return self.items.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HGMutilHorizontalCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMutilHorizontalCCell.class) forIndexPath:indexPath];
+    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class) forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.item];
     [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     cell.labTitle.text = info[@"title"];

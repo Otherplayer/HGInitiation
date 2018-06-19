@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HGMutilHorizontalCCell.h"
+#import "HGMultiHorizontalSCCell.h"
 
 @interface HGMutilHorizontalSVCell : UITableViewCell
 @property(nonatomic, copy)void(^didTapHandler)(NSInteger row);

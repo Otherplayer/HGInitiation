@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HGMutilVerticalScrollView : UIView
+@interface HGVerticalSelectView : UIView
 @property(nonatomic, copy)void(^didTapCancelHandler)(void);
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger row);
 
