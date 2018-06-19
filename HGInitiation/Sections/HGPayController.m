@@ -32,8 +32,9 @@
     
     
     UIBarButtonItem *shareItem = [UIBarButtonItem.alloc initWithTitle:@"Share" style:UIBarButtonItemStylePlain target:self action:@selector(showShare)];
+    UIBarButtonItem *shareItem2 = [UIBarButtonItem.alloc initWithTitle:@"Share2" style:UIBarButtonItemStylePlain target:self action:@selector(showShare2)];
     UIBarButtonItem *payItem = [UIBarButtonItem.alloc initWithTitle:@"Pay" style:UIBarButtonItemStylePlain target:self action:@selector(showPay)];
-    self.navigationItem.rightBarButtonItems = @[shareItem,payItem];
+    self.navigationItem.rightBarButtonItems = @[shareItem2,shareItem,payItem];
     
     
     
@@ -60,5 +61,9 @@
         NSLog(@"%@ - %@",@(section),@(row));
     }];
 }
-
+- (void)showShare2 {
+    [self.popupManager showShare9ViewWithHandler:^(NSInteger section, NSInteger row) {
+        NSLog(@"%@ - %@",@(section),@(row));
+    }];
+}
 @end

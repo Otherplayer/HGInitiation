@@ -29,10 +29,62 @@
                             ];
     
     NSArray *shareSystem = @[
-                             @{@"title":@"短信",@"icon":@"sharekit_icon_wx"}];
+                             @{@"title":@"短信",@"icon":@"sharekit_icon_wx"},
+                             @{@"title":@"邮件",@"icon":@"sharekit_icon_wx"},
+                             @{@"title":@"系统",@"icon":@"sharekit_icon_wx"}];
     
     
     HGMutilHorizontalScrollView *horizontalScrollView = [[HGMutilHorizontalScrollView alloc] initWithItems:@[shareVendors,shareSystem]];
+    
+    @weakify(self);
+    [horizontalScrollView setDidTapCancelHandler:^{
+        @strongify(self);
+        if (!self) {return;}
+        [self.popupController dismissPopupControllerAnimated:YES];
+    }];
+    [horizontalScrollView setDidTapItemHandler:^(NSInteger section, NSInteger row) {
+        if (handler) {
+            handler(section, row);
+        }
+        @strongify(self);
+        if (!self) {return;}
+        [self.popupController dismissPopupControllerAnimated:YES];
+    }];
+    [self showPopupWithStyle:CNPPopupStyleActionSheet view:horizontalScrollView];
+}
+
+- (void)showShare9ViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler {
+    NSArray *shareVendors = @[
+                              @{@"title":@"微信",@"icon":@"sns_icon_22"},
+                              @{@"title":@"朋友圈",@"icon":@"sns_icon_23"},
+                              @{@"title":@"微信收藏",@"icon":@"sns_icon_37"},
+                              @{@"title":@"微博",@"icon":@"sns_icon_1"},
+                              @{@"title":@"QQ",@"icon":@"sns_icon_24"},
+                              @{@"title":@"QQ空间",@"icon":@"sns_icon_6"},
+                              @{@"title":@"Fackbook",@"icon":@"sns_icon_10"},
+                              @{@"title":@"Messager",@"icon":@"sns_icon_46"},
+                              @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
+                              @{@"title":@"微信",@"icon":@"sns_icon_22"},
+                              @{@"title":@"朋友圈",@"icon":@"sns_icon_23"},
+                              @{@"title":@"微信收藏",@"icon":@"sns_icon_37"},
+                              @{@"title":@"微博",@"icon":@"sns_icon_1"},
+                              @{@"title":@"QQ",@"icon":@"sns_icon_24"},
+                              @{@"title":@"QQ空间",@"icon":@"sns_icon_6"},
+                              @{@"title":@"Fackbook",@"icon":@"sns_icon_10"},
+                              @{@"title":@"Messager",@"icon":@"sns_icon_46"},
+                              @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
+                              @{@"title":@"微信",@"icon":@"sns_icon_22"},
+                              @{@"title":@"朋友圈",@"icon":@"sns_icon_23"},
+                              @{@"title":@"微信收藏",@"icon":@"sns_icon_37"},
+                              @{@"title":@"微博",@"icon":@"sns_icon_1"},
+                              @{@"title":@"QQ",@"icon":@"sns_icon_24"},
+                              @{@"title":@"QQ空间",@"icon":@"sns_icon_6"},
+                              @{@"title":@"Fackbook",@"icon":@"sns_icon_10"},
+                              @{@"title":@"Messager",@"icon":@"sns_icon_46"},
+                              @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
+                              @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
+                              ];
+    HGMutilHorizontalScrollView *horizontalScrollView = [[HGMutilHorizontalScrollView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
     
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
@@ -69,6 +121,7 @@
         [self.popupController dismissPopupControllerAnimated:YES];
     }];
     [self showPopupWithStyle:CNPPopupStyleActionSheet view:verticalScrollView];
+    
 }
 
 

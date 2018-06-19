@@ -14,6 +14,7 @@
 @property (nonatomic, strong) CNPPopupController *popupController;
 
 - (void)showShareViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler;
+- (void)showShare9ViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler;
 - (void)showPayViewWithHandler:(void(^)(NSInteger row))handler;
 
 @end
