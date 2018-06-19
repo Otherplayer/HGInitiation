@@ -56,6 +56,8 @@ UIKIT_STATIC_INLINE NSDate *HGDateFromString(NSString *dateFormat, NSString *str
 }
 
 
+static NSString *HGIdentifier = @"Identifier";
+
 /**
  * https://blog.spacemanlabs.com/2011/12/cancel-dispatch_after/
  * https://github.com/Spaceman-Labs/Dispatch-Cancel

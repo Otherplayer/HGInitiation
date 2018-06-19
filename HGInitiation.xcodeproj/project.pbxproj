@@ -38,7 +38,7 @@
 		6341E5DE20C784FC005065C5 /* HGPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5DD20C784FC005065C5 /* HGPayController.m */; };
 		6341E5E520C7B74F005065C5 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E420C7B74F005065C5 /* CNPPopupController.m */; };
 		6341E5E920C7B7CB005065C5 /* HGMultiHorizontalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */; };
-		6341E5EC20C7BBCF005065C5 /* HGMutilHorizontalSTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5EB20C7BBCF005065C5 /* HGMutilHorizontalSTCell.m */; };
+		6341E5EC20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */; };
 		6341E5EF20C7C074005065C5 /* HGMultiHorizontalSCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */; };
 		6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F120C8DD39005065C5 /* HGPopupManager.m */; };
 		6341E5F520C9117E005065C5 /* HGVerticalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */; };
@@ -172,8 +172,8 @@
 		6341E5E420C7B74F005065C5 /* CNPPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNPPopupController.m; sourceTree = "<group>"; };
 		6341E5E720C7B7CB005065C5 /* HGMultiHorizontalSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSelectView.h; sourceTree = "<group>"; };
 		6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSelectView.m; sourceTree = "<group>"; };
-		6341E5EA20C7BBCF005065C5 /* HGMutilHorizontalSTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMutilHorizontalSTCell.h; sourceTree = "<group>"; };
-		6341E5EB20C7BBCF005065C5 /* HGMutilHorizontalSTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMutilHorizontalSTCell.m; sourceTree = "<group>"; };
+		6341E5EA20C7BBCF005065C5 /* HGMultiHorizontalSTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSTCell.h; sourceTree = "<group>"; };
+		6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSTCell.m; sourceTree = "<group>"; };
 		6341E5ED20C7C074005065C5 /* HGMultiHorizontalSCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSCCell.h; sourceTree = "<group>"; };
 		6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSCCell.m; sourceTree = "<group>"; };
 		6341E5F020C8DD39005065C5 /* HGPopupManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopupManager.h; sourceTree = "<group>"; };
@@ -449,8 +449,8 @@
 				6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */,
 				6341E5F320C9117E005065C5 /* HGVerticalSelectView.h */,
 				6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */,
-				6341E5EA20C7BBCF005065C5 /* HGMutilHorizontalSTCell.h */,
-				6341E5EB20C7BBCF005065C5 /* HGMutilHorizontalSTCell.m */,
+				6341E5EA20C7BBCF005065C5 /* HGMultiHorizontalSTCell.h */,
+				6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */,
 				6341E5ED20C7C074005065C5 /* HGMultiHorizontalSCCell.h */,
 				6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */,
 				63C66CE620D8ECE100D27833 /* HGSelectAdditionalView.h */,
@@ -1080,7 +1080,7 @@
 				631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */,
 				63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */,
 				63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */,
-				6341E5EC20C7BBCF005065C5 /* HGMutilHorizontalSTCell.m in Sources */,
+				6341E5EC20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m in Sources */,
 				63F3D3E220C54826000AC732 /* HGPageTitleItem.m in Sources */,
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
 				63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */,

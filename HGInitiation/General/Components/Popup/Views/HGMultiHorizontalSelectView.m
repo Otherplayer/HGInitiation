@@ -7,9 +7,8 @@
 //
 
 #import "HGMultiHorizontalSelectView.h"
-#import "HGMutilHorizontalSTCell.h"
+#import "HGMultiHorizontalSTCell.h"
 #import "HGSelectAdditionalView.h"
-static NSString *HGMutilHorizontalIdentifier = @"Identifier";
 
 @interface HGMultiHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
@@ -40,7 +39,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     return subItems.count > 0 ? 1:0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HGMutilHorizontalSTCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilHorizontalIdentifier forIndexPath:indexPath];
+    HGMultiHorizontalSTCell *cell = [tableView dequeueReusableCellWithIdentifier:HGIdentifier forIndexPath:indexPath];
     cell.items = self.items[indexPath.section];
     __weak typeof(self) weakSelf = self;
     [cell setDidTapHandler:^(NSInteger row) {
@@ -51,7 +50,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kHGMutilHorizontalCCellHeight;
+    return kHGMultiHorizontalSCCellHeight;
 }
 //设置分割线的位置
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -118,13 +117,13 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     
-    [self.tableView registerClass:HGMutilHorizontalSTCell.class forCellReuseIdentifier:HGMutilHorizontalIdentifier];
+    [self.tableView registerClass:HGMultiHorizontalSTCell.class forCellReuseIdentifier:HGIdentifier];
     [self.tableView setTableHeaderView:self.headerView];
     [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];
     
     
-    CGFloat height = kHGMutilHorizontalCCellHeight * self.items.count + self.footerView.height + self.headerView.height;
+    CGFloat height = kHGMultiHorizontalSCCellHeight * self.items.count + self.footerView.height + self.headerView.height;
     CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
     [self setFrame:frame];
     [self.tableView setFrame:frame];

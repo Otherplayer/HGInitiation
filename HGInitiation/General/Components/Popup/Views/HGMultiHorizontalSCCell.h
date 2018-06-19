@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-extern CGFloat const kHGMutilHorizontalCCellHeight;
-extern CGFloat const kHGMutilHorizontalCCellWidth;
+extern CGFloat const kHGMultiHorizontalSCCellHeight;
+extern CGFloat const kHGMultiHorizontalSCCellWidth;
 
 @interface HGMultiHorizontalSCCell : UICollectionViewCell
 

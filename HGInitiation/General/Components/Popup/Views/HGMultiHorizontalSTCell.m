@@ -6,13 +6,13 @@
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMutilHorizontalSTCell.h"
+#import "HGMultiHorizontalSTCell.h"
 
-@interface HGMutilHorizontalSTCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface HGMultiHorizontalSTCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @end
 
-@implementation HGMutilHorizontalSTCell
+@implementation HGMultiHorizontalSTCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -37,12 +37,12 @@
             layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
             layout.minimumLineSpacing = 12;
             layout.minimumInteritemSpacing = 0;
-            layout.itemSize = CGSizeMake(kHGMutilHorizontalCCellWidth, kHGMutilHorizontalCCellHeight - 10);
+            layout.itemSize = CGSizeMake(kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellHeight - 10);
             layout;
         });
         
         self.collectionView = ({
-            _collectionView = [UICollectionView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGMutilHorizontalCCellHeight) collectionViewLayout:layout];
+            _collectionView = [UICollectionView.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGMultiHorizontalSCCellHeight) collectionViewLayout:layout];
             _collectionView.dataSource = self;
             _collectionView.delegate = self;
             _collectionView.backgroundColor = UIColor.clearColor;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HGMultiHorizontalSCCell.h"
 
-@interface HGMutilHorizontalSTCell : UITableViewCell
+@interface HGMultiHorizontalSTCell : UITableViewCell
 @property(nonatomic, copy)void(^didTapHandler)(NSInteger row);
 @property(nonatomic, strong)NSArray *items;
 

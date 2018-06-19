@@ -8,9 +8,8 @@
 
 #import "HGVerticalSelectView.h"
 #import "HGSelectAdditionalView.h"
-#import "HGMutilHorizontalSTCell.h"
+#import "HGMultiHorizontalSTCell.h"
 
-static NSString *HGMutilVerticalIdentifier = @"Identifier";
 
 @interface HGVerticalSelectView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
@@ -67,7 +66,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     return self.items.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilVerticalIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HGIdentifier forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.row];
     cell.textLabel.text = info[@"title"];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -117,7 +116,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     return self.items.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class) forIndexPath:indexPath];
+    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HGIdentifier forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.item];
     [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     cell.labTitle.text = info[@"title"];
@@ -166,7 +165,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
         _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _layout.minimumLineSpacing = 12.f;
         _layout.minimumInteritemSpacing = 7.f;
-        _layout.itemSize = CGSizeMake(kHGMutilHorizontalCCellWidth, kHGMutilHorizontalCCellHeight - 10);
+        _layout.itemSize = CGSizeMake(kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellHeight - 10);
         _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 32);
         _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50);
     }
@@ -191,12 +190,12 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     CGFloat minimumInteritemSpacing = self.layout.minimumInteritemSpacing;
     UIEdgeInsets sectionInset = self.layout.sectionInset;
     
-    NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGMutilHorizontalCCellWidth);
+    NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGMultiHorizontalSCCellWidth);
     NSInteger columns = self.items.count / rows + (self.items.count % rows > 0 ? 1:0);
     
-    [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class)];
+    [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:HGIdentifier];
     
-    CGFloat height = kHGMutilHorizontalCCellHeight * columns + self.headerView.height + self.footerView.height;
+    CGFloat height = kHGMultiHorizontalSCCellHeight * columns + self.headerView.height + self.footerView.height;
     if (height > (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0) {
         height = (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0;
     }
@@ -221,7 +220,7 @@ static NSString *HGMutilVerticalIdentifier = @"Identifier";
     }
     
     [self.headerView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:HGMutilVerticalIdentifier];
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:HGIdentifier];
     [self.tableView setTableHeaderView:self.headerView];
     [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];
