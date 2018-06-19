@@ -7,7 +7,7 @@
 //
 
 #import "HGPopupManager.h"
-#import "HGMultiHorizontalSelectView.h"
+#import "HGHorizontalSelectView.h"
 #import "HGVerticalSelectView.h"
 
 @implementation HGPopupManager
@@ -34,7 +34,7 @@
                              @{@"title":@"系统",@"icon":@"sharekit_icon_wx"}];
     
     
-    HGMultiHorizontalSelectView *horizontalScrollView = [[HGMultiHorizontalSelectView alloc] initWithItems:@[shareVendors,shareSystem]];
+    HGHorizontalSelectView *horizontalScrollView = [[HGHorizontalSelectView alloc] initWithItems:@[shareVendors,shareSystem]];
     
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
@@ -84,7 +84,7 @@
                               @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
                               @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
                               ];
-    HGVerticalSelectView *horizontalScrollView = [[HGVerticalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
+    HGVerticalSelectView *horizontalScrollView = [[HGVerticalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGVerticalSelectType9];
 
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{

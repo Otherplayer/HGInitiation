@@ -6,18 +6,18 @@
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMultiHorizontalSelectView.h"
-#import "HGMultiHorizontalSTCell.h"
+#import "HGHorizontalSelectView.h"
+#import "HGHorizontalSelectTCell.h"
 #import "HGSelectAdditionalView.h"
 
-@interface HGMultiHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource>
+@interface HGHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)HGSelectViewHeader *headerView;
 @property(nonatomic, strong)HGSelectViewFooter *footerView;
 @property(nonatomic, strong)NSArray *items;
 @end
 
-@implementation HGMultiHorizontalSelectView
+@implementation HGHorizontalSelectView
 
 
 - (instancetype)initWithItems:(NSArray *)items{
@@ -39,7 +39,7 @@
     return subItems.count > 0 ? 1:0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HGMultiHorizontalSTCell *cell = [tableView dequeueReusableCellWithIdentifier:HGIdentifier forIndexPath:indexPath];
+    HGHorizontalSelectTCell *cell = [tableView dequeueReusableCellWithIdentifier:HGIdentifier forIndexPath:indexPath];
     cell.items = self.items[indexPath.section];
     __weak typeof(self) weakSelf = self;
     [cell setDidTapHandler:^(NSInteger row) {
@@ -50,7 +50,7 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kHGMultiHorizontalSCCellHeight;
+    return kHGHorizontalSCCellHeight;
 }
 //设置分割线的位置
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,24 +61,7 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
-#pragma mark - <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.items.count;
-}
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class) forIndexPath:indexPath];
-    NSDictionary *info = self.items[indexPath.item];
-    [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
-    cell.labTitle.text = info[@"title"];
-    __weak typeof(self) weakSelf = self;
-    [cell setDidTapHandler:^{
-        if (weakSelf.didTapItemHandler) {
-            weakSelf.didTapItemHandler(0,indexPath.item);
-        }
-    }];
-    
-    return cell;
-}
+
 #pragma mark - Initiate
 
 - (HGSelectViewHeader *)headerView {
@@ -117,13 +100,13 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     
-    [self.tableView registerClass:HGMultiHorizontalSTCell.class forCellReuseIdentifier:HGIdentifier];
+    [self.tableView registerClass:HGHorizontalSelectTCell.class forCellReuseIdentifier:HGIdentifier];
     [self.tableView setTableHeaderView:self.headerView];
     [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];
     
     
-    CGFloat height = kHGMultiHorizontalSCCellHeight * self.items.count + self.footerView.height + self.headerView.height;
+    CGFloat height = kHGHorizontalSCCellHeight * self.items.count + self.footerView.height + self.headerView.height;
     CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
     [self setFrame:frame];
     [self.tableView setFrame:frame];

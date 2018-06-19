@@ -8,7 +8,7 @@
 
 #import "HGVerticalSelectView.h"
 #import "HGSelectAdditionalView.h"
-#import "HGMultiHorizontalSTCell.h"
+#import "HGHorizontalSelectTCell.h"
 
 
 @interface HGVerticalSelectView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
@@ -30,13 +30,13 @@
     }
     return self;
 }
-- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGMutilHorizontalScrollType)type{
+- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGVerticalSelectType)type{
     self = [super init];
     if (self) {
         
         self.items = items;
         
-        if (type == HGMutilHorizontalScrollType9) {
+        if (type == HGVerticalSelectType9) {
             [self initiateCollectionView];
         }else{
             [self initiateTableViews];
@@ -116,7 +116,7 @@
     return self.items.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HGMultiHorizontalSCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HGIdentifier forIndexPath:indexPath];
+    HGHorizontalSelectCCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HGIdentifier forIndexPath:indexPath];
     NSDictionary *info = self.items[indexPath.item];
     [cell.btnIcon setImage:[UIImage imageNamed:info[@"icon"]] forState:UIControlStateNormal];
     cell.labTitle.text = info[@"title"];
@@ -165,7 +165,7 @@
         _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _layout.minimumLineSpacing = 12.f;
         _layout.minimumInteritemSpacing = 7.f;
-        _layout.itemSize = CGSizeMake(kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellHeight - 10);
+        _layout.itemSize = CGSizeMake(kHGHorizontalSCCellWidth, kHGHorizontalSCCellHeight - 10);
         _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 32);
         _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50);
     }
@@ -190,12 +190,12 @@
     CGFloat minimumInteritemSpacing = self.layout.minimumInteritemSpacing;
     UIEdgeInsets sectionInset = self.layout.sectionInset;
     
-    NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGMultiHorizontalSCCellWidth);
+    NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGHorizontalSCCellWidth);
     NSInteger columns = self.items.count / rows + (self.items.count % rows > 0 ? 1:0);
     
-    [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:HGIdentifier];
+    [self.collectionView registerClass:HGHorizontalSelectCCell.class forCellWithReuseIdentifier:HGIdentifier];
     
-    CGFloat height = kHGMultiHorizontalSCCellHeight * columns + self.headerView.height + self.footerView.height;
+    CGFloat height = kHGHorizontalSCCellHeight * columns + self.headerView.height + self.footerView.height;
     if (height > (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0) {
         height = (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0;
     }

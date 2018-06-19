@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HGMultiHorizontalSelectView : UIView
+@interface HGHorizontalSelectView : UIView
 
 @property(nonatomic, copy)void(^didTapCancelHandler)(void);
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger section, NSInteger row);

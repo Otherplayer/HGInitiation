@@ -37,9 +37,7 @@
 		6341E5DB20C77B95005065C5 /* HGPageContent2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5DA20C77B95005065C5 /* HGPageContent2Controller.m */; };
 		6341E5DE20C784FC005065C5 /* HGPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5DD20C784FC005065C5 /* HGPayController.m */; };
 		6341E5E520C7B74F005065C5 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E420C7B74F005065C5 /* CNPPopupController.m */; };
-		6341E5E920C7B7CB005065C5 /* HGMultiHorizontalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */; };
-		6341E5EC20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */; };
-		6341E5EF20C7C074005065C5 /* HGMultiHorizontalSCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */; };
+		6341E5E920C7B7CB005065C5 /* HGHorizontalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E820C7B7CB005065C5 /* HGHorizontalSelectView.m */; };
 		6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F120C8DD39005065C5 /* HGPopupManager.m */; };
 		6341E5F520C9117E005065C5 /* HGVerticalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */; };
 		635A8D08207C923600E4E4D6 /* NSString+URITemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A8D07207C923600E4E4D6 /* NSString+URITemplate.m */; };
@@ -91,6 +89,8 @@
 		63B8C80D20B2ADAD00CFB3EC /* HGPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */; };
 		63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A16A205648DF0006B2E9 /* HGPageContentController.m */; };
 		63C66CE820D8ECE100D27833 /* HGSelectAdditionalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */; };
+		63C66CEB20D8F61900D27833 /* HGHorizontalSelectTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CEA20D8F61900D27833 /* HGHorizontalSelectTCell.m */; };
+		63C66CEE20D8F65200D27833 /* HGHorizontalSelectCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CED20D8F65200D27833 /* HGHorizontalSelectCCell.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -170,12 +170,8 @@
 		6341E5DD20C784FC005065C5 /* HGPayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPayController.m; sourceTree = "<group>"; };
 		6341E5E320C7B74F005065C5 /* CNPPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNPPopupController.h; sourceTree = "<group>"; };
 		6341E5E420C7B74F005065C5 /* CNPPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNPPopupController.m; sourceTree = "<group>"; };
-		6341E5E720C7B7CB005065C5 /* HGMultiHorizontalSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSelectView.h; sourceTree = "<group>"; };
-		6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSelectView.m; sourceTree = "<group>"; };
-		6341E5EA20C7BBCF005065C5 /* HGMultiHorizontalSTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSTCell.h; sourceTree = "<group>"; };
-		6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSTCell.m; sourceTree = "<group>"; };
-		6341E5ED20C7C074005065C5 /* HGMultiHorizontalSCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMultiHorizontalSCCell.h; sourceTree = "<group>"; };
-		6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMultiHorizontalSCCell.m; sourceTree = "<group>"; };
+		6341E5E720C7B7CB005065C5 /* HGHorizontalSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHorizontalSelectView.h; sourceTree = "<group>"; };
+		6341E5E820C7B7CB005065C5 /* HGHorizontalSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHorizontalSelectView.m; sourceTree = "<group>"; };
 		6341E5F020C8DD39005065C5 /* HGPopupManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopupManager.h; sourceTree = "<group>"; };
 		6341E5F120C8DD39005065C5 /* HGPopupManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopupManager.m; sourceTree = "<group>"; };
 		6341E5F320C9117E005065C5 /* HGVerticalSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGVerticalSelectView.h; sourceTree = "<group>"; };
@@ -279,6 +275,10 @@
 		63B9A16A205648DF0006B2E9 /* HGPageContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageContentController.m; sourceTree = "<group>"; };
 		63C66CE620D8ECE100D27833 /* HGSelectAdditionalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGSelectAdditionalView.h; sourceTree = "<group>"; };
 		63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGSelectAdditionalView.m; sourceTree = "<group>"; };
+		63C66CE920D8F61900D27833 /* HGHorizontalSelectTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHorizontalSelectTCell.h; sourceTree = "<group>"; };
+		63C66CEA20D8F61900D27833 /* HGHorizontalSelectTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHorizontalSelectTCell.m; sourceTree = "<group>"; };
+		63C66CEC20D8F65200D27833 /* HGHorizontalSelectCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHorizontalSelectCCell.h; sourceTree = "<group>"; };
+		63C66CED20D8F65200D27833 /* HGHorizontalSelectCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHorizontalSelectCCell.m; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -445,14 +445,14 @@
 		6341E5E620C7B778005065C5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6341E5E720C7B7CB005065C5 /* HGMultiHorizontalSelectView.h */,
-				6341E5E820C7B7CB005065C5 /* HGMultiHorizontalSelectView.m */,
+				6341E5E720C7B7CB005065C5 /* HGHorizontalSelectView.h */,
+				6341E5E820C7B7CB005065C5 /* HGHorizontalSelectView.m */,
 				6341E5F320C9117E005065C5 /* HGVerticalSelectView.h */,
 				6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */,
-				6341E5EA20C7BBCF005065C5 /* HGMultiHorizontalSTCell.h */,
-				6341E5EB20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m */,
-				6341E5ED20C7C074005065C5 /* HGMultiHorizontalSCCell.h */,
-				6341E5EE20C7C074005065C5 /* HGMultiHorizontalSCCell.m */,
+				63C66CE920D8F61900D27833 /* HGHorizontalSelectTCell.h */,
+				63C66CEA20D8F61900D27833 /* HGHorizontalSelectTCell.m */,
+				63C66CEC20D8F65200D27833 /* HGHorizontalSelectCCell.h */,
+				63C66CED20D8F65200D27833 /* HGHorizontalSelectCCell.m */,
 				63C66CE620D8ECE100D27833 /* HGSelectAdditionalView.h */,
 				63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */,
 			);
@@ -1017,12 +1017,12 @@
 				63880BBF1FF0EA5700DAFD68 /* HGBASEViewController.m in Sources */,
 				63B8C80D20B2ADAD00CFB3EC /* HGPageController.m in Sources */,
 				63F3D3DF20C53F89000AC732 /* HGPageControllerDemo.m in Sources */,
-				6341E5EF20C7C074005065C5 /* HGMultiHorizontalSCCell.m in Sources */,
 				63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */,
 				6327575F20CFB0D50095E28D /* HGPagesScrollView.m in Sources */,
 				635C24EE1FFCAE580070BC46 /* HGImagePreviewCell.m in Sources */,
 				6389B2191FF61A9100EBBF6C /* HGClipperView.m in Sources */,
 				63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */,
+				63C66CEB20D8F61900D27833 /* HGHorizontalSelectTCell.m in Sources */,
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
 				631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */,
 				6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */,
@@ -1080,15 +1080,15 @@
 				631FE8762017305200E9D8A2 /* HGConfiguration.m in Sources */,
 				63D559772007516100BBA0BE /* HGWaterfallController.m in Sources */,
 				63F6BBC2209AB07000BB8EFF /* HGSettingsController.m in Sources */,
-				6341E5EC20C7BBCF005065C5 /* HGMultiHorizontalSTCell.m in Sources */,
 				63F3D3E220C54826000AC732 /* HGPageTitleItem.m in Sources */,
+				63C66CEE20D8F65200D27833 /* HGHorizontalSelectCCell.m in Sources */,
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
 				63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */,
 				635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */,
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
 				63F3D3DC20C5213F000AC732 /* HGPageTitlesView.m in Sources */,
 				6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */,
-				6341E5E920C7B7CB005065C5 /* HGMultiHorizontalSelectView.m in Sources */,
+				6341E5E920C7B7CB005065C5 /* HGHorizontalSelectView.m in Sources */,
 				63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */,
 				6341E5DB20C77B95005065C5 /* HGPageContent2Controller.m in Sources */,
 				63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */,

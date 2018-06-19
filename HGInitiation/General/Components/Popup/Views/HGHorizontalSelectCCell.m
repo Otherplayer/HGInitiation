@@ -1,24 +1,23 @@
 //
-//  HGMutilHorizontalCCell.m
+//  HGHorizontalSelectCCell.m
 //  HGInitiation
 //
-//  Created by __无邪_ on 2018/6/6.
+//  Created by __无邪_ on 2018/6/19.
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
-#import "HGMultiHorizontalSCCell.h"
+#import "HGHorizontalSelectCCell.h"
 
-CGFloat const kHGMultiHorizontalSCCellHeight = 110.f;
-CGFloat const kHGMultiHorizontalSCCellWidth = 60.f;
+CGFloat const kHGHorizontalSCCellHeight = 110.f;
+CGFloat const kHGHorizontalSCCellWidth = 60.f;
 
-@implementation HGMultiHorizontalSCCell
-
+@implementation HGHorizontalSelectCCell
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         
         self.btnIcon = ({
-            _btnIcon = [UIButton.alloc initWithFrame:CGRectMake(0, 0, kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellWidth)];
+            _btnIcon = [UIButton.alloc initWithFrame:CGRectMake(0, 0, kHGHorizontalSCCellWidth, kHGHorizontalSCCellWidth)];
             _btnIcon.imageView.contentMode = UIViewContentModeCenter;
             [_btnIcon setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
             [_btnIcon setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.5]] forState:UIControlStateHighlighted];
@@ -30,7 +29,7 @@ CGFloat const kHGMultiHorizontalSCCellWidth = 60.f;
         });
         
         self.labTitle = ({
-            _labTitle = [UILabel.alloc initWithFrame:CGRectMake(0, kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellWidth, kHGMultiHorizontalSCCellHeight - kHGMultiHorizontalSCCellWidth - 10)];
+            _labTitle = [UILabel.alloc initWithFrame:CGRectMake(0, kHGHorizontalSCCellWidth, kHGHorizontalSCCellWidth, kHGHorizontalSCCellHeight - kHGHorizontalSCCellWidth - 10)];
             _labTitle.font = [UIFont systemFontOfSize:13];
             _labTitle.textColor = [UIColor blackColor];
             _labTitle.textAlignment = NSTextAlignmentCenter;
@@ -50,5 +49,4 @@ CGFloat const kHGMultiHorizontalSCCellWidth = 60.f;
         self.didTapHandler();
     }
 }
-
 @end

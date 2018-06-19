@@ -1,20 +1,21 @@
 //
-//  HGMutilHorizontalCCell.h
+//  HGHorizontalSelectCCell.h
 //  HGInitiation
 //
-//  Created by __无邪_ on 2018/6/6.
+//  Created by __无邪_ on 2018/6/19.
 //  Copyright © 2018年 __无邪_. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-extern CGFloat const kHGMultiHorizontalSCCellHeight;
-extern CGFloat const kHGMultiHorizontalSCCellWidth;
+extern CGFloat const kHGHorizontalSCCellHeight;
+extern CGFloat const kHGHorizontalSCCellWidth;
 
-@interface HGMultiHorizontalSCCell : UICollectionViewCell
+@interface HGHorizontalSelectCCell : UICollectionViewCell
 
 @property(nonatomic, copy)void(^didTapHandler)(void);
 @property(nonatomic, strong) UIButton *btnIcon;
 @property(nonatomic, strong) UILabel *labTitle;
+
 
 @end

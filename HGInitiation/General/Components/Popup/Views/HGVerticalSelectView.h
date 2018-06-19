@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
-    HGMutilHorizontalScrollTypeNormal,//积木
-    HGMutilHorizontalScrollType9 //九宫格
+typedef NS_ENUM(NSUInteger, HGVerticalSelectType) {
+    HGVerticalSelectTypeNormal,//积木
+    HGVerticalSelectType9 //九宫格
 };
 
 
@@ -19,6 +19,6 @@ typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger row);
 
 - (instancetype)initWithItems:(NSArray *)items;
-- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGMutilHorizontalScrollType)type;
+- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGVerticalSelectType)type;
 
 @end
