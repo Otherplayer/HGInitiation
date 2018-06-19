@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HGSelectAdditionalView : UICollectionReusableView
-
-@end
-
-
 @interface HGSelectViewHeader : UICollectionReusableView
 @property(nonatomic, strong) UILabel *labTitle;
 @end

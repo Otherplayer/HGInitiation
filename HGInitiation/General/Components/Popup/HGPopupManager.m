@@ -53,7 +53,7 @@
     [self showPopupWithStyle:CNPPopupStyleActionSheet view:horizontalScrollView];
 }
 
-- (void)showShare9ViewWithHandler:(void(^)(NSInteger section,NSInteger row))handler {
+- (void)showShare9ViewWithHandler:(void(^)(NSInteger row))handler {
     NSArray *shareVendors = @[
                               @{@"title":@"微信",@"icon":@"sns_icon_22"},
                               @{@"title":@"朋友圈",@"icon":@"sns_icon_23"},
@@ -84,17 +84,17 @@
                               @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
                               @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
                               ];
-    HGMultiHorizontalSelectView *horizontalScrollView = [[HGMultiHorizontalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
-    
+    HGVerticalSelectView *horizontalScrollView = [[HGVerticalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGMutilHorizontalScrollType9];
+
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
         @strongify(self);
         if (!self) {return;}
         [self.popupController dismissPopupControllerAnimated:YES];
     }];
-    [horizontalScrollView setDidTapItemHandler:^(NSInteger section, NSInteger row) {
+    [horizontalScrollView setDidTapItemHandler:^(NSInteger row) {
         if (handler) {
-            handler(section, row);
+            handler(row);
         }
         @strongify(self);
         if (!self) {return;}

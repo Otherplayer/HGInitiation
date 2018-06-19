@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
+    HGMutilHorizontalScrollTypeNormal,//积木
+    HGMutilHorizontalScrollType9 //九宫格
+};
+
+
 @interface HGVerticalSelectView : UIView
 @property(nonatomic, copy)void(^didTapCancelHandler)(void);
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger row);
 
 - (instancetype)initWithItems:(NSArray *)items;
+- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGMutilHorizontalScrollType)type;
 
 @end

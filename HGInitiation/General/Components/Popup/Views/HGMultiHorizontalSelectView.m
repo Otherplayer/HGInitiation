@@ -7,19 +7,14 @@
 //
 
 #import "HGMultiHorizontalSelectView.h"
-#import "HGMutilHorizontalSVCell.h"
+#import "HGMutilHorizontalSTCell.h"
 #import "HGSelectAdditionalView.h"
 static NSString *HGMutilHorizontalIdentifier = @"Identifier";
 
-
-
-
-@interface HGMultiHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
-@property(nonatomic, strong)UICollectionView *collectionView;
+@interface HGMultiHorizontalSelectView ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)HGSelectViewHeader *headerView;
 @property(nonatomic, strong)HGSelectViewFooter *footerView;
-@property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong)NSArray *items;
 @end
 
@@ -34,28 +29,6 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     }
     return self;
 }
-- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGMutilHorizontalScrollType)type{
-    self = [super init];
-    if (self) {
-        
-        self.items = items;
-        
-        if (type == HGMutilHorizontalScrollType9) {
-            [self initiateCollectionView];
-        }else{
-            [self initiateTableViews];
-        }
-        
-        __weak typeof(self) weakSelf = self;
-        [self.headerView.labTitle setText:title];
-        [self.footerView setDidTapCancelHandler:^{
-            if (weakSelf.didTapCancelHandler) {
-                weakSelf.didTapCancelHandler();
-            }
-        }];
-    }
-    return self;
-}
 
 #pragma mark - <UITableViewDataSource>
 
@@ -67,7 +40,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     return subItems.count > 0 ? 1:0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HGMutilHorizontalSVCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilHorizontalIdentifier forIndexPath:indexPath];
+    HGMutilHorizontalSTCell *cell = [tableView dequeueReusableCellWithIdentifier:HGMutilHorizontalIdentifier forIndexPath:indexPath];
     cell.items = self.items[indexPath.section];
     __weak typeof(self) weakSelf = self;
     [cell setDidTapHandler:^(NSInteger row) {
@@ -135,59 +108,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
     }
     return _tableView;
 }
-- (UICollectionViewFlowLayout *)layout {
-    if (!_layout) {
-        _layout = [[UICollectionViewFlowLayout alloc] init];
-        _layout.sectionInset = UIEdgeInsetsMake(10, 16, 0, 16);
-        _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _layout.minimumLineSpacing = 12.f;
-        _layout.minimumInteritemSpacing = 7.f;
-        _layout.itemSize = CGSizeMake(kHGMutilHorizontalCCellWidth, kHGMutilHorizontalCCellHeight - 10);
-        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 32);
-        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50);
-    }
-    return _layout;
-}
-- (UICollectionView *)collectionView {
-    if (!_collectionView) {
-        _collectionView = [UICollectionView.alloc initWithFrame:CGRectZero collectionViewLayout:self.layout];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        _collectionView.backgroundColor = UIColor.clearColor;
-        _collectionView.directionalLockEnabled = YES;
-        _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.bounces = YES;
-        _collectionView.contentInset = UIEdgeInsetsZero;
-    }
-    return _collectionView;
-}
 
-- (void)initiateCollectionView {
-    
-    CGFloat minimumInteritemSpacing = self.layout.minimumInteritemSpacing;
-    UIEdgeInsets sectionInset = self.layout.sectionInset;
-    
-    NSInteger rows = (SCREEN_WIDTH - sectionInset.left - sectionInset.right + minimumInteritemSpacing) / (minimumInteritemSpacing + kHGMutilHorizontalCCellWidth);
-    NSInteger columns = self.items.count / rows + (self.items.count % rows > 0 ? 1:0);
-    
-    [self.collectionView registerClass:HGMultiHorizontalSCCell.class forCellWithReuseIdentifier:NSStringFromClass(HGMultiHorizontalSCCell.class)];
-    
-    CGFloat height = kHGMutilHorizontalCCellHeight * columns + self.headerView.height + self.footerView.height;
-    if (height > (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0) {
-        height = (SCREEN_HEIGHT - NAVandSTATUS_BAR_HEIHGT) * 3 / 5.0;
-    }
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
-    [self setFrame:frame];
-    [self.collectionView setFrame:frame];
-    
-    self.footerView.top = self.collectionView.height - self.footerView.height;
-    
-    [self addSubview:self.headerView];
-    [self addSubview:self.collectionView];
-    [self addSubview:self.footerView];
-    
-}
 - (void)initiateTableViews {
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -197,7 +118,7 @@ static NSString *HGMutilHorizontalIdentifier = @"Identifier";
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     
-    [self.tableView registerClass:HGMutilHorizontalSVCell.class forCellReuseIdentifier:HGMutilHorizontalIdentifier];
+    [self.tableView registerClass:HGMutilHorizontalSTCell.class forCellReuseIdentifier:HGMutilHorizontalIdentifier];
     [self.tableView setTableHeaderView:self.headerView];
     [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];

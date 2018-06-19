@@ -62,8 +62,8 @@
     }];
 }
 - (void)showShare2 {
-    [self.popupManager showShare9ViewWithHandler:^(NSInteger section, NSInteger row) {
-        NSLog(@"%@ - %@",@(section),@(row));
+    [self.popupManager showShare9ViewWithHandler:^(NSInteger row) {
+        NSLog(@"%@",@(row));
     }];
 }
 @end

@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
-    HGMutilHorizontalScrollTypeNormal,//多行，每行可单独滑动
-    HGMutilHorizontalScrollType9 //九宫格
-};
 
 @interface HGMultiHorizontalSelectView : UIView
 
@@ -19,6 +15,5 @@ typedef NS_ENUM(NSUInteger, HGMutilHorizontalScrollType) {
 @property(nonatomic, copy)void(^didTapItemHandler)(NSInteger section, NSInteger row);
 
 - (instancetype)initWithItems:(NSArray *)items;
-- (instancetype)initWithItems:(NSArray *)items title:(NSString *)title type:(HGMutilHorizontalScrollType)type;
 
 @end

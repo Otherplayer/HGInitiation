@@ -8,9 +8,6 @@
 
 #import "HGSelectAdditionalView.h"
 
-@implementation HGSelectAdditionalView
-
-@end
 @implementation HGSelectViewHeader
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];

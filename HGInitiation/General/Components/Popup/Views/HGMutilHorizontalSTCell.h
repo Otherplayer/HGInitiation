@@ -1,5 +1,5 @@
 //
-//  HGMutilHorizontalSVCell.h
+//  HGMutilHorizontalSTCell.h
 //  HGInitiation
 //
 //  Created by __无邪_ on 2018/6/6.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HGMultiHorizontalSCCell.h"
 
-@interface HGMutilHorizontalSVCell : UITableViewCell
+@interface HGMutilHorizontalSTCell : UITableViewCell
 @property(nonatomic, copy)void(^didTapHandler)(NSInteger row);
 @property(nonatomic, strong)NSArray *items;
 
