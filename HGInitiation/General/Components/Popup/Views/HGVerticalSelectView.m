@@ -38,6 +38,10 @@ CGFloat const kHGVerticalSelectViewCellHeight = 50.f;
         
         self.items = items;
         
+        if (title.length == 0) {
+            self.headerView.height = 10;
+        }
+        
         if (type == HGVerticalSelectType9) {
             [self initiateCollectionView];
         }else{
@@ -168,7 +172,7 @@ CGFloat const kHGVerticalSelectViewCellHeight = 50.f;
         _layout.minimumLineSpacing = 12.f;
         _layout.minimumInteritemSpacing = 7.f;
         _layout.itemSize = CGSizeMake(kHGHorizontalSCCellWidth, kHGHorizontalSCCellHeight - 10);
-        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 32);
+        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, self.headerView.height);
         _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + kHGSelectViewCancelHeight);
     }
     return _layout;

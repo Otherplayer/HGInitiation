@@ -84,7 +84,7 @@
                               @{@"title":@"Twitter",@"icon":@"sns_icon_11"},
                               @{@"title":@"WhatsApp",@"icon":@"sns_icon_43"}
                               ];
-    HGVerticalSelectView *horizontalScrollView = [[HGVerticalSelectView alloc] initWithItems:shareVendors title:@"分享" type:HGVerticalSelectType9];
+    HGVerticalSelectView *horizontalScrollView = [[HGVerticalSelectView alloc] initWithItems:shareVendors title:@"" type:HGVerticalSelectType9];
 
     @weakify(self);
     [horizontalScrollView setDidTapCancelHandler:^{
