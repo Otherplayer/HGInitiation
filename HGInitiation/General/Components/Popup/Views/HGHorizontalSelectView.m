@@ -72,7 +72,7 @@
 }
 - (HGSelectViewFooter *)footerView {
     if (!_footerView) {
-        _footerView = [HGSelectViewFooter.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50 + DANGER_BOTTOM_AREA_HEIGHT)];
+        _footerView = [HGSelectViewFooter.alloc initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHGSelectViewCancelHeight + DANGER_BOTTOM_AREA_HEIGHT)];
     }
     return _footerView;
 }

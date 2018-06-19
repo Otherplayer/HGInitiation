@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat const kHGSelectViewCancelHeight;
+
 @interface HGSelectViewHeader : UICollectionReusableView
 @property(nonatomic, strong) UILabel *labTitle;
 @end

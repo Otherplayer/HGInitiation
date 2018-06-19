@@ -10,6 +10,8 @@
 #import "HGSelectAdditionalView.h"
 #import "HGHorizontalSelectTCell.h"
 
+CGFloat const kHGVerticalSelectViewCellHeight = 50.f;
+
 
 @interface HGVerticalSelectView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic, strong)UICollectionView *collectionView;
@@ -80,7 +82,7 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return kHGVerticalSelectViewCellHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
@@ -167,7 +169,7 @@
         _layout.minimumInteritemSpacing = 7.f;
         _layout.itemSize = CGSizeMake(kHGHorizontalSCCellWidth, kHGHorizontalSCCellHeight - 10);
         _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 32);
-        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + 50);
+        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, DANGER_BOTTOM_AREA_HEIGHT + kHGSelectViewCancelHeight);
     }
     return _layout;
 }
@@ -225,7 +227,7 @@
     [self.tableView setTableFooterView:self.footerView];
     [self addSubview:self.tableView];
     
-    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, 50 * self.items.count + self.headerView.height + self.footerView.height + 5);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kHGVerticalSelectViewCellHeight * self.items.count + self.headerView.height + self.footerView.height + 5);
     [self setFrame:frame];
     [self.tableView setFrame:frame];
     

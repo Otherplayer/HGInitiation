@@ -8,6 +8,8 @@
 
 #import "HGSelectAdditionalView.h"
 
+CGFloat const kHGSelectViewCancelHeight = 50.f;
+
 @implementation HGSelectViewHeader
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -41,7 +43,7 @@
         });
         
         UILabel *labCancel = ({
-            labCancel = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), 50)];
+            labCancel = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), kHGSelectViewCancelHeight)];
             [labCancel setTextColor:[UIColor blackColor]];
             [labCancel setFont:[UIFont systemFontOfSize:16]];
             [labCancel setTextAlignment:NSTextAlignmentCenter];
