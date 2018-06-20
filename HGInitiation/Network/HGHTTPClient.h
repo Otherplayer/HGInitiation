@@ -11,6 +11,13 @@
 @interface HGHTTPClient : NSObject
 + (instancetype)sharedInstance;
 
+
+// 登录
+- (NSURLSessionDataTask *)login:(NSString *)account password:(NSString *)password completed:(HGHTTPResultHandler)completed;
+- (NSURLSessionDataTask *)regist:(NSString *)account password:(NSString *)password captcha:(NSString *)captcha completed:(HGHTTPResultHandler)completed;
+- (NSURLSessionDataTask *)fetchCaptcha:(NSString *)account completed:(HGHTTPResultHandler)completed;
+
+
 // 获取emojies
 - (NSURLSessionDataTask *)fetchEmojies:(HGHTTPResultHandler)completed;
 // 获取电影列表，可能需要翻墙才能访问

@@ -17,8 +17,8 @@
 #import "HGHelperPush.h"
 #import "HGThemeWhatever.h"
 #import <LocalAuthentication/LocalAuthentication.h>
-
-static NSString *Identifier = @"Identifier";
+#import "HGInitiation-Swift.h"
+#import "HGBASENavigationController.h"
 
 NSString *const TITLE = @"title";
 NSString *const TYPE = @"type";
@@ -49,11 +49,13 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-//    double delayInSeconds = 1.2f;
-//    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+    double delayInSeconds = 1.2f;
+    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
 //        [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
-//    });
+        HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
+        [self presentViewController:controller animated:YES completion:nil];
+    });
     
 }
 
@@ -70,7 +72,7 @@ CGFloat currentPage = 0;
     return self.items.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HGIdentifier forIndexPath:indexPath];
     
     NSDictionary *item = self.items[indexPath.row];
     NSString *title = [item objectForKey:TITLE];
@@ -327,7 +329,7 @@ CGFloat currentPage = 0;
         _tableView;
     });
     
-    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:Identifier];
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:HGIdentifier];
     [self.tableView setTableFooterView:[UIView new]];
     [self.view addSubview:self.tableView];
     

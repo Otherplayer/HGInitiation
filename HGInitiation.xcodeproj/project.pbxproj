@@ -30,7 +30,6 @@
 		632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */; };
 		632B7ABC1FF39F0A000F57A3 /* HGAssetAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABB1FF39F0A000F57A3 /* HGAssetAlbum.m */; };
 		632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */; };
-		632C681320D3A4F7004D715F /* HGSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C681220D3A4F7004D715F /* HGSViewController.swift */; };
 		6331E21520D0C89E0040C6C7 /* HGPageProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6331E21420D0C89E0040C6C7 /* HGPageProgressView.m */; };
 		633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D3200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m */; };
 		633E47D7200DDF7C004DF9E7 /* UIAlertController+HGCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E47D6200DDF7C004DF9E7 /* UIAlertController+HGCustom.m */; };
@@ -56,6 +55,7 @@
 		635C57CF20048E29004CE18B /* HGScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57CE20048E29004CE18B /* HGScrollController.m */; };
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
 		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
+		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
 		63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B9B1FF0DD5F00DAFD68 /* ViewController.m */; };
@@ -77,9 +77,6 @@
 		6392026A20D257410014742E /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6392026920D257400014742E /* CHTCollectionViewWaterfallLayout.m */; };
 		63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE220AC066C007F944B /* HGFeaturedController.m */; };
 		63949EE620AC06B6007F944B /* HGWhateverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE520AC06B6007F944B /* HGWhateverController.m */; };
-		63949EEA20AC19C6007F944B /* HGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EE920AC19C6007F944B /* HGLoginController.m */; };
-		63949EED20AC19D6007F944B /* HGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EEC20AC19D6007F944B /* HGRegisterController.m */; };
-		63949EEF20AC1B9A007F944B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63949EEE20AC1B9A007F944B /* Login.storyboard */; };
 		63949EF220AC2743007F944B /* NSNumber+HGRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF120AC2743007F944B /* NSNumber+HGRandom.m */; };
 		63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF420AD680D007F944B /* HGScrollCustomCell.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
@@ -91,6 +88,10 @@
 		63C66CE820D8ECE100D27833 /* HGSelectAdditionalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */; };
 		63C66CEB20D8F61900D27833 /* HGHorizontalSelectTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CEA20D8F61900D27833 /* HGHorizontalSelectTCell.m */; };
 		63C66CEE20D8F65200D27833 /* HGHorizontalSelectCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CED20D8F65200D27833 /* HGHorizontalSelectCCell.m */; };
+		63C66CF320D9064200D27833 /* UIStoryboard+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CF220D9064200D27833 /* UIStoryboard+HG.m */; };
+		63C66CF720D90EF400D27833 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C66CF620D90EF400D27833 /* Login.storyboard */; };
+		63C66CF920D9EB3500D27833 /* HGLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CF820D9EB3500D27833 /* HGLoginController.swift */; };
+		63C66CFB20D9F89600D27833 /* HGRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CFA20D9F89600D27833 /* HGRegisterController.swift */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -157,7 +158,6 @@
 		632B7ABD1FF3A3FD000F57A3 /* HGPhotoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPhotoModel.h; sourceTree = "<group>"; };
 		632B7ABE1FF3A3FD000F57A3 /* HGPhotoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPhotoModel.m; sourceTree = "<group>"; };
 		632C681120D3A4F6004D715F /* HGInitiation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HGInitiation-Bridging-Header.h"; sourceTree = "<group>"; };
-		632C681220D3A4F7004D715F /* HGSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGSViewController.swift; sourceTree = "<group>"; };
 		6331E21320D0C89E0040C6C7 /* HGPageProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageProgressView.h; sourceTree = "<group>"; };
 		6331E21420D0C89E0040C6C7 /* HGPageProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageProgressView.m; sourceTree = "<group>"; };
 		633E47D2200DDC7E004DF9E7 /* UIAlertAction+HGCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+HGCustom.h"; sourceTree = "<group>"; };
@@ -209,6 +209,8 @@
 		635C57D220048F4A004CE18B /* HGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollView.m; sourceTree = "<group>"; };
 		6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGNavItems.h"; sourceTree = "<group>"; };
 		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
+		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
+		636B222520DA459D0073C7F2 /* UIButton+CountDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
 		63878762206A2C16006FE525 /* HGDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloader.m; sourceTree = "<group>"; };
 		63880B941FF0DD5F00DAFD68 /* HGInitiation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGInitiation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,11 +252,6 @@
 		63949EE220AC066C007F944B /* HGFeaturedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGFeaturedController.m; sourceTree = "<group>"; };
 		63949EE420AC06B6007F944B /* HGWhateverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGWhateverController.h; sourceTree = "<group>"; };
 		63949EE520AC06B6007F944B /* HGWhateverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGWhateverController.m; sourceTree = "<group>"; };
-		63949EE820AC19C6007F944B /* HGLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGLoginController.h; sourceTree = "<group>"; };
-		63949EE920AC19C6007F944B /* HGLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGLoginController.m; sourceTree = "<group>"; };
-		63949EEB20AC19D6007F944B /* HGRegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGRegisterController.h; sourceTree = "<group>"; };
-		63949EEC20AC19D6007F944B /* HGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGRegisterController.m; sourceTree = "<group>"; };
-		63949EEE20AC1B9A007F944B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		63949EF020AC2743007F944B /* NSNumber+HGRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+HGRandom.h"; sourceTree = "<group>"; };
 		63949EF120AC2743007F944B /* NSNumber+HGRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+HGRandom.m"; sourceTree = "<group>"; };
 		63949EF320AD680D007F944B /* HGScrollCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollCustomCell.h; sourceTree = "<group>"; };
@@ -279,6 +276,11 @@
 		63C66CEA20D8F61900D27833 /* HGHorizontalSelectTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHorizontalSelectTCell.m; sourceTree = "<group>"; };
 		63C66CEC20D8F65200D27833 /* HGHorizontalSelectCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHorizontalSelectCCell.h; sourceTree = "<group>"; };
 		63C66CED20D8F65200D27833 /* HGHorizontalSelectCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHorizontalSelectCCell.m; sourceTree = "<group>"; };
+		63C66CF120D9064200D27833 /* UIStoryboard+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+HG.h"; sourceTree = "<group>"; };
+		63C66CF220D9064200D27833 /* UIStoryboard+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+HG.m"; sourceTree = "<group>"; };
+		63C66CF620D90EF400D27833 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		63C66CF820D9EB3500D27833 /* HGLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGLoginController.swift; sourceTree = "<group>"; };
+		63C66CFA20D9F89600D27833 /* HGRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGRegisterController.swift; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -514,6 +516,10 @@
 				63949EF120AC2743007F944B /* NSNumber+HGRandom.m */,
 				6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */,
 				6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */,
+				63C66CF120D9064200D27833 /* UIStoryboard+HG.h */,
+				63C66CF220D9064200D27833 /* UIStoryboard+HG.m */,
+				636B222420DA459D0073C7F2 /* UIButton+CountDown.h */,
+				636B222520DA459D0073C7F2 /* UIButton+CountDown.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -611,13 +617,12 @@
 				63880B9A1FF0DD5F00DAFD68 /* ViewController.h */,
 				63880B9B1FF0DD5F00DAFD68 /* ViewController.m */,
 				63880B9D1FF0DD5F00DAFD68 /* Main.storyboard */,
-				63949EEE20AC1B9A007F944B /* Login.storyboard */,
+				63C66CF620D90EF400D27833 /* Login.storyboard */,
 				63880BA01FF0DD5F00DAFD68 /* Assets.xcassets */,
 				63880BA21FF0DD5F00DAFD68 /* LaunchScreen.storyboard */,
 				63880BA51FF0DD5F00DAFD68 /* Info.plist */,
 				63880BAD1FF0DD9000DAFD68 /* PrefixHeader.pch */,
 				63880BA61FF0DD5F00DAFD68 /* main.m */,
-				632C681220D3A4F7004D715F /* HGSViewController.swift */,
 				632C681120D3A4F6004D715F /* HGInitiation-Bridging-Header.h */,
 			);
 			path = HGInitiation;
@@ -775,10 +780,8 @@
 		63949EE720AC19B0007F944B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				63949EE820AC19C6007F944B /* HGLoginController.h */,
-				63949EE920AC19C6007F944B /* HGLoginController.m */,
-				63949EEB20AC19D6007F944B /* HGRegisterController.h */,
-				63949EEC20AC19D6007F944B /* HGRegisterController.m */,
+				63C66CF820D9EB3500D27833 /* HGLoginController.swift */,
+				63C66CFA20D9F89600D27833 /* HGRegisterController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -945,7 +948,7 @@
 			files = (
 				63880BA41FF0DD5F00DAFD68 /* LaunchScreen.storyboard in Resources */,
 				6306DF5E2031814700959275 /* 1.jpg in Resources */,
-				63949EEF20AC1B9A007F944B /* Login.storyboard in Resources */,
+				63C66CF720D90EF400D27833 /* Login.storyboard in Resources */,
 				63880BA11FF0DD5F00DAFD68 /* Assets.xcassets in Resources */,
 				63880B9F1FF0DD5F00DAFD68 /* Main.storyboard in Resources */,
 				631022182047913D00876AB6 /* large_leaves_70mp.jpg in Resources */,
@@ -1011,7 +1014,6 @@
 				635A8D08207C923600E4E4D6 /* NSString+URITemplate.m in Sources */,
 				635C24F81FFCBE760070BC46 /* HGZoomImageView.m in Sources */,
 				635C57CF20048E29004CE18B /* HGScrollController.m in Sources */,
-				632C681320D3A4F7004D715F /* HGSViewController.swift in Sources */,
 				631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */,
 				6341E5F520C9117E005065C5 /* HGVerticalSelectView.m in Sources */,
 				63880BBF1FF0EA5700DAFD68 /* HGBASEViewController.m in Sources */,
@@ -1026,8 +1028,8 @@
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
 				631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */,
 				6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */,
+				636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */,
 				6341E5E520C7B74F005065C5 /* CNPPopupController.m in Sources */,
-				63949EEA20AC19C6007F944B /* HGLoginController.m in Sources */,
 				630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */,
 				631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,
@@ -1045,9 +1047,10 @@
 				63EDC03A1FFF0AEE0049597F /* HGWebViewController.m in Sources */,
 				635C24F21FFCB28F0070BC46 /* UIColor+HG.m in Sources */,
 				635C57D320048F4A004CE18B /* HGScrollView.m in Sources */,
-				63949EED20AC19D6007F944B /* HGRegisterController.m in Sources */,
 				632B7AAD1FF22987000F57A3 /* HGPhotosController.m in Sources */,
 				63949EF220AC2743007F944B /* NSNumber+HGRandom.m in Sources */,
+				63C66CF920D9EB3500D27833 /* HGLoginController.swift in Sources */,
+				63C66CF320D9064200D27833 /* UIStoryboard+HG.m in Sources */,
 				63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */,
 				63949EE320AC066C007F944B /* HGFeaturedController.m in Sources */,
 				633E47D4200DDC7E004DF9E7 /* UIAlertAction+HGCustom.m in Sources */,
@@ -1071,6 +1074,7 @@
 				63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */,
 				63880BA71FF0DD5F00DAFD68 /* main.m in Sources */,
 				635C24E71FFB71C60070BC46 /* HGTextView.m in Sources */,
+				63C66CFB20D9F89600D27833 /* HGRegisterController.swift in Sources */,
 				63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */,
 				63878763206A2C16006FE525 /* HGDownloader.m in Sources */,
 				6392026A20D257410014742E /* CHTCollectionViewWaterfallLayout.m in Sources */,

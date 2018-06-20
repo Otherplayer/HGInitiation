@@ -81,6 +81,25 @@
     return dataTask;
 }
 
+#pragma mark - LOGIN
+- (NSURLSessionDataTask *)login:(NSString *)account password:(NSString *)password completed:(HGHTTPResultHandler)completed {
+    NSURLSessionDataTask *dataTask = [self.service POST:[self urlGithub:@"emojis"]
+                                                 params:@{@"account":account,@"password":password}
+                                              completed:completed];
+    return dataTask;
+}
+- (NSURLSessionDataTask *)regist:(NSString *)account password:(NSString *)password captcha:(NSString *)captcha completed:(HGHTTPResultHandler)completed {
+    NSURLSessionDataTask *dataTask = [self.service POST:[self urlGithub:@"emojis"]
+                                                 params:@{@"account":account,@"password":password,@"captcha":captcha}
+                                              completed:completed];
+    return dataTask;
+}
+- (NSURLSessionDataTask *)fetchCaptcha:(NSString *)account completed:(HGHTTPResultHandler)completed {
+    NSURLSessionDataTask *dataTask = [self.service GET:[self urlGithub:@"emojis"] params:nil completed:completed];
+    return dataTask;
+}
+
+
 
 #pragma mark - BASE URL
 

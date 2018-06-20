@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yu1-iM-hrG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MSS-hs-BjU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,70 +9,187 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Controller-->
-        <scene sceneID="f61-ny-MQu">
+        <!--Navigation Controller-->
+        <scene sceneID="LaL-08-R9m">
             <objects>
-                <viewController storyboardIdentifier="HGLoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FVi-MS-QSx" customClass="HGLoginController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HGBASENavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="MSS-hs-BjU" customClass="HGBASENavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uJz-Qc-rsn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dsd-LU-kyd" kind="relationship" relationship="rootViewController" id="YtT-SH-CLa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0jl-r3-tCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698" y="-166"/>
+        </scene>
+        <!--Login Controller-->
+        <scene sceneID="mvp-hl-pft">
+            <objects>
+                <viewController storyboardIdentifier="HGLoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dsd-LU-kyd" customClass="HGLoginController" customModule="HGInitiation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UZG-3H-Xn9"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ktx-cE-wnf"/>
+                        <viewControllerLayoutGuide type="top" id="RXr-8q-w08"/>
+                        <viewControllerLayoutGuide type="bottom" id="usm-2L-96F"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2xg-WR-1O4">
+                    <view key="view" contentMode="scaleToFill" id="B2O-Oj-vau">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-vw-TLf">
-                                <rect key="frame" x="267" y="343" width="46" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6oW-T9-cnX" customClass="HGTextField">
+                                <rect key="frame" x="41" y="95" width="189" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Za5-si-fgc" customClass="HGTextField">
+                                <rect key="frame" x="41" y="166" width="189" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0h-v5-sOI">
+                                <rect key="frame" x="65" y="256" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="登录"/>
                                 <connections>
-                                    <segue destination="1G0-xK-51h" kind="showDetail" id="s9R-HM-P3I"/>
+                                    <action selector="loginAction:" destination="dsd-LU-kyd" eventType="touchUpInside" id="vH8-MN-Mpj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-SF-hbd">
+                                <rect key="frame" x="65" y="302" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="注册"/>
+                                <connections>
+                                    <segue destination="GMb-mt-lFu" kind="show" id="Z6I-Ii-g4Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z99-nS-RR9">
+                                <rect key="frame" x="65" y="349" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="找加密码"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeR-Hf-W4U">
+                                <rect key="frame" x="16" y="20" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="a8l-2I-Js0"/>
+                                    <constraint firstAttribute="height" constant="44" id="ssv-n1-tQ3"/>
+                                </constraints>
+                                <state key="normal" image="shutdown"/>
+                                <connections>
+                                    <action selector="backAction:" destination="dsd-LU-kyd" eventType="touchUpInside" id="YfC-0E-Ror"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PeR-Hf-W4U" firstAttribute="leading" secondItem="B2O-Oj-vau" secondAttribute="leading" constant="16" id="4hX-Z8-fUd"/>
+                            <constraint firstItem="PeR-Hf-W4U" firstAttribute="top" secondItem="RXr-8q-w08" secondAttribute="bottom" id="ZRY-ad-4Mb"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qGT-Yj-0Zq"/>
+                    <navigationItem key="navigationItem" id="vc5-S7-Mpd"/>
+                    <connections>
+                        <outlet property="btnLogin" destination="X0h-v5-sOI" id="A6e-1u-c6H"/>
+                        <outlet property="btnRegister" destination="XDy-SF-hbd" id="IfU-Mk-IIH"/>
+                        <outlet property="btnRetrievePassword" destination="Z99-nS-RR9" id="VJG-nw-IJN"/>
+                        <outlet property="constraintCancelButtonTop" destination="ZRY-ad-4Mb" id="Oq9-S5-V8i"/>
+                        <outlet property="tfAccount" destination="6oW-T9-cnX" id="q6m-l5-5ET"/>
+                        <outlet property="tfPassword" destination="Za5-si-fgc" id="Cep-wT-DC9"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ujE-5d-D71" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9s-KJ-BEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="-152"/>
+            <point key="canvasLocation" x="29.600000000000001" y="-163.26836581709148"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Nfm-4R-Nai">
+        <!--Register Controller-->
+        <scene sceneID="G5M-t3-ju8">
             <objects>
-                <viewController id="1G0-xK-51h" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HGRegisterController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GMb-mt-lFu" customClass="HGRegisterController" customModule="HGInitiation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="euX-jm-YZj"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eeh-yz-JTn"/>
+                        <viewControllerLayoutGuide type="top" id="cQ4-8x-Tzo"/>
+                        <viewControllerLayoutGuide type="bottom" id="PSf-kJ-Nha"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dkl-AM-JWD">
+                    <view key="view" contentMode="scaleToFill" id="eOP-mJ-MBp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1K-US-WUP">
+                                <rect key="frame" x="16" y="20" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="YVV-Hg-CBm"/>
+                                    <constraint firstAttribute="width" constant="44" id="zbJ-nL-iW3"/>
+                                </constraints>
+                                <state key="normal" image="shutdown"/>
+                                <connections>
+                                    <action selector="backAction:" destination="GMb-mt-lFu" eventType="touchUpInside" id="84e-uv-0tq"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dMf-uQ-dae" customClass="HGTextField">
+                                <rect key="frame" x="16" y="134" width="189" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-MH-VgL" customClass="HGTextField">
+                                <rect key="frame" x="16" y="213" width="189" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Po2-MO-ezq" customClass="HGTextField">
+                                <rect key="frame" x="16" y="295" width="189" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-DE-hlK">
+                                <rect key="frame" x="226" y="295" width="114" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="发送验证码">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCaptchaAction:" destination="GMb-mt-lFu" eventType="touchUpInside" id="KRq-f2-KL3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhs-Ez-qx5">
+                                <rect key="frame" x="95" y="406" width="220" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="注册"/>
+                                <connections>
+                                    <action selector="registerAction:" destination="GMb-mt-lFu" eventType="touchUpInside" id="7ma-7a-2sW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t1K-US-WUP" firstAttribute="top" secondItem="cQ4-8x-Tzo" secondAttribute="bottom" id="0q3-k8-ldh"/>
+                            <constraint firstItem="t1K-US-WUP" firstAttribute="leading" secondItem="eOP-mJ-MBp" secondAttribute="leading" constant="16" id="t2N-WT-rkw"/>
+                        </constraints>
                     </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-u4-FBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1113" y="-152"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qpb-eA-nsn">
-            <objects>
-                <navigationController storyboardIdentifier="HGBASENavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu1-iM-hrG" customClass="HGBASENavigationController" customModule="HGInitiation" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5PP-P9-M29">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FVi-MS-QSx" kind="relationship" relationship="rootViewController" id="ijR-df-cX7"/>
+                        <outlet property="btnSendCaptcha" destination="A9A-DE-hlK" id="d1f-DS-RhP"/>
+                        <outlet property="tfAccount" destination="dMf-uQ-dae" id="rXZ-aJ-luC"/>
+                        <outlet property="tfCaptcha" destination="Po2-MO-ezq" id="5vU-U6-s4e"/>
+                        <outlet property="tfPassword" destination="kkP-MH-VgL" id="flS-da-ki8"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bkv-uh-BLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQG-rj-oQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647.20000000000005" y="-152.47376311844079"/>
+            <point key="canvasLocation" x="908" y="-167.76611694152925"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shutdown" width="22" height="22"/>
+    </resources>
 </document>

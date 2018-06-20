@@ -20,6 +20,7 @@
 #import "NSNumber+HGRandom.h"
 #import "UIViewController+HGNavItems.h"
 #import "UIImage+HG.h"
+#import "UIStoryboard+HG.h"
 
 
 #endif /* HGCategoriesHeader_h */
