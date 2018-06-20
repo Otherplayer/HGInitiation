@@ -17,8 +17,9 @@
 #import "HGHelperPush.h"
 #import "HGThemeWhatever.h"
 #import <LocalAuthentication/LocalAuthentication.h>
-#import "HGInitiation-Swift.h"
 #import "HGBASENavigationController.h"
+
+#import "HGInitiation-Swift.h"
 
 NSString *const TITLE = @"title";
 NSString *const TYPE = @"type";
@@ -49,13 +50,13 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     
-    double delayInSeconds = 1.2f;
-    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-//        [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
-        HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
-        [self presentViewController:controller animated:YES completion:nil];
-    });
+//    double delayInSeconds = 1.2f;
+//    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
+////        [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
+//        HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
+//        [self presentViewController:controller animated:YES completion:nil];
+//    });
     
 }
 
@@ -215,7 +216,10 @@ CGFloat currentPage = 0;
     HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
     [self presentViewController:controller animated:YES completion:nil];
 }
-
+- (void)funLogin {
+    HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
+    [self presentViewController:controller animated:YES completion:nil];
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat current = scrollView.contentOffset.y + scrollView.frame.size.height;
@@ -306,6 +310,7 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
 //                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
 //                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
+                   @{TITLE:@"登录",FUN:@"funLogin",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"生物识别",FUN:@"funBiometrics",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"相册选择",FUN:@"funImagePicker",TYPE:@(HGDataTypeFunction)},//https://github.com/QMUI/QMUI_iOS
                    @{TITLE:@"头像截取",FUN:@"funAvatarCut",TYPE:@(HGDataTypeFunction)},//https://github.com/itouch2/PhotoTweaks
