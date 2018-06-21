@@ -56,6 +56,7 @@
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
 		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
 		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
+		636B222820DA56120073C7F2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B222720DA56120073C7F2 /* Const.swift */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
 		63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B9B1FF0DD5F00DAFD68 /* ViewController.m */; };
@@ -211,6 +212,7 @@
 		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
 		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
 		636B222520DA459D0073C7F2 /* UIButton+CountDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
+		636B222720DA56120073C7F2 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
 		63878762206A2C16006FE525 /* HGDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloader.m; sourceTree = "<group>"; };
 		63880B941FF0DD5F00DAFD68 /* HGInitiation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGInitiation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,32 +365,7 @@
 				63949EDF20AC05EF007F944B /* Whatever */,
 				63F6BBBF209AAFE400BB8EFF /* Settings */,
 				63F6BBBE209AAFD400BB8EFF /* Functions */,
-				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
-				635C24E31FFB6D3A0070BC46 /* HGTextFieldController.m */,
-				635C24E91FFB8BAB0070BC46 /* HGTextViewController.h */,
-				635C24EA1FFB8BAB0070BC46 /* HGTextViewController.m */,
-				635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */,
-				635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */,
-				635C57C720033319004CE18B /* HGBrowserController.h */,
-				635C57C820033319004CE18B /* HGBrowserController.m */,
-				635C57CD20048E29004CE18B /* HGScrollController.h */,
-				635C57CE20048E29004CE18B /* HGScrollController.m */,
-				63D559752007516100BBA0BE /* HGWaterfallController.h */,
-				63D559762007516100BBA0BE /* HGWaterfallController.m */,
-				63A0C70D2041487700FFD56E /* HGOtherController.h */,
-				63A0C70E2041487700FFD56E /* HGOtherController.m */,
-				63F3D3DD20C53F89000AC732 /* HGPageControllerDemo.h */,
-				63F3D3DE20C53F89000AC732 /* HGPageControllerDemo.m */,
-				63B9A169205648DF0006B2E9 /* HGPageContentController.h */,
-				63B9A16A205648DF0006B2E9 /* HGPageContentController.m */,
-				6341E5D920C77B95005065C5 /* HGPageContent2Controller.h */,
-				6341E5DA20C77B95005065C5 /* HGPageContent2Controller.m */,
-				6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */,
-				6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */,
-				6301EBC42069F39800EBD4D3 /* HGDownloadController.h */,
-				6301EBC52069F39800EBD4D3 /* HGDownloadController.m */,
-				6341E5DC20C784FC005065C5 /* HGPayController.h */,
-				6341E5DD20C784FC005065C5 /* HGPayController.m */,
+				6345EC5D20DB87570094D634 /* Demo */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -459,6 +436,39 @@
 				63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6345EC5D20DB87570094D634 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				635C24E21FFB6D3A0070BC46 /* HGTextFieldController.h */,
+				635C24E31FFB6D3A0070BC46 /* HGTextFieldController.m */,
+				635C24E91FFB8BAB0070BC46 /* HGTextViewController.h */,
+				635C24EA1FFB8BAB0070BC46 /* HGTextViewController.m */,
+				635C24FA1FFCDE3F0070BC46 /* HGZoomImageController.h */,
+				635C24FB1FFCDE3F0070BC46 /* HGZoomImageController.m */,
+				635C57C720033319004CE18B /* HGBrowserController.h */,
+				635C57C820033319004CE18B /* HGBrowserController.m */,
+				635C57CD20048E29004CE18B /* HGScrollController.h */,
+				635C57CE20048E29004CE18B /* HGScrollController.m */,
+				63D559752007516100BBA0BE /* HGWaterfallController.h */,
+				63D559762007516100BBA0BE /* HGWaterfallController.m */,
+				63A0C70D2041487700FFD56E /* HGOtherController.h */,
+				63A0C70E2041487700FFD56E /* HGOtherController.m */,
+				63F3D3DD20C53F89000AC732 /* HGPageControllerDemo.h */,
+				63F3D3DE20C53F89000AC732 /* HGPageControllerDemo.m */,
+				63B9A169205648DF0006B2E9 /* HGPageContentController.h */,
+				63B9A16A205648DF0006B2E9 /* HGPageContentController.m */,
+				6341E5D920C77B95005065C5 /* HGPageContent2Controller.h */,
+				6341E5DA20C77B95005065C5 /* HGPageContent2Controller.m */,
+				6327575920CFB0510095E28D /* HGPagesWithHeaderDemo.h */,
+				6327575A20CFB0510095E28D /* HGPagesWithHeaderDemo.m */,
+				6301EBC42069F39800EBD4D3 /* HGDownloadController.h */,
+				6301EBC52069F39800EBD4D3 /* HGDownloadController.m */,
+				6341E5DC20C784FC005065C5 /* HGPayController.h */,
+				6341E5DD20C784FC005065C5 /* HGPayController.m */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		635C24D61FF63D260070BC46 /* Picker */ = {
@@ -646,6 +656,7 @@
 			children = (
 				63B9622320D3609400D31B9C /* HGGlobalMacro.h */,
 				63B9622520D360BC00D31B9C /* HGStaticMacro.h */,
+				636B222720DA56120073C7F2 /* Const.swift */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -1101,6 +1112,7 @@
 				63880BB31FF0DF6800DAFD68 /* HGHTTPClient.m in Sources */,
 				632B7AB71FF38D9A000F57A3 /* HGAsset.m in Sources */,
 				63880BC51FF0EADC00DAFD68 /* HGHelperHUD.m in Sources */,
+				636B222820DA56120073C7F2 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

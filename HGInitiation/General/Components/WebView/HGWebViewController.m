@@ -122,7 +122,6 @@ static NSString * const JSCallbackIdentifier = @"jsCallback";
     
 }
 
-
 #pragma mark - WKUIDelegate
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{

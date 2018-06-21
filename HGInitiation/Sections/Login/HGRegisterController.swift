@@ -93,6 +93,7 @@ class HGRegisterController: HGBASEViewController {
             return;
         }
         
+        self.view.endEditing(true)
         self.showProgressTip(nil, dealy: 20)
         HGHTTPClient.sharedInstance().fetchCaptcha(account) { (success, errStr, res) in
             self.hideTip()
