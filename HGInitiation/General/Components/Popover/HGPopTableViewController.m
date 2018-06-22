@@ -91,10 +91,6 @@
     [self.tableView reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -140,7 +136,7 @@
     cell.textLabel.textColor = self.textColor;
     cell.textLabel.font = self.font;
     
-    if (self.imageArray.count - 1 >= indexPath.row) {
+    if (self.imageArray && self.imageArray.count - 1 >= indexPath.row) {
         cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.row]];
     }
     if (indexPath.row == self.menuArray.count - 1) {
