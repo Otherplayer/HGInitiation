@@ -17,6 +17,12 @@
                         theme:(HGPopTableViewTheme)theme
                     doneBlock:(void(^)(NSInteger selectedIndex))doneBlock
                   cancelBlock:(void(^)(void))cancelBlock;
++ (void)showForViewController:(UIViewController *)sourceViewController
+                   senderView:(UIView *)sender
+                    menuArray:(NSArray<NSString *> *)menuArray
+                        theme:(HGPopTableViewTheme)theme
+                    doneBlock:(void(^)(NSInteger selectedIndex))doneBlock
+                  cancelBlock:(void(^)(void))cancelBlock;
 
 - (void)showForViewController:(UIViewController *)sourceViewController
             fromBarButtonItem:(UIBarButtonItem *)barButtonItem

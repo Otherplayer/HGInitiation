@@ -35,6 +35,22 @@
                                        doneBlock:doneBlock
                                      cancelBlock:cancelBlock];
 }
++ (void)showForViewController:(UIViewController *)sourceViewController
+                   senderView:(UIView *)sender
+                    menuArray:(NSArray<NSString *> *)menuArray
+                        theme:(HGPopTableViewTheme)theme
+                    doneBlock:(void(^)(NSInteger selectedIndex))doneBlock
+                  cancelBlock:(void(^)(void))cancelBlock {
+    [[self sharedInstance] showForViewController:sourceViewController
+                               fromBarButtonItem:nil
+                                      senderView:sender
+                                           title:nil
+                                       menuArray:menuArray
+                                      imageArray:nil
+                                           theme:theme
+                                       doneBlock:doneBlock
+                                     cancelBlock:cancelBlock];
+}
 
 
 - (void)showForViewController:(UIViewController *)sourceViewController
