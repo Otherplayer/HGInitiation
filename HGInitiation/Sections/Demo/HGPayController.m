@@ -8,6 +8,8 @@
 
 #import "HGPayController.h"
 #import "HGPopupManager.h"
+#import "HGPopMenu.h"
+
 @interface HGPayController ()
 @property(nonatomic, strong)HGPopupManager *popupManager;
 @end
@@ -34,10 +36,9 @@
     UIBarButtonItem *shareItem = [UIBarButtonItem.alloc initWithTitle:@"Share" style:UIBarButtonItemStylePlain target:self action:@selector(showShare)];
     UIBarButtonItem *shareItem2 = [UIBarButtonItem.alloc initWithTitle:@"Share2" style:UIBarButtonItemStylePlain target:self action:@selector(showShare2)];
     UIBarButtonItem *payItem = [UIBarButtonItem.alloc initWithTitle:@"Pay" style:UIBarButtonItemStylePlain target:self action:@selector(showPay)];
-    self.navigationItem.rightBarButtonItems = @[shareItem2,shareItem,payItem];
     
-    
-    
+    UIBarButtonItem *payItem2 = [UIBarButtonItem.alloc initWithTitle:@"Pay" style:UIBarButtonItemStylePlain target:self action:@selector(showPop:)];
+    self.navigationItem.rightBarButtonItems = @[shareItem2,shareItem,payItem,payItem2];
     
 }
 
@@ -64,6 +65,17 @@
 - (void)showShare2 {
     [self.popupManager showShare9ViewWithHandler:^(NSInteger row) {
         NSLog(@"%@",@(row));
+    }];
+}
+- (void)showPop:(UIBarButtonItem *)barButtonItem {
+    [HGPopMenu showForViewController:self
+                   fromBarButtonItem:barButtonItem
+                           menuArray:@[@"中国",@"上海",@"香港特别行政区"]
+                               theme:HGPopTableViewThemeDark
+                           doneBlock:^(NSInteger selectedIndex) {
+                               NSLog(@"%@",@(selectedIndex));
+    } cancelBlock:^{
+        
     }];
 }
 @end

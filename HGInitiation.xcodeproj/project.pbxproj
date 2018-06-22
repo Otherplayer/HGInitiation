@@ -54,6 +54,8 @@
 		635C57C920033319004CE18B /* HGBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57C820033319004CE18B /* HGBrowserController.m */; };
 		635C57CF20048E29004CE18B /* HGScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57CE20048E29004CE18B /* HGScrollController.m */; };
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
+		6362395D20DCC4D500C96C5B /* HGPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6362395C20DCC4D500C96C5B /* HGPopMenu.m */; };
+		6362396020DCC52900C96C5B /* HGPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6362395F20DCC52900C96C5B /* HGPopTableViewController.m */; };
 		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
 		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
 		636B222820DA56120073C7F2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B222720DA56120073C7F2 /* Const.swift */; };
@@ -208,6 +210,10 @@
 		635C57CE20048E29004CE18B /* HGScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollController.m; sourceTree = "<group>"; };
 		635C57D120048F4A004CE18B /* HGScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollView.h; sourceTree = "<group>"; };
 		635C57D220048F4A004CE18B /* HGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollView.m; sourceTree = "<group>"; };
+		6362395B20DCC4D500C96C5B /* HGPopMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopMenu.h; sourceTree = "<group>"; };
+		6362395C20DCC4D500C96C5B /* HGPopMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopMenu.m; sourceTree = "<group>"; };
+		6362395E20DCC52900C96C5B /* HGPopTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopTableViewController.h; sourceTree = "<group>"; };
+		6362395F20DCC52900C96C5B /* HGPopTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopTableViewController.m; sourceTree = "<group>"; };
 		6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGNavItems.h"; sourceTree = "<group>"; };
 		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
 		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
@@ -577,6 +583,7 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6362395A20DCC46500C96C5B /* Popover */,
 				6327575C20CFB0900095E28D /* PagesScroll */,
 				6341E5E220C7B742005065C5 /* Popup */,
 				63B8C80A20B2AD9400CFB3EC /* PageController */,
@@ -591,6 +598,17 @@
 				6389B2101FF61A7F00EBBF6C /* AvatarClipper */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		6362395A20DCC46500C96C5B /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				6362395E20DCC52900C96C5B /* HGPopTableViewController.h */,
+				6362395F20DCC52900C96C5B /* HGPopTableViewController.m */,
+				6362395B20DCC4D500C96C5B /* HGPopMenu.h */,
+				6362395C20DCC4D500C96C5B /* HGPopMenu.m */,
+			);
+			path = Popover;
 			sourceTree = "<group>";
 		};
 		63880B8B1FF0DD5F00DAFD68 = {
@@ -1075,6 +1093,7 @@
 				635C57C920033319004CE18B /* HGBrowserController.m in Sources */,
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,
+				6362395D20DCC4D500C96C5B /* HGPopMenu.m in Sources */,
 				632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */,
 				63F3D3D920C520F8000AC732 /* HGPageContentsView.m in Sources */,
 				63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */,
@@ -1100,6 +1119,7 @@
 				63EDC0351FFE02F40049597F /* NSString+HG.m in Sources */,
 				63F6BB9D2099994200BB8EFF /* HGBASENavigationController.m in Sources */,
 				635C24FC1FFCDE3F0070BC46 /* HGZoomImageController.m in Sources */,
+				6362396020DCC52900C96C5B /* HGPopTableViewController.m in Sources */,
 				632B7AB31FF24643000F57A3 /* HGPhotoCell.m in Sources */,
 				63F3D3DC20C5213F000AC732 /* HGPageTitlesView.m in Sources */,
 				6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */,
