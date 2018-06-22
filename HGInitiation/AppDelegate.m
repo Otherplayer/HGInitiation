@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HGThemeManager.h"
-#import "HGHelperReachability.h"
 #import "HGDownloader.h"
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 #ifndef __OPTIMIZE__
 #import "HGHelperFPS.h"
@@ -35,8 +35,8 @@
     [self installCustomConfiguration];
     [self installFunctions];
     
-    // 需要网络连接成功后才初始化的功能
-    if ([HGHelperReachability sharedInstance].isReachable) {
+    // 需要网络连接成功后才能初始化的功能
+    if ([AFNetworkReachabilityManager sharedManager].isReachable) {
         [self installFunctionsNeedNetworkConnected];
     }
     
@@ -107,19 +107,6 @@
     NSLog(@"【Attention】注册通知失败了");
 }
 
-#pragma mark - network
-
-/*!
- * Called by Reachability whenever status changes.
- */
-- (void)reachabilityChanged:(NSNotification *)note{
-    if ([note.object integerValue]) {
-        if (!self.alreadyInstalledWhenNConnect) {
-            [self installFunctionsNeedNetworkConnected];
-        }
-    }
-}
-
 #pragma mark - install
 
 - (void)installFunctionsNeedNetworkConnected {
@@ -130,11 +117,17 @@
     
 }
 - (void)installNetworkNotifier {
-    [[HGHelperReachability sharedInstance] startNotifier];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(reachabilityChanged:)
-                                                 name:HGReachabilityChangedNotification
-                                               object:nil];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            NSLog(@"【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
+        }else {
+            NSLog(@"【Good Job!】网络已联通🌴🌴🌴🌴🌴🌴🌴🌴");
+            if (!self.alreadyInstalledWhenNConnect) {
+                [self installFunctionsNeedNetworkConnected];
+            }
+        }
+    }];
 }
 - (void)installCustomConfiguration {
     // 应用皮肤

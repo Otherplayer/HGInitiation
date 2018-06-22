@@ -8,7 +8,6 @@
 
 #import "HGTextViewController.h"
 #import "HGTextView.h"
-#import "HGHelperReachability.h"
 @interface HGTextViewController ()<HGTextViewDelegate>
 
 @end

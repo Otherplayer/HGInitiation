@@ -85,8 +85,6 @@
 		63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63949EF420AD680D007F944B /* HGScrollCustomCell.m */; };
 		63A0C70F2041487700FFD56E /* HGOtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C70E2041487700FFD56E /* HGOtherController.m */; };
 		63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */; };
-		63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */; };
-		63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0C7172043EC7C00FFD56E /* Reachability.m */; };
 		63B8C80D20B2ADAD00CFB3EC /* HGPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */; };
 		63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B9A16A205648DF0006B2E9 /* HGPageContentController.m */; };
 		63C66CE820D8ECE100D27833 /* HGSelectAdditionalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CE720D8ECE100D27833 /* HGSelectAdditionalView.m */; };
@@ -270,10 +268,6 @@
 		63A0C70D2041487700FFD56E /* HGOtherController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGOtherController.h; sourceTree = "<group>"; };
 		63A0C70E2041487700FFD56E /* HGOtherController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGOtherController.m; sourceTree = "<group>"; };
 		63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		63A0C7122043D6FA00FFD56E /* HGHelperReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHelperReachability.h; sourceTree = "<group>"; };
-		63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachability.m; sourceTree = "<group>"; };
-		63A0C7162043EC7C00FFD56E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		63A0C7172043EC7C00FFD56E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		63B8C80B20B2ADAD00CFB3EC /* HGPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageController.h; sourceTree = "<group>"; };
 		63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageController.m; sourceTree = "<group>"; };
 		63B9622320D3609400D31B9C /* HGGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGGlobalMacro.h; sourceTree = "<group>"; };
@@ -663,7 +657,6 @@
 		63880BAE1FF0DDDE00DAFD68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				63A0C7152043EC5900FFD56E /* reachability */,
 				63880BB41FF0DF7100DAFD68 /* service */,
 				63880BB11FF0DF6800DAFD68 /* HGHTTPClient.h */,
 				63880BB21FF0DF6800DAFD68 /* HGHTTPClient.m */,
@@ -686,8 +679,6 @@
 		63880BB01FF0DDF500DAFD68 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				63A0C7122043D6FA00FFD56E /* HGHelperReachability.h */,
-				63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */,
 				63880BC31FF0EADC00DAFD68 /* HGHelperHUD.h */,
 				63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */,
 				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
@@ -817,15 +808,6 @@
 				63C66CFA20D9F89600D27833 /* HGRegisterController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		63A0C7152043EC5900FFD56E /* reachability */ = {
-			isa = PBXGroup;
-			children = (
-				63A0C7162043EC7C00FFD56E /* Reachability.h */,
-				63A0C7172043EC7C00FFD56E /* Reachability.m */,
-			);
-			path = reachability;
 			sourceTree = "<group>";
 		};
 		63B8C80A20B2AD9400CFB3EC /* PageController */ = {
@@ -1070,7 +1052,6 @@
 				631FE8722017280700E9D8A2 /* HGThemeManager.m in Sources */,
 				632B7ABF1FF3A3FD000F57A3 /* HGPhotoModel.m in Sources */,
 				635C24EB1FFB8BAB0070BC46 /* HGTextViewController.m in Sources */,
-				63A0C7182043EC7C00FFD56E /* Reachability.m in Sources */,
 				632B7AB01FF22B93000F57A3 /* HGImagePreviewController.m in Sources */,
 				632B7AA71FF22508000F57A3 /* HGImagePickerController.m in Sources */,
 				63F6BBBD209AAF0100BB8EFF /* HGFunctionsController.m in Sources */,
@@ -1131,7 +1112,6 @@
 				63F3D3DC20C5213F000AC732 /* HGPageTitlesView.m in Sources */,
 				6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */,
 				6341E5E920C7B7CB005065C5 /* HGHorizontalSelectView.m in Sources */,
-				63A0C7142043D6FA00FFD56E /* HGHelperReachability.m in Sources */,
 				6341E5DB20C77B95005065C5 /* HGPageContent2Controller.m in Sources */,
 				63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */,
 				63F6BB9A2094753900BB8EFF /* HGHelperFPS.m in Sources */,
