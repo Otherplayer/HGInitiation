@@ -16,7 +16,7 @@
 #endif
 
 @interface AppDelegate ()
-
+@property(nonatomic) BOOL alreadyInstalledWhenNConnect;
 @end
 
 @implementation AppDelegate
@@ -24,10 +24,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    // 监控网络状态
+    [self installNetworkNotifier];
     [self installWindow];
-    [self installFuns];
     [self installCustomConfiguration];
+    [self installFunctions];
+    
+    // 需要网络连接成功后才初始化的功能
+    if ([HGHelperReachability sharedInstance].isReachable) {
+        [self installFunctionsNeedNetworkConnected];
+    }
     
     return YES;
 }
@@ -87,10 +93,51 @@
     }
 }
 
+#pragma mark - network
+
+/*!
+ * Called by Reachability whenever status changes.
+ */
+- (void)reachabilityChanged:(NSNotification *)note{
+    if ([note.object integerValue]) {
+        if (!self.alreadyInstalledWhenNConnect) {
+            [self installFunctionsNeedNetworkConnected];
+        }
+    }
+}
 
 #pragma mark - install
 
-
+- (void)installFunctionsNeedNetworkConnected {
+    self.alreadyInstalledWhenNConnect = YES;
+    
+}
+- (void)installFunctions {
+    
+}
+- (void)installNetworkNotifier {
+    [[HGHelperReachability sharedInstance] startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:HGReachabilityChangedNotification
+                                               object:nil];
+}
+- (void)installCustomConfiguration {
+    // 应用皮肤
+    NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
+    [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
+    
+    // 显示FPS
+#ifndef __OPTIMIZE__
+    [[HGHelperFPS sharedInstance] setHidden:NO];
+#endif
+    
+    
+    if (@available(iOS 11.0, *)){
+//         dont use this !!!
+//        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+}
 - (void)installWindow {
     self.tabBarController = [[HGBASETabBarController alloc] init];
     [self.tabBarController setDefaultViewControllers];
@@ -99,23 +146,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
-}
-
-- (void)installFuns {
-    [[HGHelperReachability sharedInstance] startMonitoring];
-    // 应用皮肤
-    NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
-    [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
-    
-#ifndef __OPTIMIZE__
-    [[HGHelperFPS sharedInstance] setHidden:NO];
-#endif
-}
-- (void)installCustomConfiguration {
-    if (@available(iOS 11.0, *)){
-//         dont use this !!!
-//        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }
 }
 
 

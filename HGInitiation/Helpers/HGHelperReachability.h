@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-
 #define Internet [HGHelperReachability sharedInstance]
+
+extern NSString *HGReachabilityChangedNotification;
 
 @interface HGHelperReachability : NSObject
 
@@ -17,7 +18,7 @@
 @property(nonatomic,readonly,assign) BOOL isReachableWifi;
 
 + (HGHelperReachability *)sharedInstance;
-- (void)startMonitoring;
+- (void)startNotifier;
 
 
 

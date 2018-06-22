@@ -8,7 +8,7 @@
 
 #import "HGTextViewController.h"
 #import "HGTextView.h"
-
+#import "HGHelperReachability.h"
 @interface HGTextViewController ()<HGTextViewDelegate>
 
 @end
@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
     HGTextView *textView = ({
         textView = [HGTextView.alloc initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 400)];

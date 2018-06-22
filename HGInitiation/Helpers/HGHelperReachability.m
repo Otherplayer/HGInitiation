@@ -9,6 +9,8 @@
 #import "HGHelperReachability.h"
 #import "Reachability.h"
 
+NSString *HGReachabilityChangedNotification = @"HGReachabilityChangedNotification";
+
 @interface HGHelperReachability ()
 @property(nonatomic, readwrite, assign) BOOL isReachable;
 @property(nonatomic, readwrite, assign) BOOL isReachableWifi;
@@ -56,7 +58,7 @@
     return NO;
 }
 
-- (void)startMonitoring{
+- (void)startNotifier{
     [self.internetReachability startNotifier];
 }
 
@@ -70,6 +72,8 @@
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
     
     NetworkStatus status = [curReach currentReachabilityStatus];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HGReachabilityChangedNotification object:@(status)];
+    
     if (status == NotReachable) {
         NSLog(@"【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
     }else {
