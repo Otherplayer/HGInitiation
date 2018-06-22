@@ -113,6 +113,7 @@
 }
 - (void)installCustomConfiguration {
     if (@available(iOS 11.0, *)){
+//         dont use this !!!
 //        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
     }
 }

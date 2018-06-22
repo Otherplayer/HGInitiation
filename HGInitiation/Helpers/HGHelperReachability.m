@@ -16,8 +16,21 @@
 @end
 
 @implementation HGHelperReachability
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(reachabilityChanged:)
+                                                     name:kReachabilityChangedNotification
+                                                   object:nil];
+        self.internetReachability = [Reachability reachabilityForInternetConnection];
+    }
+    return self;
+}
 
-+ (HGHelperReachability *)sharedInstance{
+#pragma mark - Public
+
++ (HGHelperReachability *)sharedInstance {
     static HGHelperReachability *reachability = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -26,65 +39,14 @@
     return reachability;
 }
 
-+ (id)sharedInstance2{
-    static __weak HGHelperReachability *instance;
-    HGHelperReachability *strongInstance = instance;
-    @synchronized(self) {
-        if (strongInstance == nil) {
-            strongInstance = [[[self class] alloc] init];
-            instance = strongInstance;
-        }
-    }
-    return strongInstance;
-}
-
-
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-        
-        self.internetReachability = [Reachability reachabilityForInternetConnection];
-        
-//        // Create a reachability object for the desired host
-//        NSString *hostName = @"https://www.baidu.com";
-//        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
-//        // Create a place in memory for reachability flags
-//        SCNetworkReachabilityFlags flags;
-//        // Check the reachability of the host
-//        SCNetworkReachabilityGetFlags(reachability, &flags);
-//        // Release the reachability object
-//        CFRelease(reachability);
-//        // Check to see if the reachable flag is set
-//        if ((flags & kSCNetworkReachabilityFlagsReachable) == 0) {
-//            // The target host is not reachable
-//            _isReachable = NO;
-//            _isReachableWifi = NO;
-//        }else {
-//            _isReachable = YES;
-//            _isReachableWifi = YES;
-//        }
-    }
-    return self;
-}
-
 - (BOOL)isReachable {
-    
     NetworkStatus status = [self.internetReachability currentReachabilityStatus];
-    
-    if (status != NotReachable) {
-        return YES;
+    if (status == NotReachable) {
+        NSLog(@"【Attention】无网络连接❗️❗️❗️❗️❗️❗️❗️❗️❗️");
+        return NO;
     }
-    
-    HGNetWorkType type = [self netWorkType];//此处有可能是有网络，但是网络不通
-    if (type != HGNetWorkTypeNoService) {
-        _isReachable = YES;
-        if (type == HGNetWorkTypeWiFi) {
-            _isReachableWifi = YES;
-        }
-    }
-    return _isReachable;
+    NSLog(@"【Good Job!】网络连接正常🌴🌴🌴🌴🌴🌴🌴🌴");
+    return YES;
 }
 - (BOOL)isReachableWifi {
     NetworkStatus status = [self.internetReachability currentReachabilityStatus];
@@ -98,55 +60,22 @@
     [self.internetReachability startNotifier];
 }
 
+#pragma mark - Private
+
 /*!
  * Called by Reachability whenever status changes.
  */
 - (void)reachabilityChanged:(NSNotification *)note{
-    Reachability* curReach = [note object];
+    Reachability *curReach = [note object];
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-//    NSLog(@"====%@",@([curReach currentReachabilityStatus]));
     
     NetworkStatus status = [curReach currentReachabilityStatus];
-    if (status == ReachableViaWiFi) {
-        _isReachable = YES;
-        _isReachableWifi = YES;
-    }else if (status == ReachableViaWWAN) {
-        _isReachable = YES;
-        _isReachableWifi = NO;
+    if (status == NotReachable) {
+        NSLog(@"【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
     }else {
-        _isReachable = NO;
-        _isReachableWifi = NO;
+        NSLog(@"【Good Job!】网络已联通🌴🌴🌴🌴🌴🌴🌴🌴");
     }
     
-}
-
-- (HGNetWorkType)netWorkType{
-    UIView *statusBar = [[UIApplication sharedApplication] valueForKeyPath:@"statusBar"];
-    UIView *foregroundView = [statusBar valueForKeyPath:@"foregroundView"];
-    
-    UIView *networkView = nil;
-    UIView *signalStrengthView = nil;
-    
-    for (UIView *childView in foregroundView.subviews) {
-        if ([childView isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
-            networkView = childView;
-        }
-        if ([childView isKindOfClass:NSClassFromString(@"UIStatusBarSignalStrengthItemView")]) {
-            signalStrengthView = childView;
-        }
-    }
-    
-    HGNetWorkType status = HGNetWorkTypeNoService;
-    if (networkView) {
-//        NSLog(@"%@",[networkView ivarList]);
-        int netType = [[networkView valueForKeyPath:@"_dataNetworkType"] intValue];
-//        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthRaw"] intValue]));
-//        NSLog(@"%@",@([[networkView valueForKeyPath:@"_wifiStrengthBars"] intValue]));
-//        NSLog(@"%@",@([[signalStrengthView valueForKeyPath:@"_signalStrengthBars"] intValue]));
-        status = (HGNetWorkType)netType;
-    }
-    NSLog("========HGNetWorkType=======%d",status)
-    return status;
 }
 
 
