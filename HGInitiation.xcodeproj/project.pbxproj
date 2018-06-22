@@ -216,6 +216,7 @@
 		6362395E20DCC52900C96C5B /* HGPopTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopTableViewController.h; sourceTree = "<group>"; };
 		6362395F20DCC52900C96C5B /* HGPopTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopTableViewController.m; sourceTree = "<group>"; };
 		6362396120DCF34900C96C5B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		6362396420DCF70A00C96C5B /* HGInitiation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HGInitiation.entitlements; sourceTree = "<group>"; };
 		6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGNavItems.h"; sourceTree = "<group>"; };
 		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
 		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
@@ -273,7 +274,6 @@
 		63A0C7132043D6FA00FFD56E /* HGHelperReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperReachability.m; sourceTree = "<group>"; };
 		63A0C7162043EC7C00FFD56E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		63A0C7172043EC7C00FFD56E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		63AFC62E20809527004AEFCC /* HGInitiation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HGInitiation.entitlements; sourceTree = "<group>"; };
 		63B8C80B20B2ADAD00CFB3EC /* HGPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageController.h; sourceTree = "<group>"; };
 		63B8C80C20B2ADAD00CFB3EC /* HGPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageController.m; sourceTree = "<group>"; };
 		63B9622320D3609400D31B9C /* HGGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGGlobalMacro.h; sourceTree = "<group>"; };
@@ -636,7 +636,7 @@
 		63880B961FF0DD5F00DAFD68 /* HGInitiation */ = {
 			isa = PBXGroup;
 			children = (
-				63AFC62E20809527004AEFCC /* HGInitiation.entitlements */,
+				6362396420DCF70A00C96C5B /* HGInitiation.entitlements */,
 				6312A6E8204E67AE00D7F5EF /* Vendors */,
 				635C24FD1FFCDF190070BC46 /* Resources */,
 				63880BBA1FF0E9FF00DAFD68 /* General */,
@@ -949,8 +949,11 @@
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
-							com.apple.iCloud = {
+							com.apple.Push = {
 								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
