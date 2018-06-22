@@ -15,6 +15,11 @@
 #import "HGHelperFPS.h"
 #endif
 
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
 @interface AppDelegate ()
 @property(nonatomic) BOOL alreadyInstalledWhenNConnect;
 @end
@@ -93,6 +98,15 @@
     }
 }
 
+#pragma mark - notification
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    /// Required - 注册 DeviceToken
+    NSLog(@"注册通知Token：%@",deviceToken);
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"【Attention】注册通知失败了");
+}
+
 #pragma mark - network
 
 /*!
@@ -133,10 +147,11 @@
 #endif
     
     
-    if (@available(iOS 11.0, *)){
-//         dont use this !!!
-//        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }
+    //    if (@available(iOS 11.0, *)){
+    //
+    //    }
+    //         dont use this !!!
+    //        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
 }
 - (void)installWindow {
     self.tabBarController = [[HGBASETabBarController alloc] init];

@@ -56,6 +56,7 @@
 		635C57D320048F4A004CE18B /* HGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C57D220048F4A004CE18B /* HGScrollView.m */; };
 		6362395D20DCC4D500C96C5B /* HGPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6362395C20DCC4D500C96C5B /* HGPopMenu.m */; };
 		6362396020DCC52900C96C5B /* HGPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6362395F20DCC52900C96C5B /* HGPopTableViewController.m */; };
+		6362396320DCF59E00C96C5B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6362396120DCF34900C96C5B /* UserNotifications.framework */; };
 		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
 		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
 		636B222820DA56120073C7F2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B222720DA56120073C7F2 /* Const.swift */; };
@@ -214,6 +215,7 @@
 		6362395C20DCC4D500C96C5B /* HGPopMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopMenu.m; sourceTree = "<group>"; };
 		6362395E20DCC52900C96C5B /* HGPopTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopTableViewController.h; sourceTree = "<group>"; };
 		6362395F20DCC52900C96C5B /* HGPopTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopTableViewController.m; sourceTree = "<group>"; };
+		6362396120DCF34900C96C5B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		6365AF5F20B6A81000856358 /* UIViewController+HGNavItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HGNavItems.h"; sourceTree = "<group>"; };
 		6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HGNavItems.m"; sourceTree = "<group>"; };
 		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6362396320DCF59E00C96C5B /* UserNotifications.framework in Frameworks */,
 				63A0C7112043CDC700FFD56E /* SystemConfiguration.framework in Frameworks */,
 				63EDC03C1FFF0B860049597F /* WebKit.framework in Frameworks */,
 				632B7AB91FF38FF5000F57A3 /* MobileCoreServices.framework in Frameworks */,
@@ -353,6 +356,7 @@
 		51F7300AD98B3FF88E97203B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6362396120DCF34900C96C5B /* UserNotifications.framework */,
 				63A0C7102043CDC700FFD56E /* SystemConfiguration.framework */,
 				63EDC03B1FFF0B860049597F /* WebKit.framework */,
 				632B7AB81FF38FF5000F57A3 /* MobileCoreServices.framework */,

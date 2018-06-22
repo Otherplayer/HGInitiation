@@ -15,12 +15,12 @@
 @end
 
 @implementation HGTextFieldController
-+ (void)initialize {
-    NSLog(@"------INIT");// call when use
-}
-+ (void)load {
-    NSLog(@"=====LOAD"); // call first
-}
+//+ (void)initialize {
+//    NSLog(@"------INIT");// call when use
+//}
+//+ (void)load {
+//    NSLog(@"=====LOAD"); // call first
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
