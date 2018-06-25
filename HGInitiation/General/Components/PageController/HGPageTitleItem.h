@@ -13,7 +13,7 @@
 
 @property(nonatomic, assign) CGFloat rate;
 @property(nonatomic, assign) CGFloat normalSize;     /// default 16
-@property(nonatomic, assign) CGFloat selectedSize;   /// default 17
+@property(nonatomic, assign) CGFloat selectedSize;   /// default 16
 @property(nonatomic, strong) UIColor *normalColor;   /// default 0x666666
 @property(nonatomic, strong) UIColor *selectedColor; /// default blackColor
 

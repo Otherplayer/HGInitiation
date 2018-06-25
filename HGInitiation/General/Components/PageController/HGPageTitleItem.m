@@ -22,7 +22,7 @@
     if (self) {
         
         self.normalSize = 16;
-        self.selectedSize = 17;
+        self.selectedSize = 16;
         self.normalColor = [UIColor colorWithRGB:0x666666];
         self.selectedColor = UIColor.blackColor;
         
