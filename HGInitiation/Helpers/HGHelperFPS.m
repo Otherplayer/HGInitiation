@@ -153,7 +153,9 @@
     }
 }
 - (void)didClickAction:(UITapGestureRecognizer *)gesture {
-    NSLog(@"---didClickAction");
+    if (self.didTapFPSHandler) {
+        self.didTapFPSHandler();
+    }
 }
 
 #pragma mark -

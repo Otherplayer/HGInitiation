@@ -209,6 +209,7 @@
 		635C57CE20048E29004CE18B /* HGScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollController.m; sourceTree = "<group>"; };
 		635C57D120048F4A004CE18B /* HGScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGScrollView.h; sourceTree = "<group>"; };
 		635C57D220048F4A004CE18B /* HGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollView.m; sourceTree = "<group>"; };
+		6360B0F320E0EC3E00611D2C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6362395B20DCC4D500C96C5B /* HGPopMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopMenu.h; sourceTree = "<group>"; };
 		6362395C20DCC4D500C96C5B /* HGPopMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopMenu.m; sourceTree = "<group>"; };
 		6362395E20DCC52900C96C5B /* HGPopTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPopTableViewController.h; sourceTree = "<group>"; };
@@ -612,6 +613,7 @@
 		63880B8B1FF0DD5F00DAFD68 = {
 			isa = PBXGroup;
 			children = (
+				6360B0F320E0EC3E00611D2C /* README.md */,
 				63880B961FF0DD5F00DAFD68 /* HGInitiation */,
 				63880B951FF0DD5F00DAFD68 /* Products */,
 				3AA65109DE2CB3C74EF37F05 /* Pods */,

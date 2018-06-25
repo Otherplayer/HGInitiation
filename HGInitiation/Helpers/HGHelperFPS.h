@@ -19,6 +19,7 @@
 @interface HGHelperFPS : UIWindow
 
 + (HGHelperFPS *)sharedInstance;
+@property(nonatomic,copy)void(^didTapFPSHandler)(void);
 
 
 

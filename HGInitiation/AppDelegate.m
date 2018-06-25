@@ -139,6 +139,9 @@
     // 显示FPS
 #ifndef __OPTIMIZE__
     [[HGHelperFPS sharedInstance] setHidden:NO];
+    [[HGHelperFPS sharedInstance] setDidTapFPSHandler:^{
+        NSLog(@"-----did click fps handler");
+    }];
 #endif
     
     
