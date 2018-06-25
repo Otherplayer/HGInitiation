@@ -40,6 +40,10 @@ const CGFloat HGPageProgressViewHeight = 2.f;
 
 - (void)initiateViews {
     
+    UIToolbar *bgBar = [UIToolbar.alloc initWithFrame:self.bounds];
+    [bgBar setTranslucent:YES];
+    [self addSubview:bgBar];
+    
     self.selectedIndex = 0;
     self.margin = 0;
     self.progressViewPosition = 0;
@@ -192,7 +196,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate pageTitles:self shouldSelectItemAtIndex:indexPath.item];
+    [self.pageTitlesDelegate pageTitles:self shouldSelectItemAtIndex:indexPath.item];
 //    [self scrollToItemAtIndex:indexPath.item];
 //    [collectionView reloadData];
 }

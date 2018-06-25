@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, HGPageProgressViewAnimatedType) {
 @property(nonatomic, assign)NSInteger selectedIndex;
 @property(nonatomic, assign)HGPageTitlesShowType showType;
 @property(nonatomic, assign)HGPageProgressViewAnimatedType animatedType;
-@property(nonatomic, weak) id<HGPageTitlesDelegate>delegate;
+@property(nonatomic, weak) id<HGPageTitlesDelegate>pageTitlesDelegate;
 
 
 - (void)reloadData;

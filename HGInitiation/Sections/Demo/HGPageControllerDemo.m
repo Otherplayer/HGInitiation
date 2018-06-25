@@ -11,8 +11,9 @@
 #import "HGPageContentController.h"
 #import "HGPageContent2Controller.h"
 
-@interface HGPageControllerDemo ()
-
+@interface HGPageControllerDemo (){
+    UIImageView *navBarBottonLineImageView;
+}
 @end
 
 @implementation HGPageControllerDemo
@@ -21,7 +22,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titlesView.backgroundColor = [UIColor whiteColor];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    navBarBottonLineImageView = [self findBarBottomLineImageView:self.navigationController.navigationBar];
+    navBarBottonLineImageView.hidden = YES;//隐藏
     
 }
 
@@ -30,6 +33,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    navBarBottonLineImageView.hidden = YES;//隐藏
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    navBarBottonLineImageView.hidden = NO;
+}
+
+// 找到横线视图
+- (UIImageView *)findBarBottomLineImageView:(UIView *)view {
+    if ([view isKindOfClass:[UIImageView class]] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subView in view.subviews) {
+        UIImageView *imageView = [self findBarBottomLineImageView:subView];// 递归
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
+}
 #pragma mark - <HGPageControllerDataSource>
 
 - (NSInteger)numbersOfChildControllersInPageController:(HGPageController *)pageController {

@@ -24,7 +24,7 @@
         self.normalSize = 16;
         self.selectedSize = 16;
         self.normalColor = [UIColor colorWithRGB:0x666666];
-        self.selectedColor = UIColor.blackColor;
+        self.selectedColor = UIColor.redColor;
         
         self.labTitle = ({
             _labTitle = [UILabel.alloc initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];

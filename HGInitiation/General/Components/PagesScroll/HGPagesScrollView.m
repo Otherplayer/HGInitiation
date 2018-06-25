@@ -44,7 +44,6 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
 
         self.scrollView = ({
             _scrollView = [UIScrollView.alloc initWithFrame:CGRectMake(0, 0, width, height)];
-            _scrollView.backgroundColor = [UIColor cyanColor];
             _scrollView.delegate = self;
             _scrollView.pagingEnabled = YES;
             _scrollView.contentSize = CGSizeMake(width * titles.count, 0);
@@ -62,7 +61,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
             _titlesView.backgroundColor = [UIColor whiteColor];
             _titlesView.showType = HGPageTitlesShowTypeCenter;
             _titlesView.animatedType = HGPageProgressViewAnimatedTypePanning;
-            _titlesView.delegate = self;
+            _titlesView.pageTitlesDelegate = self;
             _titlesView;
         });
         
