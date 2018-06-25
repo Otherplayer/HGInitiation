@@ -100,7 +100,7 @@
     self.pageCurrent = currentPage;
 }
 #pragma mark - <HGPageTitlesDelegate>
-- (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index {
+- (void)pageTitles:(HGPageTitlesView *)titlesView shouldSelectItemAtIndex:(NSInteger)index {
     if (self.pageCurrent >= index - 1 && self.pageCurrent <= index + 1) {
         [self.contentsView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
     }else{

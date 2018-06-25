@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "HGThemeManager.h"
 #import "HGDownloader.h"
-#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 #ifndef __OPTIMIZE__
 #import "HGHelperFPS.h"
@@ -110,6 +109,9 @@
 #pragma mark - install
 
 - (void)installFunctionsNeedNetworkConnected {
+    if (self.alreadyInstalledWhenNConnect) {
+        return;
+    }
     self.alreadyInstalledWhenNConnect = YES;
     
 }
@@ -122,7 +124,7 @@
         if (status == AFNetworkReachabilityStatusNotReachable) {
             NSLog(@"【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
         }else {
-            NSLog(@"【Good Job!】网络已联通🌴🌴🌴🌴🌴🌴🌴🌴");
+            NSLog(@"【Good Job!】网络已连通🌴🌴🌴🌴🌴🌴🌴🌴");
             if (!self.alreadyInstalledWhenNConnect) {
                 [self installFunctionsNeedNetworkConnected];
             }

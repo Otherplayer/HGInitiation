@@ -15,7 +15,8 @@ const CGFloat HGPageProgressViewHeight = 2.f;
 @interface HGPageTitlesView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)NSMutableArray *frames;
-@property(nonatomic, assign)CGFloat margin;
+@property(nonatomic)CGFloat margin;
+@property(nonatomic)CGFloat progressViewPosition;
 @end
 
 @implementation HGPageTitlesView
@@ -41,6 +42,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     
     self.selectedIndex = 0;
     self.margin = 0;
+    self.progressViewPosition = 0;
     self.showType = HGPageTitlesShowTypeCenter;
     self.animatedType = HGPageProgressViewAnimatedTypeNone;
     self.frames = [NSMutableArray.alloc init];
@@ -97,6 +99,7 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     NSInteger tag = (NSInteger)progress;
     CGFloat rate = progress - tag;
     
+    NSLog(@"%@",@(progress));
     if (rate == 0.0) {
         [self scrollToItemAtIndex:tag];
         return;
@@ -118,15 +121,44 @@ const CGFloat HGPageProgressViewHeight = 2.f;
             self.progressView.width = newWidth;
             self.progressView.left += (oldWidth - newWidth);
         }
+    }else if (self.animatedType == HGPageProgressViewAnimatedTypePanning){
+        CGFloat width = itemCurrent.width + itemNext.width;
+        self.progressView.left = self.progressViewPosition +  (progress - self.selectedIndex) *(width/2.0);
     }
     
 }
 - (void)scrollToItemAtIndex:(NSInteger)index {
     self.selectedIndex = index;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                        animated:YES];
     [self.collectionView reloadData];
-    [self scrollProgressViewToIndex:index];
+    [self scrollToProgressViewAtIndex:index];
+}
+- (void)scrollToProgressViewAtIndex:(NSInteger)index {
+    CGFloat left = [self progressViewPositionLeftAtIndex:index];
+    self.progressViewPosition = left;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.progressView.left = left;
+    }];
+}
+
+- (CGFloat)progressViewPositionLeftAtIndex:(NSInteger)index {
+    CGFloat left = self.margin;
+    for (int i = 0; i < index; i++) {
+        left += [self.frames[i] floatValue];
+    }
+    left += ([self.frames[index] floatValue] - HGPageProgressViewWidth)/2.0;
+    return left;
+}
+- (CGFloat)progressViewPositionRightAtIndex:(NSInteger)index {
+    CGFloat left = self.margin;
+    for (int i = 0; i < index; i++) {
+        left += [self.frames[i] floatValue];
+    }
+    left += ([self.frames[index] floatValue] - HGPageProgressViewWidth)/2.0 + HGPageProgressViewWidth;
+    return left;
 }
 
 #pragma mark -
@@ -142,19 +174,8 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     if (self.showType == HGPageTitlesShowTypeCenter && totalWidth < CGRectGetWidth(self.bounds)) {
         self.margin = (CGRectGetWidth(self.bounds) - totalWidth) / 2.0f;
     }
-    [self scrollProgressViewToIndex:self.selectedIndex];
+    [self scrollToProgressViewAtIndex:self.selectedIndex];
     [self reloadData];
-}
-
-- (void)scrollProgressViewToIndex:(NSInteger)index {
-    CGFloat left = self.margin;
-    for (int i = 0; i < index; i++) {
-        left += [self.frames[i] floatValue];
-    }
-    left += ([self.frames[index] floatValue] - HGPageProgressViewWidth)/2.0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.progressView.left = left;
-    }];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
@@ -171,10 +192,9 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger pageIndex = indexPath.item;
-    [self.delegate pageTitles:self didSelectItemAtIndex:pageIndex];
-    [self scrollToItemAtIndex:indexPath.item];
-    [collectionView reloadData];
+    [self.delegate pageTitles:self shouldSelectItemAtIndex:indexPath.item];
+//    [self scrollToItemAtIndex:indexPath.item];
+//    [collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

@@ -61,6 +61,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
             _titlesView = [HGPageTitlesView.alloc initWithFrame:CGRectMake(0, kHGPagesScrollViewHeaderHeight, width, kHGPagesScrollViewHeaderTitle)];
             _titlesView.backgroundColor = [UIColor whiteColor];
             _titlesView.showType = HGPageTitlesShowTypeCenter;
+            _titlesView.animatedType = HGPageProgressViewAnimatedTypePanning;
             _titlesView.delegate = self;
             _titlesView;
         });
@@ -195,7 +196,7 @@ const CGFloat kHGPagesScrollViewHeaderTitle = 50.0f;
 #pragma mark -
 
 #pragma mark - <HGPageTitlesDelegate>
-- (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index {
+- (void)pageTitles:(HGPageTitlesView *)titlesView shouldSelectItemAtIndex:(NSInteger)index {
     [self scrollViewWillBeginDragging:self.scrollView];
     if (self.pageCurrent >= index - 1 && self.pageCurrent <= index + 1) {
         [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:YES];

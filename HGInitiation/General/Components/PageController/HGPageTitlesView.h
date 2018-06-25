@@ -12,7 +12,7 @@
 @class HGPageTitlesView;
 @protocol HGPageTitlesDelegate <NSObject>
 @required
-- (void)pageTitles:(HGPageTitlesView *)titlesView didSelectItemAtIndex:(NSInteger)index;
+- (void)pageTitles:(HGPageTitlesView *)titlesView shouldSelectItemAtIndex:(NSInteger)index;
 @end
 
 typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, HGPageTitlesShowType) {
 };
 typedef NS_ENUM(NSUInteger, HGPageProgressViewAnimatedType) {
     HGPageProgressViewAnimatedTypeNone,
+    HGPageProgressViewAnimatedTypePanning,
     HGPageProgressViewAnimatedTypeTransition
 };
 
