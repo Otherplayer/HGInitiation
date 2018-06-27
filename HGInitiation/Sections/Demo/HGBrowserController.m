@@ -12,6 +12,8 @@
 @property (nonatomic, strong)UIImageView *imageView;
 @end
 
+NSString *imageTest = @"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg";
+
 @implementation HGBrowserController
 
 - (void)viewDidLoad {
@@ -20,12 +22,19 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.imageView = ({
-        _imageView = [UIImageView.alloc initWithFrame:CGRectMake(20, 100, 288, 180)];//2880 1800
-        _imageView.image = [UIImage imageNamed:@"1.jpg"];
+        _imageView = [UIImageView.alloc initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT, 0, 0)];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.userInteractionEnabled = YES;
         _imageView;
     });
+    
+    
+    [self.imageView sd_setImageWithURL:imageTest.url completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        dispatch_main_async_safe(^{
+            self.imageView.width = image.size.width * image.scale / 2.0;
+            self.imageView.height = image.size.height * image.scale / 2.0;
+        });
+    }];
     
     [self.view addSubview:self.imageView];
     
@@ -46,8 +55,8 @@
     
     NSMutableArray *photos = [NSMutableArray.alloc init];
     for (int i = 0; i < 50; i++) {
-        HGPhotoModel *model1 = [HGPhotoModel.alloc initWithUrlString:@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"];
-        HGPhotoModel *model2 = [HGPhotoModel.alloc initWithUrlString:@"https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=ed1ae15f007b020818c437b303b099b6/d4628535e5dde71113f38a0cadefce1b9d166123.jpg"];
+        HGPhotoModel *model1 = [HGPhotoModel.alloc initWithUrlString:imageTest];
+        HGPhotoModel *model2 = [HGPhotoModel.alloc initWithUrlString:imageTest];
         [photos addObject:model1];
         [photos addObject:model2];
     }

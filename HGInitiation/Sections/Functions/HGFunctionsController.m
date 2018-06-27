@@ -59,11 +59,6 @@ CGFloat currentPage = 0;
 //        [self presentViewController:controller animated:YES completion:nil];
 //    });
     
-//    dispatch_main_async_safe(^{
-//
-//    });
-    
-    
     
 }
 
