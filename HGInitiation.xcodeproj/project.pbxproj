@@ -60,6 +60,7 @@
 		6365AF6120B6A81000856358 /* UIViewController+HGNavItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365AF6020B6A81000856358 /* UIViewController+HGNavItems.m */; };
 		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
 		636B222820DA56120073C7F2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B222720DA56120073C7F2 /* Const.swift */; };
+		636D6D0020E338F4006D0FC4 /* fifa-world-cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
 		63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B9B1FF0DD5F00DAFD68 /* ViewController.m */; };
@@ -221,6 +222,7 @@
 		636B222420DA459D0073C7F2 /* UIButton+CountDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
 		636B222520DA459D0073C7F2 /* UIButton+CountDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
 		636B222720DA56120073C7F2 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fifa-world-cup.png"; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
 		63878762206A2C16006FE525 /* HGDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloader.m; sourceTree = "<group>"; };
 		63880B941FF0DD5F00DAFD68 /* HGInitiation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGInitiation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -543,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				631022172047913D00876AB6 /* large_leaves_70mp.jpg */,
+				636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */,
 				6306DF5D2031814700959275 /* 1.jpg */,
 			);
 			path = Resources;
@@ -966,6 +969,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636D6D0020E338F4006D0FC4 /* fifa-world-cup.png in Resources */,
 				63880BA41FF0DD5F00DAFD68 /* LaunchScreen.storyboard in Resources */,
 				6306DF5E2031814700959275 /* 1.jpg in Resources */,
 				63C66CF720D90EF400D27833 /* Login.storyboard in Resources */,

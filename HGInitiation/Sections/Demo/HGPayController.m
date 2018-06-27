@@ -25,9 +25,14 @@
     [self.view setBackgroundColor:[UIColor cyanColor]];
     self.popupManager = [HGPopupManager.alloc init];
     
+    UIImage *image = [UIImage imageNamed:@"fifa-world-cup"];
     UIImageView *imageView = [UIImageView.alloc initWithFrame:self.view.bounds];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.image = [UIImage imageNamed:@"large_leaves_70mp.jpg"];
+    imageView.image = image;
+    
+    NSLog(@"%@,(%@,%@)",NSStringFromCGSize(image.size),@(image.size.width * image.scale),@(image.size.height * image.scale));
+    
+    
     [self.view addSubview:imageView];
     
     
