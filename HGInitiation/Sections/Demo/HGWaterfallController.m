@@ -95,7 +95,7 @@ const CGFloat SPACE = 5;
 #pragma mark -
 
 - (void)fetchDatas {
-    [self showProgressTip:nil];
+    [self showProgressTip:@"loading"];
     
     [[HGHTTPClient sharedInstance] fetchEmojies:^(BOOL success, NSString *errDesc, id responseData) {
         

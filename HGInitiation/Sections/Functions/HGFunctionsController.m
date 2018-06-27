@@ -51,14 +51,13 @@ CGFloat currentPage = 0;
     [self initiateViews];
     
     
-//    double delayInSeconds = 1.2f;
+//    double delayInSeconds = 0.8f;
 //    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
 //    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^(void){
-////        [HGHelperPush push:@{HGPushClassName:@"HGPageControllerDemo"}];
-//        HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
-//        [self presentViewController:controller animated:YES completion:nil];
+//        [HGHelperPush push:@{HGPushClassName:@"HGProgressHUDTest"}];
+////        HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
+////        [self presentViewController:controller animated:YES completion:nil];
 //    });
-    
     
 }
 
@@ -86,6 +85,8 @@ CGFloat currentPage = 0;
     
     cell.textLabel.text = title;
     
+    cell.selectedBackgroundView = [UIView new];
+    cell.selectedBackgroundView.backgroundColor = [self.view.tintColor colorWithAlphaComponent:0.1f];
     
     if (indexPath.row == self.items.count - 1) {
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH);
@@ -310,6 +311,8 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGPagesWithHeaderDemo"}},
                    @{TITLE:@"Download",
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
+                   @{TITLE:@"HUD",
+                     PARAMS:@{HGPushClassName:@"HGProgressHUDTest"}},
 //                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
 //                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"登录",FUN:@"funLogin",TYPE:@(HGDataTypeFunction)},

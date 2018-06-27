@@ -61,6 +61,8 @@
 		636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 636B222520DA459D0073C7F2 /* UIButton+CountDown.m */; };
 		636B222820DA56120073C7F2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B222720DA56120073C7F2 /* Const.swift */; };
 		636D6D0020E338F4006D0FC4 /* fifa-world-cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */; };
+		636D6D0420E36CDF006D0FC4 /* HGProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D6D0320E36CDF006D0FC4 /* HGProgressHUDManager.m */; };
+		636D6D0720E37B4B006D0FC4 /* HGProgressHUDTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D6D0620E37B4B006D0FC4 /* HGProgressHUDTest.m */; };
 		63878763206A2C16006FE525 /* HGDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63878762206A2C16006FE525 /* HGDownloader.m */; };
 		63880B991FF0DD5F00DAFD68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B981FF0DD5F00DAFD68 /* AppDelegate.m */; };
 		63880B9C1FF0DD5F00DAFD68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880B9B1FF0DD5F00DAFD68 /* ViewController.m */; };
@@ -72,7 +74,6 @@
 		63880BB81FF0DFE800DAFD68 /* HGDefaultHTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880BB71FF0DFE800DAFD68 /* HGDefaultHTTPService.m */; };
 		63880BBF1FF0EA5700DAFD68 /* HGBASEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880BBE1FF0EA5700DAFD68 /* HGBASEViewController.m */; };
 		63880BC21FF0EA6B00DAFD68 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880BC01FF0EA6B00DAFD68 /* ViewUtils.m */; };
-		63880BC51FF0EADC00DAFD68 /* HGHelperHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */; };
 		63880BCA1FF0F8E600DAFD68 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63880BC91FF0F8E600DAFD68 /* Photos.framework */; };
 		63880BCC1FF0F8ED00DAFD68 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63880BCB1FF0F8EC00DAFD68 /* AVFoundation.framework */; };
 		63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63880BCF1FF1E1F300DAFD68 /* HGAssetManager.m */; };
@@ -223,6 +224,10 @@
 		636B222520DA459D0073C7F2 /* UIButton+CountDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
 		636B222720DA56120073C7F2 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fifa-world-cup.png"; sourceTree = "<group>"; };
+		636D6D0220E36CDF006D0FC4 /* HGProgressHUDManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGProgressHUDManager.h; sourceTree = "<group>"; };
+		636D6D0320E36CDF006D0FC4 /* HGProgressHUDManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGProgressHUDManager.m; sourceTree = "<group>"; };
+		636D6D0520E37B4B006D0FC4 /* HGProgressHUDTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGProgressHUDTest.h; sourceTree = "<group>"; };
+		636D6D0620E37B4B006D0FC4 /* HGProgressHUDTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGProgressHUDTest.m; sourceTree = "<group>"; };
 		63878761206A2C16006FE525 /* HGDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGDownloader.h; sourceTree = "<group>"; };
 		63878762206A2C16006FE525 /* HGDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGDownloader.m; sourceTree = "<group>"; };
 		63880B941FF0DD5F00DAFD68 /* HGInitiation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGInitiation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,8 +251,6 @@
 		63880BBE1FF0EA5700DAFD68 /* HGBASEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBASEViewController.m; sourceTree = "<group>"; };
 		63880BC01FF0EA6B00DAFD68 /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
 		63880BC11FF0EA6B00DAFD68 /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
-		63880BC31FF0EADC00DAFD68 /* HGHelperHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHelperHUD.h; sourceTree = "<group>"; };
-		63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHelperHUD.m; sourceTree = "<group>"; };
 		63880BC91FF0F8E600DAFD68 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		63880BCB1FF0F8EC00DAFD68 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		63880BCE1FF1E1F300DAFD68 /* HGAssetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAssetManager.h; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 				6301EBC52069F39800EBD4D3 /* HGDownloadController.m */,
 				6341E5DC20C784FC005065C5 /* HGPayController.h */,
 				6341E5DD20C784FC005065C5 /* HGPayController.m */,
+				636D6D0520E37B4B006D0FC4 /* HGProgressHUDTest.h */,
+				636D6D0620E37B4B006D0FC4 /* HGProgressHUDTest.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 		635C57CC20048C9C004CE18B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				636D6D0120E36CB6006D0FC4 /* HUD */,
 				6362395A20DCC46500C96C5B /* Popover */,
 				6327575C20CFB0900095E28D /* PagesScroll */,
 				6341E5E220C7B742005065C5 /* Popup */,
@@ -611,6 +617,15 @@
 				6362395C20DCC4D500C96C5B /* HGPopMenu.m */,
 			);
 			path = Popover;
+			sourceTree = "<group>";
+		};
+		636D6D0120E36CB6006D0FC4 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				636D6D0220E36CDF006D0FC4 /* HGProgressHUDManager.h */,
+				636D6D0320E36CDF006D0FC4 /* HGProgressHUDManager.m */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		63880B8B1FF0DD5F00DAFD68 = {
@@ -684,8 +699,6 @@
 		63880BB01FF0DDF500DAFD68 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				63880BC31FF0EADC00DAFD68 /* HGHelperHUD.h */,
-				63880BC41FF0EADC00DAFD68 /* HGHelperHUD.m */,
 				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
 				63D55970200733F200BBA0BE /* HGHelperPush.m */,
 				63F6BB982094753900BB8EFF /* HGHelperFPS.h */,
@@ -1052,6 +1065,7 @@
 				63880BD01FF1E1F300DAFD68 /* HGAssetManager.m in Sources */,
 				631FE87C2018299400E9D8A2 /* HGBASETabBarController.m in Sources */,
 				6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */,
+				636D6D0420E36CDF006D0FC4 /* HGProgressHUDManager.m in Sources */,
 				636B222620DA459D0073C7F2 /* UIButton+CountDown.m in Sources */,
 				6341E5E520C7B74F005065C5 /* CNPPopupController.m in Sources */,
 				630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */,
@@ -1118,13 +1132,13 @@
 				63F3D3DC20C5213F000AC732 /* HGPageTitlesView.m in Sources */,
 				6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */,
 				6341E5E920C7B7CB005065C5 /* HGHorizontalSelectView.m in Sources */,
+				636D6D0720E37B4B006D0FC4 /* HGProgressHUDTest.m in Sources */,
 				6341E5DB20C77B95005065C5 /* HGPageContent2Controller.m in Sources */,
 				63EDC0411FFF23CA0049597F /* HGWebViewProgressView.m in Sources */,
 				63F6BB9A2094753900BB8EFF /* HGHelperFPS.m in Sources */,
 				63C66CE820D8ECE100D27833 /* HGSelectAdditionalView.m in Sources */,
 				63880BB31FF0DF6800DAFD68 /* HGHTTPClient.m in Sources */,
 				632B7AB71FF38D9A000F57A3 /* HGAsset.m in Sources */,
-				63880BC51FF0EADC00DAFD68 /* HGHelperHUD.m in Sources */,
 				636B222820DA56120073C7F2 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

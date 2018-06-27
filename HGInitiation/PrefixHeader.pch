@@ -23,7 +23,7 @@
 #import "HGCategoriesHeader.h"
 #import "HGConfiguration.h"
 #import "ViewUtils.h"
-#import "HGHelperHUD.h"
+#import "HGProgressHUDManager.h"
 
 
 //记录一下
