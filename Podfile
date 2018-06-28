@@ -13,7 +13,7 @@ target "HGInitiation" do
     pod 'SDWebImage'
     pod 'MBProgressHUD'
     pod 'MJRefresh'
-    pod 'YYKit'
+    pod 'YYKit' #this little guy can't ignore warnings?? if you know, please tell me why
     pod 'PinYin4Objc'
 
 end
