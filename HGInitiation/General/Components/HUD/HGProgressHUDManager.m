@@ -51,10 +51,6 @@
 
 - (void)showHUD:(UIView *)view title:(nonnull NSString *)title hideAfterDelay:(CGFloat)dealy {
     
-    if (!title || title.length == 0) {
-        title = @"";
-        dealy = 0.25;
-    }
     if (![self.progressHUD isDescendantOfView:view]) {
         self.progressHUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     }
@@ -69,7 +65,7 @@
     self.progressHUD.mode = MBProgressHUDModeText;
     self.progressHUD.bezelView.color = [UIColor colorWithWhite:0.f alpha:0.85f];
     self.progressHUD.contentColor = [UIColor whiteColor];
-    self.progressHUD.detailsLabel.text = title;
+    self.progressHUD.detailsLabel.text = title?:@"";
     self.progressHUD.detailsLabel.font = [UIFont systemFontOfSize:16.f];
     
     [self.progressHUD hideAnimated:YES afterDelay:dealy];

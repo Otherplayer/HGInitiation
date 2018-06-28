@@ -10,6 +10,16 @@
 
 #define HGShowTip [HGProgressHUDManager shared]
 
+typedef NS_ENUM(NSUInteger, HGProgressHUDTheme) {
+    HGProgressHUDThemeLight,
+    HGProgressHUDThemeDark
+};
+typedef NS_ENUM(NSUInteger, HGProgressHUDPosition) {
+    HGProgressHUDPositionTop,
+    HGProgressHUDPositionCenter,
+    HGProgressHUDPositionBottom,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HGProgressHUDManager : NSObject
