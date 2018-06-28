@@ -73,13 +73,13 @@
     [[HGProgressHUDManager shared] hideProgressHUD];
 }
 - (void)progressExample {
-    [[HGProgressHUDManager shared] showProgressHUD:self.navigationController.view title:@"loading" hideAfterDelay:3];
+    [[HGProgressHUDManager shared] showLoadingIn:self.navigationController.view msg:@"loading" hideAfterDealy:3];
 }
 - (void)textOnlyExample {
-    [[HGProgressHUDManager shared] showHUD:self.view title:@"这是一个文本" hideAfterDelay:1.2];
+    [HGShowTip showMSGIn:self.view msg:@"这是一个文本" hideAfterDealy:1.2];
 }
 - (void)detailsLabelExample {
-    [[HGProgressHUDManager shared] showProgressHUD:self.view.window title:@"loading" hideAfterDelay:3];
+    [[HGProgressHUDManager shared] showLoadingIn:self.view.window msg:@"loading" hideAfterDealy:3];
 }
 
 #pragma mark - Table view data source

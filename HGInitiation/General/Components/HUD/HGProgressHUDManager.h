@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)showProgressHUD:(UIView *)view title:(nullable NSString *)title hideAfterDelay:(CGFloat)dealy;
-- (void)showHUD:(UIView *)view title:(nonnull NSString *)title hideAfterDelay:(CGFloat)dealy;
+- (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy;
+- (void)showMSGIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy;
 
 - (void)hideProgressHUD;
 

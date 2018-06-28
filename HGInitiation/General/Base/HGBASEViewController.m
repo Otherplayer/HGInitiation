@@ -53,13 +53,13 @@
     [self showTip:tip dealy:1.2];
 }
 - (void)showTip:(NSString *)tip dealy:(CGFloat)dealy{
-    [HGShowTip showHUD:self.view title:tip hideAfterDelay:dealy];
+    [HGShowTip showMSGIn:self.view msg:tip hideAfterDealy:dealy];
 }
 - (void)showProgressTip:(NSString *)tip{
-    [HGShowTip showProgressHUD:self.view title:tip hideAfterDelay:60];
+    [HGShowTip showLoadingIn:self.view msg:tip hideAfterDealy:60];
 }
 - (void)showProgressTip:(NSString *)tip dealy:(CGFloat)dealy{
-    [HGShowTip showProgressHUD:self.view title:tip hideAfterDelay:dealy];
+    [HGShowTip showLoadingIn:self.view msg:tip hideAfterDealy:dealy];
 }
 - (void)hideTip{
     [HGShowTip hideProgressHUD];

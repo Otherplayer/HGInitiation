@@ -28,7 +28,7 @@
     return manager;
 }
 
-- (void)showProgressHUD:(UIView *)view title:(nullable NSString *)title hideAfterDelay:(CGFloat)dealy {
+- (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy {
     if (![self.progressHUD isDescendantOfView:view]) {
         self.progressHUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     }
@@ -38,18 +38,18 @@
     self.progressHUD.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
     self.progressHUD.backgroundView.alpha = 0.35;
     self.progressHUD.animationType = MBProgressHUDAnimationZoom;
-    self.progressHUD.margin = 10;
     
+    self.progressHUD.margin = 10;
     self.progressHUD.mode = MBProgressHUDModeIndeterminate;
     self.progressHUD.bezelView.color = [UIColor clearColor];
     self.progressHUD.contentColor = [UIColor blackColor];
-    self.progressHUD.detailsLabel.text = title;
+    self.progressHUD.detailsLabel.text = msg?:@"";
     self.progressHUD.detailsLabel.font = [UIFont systemFontOfSize:16.f];
     
     [self.progressHUD hideAnimated:YES afterDelay:dealy];
 }
 
-- (void)showHUD:(UIView *)view title:(nonnull NSString *)title hideAfterDelay:(CGFloat)dealy {
+- (void)showMSGIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy {
     
     if (![self.progressHUD isDescendantOfView:view]) {
         self.progressHUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -60,12 +60,12 @@
     self.progressHUD.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
     self.progressHUD.backgroundView.alpha = 0.35;
     self.progressHUD.animationType = MBProgressHUDAnimationZoom;
-    self.progressHUD.margin = 20;
     
+    self.progressHUD.margin = 20;
     self.progressHUD.mode = MBProgressHUDModeText;
     self.progressHUD.bezelView.color = [UIColor colorWithWhite:0.f alpha:0.85f];
     self.progressHUD.contentColor = [UIColor whiteColor];
-    self.progressHUD.detailsLabel.text = title?:@"";
+    self.progressHUD.detailsLabel.text = msg?:@"";
     self.progressHUD.detailsLabel.font = [UIFont systemFontOfSize:16.f];
     
     [self.progressHUD hideAnimated:YES afterDelay:dealy];
