@@ -23,3 +23,71 @@
 ```
 
 [StyleGuide](https://github.com/google/styleguide/blob/gh-pages/objcguide.md)
+
+
+### Project Structure
+
+```
+
+.
+├── Vendors/                                # Third-party libraries and file
+│   ├── CNPPopupController/                 # a simple and versatile class for presenting a custom popup in a variety of fashions.
+│   ├── CHTCollectionViewWaterfallLayout/   # the waterfall layout for UICollectionView.
+│   └── ...
+├── Resources/                              # Main project resources
+│   └── ...
+├── General/                                # General functions    
+│   ├── Core/                               # some general configuration. eg: theme
+│   ├── Theme/                              # theme
+│   ├── Categories/                         # categories
+│   │   └── ...
+│   ├── Compontents/                        # ui components
+│   │   ├── HUD/                            # 
+│   │   ├── Popover/                        # 
+│   │   ├── PagesScroll/                    # 
+│   │   ├── Popup/                          # 
+│   │   ├── PageController/                 # 
+│   │   ├── ViewUtils/                      # 
+│   │   ├── PhotoBrowser/                   # 
+│   │   ├── ImagePicker/                    # 
+│   │   ├── ScrollView/                     # 
+│   │   ├── WebView/                        # 
+│   │   ├── TextField/                      # 
+│   │   ├── TextView/                       # 
+│   │   ├── Picker/                         # 
+│   │   ├── AvatarClipper/                  # 
+│   │   └── ...
+│   └── Base/                               # Base class
+│   │   ├── HGBASEViewController                     
+│   │   ├── HGBASETabBarController                        
+│   │   ├── HGBASENavigationController                
+│   │   └── ...
+├── Helpers/
+│   ├── HGHelperFPS                     
+│   └── ...
+├── Macro/
+│   └── ...
+├── Network/                                # Network
+│   ├── service/                            
+│   │   └── ...
+│   └── HGHTTPClient                        # client
+├── Sections/                               # Project Sections
+│   └── Login/                              # login
+│   │   ├── HGLoginController.swift         
+│   │   └── HGRegisterController.swift      
+│   └── Settings/                           # Settings
+│   │   ├── HGSettingsController           
+│   │   └── ...            
+├── AppDelegate                             
+├── Main.storyboard                         # not use
+├── Login.storyboard                         
+├── LaunchScreen.storyboard                  
+├── Assets.xcassets                         
+
+├── Info.plist                              
+├── PrefixHeader.pch                        # app global pch file
+├── main.m                                  
+└── HGInitiation-Bridging-Header.h          # swift bridging header
+
+
+```
