@@ -93,7 +93,7 @@
 ```
 
 
-### System colors
+### 3. System colors
 
 ![SystemColors](https://github.com/Otherplayer/HGInitiation/raw/master/HGInitiation/Resources/system-colors.jpeg "System Colors")
 
