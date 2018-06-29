@@ -42,7 +42,7 @@
 │   ├── Theme/                              # theme
 │   ├── Categories/                         # categories
 │   │   └── ...
-│   ├── Compontents/                        # ui components
+│   ├── Compontents/                        # UI components
 │   │   ├── HUD/                            # 
 │   │   ├── Popover/                        # 
 │   │   ├── PagesScroll/                    # 
@@ -91,3 +91,16 @@
 
 
 ```
+
+
+### System colors
+
+![SystemColors](https://github.com/Otherplayer/HNAGithubEmojis/raw/master/HGInitiation/Resources/system-colors.jpeg "System Colors")
+
+
+
+
+
+
+
+

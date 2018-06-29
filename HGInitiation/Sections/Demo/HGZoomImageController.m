@@ -28,7 +28,7 @@
         _zoomImageView;
     });
     
-    [self.zoomImageView setImage:[UIImage imageNamed:@"1.jpg"]];
+    [self.zoomImageView setImage:[UIImage imageNamed:@"system-colors.jpeg"]];
     
     [self.view addSubview:self.zoomImageView];
     

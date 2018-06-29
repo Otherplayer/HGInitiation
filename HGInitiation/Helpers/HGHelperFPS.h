@@ -22,6 +22,4 @@
 @property(nonatomic,copy)void(^didTapFPSHandler)(void);
 
 
-
-
 @end

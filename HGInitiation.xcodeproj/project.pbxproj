@@ -11,7 +11,6 @@
 		6301EBC62069F39800EBD4D3 /* HGDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6301EBC52069F39800EBD4D3 /* HGDownloadController.m */; };
 		630498B12004C11F00F91211 /* HGScrollDefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B02004C11F00F91211 /* HGScrollDefaultImage.m */; };
 		630498B42005E99F00F91211 /* HGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 630498B32005E99F00F91211 /* HGPageControl.m */; };
-		6306DF5E2031814700959275 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6306DF5D2031814700959275 /* 1.jpg */; };
 		631022182047913D00876AB6 /* large_leaves_70mp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 631022172047913D00876AB6 /* large_leaves_70mp.jpg */; };
 		631FE8692017207C00E9D8A2 /* UIImage+HG.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE8682017207C00E9D8A2 /* UIImage+HG.m */; };
 		631FE86F2017275F00E9D8A2 /* HGThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 631FE86E2017275F00E9D8A2 /* HGThemeDefault.m */; };
@@ -39,6 +38,7 @@
 		6341E5E920C7B7CB005065C5 /* HGHorizontalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5E820C7B7CB005065C5 /* HGHorizontalSelectView.m */; };
 		6341E5F220C8DD39005065C5 /* HGPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F120C8DD39005065C5 /* HGPopupManager.m */; };
 		6341E5F520C9117E005065C5 /* HGVerticalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */; };
+		635466C820E64D6100EF2524 /* system-colors.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 635466C720E64D6100EF2524 /* system-colors.jpeg */; };
 		635A8D08207C923600E4E4D6 /* NSString+URITemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A8D07207C923600E4E4D6 /* NSString+URITemplate.m */; };
 		635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24D81FF63D410070BC46 /* HGPickerView.m */; };
 		635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C24DB1FF63D500070BC46 /* HGDatePickerView.m */; };
@@ -125,7 +125,6 @@
 		630498B02004C11F00F91211 /* HGScrollDefaultImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGScrollDefaultImage.m; sourceTree = "<group>"; };
 		630498B22005E99F00F91211 /* HGPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPageControl.h; sourceTree = "<group>"; };
 		630498B32005E99F00F91211 /* HGPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPageControl.m; sourceTree = "<group>"; };
-		6306DF5D2031814700959275 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		631022172047913D00876AB6 /* large_leaves_70mp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = large_leaves_70mp.jpg; sourceTree = "<group>"; };
 		631FE8672017207C00E9D8A2 /* UIImage+HG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HG.h"; sourceTree = "<group>"; };
 		631FE8682017207C00E9D8A2 /* UIImage+HG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HG.m"; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		6341E5F120C8DD39005065C5 /* HGPopupManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGPopupManager.m; sourceTree = "<group>"; };
 		6341E5F320C9117E005065C5 /* HGVerticalSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGVerticalSelectView.h; sourceTree = "<group>"; };
 		6341E5F420C9117E005065C5 /* HGVerticalSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGVerticalSelectView.m; sourceTree = "<group>"; };
+		635466C720E64D6100EF2524 /* system-colors.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "system-colors.jpeg"; sourceTree = "<group>"; };
 		635A8D06207C923600E4E4D6 /* NSString+URITemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URITemplate.h"; sourceTree = "<group>"; };
 		635A8D07207C923600E4E4D6 /* NSString+URITemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URITemplate.m"; sourceTree = "<group>"; };
 		635C24D71FF63D410070BC46 /* HGPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGPickerView.h; sourceTree = "<group>"; };
@@ -549,9 +549,9 @@
 		635C24FD1FFCDF190070BC46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				635466C720E64D6100EF2524 /* system-colors.jpeg */,
 				631022172047913D00876AB6 /* large_leaves_70mp.jpg */,
 				636D6CFF20E338F4006D0FC4 /* fifa-world-cup.png */,
-				6306DF5D2031814700959275 /* 1.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -985,7 +985,7 @@
 			files = (
 				636D6D0020E338F4006D0FC4 /* fifa-world-cup.png in Resources */,
 				63880BA41FF0DD5F00DAFD68 /* LaunchScreen.storyboard in Resources */,
-				6306DF5E2031814700959275 /* 1.jpg in Resources */,
+				635466C820E64D6100EF2524 /* system-colors.jpeg in Resources */,
 				63C66CF720D90EF400D27833 /* Login.storyboard in Resources */,
 				63880BA11FF0DD5F00DAFD68 /* Assets.xcassets in Resources */,
 				63880B9F1FF0DD5F00DAFD68 /* Main.storyboard in Resources */,

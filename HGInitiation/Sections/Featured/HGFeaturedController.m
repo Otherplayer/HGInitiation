@@ -51,7 +51,7 @@
     
     imageview.frame = CGRectMake(10, 100, 300, 300);
     
-    imageview.image = [UIImage imageNamed:@"1.jpg"];
+    imageview.image = [UIImage imageNamed:@"system-colors.jpeg"];
     
     imageview.contentMode = UIViewContentModeScaleAspectFit;
     
