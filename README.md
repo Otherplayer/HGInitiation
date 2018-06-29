@@ -1,7 +1,7 @@
 # HGInitiation
 
 
-### run 
+### Run 
 > pod install
 
 ### 0. 代码规范 【 逻辑清晰，代码整洁，零警告 】
@@ -21,11 +21,12 @@
 5.借用美国童子军军规：让营地比你来时更干净。
 
 ```
+详细
 
 [StyleGuide](https://github.com/google/styleguide/blob/gh-pages/objcguide.md)
 
 
-### Project Structure
+### 1. Project Structure
 
 ```
 
@@ -83,7 +84,6 @@
 ├── Login.storyboard                         
 ├── LaunchScreen.storyboard                  
 ├── Assets.xcassets                         
-
 ├── Info.plist                              
 ├── PrefixHeader.pch                        # app global pch file
 ├── main.m                                  
