@@ -1,10 +1,10 @@
 # HGInitiation
 
 
-### Run 
+### 0. 运行 
 > pod install
 
-### 0. 代码规范 【 逻辑清晰，代码整洁，零警告 】
+### 1. 代码规范 【 逻辑清晰，代码整洁，零警告 】
 
 总则
 
@@ -21,12 +21,12 @@
 5.借用美国童子军军规：让营地比你来时更干净。
 
 ```
-详细
+详细参阅
 
 [StyleGuide](https://github.com/google/styleguide/blob/gh-pages/objcguide.md)
 
 
-### 1. Project Structure
+### 2. 工程结构 Project Structure
 
 ```
 
