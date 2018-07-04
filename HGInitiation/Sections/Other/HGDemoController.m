@@ -47,6 +47,10 @@ CGFloat currentPage = 0;
     [self initiateDatas];
     [self initiateViews];
     [self addNotifications];
+    
+    perform_block_after_delay(1.f, ^{
+        [HGHelperPush push:@{HGPushClassName:@"HGProgressHUDTest"}];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
