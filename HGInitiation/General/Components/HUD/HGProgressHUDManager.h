@@ -14,11 +14,6 @@ typedef NS_ENUM(NSUInteger, HGProgressHUDTheme) {
     HGProgressHUDThemeLight,
     HGProgressHUDThemeDark
 };
-typedef NS_ENUM(NSUInteger, HGProgressHUDPosition) {
-    HGProgressHUDPositionTop,
-    HGProgressHUDPositionCenter,
-    HGProgressHUDPositionBottom,
-};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shared;
 
 - (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy;
+- (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg theme:(HGProgressHUDTheme)theme hideAfterDealy:(CGFloat)dealy;
 - (void)showMSGIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy;
 
 - (void)hideProgressHUD;

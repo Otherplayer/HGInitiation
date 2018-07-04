@@ -29,20 +29,31 @@
 }
 
 - (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg hideAfterDealy:(CGFloat)dealy {
+    [self showLoadingIn:view msg:msg theme:HGProgressHUDThemeDark hideAfterDealy:dealy];
+}
+
+- (void)showLoadingIn:(UIView *)view msg:(nullable NSString *)msg theme:(HGProgressHUDTheme)theme hideAfterDealy:(CGFloat)dealy {
     if (![self.progressHUD isDescendantOfView:view]) {
         self.progressHUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     }
     
     self.progressHUD.backgroundView.style = MBProgressHUDBackgroundStyleBlur;
+    self.progressHUD.animationType = MBProgressHUDAnimationZoom;
     self.progressHUD.backgroundView.blurEffectStyle = UIBlurEffectStyleLight;
     self.progressHUD.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
     self.progressHUD.backgroundView.alpha = 0.35;
-    self.progressHUD.animationType = MBProgressHUDAnimationZoom;
     
     self.progressHUD.margin = 10;
     self.progressHUD.mode = MBProgressHUDModeIndeterminate;
-    self.progressHUD.bezelView.color = [UIColor clearColor];
-    self.progressHUD.contentColor = [UIColor blackColor];
+    
+    if (theme == HGProgressHUDThemeDark) {
+        self.progressHUD.bezelView.color = [UIColor colorWithWhite:0.f alpha:0.85f];
+        self.progressHUD.contentColor = [UIColor whiteColor];
+    }else {
+        self.progressHUD.bezelView.color = [UIColor clearColor];
+        self.progressHUD.contentColor = [UIColor blackColor];
+    }
+    
     self.progressHUD.detailsLabel.text = msg?:@"";
     self.progressHUD.detailsLabel.font = [UIFont systemFontOfSize:16.f];
     
