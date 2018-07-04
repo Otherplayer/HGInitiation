@@ -16,10 +16,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+UIKIT_EXTERN NSNotificationName HGHelperFPSDidTapedNotification;
+
 @interface HGHelperFPS : UIWindow
 
 + (HGHelperFPS *)sharedInstance;
-@property(nonatomic,copy)void(^didTapFPSHandler)(void);
-
+@property(nonatomic,copy)void(^didTapFPSHandler)(BOOL isTaped);
 
 @end

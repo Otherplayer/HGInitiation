@@ -12,6 +12,7 @@
 
 #ifndef __OPTIMIZE__
 #import "HGHelperFPS.h"
+#import "HGDemoController.h"
 #endif
 
 // iOS10注册APNs所需头文件
@@ -139,8 +140,12 @@
     // 显示FPS
 #ifndef __OPTIMIZE__
     [[HGHelperFPS sharedInstance] setHidden:NO];
-    [[HGHelperFPS sharedInstance] setDidTapFPSHandler:^{
-        NSLog(@"-----did click fps handler");
+    [[HGHelperFPS sharedInstance] setDidTapFPSHandler:^(BOOL isTaped) {
+        if (isTaped) {
+            HGDemoController *controller = [HGDemoController.alloc init];
+            UINavigationController *nav = [UINavigationController.alloc initWithRootViewController:controller];
+            [self.tabBarController presentViewController:nav animated:YES completion:nil];
+        }
     }];
 #endif
     

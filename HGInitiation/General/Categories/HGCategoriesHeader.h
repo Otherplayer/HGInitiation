@@ -21,6 +21,7 @@
 #import "UIViewController+HGNavItems.h"
 #import "UIImage+HG.h"
 #import "UIStoryboard+HG.h"
+#import "UITableViewCell+HGBackgroundView.h"
 
 
 #endif /* HGCategoriesHeader_h */

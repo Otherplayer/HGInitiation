@@ -8,12 +8,6 @@
 
 #import "HGBASEViewController.h"
 
-typedef NS_ENUM(NSUInteger, HGDataType) {
-    HGDataTypeFunction,
-    HGDataTypePushController,
-    HGDataTypePresentController,
-};
-
 @interface HGFunctionsController : HGBASEViewController
 
 @end

@@ -85,4 +85,34 @@ UIKIT_STATIC_INLINE UIColor *HGGradientFromColors(NSArray *colors,CGSize size){
     return [UIColor colorWithPatternImage:image];
 }
 
+
+// system color
+
++ (UIColor *)systemRed {
+    return [UIColor colorWithRGB:0xff3b30];
+}
++ (UIColor *)systemOrange {
+    return [UIColor colorWithRGB:0xff3b30];
+}
++ (UIColor *)systemYellow {
+    return [UIColor colorWithRGB:0xffcc00];
+}
++ (UIColor *)systemGreen {
+    return [UIColor colorWithRGB:0x4cd964];
+}
++ (UIColor *)systemTeal {
+    return [UIColor colorWithRGB:0x5ac8fa];
+}
++ (UIColor *)systemBlue {
+    return [UIColor colorWithRGB:0x007aff];
+}
++ (UIColor *)systemPurple {
+    return [UIColor colorWithRGB:0x5856d6];
+}
++ (UIColor *)systemPink {
+    return [UIColor colorWithRGB:0xff2d55];
+}
+
+
+
 @end

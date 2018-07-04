@@ -25,4 +25,17 @@
 + (UIColor *)gradientColorFrom:(UIColor *)colorFrom to:(UIColor *)colorTo width:(int)width;
 + (UIColor *)gradientColors:(NSArray *)colors size:(CGSize)size;
 
+// system color
++ (UIColor *)systemRed;
++ (UIColor *)systemOrange;
++ (UIColor *)systemYellow;
++ (UIColor *)systemGreen;
++ (UIColor *)systemTeal;
++ (UIColor *)systemBlue;
++ (UIColor *)systemPurple;
++ (UIColor *)systemPink;
+
+
+
+
 @end

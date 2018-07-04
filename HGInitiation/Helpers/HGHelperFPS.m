@@ -8,6 +8,7 @@
 
 #import "HGHelperFPS.h"
 
+NSNotificationName HGHelperFPSDidTapedNotification = @"HGHelperFPSDidTapedNotification";
 
 #define kFPSViewWidth 80
 #define kFPSViewHeight STATUS_BAR_HEIGHT
@@ -18,6 +19,7 @@
 @property(nonatomic) CFTimeInterval lastTickTimestamp;
 @property(nonatomic) NSUInteger count;
 @property(nonatomic) NSInteger lastFPSValue;
+@property(nonatomic) BOOL isTaped;
 
 @end
 
@@ -45,6 +47,7 @@
         self.lastTickTimestamp = 0.f;
         self.count = 0;
         self.lastFPSValue = 60;
+        self.isTaped = NO;
         
         YYWeakProxy *proxy = [YYWeakProxy proxyWithTarget:self];
         
@@ -153,8 +156,10 @@
     }
 }
 - (void)didClickAction:(UITapGestureRecognizer *)gesture {
+    self.isTaped = !self.isTaped;
+    [[NSNotificationCenter defaultCenter] postNotificationName:HGHelperFPSDidTapedNotification object:@(self.isTaped)];
     if (self.didTapFPSHandler) {
-        self.didTapFPSHandler();
+        self.didTapFPSHandler(self.isTaped);
     }
 }
 
