@@ -119,6 +119,7 @@
 		63FBD50820EDCC7700B96A18 /* system-colors.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63FBD50720EDCC7700B96A18 /* system-colors.jpeg */; };
 		63FBD50E20EDCF5C00B96A18 /* HGLanguagesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBD50D20EDCF5C00B96A18 /* HGLanguagesTest.m */; };
 		63FBD51220EDF6AC00B96A18 /* HGLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBD51120EDF6AC00B96A18 /* HGLanguageManager.m */; };
+		63FBD51420EE1B2E00B96A18 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBD51320EE1B2E00B96A18 /* NullSafe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,6 +349,7 @@
 		63FBD50D20EDCF5C00B96A18 /* HGLanguagesTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGLanguagesTest.m; sourceTree = "<group>"; };
 		63FBD51020EDF6AC00B96A18 /* HGLanguageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGLanguageManager.h; sourceTree = "<group>"; };
 		63FBD51120EDF6AC00B96A18 /* HGLanguageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGLanguageManager.m; sourceTree = "<group>"; };
+		63FBD51320EE1B2E00B96A18 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -731,6 +733,7 @@
 		63880BB01FF0DDF500DAFD68 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				63FBD51320EE1B2E00B96A18 /* NullSafe.m */,
 				63D5596F200733F200BBA0BE /* HGHelperPush.h */,
 				63D55970200733F200BBA0BE /* HGHelperPush.m */,
 				63F6BB982094753900BB8EFF /* HGHelperFPS.h */,
@@ -1172,6 +1175,7 @@
 				635C57C920033319004CE18B /* HGBrowserController.m in Sources */,
 				635C24D91FF63D410070BC46 /* HGPickerView.m in Sources */,
 				6389B2171FF61A9100EBBF6C /* UIColor+Tweak.m in Sources */,
+				63FBD51420EE1B2E00B96A18 /* NullSafe.m in Sources */,
 				63751DE720EA4C7600CF245E /* UITableViewCell+HGBackgroundView.m in Sources */,
 				6362395D20DCC4D500C96C5B /* HGPopMenu.m in Sources */,
 				632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */,
