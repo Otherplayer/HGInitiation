@@ -9,3 +9,5 @@
 
 "app_name" = "HGInitiation";
 "app_language" = "language";
+
+"test_tip" = "Please tap top left corner FPS";

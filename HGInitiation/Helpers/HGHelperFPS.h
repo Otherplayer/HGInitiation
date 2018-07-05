@@ -22,6 +22,7 @@ UIKIT_EXTERN NSNotificationName HGHelperFPSDidTapedNotification;
 @interface HGHelperFPS : UIWindow
 
 + (HGHelperFPS *)sharedInstance;
+@property(nonatomic) BOOL isTaped;
 @property(nonatomic,copy)void(^didTapFPSHandler)(BOOL isTaped);
 
 @end

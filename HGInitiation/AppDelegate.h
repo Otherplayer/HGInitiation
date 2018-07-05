@@ -14,6 +14,5 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) HGBASETabBarController *tabBarController;
 
-
 @end
 

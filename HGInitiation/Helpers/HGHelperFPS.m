@@ -19,7 +19,6 @@ NSNotificationName HGHelperFPSDidTapedNotification = @"HGHelperFPSDidTapedNotifi
 @property(nonatomic) CFTimeInterval lastTickTimestamp;
 @property(nonatomic) NSUInteger count;
 @property(nonatomic) NSInteger lastFPSValue;
-@property(nonatomic) BOOL isTaped;
 
 @end
 

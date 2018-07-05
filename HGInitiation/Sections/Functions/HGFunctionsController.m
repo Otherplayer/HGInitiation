@@ -32,7 +32,7 @@
     self.navigationItem.title = @"Functions";
     
     UILabel *labTip = [UILabel.alloc initWithFrame:self.view.bounds];
-    [labTip setText:@"请点击左上角FPS"];
+    [labTip setText:i18n_Text(@"test_tip")];
     [labTip setTextAlignment:NSTextAlignmentCenter];
     [labTip setTextColor:[UIColor systemRed]];
     [self.view addSubview:labTip];
