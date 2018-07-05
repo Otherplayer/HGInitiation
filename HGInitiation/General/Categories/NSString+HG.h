@@ -17,6 +17,7 @@
 - (NSString *)hgMD5HexLower;
 - (NSURL *)url;
 
++ (NSString *)preferredLanguage;
 
 //    1B(Byte 字节)=8bit，
 //　　 1KB (Kilobyte 千字节)=1024B，

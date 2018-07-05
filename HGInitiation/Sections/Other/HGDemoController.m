@@ -49,7 +49,7 @@ CGFloat currentPage = 0;
     [self addNotifications];
     
     perform_block_after_delay(1.f, ^{
-        [HGHelperPush push:@{HGPushClassName:@"HGProgressHUDTest"}];
+        [HGHelperPush push:@{HGPushClassName:@"HGLanguagesTest"}];
     });
 }
 
@@ -219,6 +219,9 @@ CGFloat currentPage = 0;
     HGImagePickerController *controller = [HGImagePickerController.alloc initWithMaxSelectCount:1 type:HGAssetPickerTypeImage delegate:self showAlbumFirst:NO];
     [self presentViewController:controller animated:YES completion:nil];
 }
+- (void)funLanguage {
+    
+}
 - (void)funLogin {
     HGBASENavigationController *controller = (HGBASENavigationController *)[UIStoryboard loginController];
     [self presentViewController:controller animated:YES completion:nil];
@@ -313,6 +316,8 @@ CGFloat currentPage = 0;
                      PARAMS:@{HGPushClassName:@"HGDownloadController"}},
                    @{TITLE:@"HUD",
                      PARAMS:@{HGPushClassName:@"HGProgressHUDTest"}},
+                   @{TITLE:@"语言",
+                     PARAMS:@{HGPushClassName:@"HGLanguagesTest"}},
                    //                   @{TITLE:@"Picker",FUN:@"funPicker",TYPE:@(HGDataTypeFunction)},
                    //                   @{TITLE:@"Datepicker",FUN:@"funDatePicker",TYPE:@(HGDataTypeFunction)},
                    @{TITLE:@"登录",FUN:@"funLogin",TYPE:@(HGDataTypeFunction)},
@@ -324,7 +329,7 @@ CGFloat currentPage = 0;
                    ];
 }
 - (void)initiateViews {
-    self.navigationItem.title = @"HGInitiation";
+    self.navigationItem.title = i18n_Text(@"app_name");
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }

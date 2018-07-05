@@ -50,12 +50,20 @@
 #define UIColorMakeWithRGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/1.0]
 
 
-#define WeakObject(obj) __weak typeof(obj) weakObject = obj;
+#define WeakObject(obj)   __weak typeof(obj) weakObject = obj;
 #define StrongObject(obj) __strong typeof(obj) strongObject = weakObject;
+#define WS(weakSelf)      __weak __typeof(&*self)weakSelf = self;
+
+/////////// 国际化
+
+#define i18n_Text(key)  ([[NSBundle bundleWithPath: \
+                         [[NSBundle mainBundle] pathForResource: \
+                         [[NSUserDefaults standardUserDefaults] objectForKey:HGAppLanguage] ofType:@"lproj"]] \
+                         localizedStringForKey:key value:nil table:nil])
 
 
+/////////// 日志
 
-//日志
 ////复杂点的
 //#ifdef DEBUG
 //#define NSLog(format, ...) do { \

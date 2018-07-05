@@ -43,6 +43,14 @@
     
     return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [units objectAtIndex:multiplyFactor]];//达不到最大，无须判断数组会越界
 }
++ (NSString *)preferredLanguage {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSArray *allLanguages = [defaults objectForKey:@"AppleLanguages"];
+//    NSString *preferredLang = [allLanguages firstObject];
+//    return preferredLang;
+    NSString *language = [NSLocale preferredLanguages].firstObject;
+    return language;
+}
 
 
 @end

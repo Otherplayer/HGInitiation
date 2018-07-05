@@ -7,6 +7,7 @@
 //  http://www.wtfpl.net/txt/copying/
 
 #import "AppDelegate.h"
+#import "HGLanguageManager.h"
 #import "HGThemeManager.h"
 #import "HGDownloader.h"
 
@@ -29,11 +30,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    // 监控网络状态
-    [self installNetworkNotifier];
+    [self installWindowBefore];
     [self installWindow];
-    [self installCustomConfiguration];
-    [self installFunctions];
+    [self installWindowAfter];
     
     // 需要网络连接成功后才能初始化的功能
     if ([AFNetworkReachabilityManager sharedManager].isReachable) {
@@ -109,30 +108,22 @@
 
 #pragma mark - install
 
-- (void)installFunctionsNeedNetworkConnected {
-    if (self.alreadyInstalledWhenNConnect) {
-        return;
-    }
-    self.alreadyInstalledWhenNConnect = YES;
+- (void)installWindowBefore {
+    // 设置语言: 默认跟随系统，
+    [[HGLanguageManager shared] setAppLanguage:[[NSUserDefaults standardUserDefaults] objectForKey:HGAppLanguage]];
+    // 监控网络状态
+    [self installNetworkNotifier];
+}
+- (void)installWindow {
+    self.tabBarController = [[HGBASETabBarController alloc] init];
+    [self.tabBarController setDefaultViewControllers];
     
+    self.window = [UIWindow.alloc initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyAndVisible];
 }
-- (void)installFunctions {
-    
-}
-- (void)installNetworkNotifier {
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusNotReachable) {
-            NSLog(@"【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
-        }else {
-            NSLog(@"【Good Job!】网络已连通🌴🌴🌴🌴🌴🌴🌴🌴");
-            if (!self.alreadyInstalledWhenNConnect) {
-                [self installFunctionsNeedNetworkConnected];
-            }
-        }
-    }];
-}
-- (void)installCustomConfiguration {
+- (void)installWindowAfter {
     // 应用皮肤
     NSString *themeClassName = [[NSUserDefaults standardUserDefaults] objectForKey:HGSelectedThemeClassName];
     [HGThemeManager sharedInstance].currentTheme = [[NSClassFromString(themeClassName) alloc] init];
@@ -153,19 +144,29 @@
     //    if (@available(iOS 11.0, *)){
     //
     //    }
-    //         dont use this !!!
+    //         don't do this !!!
     //        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
 }
-- (void)installWindow {
-    self.tabBarController = [[HGBASETabBarController alloc] init];
-    [self.tabBarController setDefaultViewControllers];
-    
-    self.window = [UIWindow.alloc initWithFrame:UIScreen.mainScreen.bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = self.tabBarController;
-    [self.window makeKeyAndVisible];
+- (void)installNetworkNotifier {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            NSLog(@"\n【Attention】网络连接已断开❗️❗️❗️❗️❗️❗️❗️❗️❗️");
+        }else {
+            NSLog(@"\n【Good Job!】网络已连通🌴🌴🌴🌴🌴🌴🌴🌴");
+            if (!self.alreadyInstalledWhenNConnect) {
+                [self installFunctionsNeedNetworkConnected];
+            }
+        }
+    }];
 }
-
+- (void)installFunctionsNeedNetworkConnected {
+    if (self.alreadyInstalledWhenNConnect) {
+        return;
+    }
+    self.alreadyInstalledWhenNConnect = YES;
+    
+}
 
 
 @end
