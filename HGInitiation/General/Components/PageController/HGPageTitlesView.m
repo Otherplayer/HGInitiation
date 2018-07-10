@@ -114,17 +114,21 @@ const CGFloat HGPageProgressViewHeight = 2.f;
     itemCurrent.rate = 1 - rate;
     itemNext.rate = rate;
     
+    //    let distanceFromPage = abs(round(progress) - progress)
     if (self.animatedType == HGPageProgressViewAnimatedTypeTransition) {
         CGFloat width = itemCurrent.width + itemNext.width;
         if (rate <= 0.5) {
             CGFloat newWidth = width * rate + HGPageProgressViewWidth;
             self.progressView.width = newWidth;
+            self.progressView.left = [self progressViewPositionLeftAtIndex:tag];
         }else{
             CGFloat newWidth = width * (1-rate) + HGPageProgressViewWidth;
             CGFloat oldWidth = self.progressView.width;
             self.progressView.width = newWidth;
             self.progressView.left += (oldWidth - newWidth);
+            self.progressView.right = [self progressViewPositionRightAtIndex:tag + 1];
         }
+        
     }else if (self.animatedType == HGPageProgressViewAnimatedTypePanning){
         CGFloat width = itemCurrent.width + itemNext.width;
         self.progressView.left = self.progressViewPosition +  (progress - self.selectedIndex) *(width/2.0);
