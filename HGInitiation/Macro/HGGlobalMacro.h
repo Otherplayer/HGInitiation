@@ -56,10 +56,7 @@
 
 /////////// 国际化
 
-#define i18n_Text(key)  ([[NSBundle bundleWithPath: \
-                         [[NSBundle mainBundle] pathForResource: \
-                         [[NSUserDefaults standardUserDefaults] objectForKey:HGAppLanguage] ofType:@"lproj"]] \
-                         localizedStringForKey:key value:nil table:nil])
+#define i18n_Text(key)  NSLocalizedString(key,"")
 
 
 /////////// 日志

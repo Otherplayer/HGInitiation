@@ -96,6 +96,7 @@
 		63C66CF720D90EF400D27833 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C66CF620D90EF400D27833 /* Login.storyboard */; };
 		63C66CF920D9EB3500D27833 /* HGLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CF820D9EB3500D27833 /* HGLoginController.swift */; };
 		63C66CFB20D9F89600D27833 /* HGRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C66CFA20D9F89600D27833 /* HGRegisterController.swift */; };
+		63D53BCB21009C99003EE688 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D53BC921009C99003EE688 /* NSBundle+Language.m */; };
 		63D5596E2007123200BBA0BE /* UIScrollView+HGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */; };
 		63D55971200733F200BBA0BE /* HGHelperPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D55970200733F200BBA0BE /* HGHelperPush.m */; };
 		63D559742007346800BBA0BE /* NSObject+HGAssociate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D559732007346800BBA0BE /* NSObject+HGAssociate.m */; };
@@ -299,6 +300,8 @@
 		63C66CF620D90EF400D27833 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		63C66CF820D9EB3500D27833 /* HGLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGLoginController.swift; sourceTree = "<group>"; };
 		63C66CFA20D9F89600D27833 /* HGRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGRegisterController.swift; sourceTree = "<group>"; };
+		63D53BC921009C99003EE688 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		63D53BCA21009C99003EE688 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
 		63D5596C2007123200BBA0BE /* UIScrollView+HGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HGRefresh.h"; sourceTree = "<group>"; };
 		63D5596D2007123200BBA0BE /* UIScrollView+HGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HGRefresh.m"; sourceTree = "<group>"; };
 		63D5596F200733F200BBA0BE /* HGHelperPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHelperPush.h; sourceTree = "<group>"; };
@@ -957,6 +960,8 @@
 		63FBD50F20EDF68100B96A18 /* Language */ = {
 			isa = PBXGroup;
 			children = (
+				63D53BCA21009C99003EE688 /* NSBundle+Language.h */,
+				63D53BC921009C99003EE688 /* NSBundle+Language.m */,
 				63FBD51020EDF6AC00B96A18 /* HGLanguageManager.h */,
 				63FBD51120EDF6AC00B96A18 /* HGLanguageManager.m */,
 			);
@@ -1181,6 +1186,7 @@
 				632B7AAA1FF22610000F57A3 /* HGAlbumsController.m in Sources */,
 				63F3D3D920C520F8000AC732 /* HGPageContentsView.m in Sources */,
 				63949EF520AD680D007F944B /* HGScrollCustomCell.m in Sources */,
+				63D53BCB21009C99003EE688 /* NSBundle+Language.m in Sources */,
 				63B9A16B205648DF0006B2E9 /* HGPageContentController.m in Sources */,
 				635C24DC1FF63D500070BC46 /* HGDatePickerView.m in Sources */,
 				6331E21520D0C89E0040C6C7 /* HGPageProgressView.m in Sources */,

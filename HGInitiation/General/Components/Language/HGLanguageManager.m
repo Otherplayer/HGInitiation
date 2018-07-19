@@ -19,6 +19,7 @@
 //zh
 
 #import "HGLanguageManager.h"
+#import "NSBundle+Language.h"
 
 NSString *const HGLanguageChangedNotification = @"HGLanguageChangedNotification";
 
@@ -44,6 +45,9 @@ NSString *const HGLanguageChangedNotification = @"HGLanguageChangedNotification"
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:appLanguage forKey:HGAppLanguage];
     [userDefaults synchronize];
+    
+    [NSBundle setLanguage:appLanguage];
+    
 }
 
 - (NSString *)appLanguage {
